@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
-    <url>
-  <loc>https://www.netbuild.in/website-design-mumbai.html</loc>
-</url>
-<url>
-  <loc>https://www.netbuild.in/website-design-bangalore.html</loc>
-</url>
     <loc>https://www.netbuild.in/</loc>
     <lastmod>2026-02-05</lastmod>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Mumbai -->
+  <url>
+    <loc>https://www.netbuild.in/website-design-mumbai.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bangalore -->
+  <url>
+    <loc>https://www.netbuild.in/website-design-bangalore.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Delhi -->
+  <url>
+    <loc>https://www.netbuild.in/website-design-delhi.html</loc>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
