@@ -58,14 +58,14 @@
 
 }
     :root{
-      --bg:#0b1220;
-      --card:#0f1a33;
-      --text:#e9eefc;
-      --muted:#a9b6da;
-      --brand:#34d399;
-      --brand2:#60a5fa;
-      --line:rgba(255,255,255,.10);
-    }
+  --bg:#0e1625;          /* Deep navy background */
+  --card:#121f36;        /* Card dark blue */
+  --text:#f1f5ff;        /* Clean white text */
+  --muted:#9aa7c7;       /* Soft muted text */
+  --brand:#2563eb;       /* Professional blue (primary) */
+  --brand2:#38bdf8;      /* Light blue accent */
+  --line:rgba(255,255,255,.08);
+}
     .hero-video{
   width: 100%;
   max-width: 520px;
@@ -106,8 +106,13 @@
       display:inline-block;padding:11px 14px;border-radius:12px;
       background:linear-gradient(90deg,var(--brand),var(--brand2));
       color:#081122;font-weight:800;
+      box-shadow: 0 6px 20px rgba(37,99,235,.35); 
+      transition: all .25s ease;
     }
-    .btn:hover{filter:brightness(1.05)}
+    .btn:hover{
+           filter: brightness(1.08);
+           transform: translateY(-2px);
+}
     .hero{
       margin-top:22px;
       display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;
