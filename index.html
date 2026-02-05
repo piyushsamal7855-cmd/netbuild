@@ -18,6 +18,45 @@
 <meta property="og:url" content="https://www.netbuild.in/">
 <meta property="og:type" content="website">
   <style>
+    /* ===== HERO VIDEO ===== */
+.hero-video{
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+/* image hide jab video ho */
+.hero-img{
+  display: none;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px){
+
+  .hero{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-video{
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .card{
+    order: 2;
+  }
+  
+}
+  .hero-video{
+    order: 1;
+  }
+
+}
     :root{
       --bg:#0b1220;
       --card:#0f1a33;
