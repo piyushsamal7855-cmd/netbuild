@@ -2,219 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Netbuild.in – Website Development, eCommerce & SEO</title>
+  <title>Netbuild.in – Websites, eCommerce & SEO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Netbuild.in builds professional websites, eCommerce stores and SEO services that bring real customers.">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div>
-      📧 piyushsamal7855@gmail.com ·
-      <a href="https://wa.me/917855901395" target="_blank">WhatsApp +91 7855901395</a>
-    </div>
-    <div>
-      <span class="pill">Free Demo Available</span>
-      <span class="pill outline">Fast Delivery</span>
-    </div>
-  </div>
-</div>
-
-<!-- HEADER -->
 <header class="header">
-  <div class="container header-inner">
-
-    <div class="brand">
-      <img src="/images/logo.png" class="brand-logo" alt="Netbuild.in">
-    </div>
-
-    <nav class="nav">
+  <div class="container nav">
+    <div class="logo">Netbuild<span>.in</span></div>
+    <nav>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <div class="header-actions">
-      <a href="#contact" class="btn ghost">Get Free Quote</a>
-      <a href="https://wa.me/917855901395" class="btn primary" target="_blank">WhatsApp Now</a>
+    <div class="nav-btns">
+      <a class="btn ghost">Get Free Quote</a>
+      <a class="btn primary" href="https://wa.me/917855901395">WhatsApp</a>
     </div>
-
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
 
-    <div>
-      <h1>Professional Websites that bring you customers.</h1>
-      <p>
-        We build fast, mobile-friendly websites, eCommerce stores and SEO that helps your business rank on Google.
-      </p>
-      <p class="muted">
-        Trusted by small businesses • Free demo before payment • No hidden charges
-      </p>
+    <div class="hero-text">
+      <h1>
+        We build professional websites,<br>
+        eCommerce stores and SEO
+      </h1>
+      <p>that helps your business rank on Google.</p>
 
-      <div class="hero-buttons">
-        <a href="#contact" class="btn primary">Get Free Quote</a>
-        <a href="#pricing" class="btn ghost">View Pricing</a>
+      <div class="hero-actions">
+        <a class="btn primary">Get Free Quote</a>
+        <a class="btn ghost">View Pricing</a>
       </div>
 
-      <div class="badges">
-        <span>⚡ Fast Delivery</span>
-        <span>📱 Mobile-First</span>
-        <span>🔍 SEO-Ready</span>
-        <span>🛠 Support</span>
+      <div class="features">
+        ⚡ Fast Delivery · 📱 Mobile-First · 🔍 SEO Ready · 🛠 Support
       </div>
     </div>
 
-    <div class="card">
+    <div class="glass form-card">
       <h3>Get a Free Demo Website</h3>
-      <form onsubmit="return sendWhatsApp(event)">
-        <input name="name" placeholder="Your Name" required>
-        <input name="phone" placeholder="Phone / WhatsApp" required>
-        <select name="service">
-          <option>Website Development</option>
-          <option>eCommerce Website</option>
-          <option>SEO Service</option>
-        </select>
-        <textarea name="message" placeholder="I need a website for..."></textarea>
-        <button class="btn primary full">Send on WhatsApp</button>
-      </form>
+      <input placeholder="Your Name">
+      <input placeholder="Phone / WhatsApp">
+      <textarea placeholder="I need a website for..."></textarea>
+      <a class="btn primary full" href="https://wa.me/917855901395">
+        Send on WhatsApp
+      </a>
     </div>
 
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="section">
   <div class="container">
     <h2>Services</h2>
-
     <div class="grid">
-      <div class="box">
+      <div class="glass card">
         <h3>Website Development</h3>
         <p>Business, clinic, restaurant & startup websites.</p>
       </div>
-      <div class="box">
+      <div class="glass card">
         <h3>eCommerce Development</h3>
-        <p>Online stores with payments, COD & WhatsApp orders.</p>
+        <p>Payments, COD & WhatsApp orders.</p>
       </div>
-      <div class="box">
+      <div class="glass card">
         <h3>SEO (Google Ranking)</h3>
-        <p>On-page SEO, speed optimization & local SEO.</p>
-      </div>
-      <div class="box">
-        <h3>Maintenance & Support</h3>
-        <p>Updates, security, backup & quick fixes.</p>
+        <p>On-page SEO, speed & local SEO.</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="section dark">
   <div class="container">
     <h2>Pricing</h2>
-
-    <div class="pricing">
-
-      <div class="price-card">
+    <div class="grid pricing">
+      <div class="glass card">
         <h3>Starter</h3>
         <div class="price">₹10,000+</div>
-        <a href="https://wa.me/917855901395?text=I%20want%20Starter%20Website" class="btn ghost full" target="_blank">Choose Starter</a>
+        <a class="btn ghost full">Choose Starter</a>
       </div>
-
-      <div class="price-card popular">
-        <span class="tag">Most Popular</span>
+      <div class="glass card highlight">
         <h3>Business</h3>
         <div class="price">₹18,000+</div>
-        <a href="https://wa.me/917855901395?text=I%20want%20Business%20Website" class="btn primary full" target="_blank">Choose Business</a>
+        <a class="btn primary full">Choose Business</a>
       </div>
-
-      <div class="price-card">
+      <div class="glass card">
         <h3>eCommerce</h3>
         <div class="price">₹30,000+</div>
-        <a href="https://wa.me/917855901395?text=I%20want%20eCommerce%20Website" class="btn ghost full" target="_blank">Choose eCommerce</a>
+        <a class="btn ghost full">Choose eCommerce</a>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio" class="section">
-  <div class="container">
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-      <div>Clinic Website</div>
-      <div>Restaurant Website</div>
-      <div>eCommerce Store</div>
-      <div>Personal Portfolio</div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section dark">
-  <div class="container about">
-    <div>
-      <h2>Why Netbuild.in?</h2>
-      <ul>
-        <li>✅ Mobile-first & fast loading</li>
-        <li>✅ SEO-ready structure</li>
-        <li>✅ Affordable pricing</li>
-        <li>✅ Support & maintenance</li>
-      </ul>
-    </div>
-    <div class="card">
-      <a href="https://wa.me/917855901395" class="btn primary full" target="_blank">WhatsApp +91 7855901395</a>
-      <a href="mailto:piyushsamal7855@gmail.com" class="btn ghost full">Email Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="container contact">
-    <div class="card">
-      <h3>Send a Message</h3>
-      <form onsubmit="return sendWhatsApp(event)">
-        <input name="name" placeholder="Your Name">
-        <input name="phone" placeholder="Phone / WhatsApp">
-        <textarea name="message" placeholder="I need a website for..."></textarea>
-        <button class="btn primary full">Send on WhatsApp</button>
-      </form>
-    </div>
-
-    <div class="card">
-      <h3>Business Info</h3>
-      <p><strong>WhatsApp:</strong> +91 7855901395</p>
-      <p><strong>Email:</strong> piyushsamal7855@gmail.com</p>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  © 2026 Netbuild.in • Website Development & SEO Services in India
+  © 2026 Netbuild.in · Website Development & SEO
 </footer>
-
-<script>
-function sendWhatsApp(e){
-  e.preventDefault();
-  const f=e.target;
-  const msg=`Name: ${f.name.value}%0APhone: ${f.phone.value}%0AService: ${f.service?.value || ''}%0AMessage: ${f.message.value}`;
-  window.open(`https://wa.me/917855901395?text=${msg}`,'_blank');
-  return false;
-}
-</script>
 
 </body>
 </html>
