@@ -7,18 +7,20 @@
 }
 
 body {
-    /* Space Background matches your image */
-    background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2111&auto=format&fit=crop') no-repeat center center/cover;
-    background-attachment: fixed;
+    /* Deep Space Background */
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
 }
 
 .container {
     max-width: 1250px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1; /* Content stars ke upar rahe */
 }
 
 /* --- Navbar --- */
@@ -30,11 +32,11 @@ body {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 10;
 }
 
-.logo img {
-    height: 40px; /* Adjust based on your logo size */
-}
+.logo img { height: 40px; }
 
 .nav-links {
     list-style: none;
@@ -46,8 +48,9 @@ body {
     text-decoration: none;
     color: #e0e0e0;
     font-size: 15px;
-    font-weight: 400;
+    transition: 0.3s;
 }
+.nav-links a:hover { color: #00d2ff; }
 
 .nav-actions {
     display: flex;
@@ -76,7 +79,9 @@ body {
     font-size: 14px;
     box-shadow: 0 0 15px rgba(37, 117, 252, 0.5);
     border: none;
+    transition: 0.3s;
 }
+.btn-primary:hover { transform: scale(1.05); }
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.1);
@@ -97,9 +102,7 @@ body {
 }
 
 /* --- Hero Section --- */
-.hero {
-    margin-top: 60px;
-}
+.hero { margin-top: 60px; }
 
 .hero h1 {
     font-size: 3rem;
@@ -110,11 +113,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-buttons {
-    margin: 30px 0;
-    display: flex;
-    align-items: center;
-}
+.hero-buttons { margin: 30px 0; display: flex; align-items: center; }
 
 .hero-features {
     display: flex;
@@ -123,21 +122,19 @@ body {
     color: #ccc;
     margin-bottom: 40px;
 }
-
 .hero-features i { color: #f1c40f; margin-right: 5px; }
 
 /* --- Glass Dashboard Grid --- */
 .glass-dashboard {
     display: grid;
-    grid-template-columns: 1.8fr 1.2fr; /* Left wider than right */
+    grid-template-columns: 1.8fr 1.2fr;
     gap: 30px;
     margin-bottom: 50px;
-    position: relative;
 }
 
-/* Unified Glass Background for both panels */
+/* Panel Styles */
 .services-panel, .form-panel {
-    background: rgba(13, 16, 33, 0.6); /* Dark tint */
+    background: rgba(13, 16, 33, 0.6);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 30px;
@@ -147,7 +144,7 @@ body {
     overflow: hidden;
 }
 
-/* Neon Glow Lines on top of panels */
+/* Top Neon Line */
 .services-panel::before, .form-panel::before {
     content: '';
     position: absolute;
@@ -158,12 +155,11 @@ body {
 .panel-title {
     font-size: 20px;
     margin-bottom: 25px;
-    color: white;
     border-left: 3px solid #ff00cc;
     padding-left: 10px;
 }
 
-/* Service Cards */
+/* Cards Grid */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -175,29 +171,17 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 20px;
-    text-align: left;
     transition: 0.3s;
 }
 
-/* The middle card glow effect */
-.active-glow {
-    border: 1px solid rgba(58, 123, 213, 0.5);
-    box-shadow: 0 0 15px rgba(58, 123, 213, 0.2);
-    background: rgba(58, 123, 213, 0.1);
+.active-glow, .glass-card:hover {
+    border: 1px solid rgba(0, 210, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    background: rgba(0, 210, 255, 0.05);
 }
 
-.glass-card h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.glass-card p {
-    font-size: 12px;
-    color: #aaa;
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
+.glass-card h4 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
+.glass-card p { font-size: 12px; color: #aaa; margin-bottom: 20px; line-height: 1.5; }
 
 .card-btn {
     width: 100%;
@@ -210,20 +194,12 @@ body {
     font-size: 12px;
 }
 
-/* --- Form Panel --- */
+/* --- Form --- */
 .form-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
 }
-
 .icon-green {
-    color: #25D366;
-    font-size: 24px;
-    background: rgba(37, 211, 102, 0.1);
-    padding: 8px;
-    border-radius: 50%;
+    color: #25D366; font-size: 24px; background: rgba(37, 211, 102, 0.1); padding: 8px; border-radius: 50%;
 }
 
 .glass-input {
@@ -236,11 +212,7 @@ body {
     margin-bottom: 15px;
     outline: none;
 }
-
-.glass-input:focus {
-    border-color: #00d2ff;
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-}
+.glass-input:focus { border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.2); }
 
 .btn-submit {
     width: 100%;
@@ -255,49 +227,88 @@ body {
 }
 
 .form-footer-icons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #ccc;
+    margin-top: 20px; display: flex; justify-content: space-between; font-size: 11px; color: #ccc;
 }
-
 .form-footer-icons i { color: #f1c40f; margin-right: 5px; }
 
 /* --- Bottom Bar --- */
-.bottom-bar {
-    position: relative;
-    margin-top: 20px;
-    padding-bottom: 40px;
-}
-
+.bottom-bar { margin-top: 20px; padding-bottom: 40px; }
 .glow-line {
     height: 2px;
     background: linear-gradient(90deg, #ff00cc, #3333ff, #00d2ff, #ff00cc);
     width: 100%;
-    border-radius: 2px;
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
     margin-bottom: 20px;
 }
+.bar-content { display: flex; justify-content: center; gap: 40px; font-size: 14px; color: #ddd; }
+.highlight-blue { color: #00d2ff; font-weight: 600; }
 
-.bar-content {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    font-size: 14px;
-    color: #ddd;
-}
-
-.highlight-blue {
-    color: #00d2ff;
-    font-weight: 600;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 900px) {
     .glass-dashboard { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2rem; }
     .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
-    .nav-links { display: none; } /* Hide links on mobile for now */
+    .nav-links { display: none; }
+    .hero-buttons { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .btn-secondary, .simple-link { margin-left: 0; }
+}
+
+/* =========================================
+   ANIMATED BACKGROUND STARS (SPACE EFFECT)
+   ========================================= */
+
+@keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+/* Layer 1: Small Stars */
+#stars {
+    width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF, 
+                500px 200px #FFF, 800px 100px #FFF, 1200px 900px #FFF, 
+                300px 500px #FFF, 1500px 300px #FFF, 600px 1200px #FFF;
+    animation: animStar 50s linear infinite;
+    position: fixed; top: 0; left: 0; z-index: -2;
+}
+#stars::after {
+    content: " "; position: absolute; top: 2000px; width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF,
+                500px 200px #FFF, 800px 100px #FFF, 1200px 900px #FFF, 
+                300px 500px #FFF, 1500px 300px #FFF, 600px 1200px #FFF;
+}
+
+/* Layer 2: Medium Stars */
+#stars2 {
+    width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF,
+                400px 800px #FFF, 1400px 200px #FFF, 900px 600px #FFF;
+    animation: animStar 100s linear infinite;
+    position: fixed; top: 0; left: 0; z-index: -1;
+}
+#stars2::after {
+    content: " "; position: absolute; top: 2000px; width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF,
+                400px 800px #FFF, 1400px 200px #FFF, 900px 600px #FFF;
+}
+
+/* Layer 3: Big Stars */
+#stars3 {
+    width: 3px; height: 3px;
+    background: transparent;
+    box-shadow: 1200px 800px #FFF , 500px 300px #FFF , 900px 100px #FFF,
+                300px 900px #FFF, 1600px 500px #FFF;
+    animation: animStar 150s linear infinite;
+    position: fixed; top: 0; left: 0; z-index: -1;
+}
+#stars3::after {
+    content: " "; position: absolute; top: 2000px; width: 3px; height: 3px;
+    background: transparent;
+    box-shadow: 1200px 800px #FFF , 500px 300px #FFF , 900px 100px #FFF,
+                300px 900px #FFF, 1600px 500px #FFF;
 }
