@@ -87,7 +87,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
+    padding: 10px 50px; /* Padding adjust ki taaki bada logo fit ho */
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -99,12 +99,16 @@ body {
     align-items: center;
 }
 
-/* LOGO FIX - SIZE AND GLOW */
+/* --- LOGO UPDATE: Bada Size --- */
 .logo img {
-    height: 70px; /* Bada kar diya */
+    height: 100px; /* Logo ab bada hai */
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.3));
+    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.5)); /* Glow effect */
+    transition: transform 0.3s ease;
+}
+.logo img:hover {
+    transform: scale(1.05); /* Mouse le jane par thoda zoom */
 }
 
 .nav-links { list-style: none; display: flex; gap: 30px; }
@@ -265,7 +269,9 @@ body {
 /* --- Mobile Responsive --- */
 @media (max-width: 900px) {
     .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
-    .logo img { height: 60px; } /* Mobile par thoda chhota lekin visible */
+    /* Mobile Logo Size */
+    .logo img { height: 80px; } 
+    
     .nav-links { display: none; }
     .hero h1 { font-size: 2rem; }
     .hero-buttons { flex-direction: column; gap: 10px; align-items: flex-start; }
