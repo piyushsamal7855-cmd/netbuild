@@ -1,109 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Netbuild.in – Websites, eCommerce & SEO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netbuild.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-
-<header class="header">
-  <div class="container nav">
-    <div class="logo">Netbuild<span>.in</span></div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-btns">
-      <a class="btn ghost">Get Free Quote</a>
-      <a class="btn primary" href="https://wa.me/917855901395">WhatsApp</a>
-    </div>
+  <!-- BACKGROUND LAYERS -->
+  <div class="bg">
+    <div class="stars"></div>
+    <div class="nebula n1"></div>
+    <div class="nebula n2"></div>
+    <div class="nebula n3"></div>
   </div>
-</header>
 
-<section class="hero">
-  <div class="container hero-grid">
-
-    <div class="hero-text">
-      <h1>
-        We build professional websites,<br>
-        eCommerce stores and SEO
-      </h1>
-      <p>that helps your business rank on Google.</p>
-
-      <div class="hero-actions">
-        <a class="btn primary">Get Free Quote</a>
-        <a class="btn ghost">View Pricing</a>
+  <!-- TOP NAV -->
+  <header class="header">
+    <div class="nav">
+      <div class="brand">
+        <img class="logo" src="images/logo.png" alt="Netbuild.in logo" />
+        <span class="brandText">Netbuild.in</span>
       </div>
 
-      <div class="features">
-        ⚡ Fast Delivery · 📱 Mobile-First · 🔍 SEO Ready · 🛠 Support
-      </div>
-    </div>
+      <nav class="menu">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <div class="glass form-card">
-      <h3>Get a Free Demo Website</h3>
-      <input placeholder="Your Name">
-      <input placeholder="Phone / WhatsApp">
-      <textarea placeholder="I need a website for..."></textarea>
-      <a class="btn primary full" href="https://wa.me/917855901395">
-        Send on WhatsApp
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<section id="services" class="section">
-  <div class="container">
-    <h2>Services</h2>
-    <div class="grid">
-      <div class="glass card">
-        <h3>Website Development</h3>
-        <p>Business, clinic, restaurant & startup websites.</p>
-      </div>
-      <div class="glass card">
-        <h3>eCommerce Development</h3>
-        <p>Payments, COD & WhatsApp orders.</p>
-      </div>
-      <div class="glass card">
-        <h3>SEO (Google Ranking)</h3>
-        <p>On-page SEO, speed & local SEO.</p>
+      <div class="navRight">
+        <a class="btn btnPrimary" href="#contact">Get Free Quote</a>
+        <button class="iconBtn" id="themeBtn" title="Toggle glow">⟳</button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="pricing" class="section dark">
-  <div class="container">
-    <h2>Pricing</h2>
-    <div class="grid pricing">
-      <div class="glass card">
-        <h3>Starter</h3>
-        <div class="price">₹10,000+</div>
-        <a class="btn ghost full">Choose Starter</a>
-      </div>
-      <div class="glass card highlight">
-        <h3>Business</h3>
-        <div class="price">₹18,000+</div>
-        <a class="btn primary full">Choose Business</a>
-      </div>
-      <div class="glass card">
-        <h3>eCommerce</h3>
-        <div class="price">₹30,000+</div>
-        <a class="btn ghost full">Choose eCommerce</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- HERO -->
+  <main class="container">
+    <section class="hero">
+      <div class="heroLeft">
+        <h1>
+          We build professional websites,<br />
+          Ecommerce stores and SEO
+        </h1>
+        <p class="sub">
+          that helps your business rank on Google.
+        </p>
 
-<footer class="footer">
-  © 2026 Netbuild.in · Website Development & SEO
-</footer>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#contact">Get Free Quote</a>
+          <a class="btn btnGhost" href="#pricing">View Pricing</a>
+        </div>
 
+        <div class="badges">
+          <div class="badge">⚡ Fast Delivery</div>
+          <div class="badge">📱 Mobile-First</div>
+          <div class="badge">🔎 SEO Ready</div>
+          <div class="badge">🛟 Support</div>
+        </div>
+
+        <div class="glassLine"></div>
+
+        <!-- SERVICES CARDS -->
+        <div class="services" id="services">
+          <div class="servicesHeader">Service</div>
+
+          <div class="cards">
+            <div class="card glowBorder">
+              <h3>Website Development</h3>
+              <p>Business, clinic, restaurant & startup websites.</p>
+              <button class="chip">Choose Starter</button>
+            </div>
+
+            <div class="card glowBorder">
+              <h3>eCommerce Development</h3>
+              <p>Online stores with payments, COD & WhatsApp orders.</p>
+              <button class="chip">Choose Business</button>
+            </div>
+
+            <div class="card glowBorder">
+              <h3>SEO (Google Ranking)</h3>
+              <p>On-page SEO, speed optimization & local SEO.</p>
+              <button class="chip">Choose eCommerce</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="footerBadges">
+          <span>🚀 Fast Delivery</span>
+          <span>🧠 SEO Optimized</span>
+          <span>📱 Mobile-First</span>
+          <span>🛟 Support</span>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM PANEL -->
+      <aside class="heroRight">
+        <div class="panel glowBorder">
+          <div class="panelTop">
+            <h2>Get a Free Demo Website</h2>
+            <span class="miniIcon">💬</span>
+          </div>
+
+          <form id="leadForm">
+            <input id="name" type="text" placeholder="Your Name" required />
+            <input id="phone" type="tel" placeholder="Phone / WhatsApp" required />
+            <input id="need" type="text" placeholder="I need a website for..." required />
+
+            <button class="btn btnBig" type="submit">
+              Send on WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <div class="miniPanel glowBorder">
+          <div class="miniRow">
+            <span>⚡ Fast Delivery</span>
+            <span>🧠 SEO Optimized</span>
+            <span>🛟 Support</span>
+          </div>
+          <p class="miniText">
+            Premium cosmic neon theme with glass cards & glowing borders.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
