@@ -7,20 +7,82 @@
 }
 
 body {
-    /* Deep Space Background */
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background-color: #050505; /* Fallback color */
     color: white;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Scroll rokne ke liye zaroori hai */
     position: relative;
 }
+
+/* =========================================
+   ANIMATION SECTION (Earth Rotation + Stars)
+   ========================================= */
+
+/* 1. Rotating Background (Gol ghoomne wali image) */
+.earth-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* Image ko screen se bada rakha hai taaki corners na dikhein */
+    width: 150vmax; 
+    height: 150vmax;
+    /* Aapki Colorful Image */
+    background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2111&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    z-index: -10; /* Sab content ke peeche */
+    opacity: 0.8; /* Thoda dark taaki text readable ho */
+    
+    /* Animation: 200 second mein ek chakkar */
+    animation: rotateEarth 200s linear infinite;
+}
+
+@keyframes rotateEarth {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 2. Moving Stars (Chalte hue taare) */
+@keyframes moveStars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+#stars {
+    width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF, 500px 200px #FFF, 1200px 900px #FFF;
+    animation: moveStars 50s linear infinite;
+    position: fixed; top: 0; left: 0; z-index: -5;
+}
+#stars::after {
+    content: " "; position: absolute; top: 2000px; width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF, 500px 200px #FFF, 1200px 900px #FFF;
+}
+
+#stars2 {
+    width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF;
+    animation: moveStars 100s linear infinite;
+    position: fixed; top: 0; left: 0; z-index: -4;
+}
+#stars2::after {
+    content: " "; position: absolute; top: 2000px; width: 2px; height: 2px;
+    background: transparent;
+    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF;
+}
+
+/* =========================================
+   MAIN DESIGN (Glassmorphism)
+   ========================================= */
 
 .container {
     max-width: 1250px;
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
-    z-index: 1; /* Content stars ke upar rahe */
+    z-index: 1; /* Content background ke upar rahe */
 }
 
 /* --- Navbar --- */
@@ -32,218 +94,100 @@ body {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    z-index: 10;
 }
 
 .logo img { height: 40px; }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #e0e0e0;
-    font-size: 15px;
-    transition: 0.3s;
-}
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: #e0e0e0; font-size: 15px; transition: 0.3s; }
 .nav-links a:hover { color: #00d2ff; }
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+.nav-actions { display: flex; align-items: center; gap: 15px; }
 
 .whatsapp-btn {
     background: rgba(37, 211, 102, 0.2);
-    color: #25D366;
-    border: 1px solid #25D366;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
+    color: #25D366; border: 1px solid #25D366; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 18px;
 }
 
 /* --- Buttons --- */
 .btn-primary {
     background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-    padding: 10px 24px;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: 0 0 15px rgba(37, 117, 252, 0.5);
-    border: none;
+    padding: 10px 24px; color: white; text-decoration: none; border-radius: 6px;
+    font-weight: 500; font-size: 14px; box-shadow: 0 0 15px rgba(37, 117, 252, 0.5); border: none;
     transition: 0.3s;
 }
 .btn-primary:hover { transform: scale(1.05); }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px 24px;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 14px;
-    margin-left: 10px;
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.1); padding: 10px 24px; color: white;
+    text-decoration: none; border-radius: 6px; font-size: 14px; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2);
 }
-
-.simple-link {
-    color: #aaa;
-    font-size: 13px;
-    text-decoration: none;
-    margin-left: 15px;
-}
+.simple-link { color: #aaa; font-size: 13px; text-decoration: none; margin-left: 15px; }
 
 /* --- Hero Section --- */
 .hero { margin-top: 60px; }
-
 .hero h1 {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.3;
-    background: linear-gradient(to right, #fff, #b3b3b3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 3rem; font-weight: 500; line-height: 1.3;
+    background: linear-gradient(to right, #fff, #b3b3b3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
 .hero-buttons { margin: 30px 0; display: flex; align-items: center; }
-
-.hero-features {
-    display: flex;
-    gap: 25px;
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 40px;
-}
+.hero-features { display: flex; gap: 25px; font-size: 14px; color: #ccc; margin-bottom: 40px; }
 .hero-features i { color: #f1c40f; margin-right: 5px; }
 
 /* --- Glass Dashboard Grid --- */
-.glass-dashboard {
-    display: grid;
-    grid-template-columns: 1.8fr 1.2fr;
-    gap: 30px;
-    margin-bottom: 50px;
-}
+.glass-dashboard { display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; margin-bottom: 50px; }
 
-/* Panel Styles */
 .services-panel, .form-panel {
-    background: rgba(13, 16, 33, 0.6);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    position: relative;
-    overflow: hidden;
+    background: rgba(13, 16, 33, 0.6); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden;
 }
-
-/* Top Neon Line */
+/* Neon Top Line */
 .services-panel::before, .form-panel::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 1px;
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
     background: linear-gradient(90deg, transparent, #00d2ff, #3a7bd5, transparent);
 }
+.panel-title { font-size: 20px; margin-bottom: 25px; border-left: 3px solid #ff00cc; padding-left: 10px; }
 
-.panel-title {
-    font-size: 20px;
-    margin-bottom: 25px;
-    border-left: 3px solid #ff00cc;
-    padding-left: 10px;
-}
-
-/* Cards Grid */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 20px;
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px; padding: 20px; transition: 0.3s;
 }
-
 .active-glow, .glass-card:hover {
-    border: 1px solid rgba(0, 210, 255, 0.6);
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-    background: rgba(0, 210, 255, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.6); box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); background: rgba(0, 210, 255, 0.05);
 }
-
 .glass-card h4 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
 .glass-card p { font-size: 12px; color: #aaa; margin-bottom: 20px; line-height: 1.5; }
-
 .card-btn {
-    width: 100%;
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
+    width: 100%; padding: 8px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white; border-radius: 6px; cursor: pointer; font-size: 12px;
 }
 
 /* --- Form --- */
-.form-head {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-}
-.icon-green {
-    color: #25D366; font-size: 24px; background: rgba(37, 211, 102, 0.1); padding: 8px; border-radius: 50%;
-}
+.form-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.icon-green { color: #25D366; font-size: 24px; background: rgba(37, 211, 102, 0.1); padding: 8px; border-radius: 50%; }
 
 .glass-input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    color: white;
-    margin-bottom: 15px;
-    outline: none;
+    width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px; border-radius: 8px; color: white; margin-bottom: 15px; outline: none;
 }
 .glass-input:focus { border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.2); }
 
 .btn-submit {
-    width: 100%;
-    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-    border: none;
-    padding: 15px;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    width: 100%; background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%); border: none; padding: 15px;
+    color: white; font-weight: 600; border-radius: 8px; cursor: pointer; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
 }
-
-.form-footer-icons {
-    margin-top: 20px; display: flex; justify-content: space-between; font-size: 11px; color: #ccc;
-}
+.form-footer-icons { margin-top: 20px; display: flex; justify-content: space-between; font-size: 11px; color: #ccc; }
 .form-footer-icons i { color: #f1c40f; margin-right: 5px; }
 
-/* --- Bottom Bar --- */
+/* --- Footer --- */
 .bottom-bar { margin-top: 20px; padding-bottom: 40px; }
 .glow-line {
-    height: 2px;
-    background: linear-gradient(90deg, #ff00cc, #3333ff, #00d2ff, #ff00cc);
-    width: 100%;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
-    margin-bottom: 20px;
+    height: 2px; background: linear-gradient(90deg, #ff00cc, #3333ff, #00d2ff, #ff00cc);
+    width: 100%; box-shadow: 0 0 15px rgba(0, 210, 255, 0.8); margin-bottom: 20px;
 }
 .bar-content { display: flex; justify-content: center; gap: 40px; font-size: 14px; color: #ddd; }
 .highlight-blue { color: #00d2ff; font-weight: 600; }
 
-/* Responsive */
+/* --- Mobile Responsive --- */
 @media (max-width: 900px) {
     .glass-dashboard { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: 1fr; }
@@ -252,63 +196,4 @@ body {
     .nav-links { display: none; }
     .hero-buttons { flex-direction: column; gap: 10px; align-items: flex-start; }
     .btn-secondary, .simple-link { margin-left: 0; }
-}
-
-/* =========================================
-   ANIMATED BACKGROUND STARS (SPACE EFFECT)
-   ========================================= */
-
-@keyframes animStar {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-2000px); }
-}
-
-/* Layer 1: Small Stars */
-#stars {
-    width: 1px; height: 1px;
-    background: transparent;
-    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF, 
-                500px 200px #FFF, 800px 100px #FFF, 1200px 900px #FFF, 
-                300px 500px #FFF, 1500px 300px #FFF, 600px 1200px #FFF;
-    animation: animStar 50s linear infinite;
-    position: fixed; top: 0; left: 0; z-index: -2;
-}
-#stars::after {
-    content: " "; position: absolute; top: 2000px; width: 1px; height: 1px;
-    background: transparent;
-    box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF,
-                500px 200px #FFF, 800px 100px #FFF, 1200px 900px #FFF, 
-                300px 500px #FFF, 1500px 300px #FFF, 600px 1200px #FFF;
-}
-
-/* Layer 2: Medium Stars */
-#stars2 {
-    width: 2px; height: 2px;
-    background: transparent;
-    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF,
-                400px 800px #FFF, 1400px 200px #FFF, 900px 600px #FFF;
-    animation: animStar 100s linear infinite;
-    position: fixed; top: 0; left: 0; z-index: -1;
-}
-#stars2::after {
-    content: " "; position: absolute; top: 2000px; width: 2px; height: 2px;
-    background: transparent;
-    box-shadow: 800px 500px #FFF , 200px 100px #FFF , 1100px 1000px #FFF,
-                400px 800px #FFF, 1400px 200px #FFF, 900px 600px #FFF;
-}
-
-/* Layer 3: Big Stars */
-#stars3 {
-    width: 3px; height: 3px;
-    background: transparent;
-    box-shadow: 1200px 800px #FFF , 500px 300px #FFF , 900px 100px #FFF,
-                300px 900px #FFF, 1600px 500px #FFF;
-    animation: animStar 150s linear infinite;
-    position: fixed; top: 0; left: 0; z-index: -1;
-}
-#stars3::after {
-    content: " "; position: absolute; top: 2000px; width: 3px; height: 3px;
-    background: transparent;
-    box-shadow: 1200px 800px #FFF , 500px 300px #FFF , 900px 100px #FFF,
-                300px 900px #FFF, 1600px 500px #FFF;
 }
