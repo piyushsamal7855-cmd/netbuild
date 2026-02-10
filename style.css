@@ -4,13 +4,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling for links */
 }
 
 body {
     background-color: #050505; /* Fallback color */
     color: white;
     min-height: 100vh;
-    overflow-x: hidden; /* Scroll rokne ke liye zaroori hai */
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -23,16 +24,12 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    /* Image ko screen se bada rakha hai taaki corners na dikhein */
     width: 150vmax; 
     height: 150vmax;
-    /* Aapki Colorful Image */
     background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2111&auto=format&fit=crop') no-repeat center center;
     background-size: cover;
-    z-index: -10; /* Sab content ke peeche */
-    opacity: 0.8; /* Thoda dark taaki text readable ho */
-    
-    /* Animation: 200 second mein ek chakkar */
+    z-index: -10;
+    opacity: 0.8;
     animation: rotateEarth 200s linear infinite;
 }
 
@@ -82,7 +79,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
-    z-index: 1; /* Content background ke upar rahe */
+    z-index: 1;
 }
 
 /* --- Navbar --- */
@@ -94,6 +91,7 @@ body {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky; top: 0; z-index: 100; /* Sticky navbar */
 }
 
 .logo img { height: 40px; }
@@ -123,7 +121,7 @@ body {
 .simple-link { color: #aaa; font-size: 13px; text-decoration: none; margin-left: 15px; }
 
 /* --- Hero Section --- */
-.hero { margin-top: 60px; }
+.hero { margin-top: 60px; margin-bottom: 60px; }
 .hero h1 {
     font-size: 3rem; font-weight: 500; line-height: 1.3;
     background: linear-gradient(to right, #fff, #b3b3b3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -132,9 +130,7 @@ body {
 .hero-features { display: flex; gap: 25px; font-size: 14px; color: #ccc; margin-bottom: 40px; }
 .hero-features i { color: #f1c40f; margin-right: 5px; }
 
-/* --- Glass Dashboard Grid --- */
-.glass-dashboard { display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; margin-bottom: 50px; }
-
+/* --- Glass Panels (Shared Style) --- */
 .services-panel, .form-panel {
     background: rgba(13, 16, 33, 0.6); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px;
     border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden;
@@ -144,6 +140,9 @@ body {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
     background: linear-gradient(90deg, transparent, #00d2ff, #3a7bd5, transparent);
 }
+
+/* --- Services Grid --- */
+.glass-dashboard { display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; }
 .panel-title { font-size: 20px; margin-bottom: 25px; border-left: 3px solid #ff00cc; padding-left: 10px; }
 
 .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -178,6 +177,70 @@ body {
 .form-footer-icons { margin-top: 20px; display: flex; justify-content: space-between; font-size: 11px; color: #ccc; }
 .form-footer-icons i { color: #f1c40f; margin-right: 5px; }
 
+/* =========================================
+   NEW SECTIONS STYLING
+   ========================================= */
+
+.section-spacing { margin-bottom: 80px; padding-top: 80px; }
+.section-heading { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: white; }
+.highlight-text { color: #00d2ff; text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
+
+/* --- Pricing Styles --- */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.pricing-card { text-align: center; padding: 30px 20px; display: flex; flex-direction: column; position: relative; }
+.pricing-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #ddd; }
+.pricing-card .price { font-size: 2rem; font-weight: 700; color: white; margin-bottom: 20px; }
+
+.features-list { list-style: none; text-align: left; margin-bottom: 30px; padding-left: 10px; }
+.features-list li { margin-bottom: 12px; color: #aaa; font-size: 14px; }
+.features-list li i { color: #00d2ff; margin-right: 10px; }
+
+.btn-primary-full {
+    width: 100%; padding: 12px; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    border: none; color: white; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: auto;
+}
+.btn-outline-full {
+    width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: white; border-radius: 6px; cursor: pointer; margin-top: auto; transition: 0.3s;
+}
+.btn-outline-full:hover { border-color: #00d2ff; color: #00d2ff; }
+
+/* Featured Plan */
+.featured-plan { border: 1px solid #00d2ff; transform: scale(1.05); background: rgba(0, 210, 255, 0.05); z-index: 2; }
+.popular-tag {
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+    background: #00d2ff; color: #000; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700;
+}
+
+/* --- Portfolio Styles --- */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.project-card { padding: 10px; overflow: hidden; cursor: pointer; }
+.project-img {
+    height: 180px; width: 100%; background-size: cover; background-position: center;
+    border-radius: 8px; margin-bottom: 15px; transition: 0.3s; opacity: 0.8;
+}
+.project-card:hover .project-img { transform: scale(1.03); opacity: 1; }
+.project-info h4 { font-size: 16px; margin-bottom: 5px; }
+.project-info p { font-size: 12px; color: #aaa; }
+
+/* --- About & Contact Grid --- */
+.about-contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+.about-box p { color: #ccc; line-height: 1.6; margin-bottom: 20px; font-size: 14px; }
+.stats-row { display: flex; gap: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.stat h2 { font-size: 1.8rem; color: #00d2ff; }
+.stat span { font-size: 12px; color: #aaa; }
+
+.contact-details { list-style: none; margin-top: 20px; }
+.contact-details li { display: flex; align-items: center; margin-bottom: 15px; font-size: 14px; color: #ddd; }
+.contact-details li i { width: 30px; color: #00d2ff; font-size: 18px; }
+
+.social-icons { margin-top: 20px; display: flex; gap: 15px; }
+.social-icons a {
+    color: white; background: rgba(255,255,255,0.1); width: 40px; height: 40px;
+    display: flex; justify-content: center; align-items: center; border-radius: 50%; text-decoration: none; transition: 0.3s;
+}
+.social-icons a:hover { background: #00d2ff; transform: translateY(-3px); }
+
 /* --- Footer --- */
 .bottom-bar { margin-top: 20px; padding-bottom: 40px; }
 .glow-line {
@@ -189,11 +252,14 @@ body {
 
 /* --- Mobile Responsive --- */
 @media (max-width: 900px) {
-    .glass-dashboard { grid-template-columns: 1fr; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2rem; }
     .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
     .nav-links { display: none; }
+    .hero h1 { font-size: 2rem; }
     .hero-buttons { flex-direction: column; gap: 10px; align-items: flex-start; }
     .btn-secondary, .simple-link { margin-left: 0; }
+    
+    /* Grid Adjustments */
+    .glass-dashboard, .pricing-grid, .portfolio-grid, .about-contact-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .featured-plan { transform: scale(1); margin: 20px 0; }
 }
