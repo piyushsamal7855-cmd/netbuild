@@ -13,7 +13,7 @@ function handleLead(event) {
   const form = event.target;
   const name = form.name?.value || "";
   const phone = form.phone?.value || "";
-  const service = form.service?.value || "";
+  const service = form.service?.value || "Website Development";
   const message = form.message?.value || "";
 
   const text =
