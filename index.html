@@ -1,354 +1,234 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Netbuild.in — Website Development, eCommerce & SEO</title>
-  <meta name="description" content="Netbuild.in builds modern websites, eCommerce stores and SEO that helps businesses get more leads." />
 
-  <!-- ROOT CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Netbuild.in builds professional websites, eCommerce stores and SEO solutions that bring real customers.">
+  <meta name="keywords" content="website development, ecommerce website, SEO services, business website India">
+  <meta name="author" content="Netbuild.in">
+
+  <!-- CSS (ROOT FILE) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">
-        <span>📩 piyushsamal7855@gmail.com</span>
-        <span class="sep">•</span>
-        <a class="topbar__link" href="https://wa.me/917855901395" target="_blank" rel="noreferrer">
-          💬 WhatsApp: +91 7855901395
-        </a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__left">
+      <span>📩 piyushsamal7855@gmail.com</span>
+      <span class="sep">•</span>
+      <a href="https://wa.me/917855901395" target="_blank">💬 WhatsApp: +91 7855901395</a>
+    </div>
+    <div class="topbar__right">
+      <span class="badge">Free Demo Available</span>
+      <span class="badge badge--outline">Fast Delivery</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__inner">
+    <div class="brand">
+      <div class="brand__logo">NB</div>
+      <div>
+        <div class="brand__name">Netbuild.in</div>
+        <div class="brand__tag">Web • eCommerce • SEO</div>
       </div>
-      <div class="topbar__right">
-        <span class="badge">Free Demo Available</span>
-        <span class="badge badge--outline">Fast Delivery</span>
+    </div>
+
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header__cta">
+      <a class="btn btn--ghost" href="#contact">Get Free Quote</a>
+      <a class="btn btn--primary" href="https://wa.me/917855901395" target="_blank">WhatsApp Now</a>
+      <button class="menu" id="menuBtn">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div>
+      <h1>Professional Websites that bring you customers.</h1>
+      <p>
+        We build fast, mobile-friendly websites, eCommerce stores and SEO that helps your business rank on Google.
+      </p>
+      <p class="muted">
+        Trusted by small businesses • Free demo before payment • No hidden charges
+      </p>
+
+      <div class="hero__buttons">
+        <a class="btn btn--primary" href="#contact">Get Free Quote</a>
+        <a class="btn btn--ghost" href="#pricing">View Pricing</a>
+      </div>
+
+      <div class="trust">
+        <span class="trust__item">⚡ Fast Delivery</span>
+        <span class="trust__item">📱 Mobile-First</span>
+        <span class="trust__item">🔍 SEO-Ready</span>
+        <span class="trust__item">🛠 Support</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Get a Free Demo Website</h3>
+      <form class="form" onsubmit="return handleLead(event)">
+        <label>Your Name
+          <input required name="name">
+        </label>
+        <label>Phone / WhatsApp
+          <input required name="phone">
+        </label>
+        <label>Service Needed
+          <select name="service">
+            <option>Website Development</option>
+            <option>eCommerce Store</option>
+            <option>SEO</option>
+          </select>
+        </label>
+        <label>Message
+          <textarea name="message" rows="3"></textarea>
+        </label>
+        <button class="btn btn--primary btn--full">Send on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <h2>Services</h2>
+    <div class="grid">
+      <div class="service">
+        <h3>Website Development</h3>
+        <p>Business, clinic, restaurant, portfolio & startup websites.</p>
+      </div>
+      <div class="service">
+        <h3>eCommerce Development</h3>
+        <p>Online stores with payments, COD & WhatsApp orders.</p>
+      </div>
+      <div class="service">
+        <h3>SEO (Google Ranking)</h3>
+        <p>On-page SEO, speed optimization & local SEO.</p>
+      </div>
+      <div class="service">
+        <h3>Maintenance & Support</h3>
+        <p>Updates, security, backup & quick fixes.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#">
-        <span class="brand__logo">NB</span>
-        <span class="brand__text">
-          <span class="brand__name">Netbuild.in</span>
-          <span class="brand__tag">Web • eCommerce • SEO</span>
-        </span>
+<!-- PRICING -->
+<section class="section section--alt" id="pricing">
+  <div class="container">
+    <h2>Pricing</h2>
+    <div class="pricing">
+
+      <div class="price">
+        <h3>Starter</h3>
+        <div class="price__value">₹10,000+</div>
+        <a class="btn btn--ghost btn--full"
+           href="https://wa.me/917855901395?text=I%20want%20Starter%20Website%20Plan"
+           target="_blank">Choose Starter</a>
+      </div>
+
+      <div class="price price--featured">
+        <h3>Business</h3>
+        <div class="price__value">₹18,000+</div>
+        <a class="btn btn--primary btn--full"
+           href="https://wa.me/917855901395?text=I%20want%20Business%20Website%20Plan"
+           target="_blank">Choose Business</a>
+      </div>
+
+      <div class="price">
+        <h3>eCommerce</h3>
+        <div class="price__value">₹30,000+</div>
+        <a class="btn btn--ghost btn--full"
+           href="https://wa.me/917855901395?text=I%20want%20eCommerce%20Website%20Plan"
+           target="_blank">Choose eCommerce</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <h2>Portfolio</h2>
+    <div class="work">
+      <div class="work__card">Clinic Website</div>
+      <div class="work__card">Restaurant Website</div>
+      <div class="work__card">eCommerce Store</div>
+      <div class="work__card">Personal Portfolio</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section--alt" id="about">
+  <div class="container about">
+    <div>
+      <h2>Why Netbuild.in?</h2>
+      <ul>
+        <li>✅ Mobile-first & fast loading</li>
+        <li>✅ SEO-ready structure</li>
+        <li>✅ Affordable pricing</li>
+        <li>✅ Support & maintenance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <a class="btn btn--primary btn--full" href="https://wa.me/917855901395" target="_blank">
+        WhatsApp +91 7855901395
       </a>
-
-      <nav class="nav" id="nav">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#work">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="header__cta">
-        <a class="btn btn--ghost" href="#contact">Get Free Quote</a>
-        <a class="btn btn--primary" href="https://wa.me/917855901395" target="_blank" rel="noreferrer">
-          WhatsApp Now
-        </a>
-        <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
-      </div>
+      <a class="btn btn--ghost btn--full" href="mailto:piyushsamal7855@gmail.com">Email Us</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <h1>Professional Websites that bring you customers.</h1>
-        <p>
-          We build fast, mobile-friendly websites, eCommerce stores, and SEO that helps your business rank on Google.
-        </p>
-
-        <div class="hero__buttons">
-          <a class="btn btn--primary" href="#contact">Get Free Quote</a>
-          <a class="btn btn--ghost" href="#pricing">View Pricing</a>
-        </div>
-
-        <div class="trust">
-          <div class="trust__item">⚡ Fast Delivery</div>
-          <div class="trust__item">📱 Mobile-First Design</div>
-          <div class="trust__item">🔍 SEO-Ready</div>
-          <div class="trust__item">🛠️ Support & Maintenance</div>
-        </div>
-      </div>
-
-      <div class="hero__card">
-        <div class="card">
-          <h3>Get a Free Demo Website</h3>
-          <p class="muted">Tell us your business type and we’ll share a demo layout.</p>
-
-          <form class="form" onsubmit="return handleLead(event)">
-            <label>
-              Your Name
-              <input required name="name" placeholder="Piyush" />
-            </label>
-
-            <label>
-              Phone / WhatsApp
-              <input required name="phone" placeholder="+91 78559..." />
-            </label>
-
-            <label>
-              Service Needed
-              <select name="service">
-                <option>Website Development</option>
-                <option>eCommerce Store</option>
-                <option>SEO</option>
-                <option>Maintenance</option>
-              </select>
-            </label>
-
-            <label>
-              Message
-              <textarea name="message" rows="3" placeholder="I need a website for..."></textarea>
-            </label>
-
-            <button class="btn btn--primary btn--full" type="submit">Send on WhatsApp</button>
-            <p class="form__hint">No spam. We reply within a few hours.</p>
-          </form>
-        </div>
-      </div>
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container contact">
+    <div class="card">
+      <h3>Send a Message</h3>
+      <form class="form" onsubmit="return handleLead(event)">
+        <input name="name" placeholder="Your Name">
+        <input name="phone" placeholder="Phone / WhatsApp">
+        <textarea name="message" placeholder="I need a website for..."></textarea>
+        <button class="btn btn--primary btn--full">Send on WhatsApp</button>
+      </form>
     </div>
-  </section>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section__head">
-        <h2>Services</h2>
-        <p>Everything you need to build and grow your online presence.</p>
-      </div>
-
-      <div class="grid">
-        <div class="service">
-          <h3>Website Development</h3>
-          <p>Business, clinic, restaurant, portfolio & startup websites. Clean UI, fast performance.</p>
-          <ul>
-            <li>Responsive + modern design</li>
-            <li>Lead form + WhatsApp button</li>
-            <li>Speed optimized</li>
-          </ul>
-        </div>
-
-        <div class="service">
-          <h3>eCommerce Development</h3>
-          <p>Start selling online with product pages, payments, and order management.</p>
-          <ul>
-            <li>Payment gateway setup</li>
-            <li>COD + WhatsApp order</li>
-            <li>Product & category setup</li>
-          </ul>
-        </div>
-
-        <div class="service">
-          <h3>SEO (Google Ranking)</h3>
-          <p>On-page SEO, performance improvements, and local SEO to get more calls and leads.</p>
-          <ul>
-            <li>Keyword + on-page SEO</li>
-            <li>Technical SEO + speed</li>
-            <li>Google Business Profile help</li>
-          </ul>
-        </div>
-
-        <div class="service">
-          <h3>Maintenance & Support</h3>
-          <p>Regular updates, backup, security improvements, and content changes.</p>
-          <ul>
-            <li>Monthly plans</li>
-            <li>Backup + security</li>
-            <li>Quick fixes</li>
-          </ul>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Business Info</h3>
+      <p><strong>WhatsApp:</strong> +91 7855901395</p>
+      <p><strong>Email:</strong> piyushsamal7855@gmail.com</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Pricing -->
-  <section class="section section--alt" id="pricing">
-    <div class="container">
-      <div class="section__head">
-        <h2>Pricing</h2>
-        <p>Simple plans. Custom quote also available.</p>
-      </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© 2026 Netbuild.in • Website Development & SEO Services in India</p>
+  </div>
+</footer>
 
-      <div class="pricing">
-        <div class="price">
-          <h3>Starter</h3>
-          <div class="price__value">₹10,000<span>+</span></div>
-          <p class="muted">Best for small businesses</p>
-          <ul>
-            <li>1–5 pages</li>
-            <li>Mobile responsive</li>
-            <li>WhatsApp + contact form</li>
-            <li>Basic speed optimization</li>
-          </ul>
-          <a class="btn btn--ghost btn--full" href="#contact">Choose Starter</a>
-        </div>
-
-        <div class="price price--featured">
-          <div class="pill">Most Popular</div>
-          <h3>Business</h3>
-          <div class="price__value">₹18,000<span>+</span></div>
-          <p class="muted">Best for growth</p>
-          <ul>
-            <li>6–10 pages</li>
-            <li>Basic SEO setup</li>
-            <li>Speed + performance</li>
-            <li>1 month support</li>
-          </ul>
-          <a class="btn btn--primary btn--full" href="#contact">Choose Business</a>
-        </div>
-
-        <div class="price">
-          <h3>eCommerce</h3>
-          <div class="price__value">₹30,000<span>+</span></div>
-          <p class="muted">Sell online</p>
-          <ul>
-            <li>Store setup</li>
-            <li>Payments + COD</li>
-            <li>Product categories</li>
-            <li>SEO-ready structure</li>
-          </ul>
-          <a class="btn btn--ghost btn--full" href="#contact">Choose eCommerce</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section class="section" id="work">
-    <div class="container">
-      <div class="section__head">
-        <h2>Portfolio</h2>
-        <p>Some example website types we can build for you.</p>
-      </div>
-
-      <div class="work">
-        <div class="work__card">
-          <div class="work__thumb">Clinic Booking</div>
-          <div class="work__meta">
-            <strong>Clinic Website</strong>
-            <span class="muted">Appointment + WhatsApp leads</span>
-          </div>
-        </div>
-
-        <div class="work__card">
-          <div class="work__thumb">Restaurant</div>
-          <div class="work__meta">
-            <strong>Restaurant Website</strong>
-            <span class="muted">Menu + Call + Maps</span>
-          </div>
-        </div>
-
-        <div class="work__card">
-          <div class="work__thumb">eCommerce</div>
-          <div class="work__meta">
-            <strong>Online Store</strong>
-            <span class="muted">Products + Payments</span>
-          </div>
-        </div>
-
-        <div class="work__card">
-          <div class="work__thumb">Portfolio</div>
-          <div class="work__meta">
-            <strong>Personal Brand</strong>
-            <span class="muted">Clean & premium</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="section section--alt" id="about">
-    <div class="container about">
-      <div>
-        <h2>Why Netbuild.in?</h2>
-        <p class="muted">
-          We focus on clean design, speed, and conversions — so your website generates real inquiries.
-        </p>
-        <div class="about__points">
-          <div class="point">✅ Mobile-first & fast loading</div>
-          <div class="point">✅ SEO-ready structure</div>
-          <div class="point">✅ Affordable packages</div>
-          <div class="point">✅ Support & maintenance</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Quick Contact</h3>
-        <p class="muted">Call/WhatsApp for a quick quote.</p>
-        <div class="contactbox">
-          <a class="btn btn--primary btn--full" href="https://wa.me/917855901395" target="_blank" rel="noreferrer">
-            WhatsApp +91 7855901395
-          </a>
-          <a class="btn btn--ghost btn--full" href="mailto:piyushsamal7855@gmail.com">Email Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section__head">
-        <h2>Contact</h2>
-        <p>Tell us your requirement and we’ll reply with a plan & quote.</p>
-      </div>
-
-      <div class="contact">
-        <div class="card">
-          <h3>Send a Message</h3>
-          <form class="form" onsubmit="return handleLead(event)">
-            <label>Your Name <input required name="name" placeholder="Your name" /></label>
-            <label>Phone / WhatsApp <input required name="phone" placeholder="+91..." /></label>
-            <label>Message <textarea name="message" rows="4" placeholder="I need a website for..."></textarea></label>
-            <button class="btn btn--primary btn--full" type="submit">Send on WhatsApp</button>
-            <p class="form__hint">Or email us: piyushsamal7855@gmail.com</p>
-          </form>
-        </div>
-
-        <div class="card">
-          <h3>Business Info</h3>
-          <p class="muted">Netbuild.in — Website Development, eCommerce & SEO</p>
-          <div class="info">
-            <div><strong>WhatsApp:</strong> <a href="https://wa.me/917855901395" target="_blank" rel="noreferrer">+91 7855901395</a></div>
-            <div><strong>Email:</strong> <a href="mailto:piyushsamal7855@gmail.com">piyushsamal7855@gmail.com</a></div>
-          </div>
-
-          <div class="divider"></div>
-
-          <h4>Working with us</h4>
-          <ul class="muted">
-            <li>Requirement → demo → final design</li>
-            <li>Content support (optional)</li>
-            <li>Delivery + support</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>© <span id="year"></span> Netbuild.in. All rights reserved.</p>
-      <div class="footer__links">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ROOT JS -->
-  <script src="main.js"></script>
+<!-- JS (ROOT FILE) -->
+<script src="main.js"></script>
 </body>
-                                              </html>
+</html>
