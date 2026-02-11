@@ -3,174 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netbuild.in | Professional Web & eCommerce Development India</title>
-    <meta name="description" content="We build professional websites, eCommerce stores, and do SEO that helps your business rank on Google. Packages starting at ₹15,000. Contact 7855901395.">
     
-    <style>
-        /* Modern Space Theme & Glassmorphism CSS */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-        body {
-            /* Space Background Image */
-            background: linear-gradient(rgba(10, 10, 25, 0.8), rgba(10, 10, 25, 0.9)), url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048') no-repeat center center/cover;
-            background-attachment: fixed;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
-        
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-        .glass-card:hover { transform: translateY(-5px); border-color: #00d4ff; }
-
-        /* Buttons */
-        .btn-primary {
-            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-            color: white; padding: 12px 25px; border: none; border-radius: 8px;
-            text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block;
-        }
-        .btn-outline {
-            background: transparent; border: 2px solid #00d4ff; color: #00d4ff;
-            padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 600;
-        }
-
-        /* Hero Section */
-        .hero { padding: 80px 0; }
-        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        .badges span { font-size: 0.9rem; margin-right: 15px; color: #00d4ff; }
-
-        /* Pricing Section */
-        .section-title { text-align: center; margin: 60px 0 40px; }
-        .section-title h2 { font-size: 2.5rem; }
-        .section-title span { color: #00d4ff; }
-        
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .price-card { text-align: center; position: relative; }
-        .price-card.popular { border: 2px solid #6a11cb; transform: scale(1.05); }
-        .popular-badge { background: #00d4ff; color: #000; font-size: 0.8rem; font-weight: bold; padding: 5px 15px; border-radius: 20px; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); }
-        .price-card h3 { font-size: 1.5rem; color: #ccc; }
-        .price-card h2 { font-size: 2.5rem; margin: 15px 0; }
-        .price-card ul { list-style: none; margin-bottom: 25px; text-align: left; }
-        .price-card ul li { margin-bottom: 10px; font-size: 0.95rem; }
-        .price-card ul li::before { content: '✓'; color: #00d4ff; margin-right: 10px; }
-
-        /* SEO Link Section */
-        .seo-banner { text-align: center; margin: 60px 0; padding: 40px; background: linear-gradient(90deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2)); border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.3); }
-        .seo-banner a { color: #fff; font-size: 1.2rem; font-weight: bold; text-decoration: none; }
-        .seo-banner a:hover { color: #00d4ff; }
-
-        /* Footer */
-        footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .contact-info p { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-    </style>
+    <title>Best Web & eCommerce Development Services | Netbuild.in</title>
+    <meta name="description" content="Netbuild builds professional websites, eCommerce stores, and does SEO to help your business rank on Google. Get your website today.">
+    <meta name="keywords" content="web development, ecommerce website maker, SEO services, website developer in India, affordable website design, Netbuild">
+    <meta name="author" content="Netbuild">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
-        <h2 style="background: linear-gradient(90deg, #00d4ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Netbuild.in</h2>
-        <div>
-            <a href="https://wa.me/917855901395" class="btn-primary">Get Free Quote</a>
+    <div class="earth-bg"></div>
+
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Netbuild Web Development Agency Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20getting%20a%20free%20quote." target="_blank" class="btn-primary">Get Free Quote</a>
+            <div class="whatsapp-btn"><i class="fab fa-whatsapp"></i></div>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>We build professional websites,<br>Ecommerce stores and SEO<br>that helps your business rank on<br>Google.</h1>
-        <div style="margin-top: 30px; display: flex; gap: 20px;">
-            <a href="https://wa.me/917855901395" class="btn-primary">Get Free Quote</a>
-            <a href="#pricing" class="btn-outline">VIEW PRICING</a>
-        </div>
-        <div class="badges" style="margin-top: 30px;">
-            <span>⚡ Fast Delivery</span>
-            <span>📱 Mobile-First</span>
-            <span>🔍 SEO Ready</span>
-            <span>🎧 Support</span>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <div class="section-title">
-            <h2>Our <span>Pricing</span></h2>
-        </div>
-        <div class="grid-3">
-            <div class="glass-card price-card">
-                <h3>Starter</h3>
-                <h2>₹15,000</h2>
-                <ul>
-                    <li>5 Page Website</li>
-                    <li>Mobile Friendly</li>
-                    <li>Contact Form</li>
-                    <li>1 Month Support</li>
-                </ul>
-                <a href="https://wa.me/917855901395" class="btn-outline" style="width: 100%;">Select Plan</a>
+    <div class="container">
+        
+        <header class="hero">
+            <h1>We build professional websites,<br> Ecommerce stores and SEO<br> that helps your business rank on Google.</h1>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20getting%20a%20free%20quote." target="_blank" class="btn-primary">Get Free Quote</a>
+                <a href="#pricing" class="btn-secondary">VIEW PRICING</a>
+                <a href="#services" class="simple-link">Choose service ></a>
             </div>
 
-            <div class="glass-card price-card popular">
-                <div class="popular-badge">Most Popular</div>
-                <h3>Business</h3>
-                <h2>₹25,000</h2>
-                <ul>
-                    <li>10 Page Website</li>
-                    <li>SEO Basic Setup</li>
-                    <li>Fast Loading Speed</li>
-                    <li>6 Month Support</li>
-                </ul>
-                <a href="https://wa.me/917855901395" class="btn-primary" style="width: 100%;">Select Plan</a>
+            <div class="hero-features">
+                <span><i class="fas fa-bolt"></i> Fast Delivery</span>
+                <span><i class="fas fa-mobile-alt"></i> Mobile-First</span>
+                <span><i class="fas fa-search"></i> SEO Ready</span>
+                <span><i class="fas fa-headset"></i> Support</span>
             </div>
+        </header>
 
-            <div class="glass-card price-card">
-                <h3>E-Commerce</h3>
-                <h2>₹39,000</h2>
-                <ul>
-                    <li>Online Store</li>
-                    <li>Payment Gateway</li>
-                    <li>Admin Panel</li>
-                    <li>1 Year Support</li>
-                </ul>
-                <a href="https://wa.me/917855901395" class="btn-outline" style="width: 100%;">Select Plan</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="seo-banner">
-        <h3>Want to scale your business across India?</h3>
-        <br>
-        <a href="ecommerce-guide.html" class="btn-primary">🚀 Read: How to Start an eCommerce Business in India</a>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3 style="color: #00d4ff; margin-bottom: 15px;">About Netbuild</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">We are a team of passionate developers and designers dedicated to building the future of the web. We turn your ideas into digital reality with the latest technology.</p>
-                <div style="display: flex; gap: 30px; margin-top: 20px;">
-                    <div><h2 style="color: #00d4ff;">100+</h2><span style="font-size: 0.8rem; color: #888;">Projects</span></div>
-                    <div><h2 style="color: #00d4ff;">50+</h2><span style="font-size: 0.8rem; color: #888;">Clients</span></div>
-                    <div><h2 style="color: #00d4ff;">24/7</h2><span style="font-size: 0.8rem; color: #888;">Support</span></div>
+        <section id="services" class="glass-dashboard section-spacing">
+            
+            <div class="services-panel">
+                <h3 class="panel-title">Service</h3>
+                <div class="cards-grid">
+                    <div class="glass-card">
+                        <h4>Website Development</h4>
+                        <p>Business, clinic, restaurant & startup websites.</p>
+                        <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20Website%20Development%20service." target="_blank" class="card-btn" style="display:block; text-align:center; text-decoration:none;">Choose Starter</a>
+                    </div>
+                    <div class="glass-card active-glow">
+                        <h4>eCommerce Development</h4>
+                        <p>Online stores with payments, COD & Whatsapp orders.</p>
+                        <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20eCommerce%20Development%20service." target="_blank" class="card-btn" style="display:block; text-align:center; text-decoration:none;">Choose Business</a>
+                    </div>
+                    <div class="glass-card">
+                        <h4>SEO (Google Ranking)</h4>
+                        <p>On-page SEO, speed optimization & local SEO.</p>
+                        <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20SEO%20service." target="_blank" class="card-btn" style="display:block; text-align:center; text-decoration:none;">Choose eCommerce</a>
+                    </div>
                 </div>
             </div>
-            <div class="contact-info">
-                <h3 style="color: #00d4ff; margin-bottom: 15px;">Contact Us</h3>
-                <p>📞 +91 7855901395</p>
-                <p>✉️ piyushsamal7855@gmail.com</p>
-                <p>📍 Jajpur, Odisha, India</p>
+
+            <div class="form-panel">
+                <div class="form-head">
+                    <h3>Get a Free Demo Website</h3>
+                    <i class="fab fa-whatsapp icon-green"></i>
+                </div>
+                <form>
+                    <input type="text" placeholder="Your Name" class="glass-input">
+                    <input type="text" placeholder="Phone / Whatsapp" class="glass-input">
+                    <input type="text" placeholder="I need a website for...." class="glass-input">
+                    <button type="submit" class="btn-submit">Send on WhatsApp</button>
+                </form>
+                <div class="form-footer-icons">
+                    <span><i class="fas fa-bolt"></i> Fast Delivery</span>
+                    <span><i class="fas fa-check-square"></i> SEO Optimized</span>
+                    <span><i class="fas fa-tools"></i> Support</span>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="pricing" class="section-spacing">
+            <h2 class="section-heading">Our <span class="highlight-text">Pricing</span></h2>
+            <div class="pricing-grid">
+                
+                <div class="glass-card pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">₹15,000</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 5 Page Website</li>
+                        <li><i class="fas fa-check"></i> Mobile Friendly</li>
+                        <li><i class="fas fa-check"></i> Contact Form</li>
+                        <li><i class="fas fa-check"></i> 1 Month Support</li>
+                    </ul>
+                    <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20the%20Starter%20Plan%20(15k)." target="_blank" class="btn-outline-full" style="display:block; text-decoration:none;">Select Plan</a>
+                </div>
+
+                <div class="glass-card pricing-card featured-plan">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Business</h3>
+                    <div class="price">₹25,000</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 10 Page Website</li>
+                        <li><i class="fas fa-check"></i> SEO Basic Setup</li>
+                        <li><i class="fas fa-check"></i> Fast Loading Speed</li>
+                        <li><i class="fas fa-check"></i> 6 Month Support</li>
+                    </ul>
+                    <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20the%20Business%20Plan%20(25k)." target="_blank" class="btn-primary-full" style="display:block; text-decoration:none;">Select Plan</a>
+                </div>
+
+                <div class="glass-card pricing-card">
+                    <h3>E-Commerce</h3>
+                    <div class="price">₹39,000</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Online Store</li>
+                        <li><i class="fas fa-check"></i> Payment Gateway</li>
+                        <li><i class="fas fa-check"></i> Admin Panel</li>
+                        <li><i class="fas fa-check"></i> 1 Year Support</li>
+                    </ul>
+                    <a href="https://wa.me/917855901395?text=Hi,%20I%20am%20interested%20in%20the%20eCommerce%20Plan%20(39k)." target="_blank" class="btn-outline-full" style="display:block; text-decoration:none;">Select Plan</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portfolio" class="section-spacing">
+            <h2 class="section-heading">Recent <span class="highlight-text">Work</span></h2>
+            <div class="portfolio-grid">
+                <div class="glass-card project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop');" aria-label="Real Estate Website Design"></div>
+                    <div class="project-info">
+                        <h4>Real Estate Web</h4>
+                        <p>Web Design</p>
+                    </div>
+                </div>
+                <div class="glass-card project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop');" aria-label="Crypto Dashboard UI/UX"></div>
+                    <div class="project-info">
+                        <h4>Crypto Dashboard</h4>
+                        <p>UI/UX Design</p>
+                    </div>
+                </div>
+                <div class="glass-card project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1974&auto=format&fit=crop');" aria-label="E-Shop eCommerce Store Development"></div>
+                    <div class="project-info">
+                        <h4>E-Shop Store</h4>
+                        <p>Development</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-spacing">
+            <div class="about-contact-grid">
+                
+                <div class="glass-card about-box">
+                    <h3>About <span class="highlight-text">Netbuild</span></h3>
+                    <p>We are a team of passionate developers and designers dedicated to building the future of the web. We turn your ideas into digital reality with the latest technology.</p>
+                    <div class="stats-row">
+                        <div class="stat">
+                            <h2>100+</h2>
+                            <span>Projects</span>
+                        </div>
+                        <div class="stat">
+                            <h2>50+</h2>
+                            <span>Clients</span>
+                        </div>
+                        <div class="stat">
+                            <h2>24/7</h2>
+                            <span>Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card contact-box">
+                    <h3>Contact <span class="highlight-text">Us</span></h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 7855901395</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>piyushsamal7855@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>India</span>
+                        </li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="bottom-bar">
+            <div class="glow-line"></div>
+            <div class="bar-content">
+                <span><i class="fas fa-clock"></i> Fast Delivery</span>
+                <span class="highlight-blue"><i class="fas fa-infinity"></i> SEO Optimized</span>
+                <span><i class="fas fa-mobile"></i> Mobile-First</span>
+                <span><i class="fas fa-users"></i> Support</span>
             </div>
         </div>
-    </footer>
-</div>
 
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
