@@ -1,0 +1,55 @@
+/* style.css */
+
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: #fdfaf5; color: #222; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; flex-wrap: wrap; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+nav img { height: 40px; }
+
+nav ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; margin: 10px 0; }
+
+nav ul li a { text-decoration: none; color: #222; font-weight: 500; }
+
+.btn-order { background: #d35400; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; white-space: nowrap; }
+
+header { background: url('front.jpg') no-repeat center center/cover; padding: 100px 20px; color: #fff; text-align: center; position: relative; }
+
+header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+
+header .container { position: relative; z-index: 1; }
+
+header h1 { font-size: 3rem; margin-bottom: 10px; }
+
+header p { font-size: 1.2rem; }
+
+.section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+
+.section h2 { text-align: center; font-size: 2rem; color: #184d47; margin-bottom: 20px; }
+
+.center-text { text-align: center; max-width: 800px; margin: auto; margin-bottom: 30px; }
+
+.center-btn { text-align: center; margin-top: 20px; }
+
+.two-col { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+.card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); max-width: 350px; }
+
+.card img { width: 100%; border-radius: 10px; }
+
+.reviews { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+
+iframe { width: 100%; height: 350px; border: 0; border-radius: 10px; }
+
+.footer { background-color: #333; color: #fff; padding: 40px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; }
+
+.footer-section { flex: 1 1 250px; margin: 10px; }
+
+.footer a { color: #f1c40f; text-decoration: none; display: block; margin: 5px 0; }
+
+@media (max-width: 768px) { header h1 { font-size: 2rem; }
+
+header p { font-size: 1rem; }
+
+nav ul { justify-content: center; }
+
+.footer { flex-direction: column; align-items: center; } }
