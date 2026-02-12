@@ -43,7 +43,6 @@
         /* --- Header/Navbar --- */
         header { background-color: rgba(26, 18, 13, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(207, 166, 112, 0.2); }
         
-        /* --- LOGO SIZES (Kept Big as requested) --- */
         .logo img { 
             height: 180px; 
             width: auto; 
@@ -124,7 +123,6 @@
         footer { background-color: #120c09; padding: 60px 10% 20px; text-align: center; }
         .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
         
-        /* --- FOOTER LOGO HUGE --- */
         .footer-logo img { 
             height: 200px; 
             width: auto;
@@ -142,13 +140,7 @@
         /* --- Responsive Design (Mobile) --- */
         @media (max-width: 768px) {
             header { padding: 15px 20px; flex-direction: column; }
-            
-            /* --- BIG LOGO (Mobile) --- */
-            .logo img { 
-                height: 140px; 
-                margin-bottom: 15px; 
-            } 
-            
+            .logo img { height: 140px; margin-bottom: 15px; } 
             nav ul { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
             nav li { margin: 5px 10px; }
             .hero { padding: 0 20px; height: auto; min-height: 500px; text-align: center; }
@@ -292,14 +284,35 @@
             <span class="sub-title">Reservations</span>
             <h2 class="main-title script-font">Book Your Table</h2>
         </div>
-        <form class="booking-form" onsubmit="alert('Table booking feature coming soon! Please call us to reserve.'); return false;">
+        
+        <script>
+            function sendToWhatsapp() {
+                var name = document.getElementById('name').value;
+                var date = document.getElementById('date').value;
+                var time = document.getElementById('time').value;
+                var guests = document.getElementById('guests').value;
+                
+                // Construct the WhatsApp message
+                var message = "Hi, I would like to reserve a table.%0A" +
+                              "*Name:* " + name + "%0A" +
+                              "*Date:* " + date + "%0A" +
+                              "*Time:* " + time + "%0A" +
+                              "*Guests:* " + guests;
+                
+                // Open WhatsApp
+                var url = "https://wa.me/917249555257?text=" + message;
+                window.open(url, '_blank');
+            }
+        </script>
+
+        <form class="booking-form" onsubmit="sendToWhatsapp(); return false;">
             <div class="form-grid">
-                <div class="form-group"><input type="text" placeholder="Name" required></div>
-                <div class="form-group"><input type="email" placeholder="Email" required></div>
-                <div class="form-group"><input type="date" required></div>
-                <div class="form-group"><input type="time" required></div>
+                <div class="form-group"><input type="text" id="name" placeholder="Name" required></div>
+                <div class="form-group"><input type="email" id="email" placeholder="Email"></div>
+                <div class="form-group"><input type="date" id="date" required></div>
+                <div class="form-group"><input type="time" id="time" required></div>
                 <div class="form-group">
-                    <select required>
+                    <select id="guests" required>
                         <option value="">Guests</option>
                         <option value="1">1 Person</option>
                         <option value="2">2 People</option>
@@ -308,7 +321,9 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">Reserve Now</button>
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+                <i class="fab fa-whatsapp"></i> Reserve Now
+            </button>
         </form>
     </section>
 
