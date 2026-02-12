@@ -41,13 +41,15 @@
         .btn i { margin-right: 10px; font-size: 1.2rem; }
 
         /* --- Header/Navbar --- */
-        header { background-color: rgba(26, 18, 13, 0.95); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(207, 166, 112, 0.2); }
+        /* Increased padding slightly for bigger logo */
+        header { background-color: rgba(26, 18, 13, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(207, 166, 112, 0.2); }
         
-        /* --- LOGO SIZE FIX (Desktop) --- */
+        /* --- BIG LOGO UPDATE (Desktop) --- */
         .logo img { 
-            height: 120px; /* Bada kar diya hai (Pehle 80px tha) */
+            height: 180px; /* Ab bahut bada dikhega */
             width: auto; 
             object-fit: contain; 
+            transition: 0.3s;
         } 
 
         nav ul { display: flex; }
@@ -59,7 +61,6 @@
 
         /* --- Hero Section --- */
         .hero { 
-            /* Thoda aur dark kiya taaki text clear dikhe busy background par */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('front.jpg');
             background-size: cover; background-position: center;
             height: 85vh; display: flex; align-items: center; padding: 0 10%; position: relative;
@@ -124,9 +125,9 @@
         footer { background-color: #120c09; padding: 60px 10% 20px; text-align: center; }
         .footer-content { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
         
-        /* --- FOOTER LOGO SIZE --- */
+        /* --- FOOTER LOGO HUGE --- */
         .footer-logo img { 
-            height: 130px; /* Footer logo bada kiya */
+            height: 200px; /* Footer mein bhi bahut bada */
             width: auto;
             margin-bottom: 20px; 
         }
@@ -143,9 +144,9 @@
         @media (max-width: 768px) {
             header { padding: 15px 20px; flex-direction: column; }
             
-            /* --- MOBILE LOGO SIZE FIX --- */
+            /* --- BIG LOGO UPDATE (Mobile) --- */
             .logo img { 
-                height: 100px; /* Mobile par ab bada dikhega (Pehle 60px tha) */
+                height: 140px; /* Mobile ke liye MAX size */
                 margin-bottom: 15px; 
             } 
             
