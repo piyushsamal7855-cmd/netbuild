@@ -3,149 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madhav Pure Veg - Premium Dining</title>
+    <title>Madhav Pure Veg - Premium Family Dining</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Manrope:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c0392b; /* Royal Red */
-            --accent: #d35400;  /* Gold/Orange */
-            --dark: #2c241b;
-            --cream: #fdfaf5;
+            --primary-dark: #2c241b; /* Dark Brown Text */
+            --accent-red: #922B21;   /* Deep Burgundy Red for Buttons/Price */
+            --bg-cream: #fdfaf5;     /* Light Cream Background */
+            --text-grey: #555555;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Manrope', sans-serif; 
-            background-color: var(--cream); 
-            color: var(--dark);
-            /* Fallback pattern if bg.png is missing */
-            background-image: radial-gradient(#e0e0e0 1px, transparent 1px), radial-gradient(#e0e0e0 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+            background-color: var(--bg-cream);
+            /* Agar bg.png upload karoge toh pattern dikhega, nahi toh plain cream */
+            background-image: url('bg.png'); 
+            color: var(--primary-dark);
+            line-height: 1.6;
         }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
         
-        /* --- Navbar --- */
+        /* --- Navbar (Clean & Simple) --- */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 5%;
+            background: #fff;
+            padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .logo-img { height: 50px; } /* Adjust logo size */
+        .logo-img { height: 50px; } 
         .btn-nav { 
-            background: var(--primary); color: white; padding: 10px 20px; 
-            text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 0.9rem;
+            background: var(--accent-red); color: white; padding: 12px 30px; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1rem;
         }
 
-        /* --- Hero Section (Uses Front.jpg) --- */
+        /* --- Hero Section (Left Aligned Text) --- */
         .hero {
-            position: relative;
-            height: 70vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: white; padding: 20px;
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url('header.jpg'); 
+            background-size: cover; background-position: center;
+            height: 65vh;
+            display: flex; flex-direction: column; justify-content: center;
+            padding-left: 10%; color: white;
         }
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            /* EXACT FILENAME HERE */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('Front.jpg');
-            background-size: cover; background-position: center; z-index: -1;
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; max-width: 600px; }
+        .btn-hero { 
+            background: var(--accent-red); color: white; padding: 15px 45px; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem;
+            display: inline-block; border: 2px solid white;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 10px black; }
-        .hero p { font-size: 1.2rem; font-weight: 500; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px;}
 
-        /* --- Menu Section --- */
-        section { padding: 50px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.5rem; color: var(--primary); margin-bottom: 40px; }
+        /* --- MAIN LAYOUT (The 2-Column Split) --- */
+        .main-content {
+            max-width: 1250px; margin: 60px auto; padding: 0 30px;
+            display: grid; grid-template-columns: 1.6fr 1fr; /* Exact ratio from image */
+            gap: 50px; align-items: start;
+        }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* --- Left Column: Welcome & Menu Grid --- */
+        .welcome-text h2 { font-size: 2.8rem; color: var(--primary-dark); margin-bottom: 15px; }
+        .welcome-text p { color: var(--text-grey); font-size: 1.05rem; margin-bottom: 40px; }
+
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .menu-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
         }
-        .menu-card:hover { transform: translateY(-5px); }
-        .menu-img-box { height: 220px; overflow: hidden; position: relative; }
-        .menu-img-box img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .price-tag {
-            position: absolute; bottom: 10px; right: 10px;
-            background: white; color: var(--accent); padding: 5px 15px;
-            border-radius: 20px; font-weight: bold; font-size: 1.1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        .menu-card img { width: 100%; height: 200px; object-fit: cover; }
+        .menu-info { padding: 20px; text-align: center; }
+        .menu-info h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-dark); }
+        .btn-menu-order {
+            display: inline-block; color: var(--accent-red); font-weight: bold; text-decoration: none;
+            border: 2px solid var(--accent-red); padding: 8px 25px; border-radius: 30px;
+            transition: 0.3s;
         }
-        .menu-content { padding: 20px; }
-        .btn-order {
-            display: block; width: 100%; text-align: center; padding: 10px;
-            background: var(--primary); color: white; text-decoration: none;
-            border-radius: 8px; font-weight: bold; margin-top: 15px;
-        }
+        .btn-menu-order:hover { background: var(--accent-red); color: white; }
 
-        /* --- Footer --- */
-        footer { background: var(--dark); color: #eecda3; padding: 40px 5%; text-align: center; margin-top: 50px; }
+        /* --- Right Column: Reviews Widget (Exact Copy) --- */
+        .review-widget {
+            background: white; padding: 35px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .rating-header { font-size: 1.4rem; font-weight: bold; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        .stars { color: #f1c40f; }
         
-        /* Floating WhatsApp */
-        .float-wa { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 12px 25px; border-radius: 50px; font-weight: bold; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px; z-index: 100; }
+        .review-item { display: flex; gap: 15px; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .review-icon { width: 45px; height: 45px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #777; }
+        .review-content h4 { font-size: 1rem; margin-bottom: 5px; }
+        .review-content p { font-size: 0.9rem; color: var(--text-grey); font-style: italic; }
+
+        .google-logo { text-align: right; margin-top: 20px; }
+        .google-logo img { height: 25px; opacity: 0.7; }
+
+        /* --- Footer & Floating Button --- */
+        footer { background: var(--primary-dark); color: #eecda3; padding: 40px 5%; text-align: center; margin-top: 80px; }
+        .float-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px; z-index: 100; }
+    
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .main-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 3rem; }
+            .hero { padding-left: 5%; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <img src="Logo.png" alt="Madhav Pure Veg" class="logo-img" onerror="this.style.display='none'; document.getElementById('logo-txt').style.display='block'">
-        <div id="logo-txt" style="display:none; font-size: 1.5rem; font-weight: bold; color: #c0392b;">MADHAV PURE VEG</div>
-        <a href="https://wa.me/917249555257" class="btn-nav">Book Table</a>
+        <img src="Logo.png" alt="Madhav Pure Veg" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <div style="display:none; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; color: var(--accent-red);">MADHAV PURE VEG</div>
+        <a href="https://wa.me/917249555257" class="btn-nav">Order Now</a>
     </nav>
 
     <header class="hero">
-        <div class="hero-bg"></div>
         <h1>Welcome to <br>Madhav Pure Veg</h1>
-        <p>📍 Next to Sohrab Hall, Pune Station</p>
+        <p>Experience the authentic taste of North & South Indian cuisine in a premium ambiance.</p>
+        <a href="#menu" class="btn-hero">Explore Menu</a>
     </header>
 
-    <section>
-        <h2 class="section-title">Our Specials</h2>
-
-        <div class="menu-grid">
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="Pavbhaji.jpg" alt="Special Pav Bhaji">
-                    <div class="price-tag">₹180</div>
-                </div>
-                <div class="menu-content">
-                    <h3>Special Pav Bhaji</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Loaded with butter, served with fresh salad & lemon.</p>
-                    <a href="https://wa.me/917249555257?text=Order%20Pav%20Bhaji" class="btn-order">Order Now</a>
-                </div>
+    <div class="main-content">
+        
+        <div class="left-column">
+            <div class="welcome-text">
+                <h2>Experience Premium Dining</h2>
+                <p>Enjoy delicious Pav Bhaji, Tandoori Paneer, and a wide range of vegetarian delights. We are committed to serving fresh, hygienic, and tasty food to our beloved customers.</p>
             </div>
 
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="Paneer.jpg" alt="Hariyali Paneer">
-                    <div class="price-tag">₹290</div>
+            <div class="menu-grid" id="menu">
+                <div class="menu-card">
+                    <img src="pavbhaji.jpg" alt="Special Pav Bhaji">
+                    <div class="menu-info">
+                        <h3>Special Pav Bhaji</h3>
+                        <a href="https://wa.me/917249555257?text=Order%20Pav%20Bhaji" class="btn-menu-order">Order ₹180</a>
+                    </div>
                 </div>
-                <div class="menu-content">
-                    <h3>Hariyali Paneer Tikka</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Fresh paneer marinated in green herbs & grilled.</p>
-                    <a href="https://wa.me/917249555257?text=Order%20Paneer%20Tikka" class="btn-order">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-img-box">
-                    <img src="Combo.jpg" alt="Special Combo">
-                    <div class="price-tag">₹350</div>
-                </div>
-                <div class="menu-content">
-                    <h3>Maharaja Dinner Combo</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Rich Gravy + Butter Roti + Dal Fry + Salad.</p>
-                    <a href="https://wa.me/917249555257?text=Order%20Dinner%20Combo" class="btn-order">Order Now</a>
+                <div class="menu-card">
+                    <img src="paneer.jpg" alt="Tandoori Paneer">
+                    <div class="menu-info">
+                        <h3>Tandoori Paneer</h3>
+                        <a href="https://wa.me/917249555257?text=Order%20Paneer%20Tikka" class="btn-menu-order">Order ₹290</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="review-widget">
+            <div class="rating-header">
+                <span class="stars">★★★★★</span> 4.9 Rating <span style="font-size: 0.9rem; color: #777; font-weight: normal;">(3.2k Reviews)</span>
+            </div>
+
+            <div class="review-item">
+                <div class="review-icon">R</div>
+                <div class="review-content">
+                    <h4>Rahul Sharma</h4>
+                    <p>"Best Pav Bhaji in Pune! The taste is authentic and service is very quick. Highly recommended."</p>
+                </div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-icon" style="background: #ffe0b2; color: #d35400;">P</div>
+                <div class="review-content">
+                    <h4>Priya Patel</h4>
+                    <p>"Loved the Tandoori Paneer. The ambiance is great for families. Will visit again!"</p>
+                </div>
+            </div>
+
+            <div class="google-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+            </div>
+        </div>
+
+    </div>
 
     <footer>
-        <h2>Madhav Pure Veg</h2>
+        <h2 style="margin-bottom: 20px;">Madhav Pure Veg</h2>
         <p>📍 Divadkar Apt, Next to Sohrab Hall, Pune Station.</p>
         <p>📞 +91 72495 55257</p>
         <br>
