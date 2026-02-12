@@ -1,141 +1,214 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Madhav Pure Veg</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdfaf5;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background-color: #fffef5;
       color: #222;
     }
     header {
-      background-image: url('front.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: url('front.jpg') no-repeat center center/cover;
+      padding: 100px 20px;
+      color: #fff;
       text-align: center;
-      color: white;
       position: relative;
     }
-    header::after {
+    header::before {
       content: '';
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
+    }
+    header .container {
+      position: relative;
       z-index: 1;
     }
-    header .content {
-      position: relative;
-      z-index: 2;
-    }
     header h1 {
-      font-size: 4rem;
-      font-weight: 600;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
     }
     header p {
-      font-size: 1.3rem;
-      margin-top: 10px;
+      font-size: 1.2rem;
     }
     nav {
-      background-color: #184d47;
-      padding: 15px 30px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    nav a {
-      color: white;
+    nav img {
+      height: 50px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      color: #222;
+      font-weight: 500;
+    }
+    .btn-order {
+      background: #d35400;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
     }
     .section {
-      padding: 60px 30px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
     .section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
       text-align: center;
+      font-size: 2.2rem;
       color: #184d47;
+      margin-bottom: 20px;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .two-col {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .two-col img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 350px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      max-width: 350px;
+    }
+    .reviews {
+      display: flex;
       gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
       margin-top: 30px;
     }
-    .gallery img {
+    .map-image {
       width: 100%;
-      border-radius: 12px;
+      max-width: 600px;
+      border-radius: 10px;
     }
-    .whatsapp-order {
-      text-align: center;
-      margin: 60px 0;
-    }
-    .whatsapp-order a {
-      background-color: #25D366;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: inline-block;
-    }
-    footer {
+    .footer {
       background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
-    footer img {
-      height: 40px;
-      margin-bottom: 10px;
+    .footer-section {
+      flex: 1 1 250px;
+      margin: 10px;
+    }
+    .footer a {
+      color: #f1c40f;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+    @media (max-width: 768px) {
+      .two-col, .reviews, .footer {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>  <header>
-    <div class="content">
-      <h1>Madhav Pure Veg</h1>
-      <p>Serving Delicious Pure Veg Cuisine in Pune Railway Station</p>
-    </div>
-  </header>  <section class="section" id="menu">
-    <h2>Our Popular Dishes</h2>
-    <div class="gallery">
-      <img src="paneer.jpg" alt="Paneer Tikka" />
-      <img src="combo.jpg" alt="Veg Combo" />
-      <img src="pavbhaji.jpg" alt="Pav Bhaji" />
-    </div>
-  </section>  <section class="section" id="gallery">
-    <h2>More Delicious Moments</h2>
-    <div class="gallery">
-      <img src="paneer.jpg" alt="Green Paneer Tikka" />
-      <img src="combo.jpg" alt="Combo Platter" />
-      <img src="pavbhaji.jpg" alt="Special Pav Bhaji" />
-    </div>
-  </section>  <section class="whatsapp-order">
-    <h2>Order Directly on WhatsApp</h2>
-    <a href="https://wa.me/917249555257" target="_blank">📲 Order Now</a>
-  </section>  <footer>
     <img src="logo.png" alt="Madhav Logo">
-    <p>&copy; 2026 Madhav Pure Veg | Near Pune Railway Station</p>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Menu</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/917249555257" class="btn-order">Order Now</a>
+  </nav>  <header>
+    <div class="container">
+      <h1>Welcome to Madhav Pure Veg</h1>
+      <p>Experience Pure Vegetarian Delights</p>
+      <a href="https://wa.me/917249555257" class="btn-order">Order Now</a>
+    </div>
+  </header>  <section class="section">
+    <h2>Welcome to Madhav Pure Veg</h2>
+    <p style="text-align:center; max-width: 800px; margin:auto;">Enjoy delicious North and South Indian cuisine, mouthwatering pizzas, and more in a welcoming atmosphere.</p>
+    <div class="two-col">
+      <div class="card">
+        <img src="pavbhaji.jpg" alt="Pav Bhaji">
+        <h3>Pav Bhaji</h3>
+      </div>
+      <div class="card">
+        <img src="paneer.jpg" alt="Tandoori Paneer">
+        <h3>Tandoori Paneer</h3>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
+      <a href="#" class="btn-order">Explore Full Menu</a>
+    </div>
+  </section>  <section class="section">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews">
+      <div class="card">
+        <strong>Rahul P.</strong>
+        <p>Absolutely fantastic vegetarian food! The Pav Bhaji and Tandoori Paneer are must-tries. Amazing taste and great ambiance. Will definitely visit again!</p>
+      </div>
+      <div class="card">
+        <strong>Priya S.</strong>
+        <p>Pav Bhaji and Paratha were delicious! The restaurant is clean and the desserts are a perfect way to end the meal. Highly recommend!</p>
+      </div>
+    </div>
+  </section>  <section class="section">
+    <h2>Highly Rated on Google</h2>
+    <div class="two-col">
+      <img src="front.jpg" class="map-image" alt="Restaurant Front">
+      <div class="card">
+        <p><strong>Find Us:</strong><br>
+        Divadkar Apt, Next to Sohrab Hall<br>
+        Pune Railway Station (Platform No.6 side),<br>
+        Near Sheraton Grand, Pune,<br>
+        Maharashtra 411001</p>
+        <a href="https://goo.gl/maps/XYZ" class="btn-order">Get Directions</a>
+      </div>
+    </div>
+  </section>  <footer class="footer">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#">Gallery</a>
+      <a href="#">About Us</a>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Info</h3>
+      <p>Divadkar Apt, Pune Railway Station, Dhole Patil Road, Pune</p>
+      <p>📞 072495 55257</p>
+      <p>✉️ info@madhavpureveg.com</p>
+    </div>
+    <div class="footer-section">
+      <h3>Opening Hours</h3>
+      <p>Mon–Sun: 7 AM – 11:30 PM</p>
+    </div>
   </footer>
 </body>
 </html>
