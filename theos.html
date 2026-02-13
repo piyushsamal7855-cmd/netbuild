@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Theos Cafe | Premium Dessert & Late Night Cafe in Vesu, Surat</title>
-    <meta name="description" content="Welcome to Theos Cafe, Vesu. Surat's premium spot for Brownies, Waffles, and Coffee. Open till 2 AM. 100% Pure Veg. Order Now!">
-    <meta name="keywords" content="Theos Cafe Surat, Late Night Cafe Vesu, Brownies Surat, Waffles Vesu, Best Cafe in Surat, Pure Veg Cafe">
+    <meta name="description" content="Theos Cafe Vesu - Surat's Premium Late Night Spot. Best Brownies, Waffles & Coffee. Open till 2 AM. Book your table now!">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-gold: #D4AF37; /* Rich Gold */
-            --dark-bg: #0f0f0f;      /* Deep Black */
-            --card-bg: #1a1a1a;      /* Dark Grey */
-            --text-light: #f8f8f8;
-            --accent-brown: #5D4037;
+            --gold: #D4AF37;
+            --dark: #0a0a0a;
+            --card-dark: #161616;
+            --text-grey: #cfcfcf;
         }
 
         * {
@@ -25,262 +23,288 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Lato', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--dark);
+            color: white;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif; /* Premium Font */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
         }
 
-        /* --- Hero Section --- */
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0,0,0,0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust logo size */
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-btn {
+            background: var(--gold);
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: white;
+        }
+
+        /* --- Hero Section with Parallax --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop');
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920&auto=format&fit=crop');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
-            position: relative;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, var(--dark-bg), transparent);
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            font-size: 4rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        .hero-content h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
+        .hero-content p {
+            font-size: 1.2rem;
             color: #ddd;
-            letter-spacing: 1px;
+            margin-bottom: 30px;
         }
 
-        .hero-buttons {
+        .btn-group {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 15px 35px;
-            border-radius: 5px;
+        .cta-btn {
+            padding: 15px 40px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s;
             text-transform: uppercase;
+            transition: 0.3s;
             letter-spacing: 1px;
-            border: 1px solid transparent;
         }
 
-        .btn-gold {
-            background: var(--primary-gold);
-            color: #000;
+        .cta-btn.filled {
+            background: var(--gold);
+            color: black;
         }
 
-        .btn-outline {
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-            background: transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* --- USPs --- */
-        .usp-bar {
-            background: #151515;
-            padding: 30px 20px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .usp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .usp-item i {
-            font-size: 1.8rem;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
-        }
-        
-        .usp-item p {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #ccc;
-        }
-
-        /* --- About Section (Professional) --- */
-        .about-section {
-            padding: 80px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-section h2 {
-            font-size: 3rem;
-            color: var(--primary-gold);
-            margin-bottom: 25px;
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            color: #bbb;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .divider {
-            height: 2px;
-            width: 100px;
-            background: var(--primary-gold);
-            margin: 0 auto 30px;
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
 
         /* --- Menu Section --- */
-        .menu-section {
-            padding: 60px 20px;
-            background: #111;
+        .section {
+            padding: 80px 10%;
         }
 
-        .section-header {
+        .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        .section-header h2 {
+        .section-title h2 {
             font-size: 3rem;
-            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .menu-card {
-            background: var(--card-bg);
-            border-radius: 8px;
+        .menu-item {
+            background: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 10px;
             overflow: hidden;
             transition: 0.3s;
-            border: 1px solid #2a2a2a;
         }
 
-        .menu-card:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-5px);
+        .menu-item:hover {
+            transform: scale(1.03);
+            border-color: var(--gold);
         }
 
         .menu-img {
-            height: 220px;
+            height: 200px;
             background-size: cover;
             background-position: center;
         }
 
-        .menu-details {
-            padding: 25px;
+        .menu-info {
+            padding: 20px;
             text-align: center;
         }
 
-        .menu-details h3 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 10px;
+        .menu-info h3 {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 5px;
         }
 
-        .menu-details p {
-            color: #888;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+        .price {
+            display: block;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
         }
 
-        .order-btn {
+        .order-link {
             display: inline-block;
-            padding: 10px 25px;
-            background: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
+            width: 100%;
+            padding: 10px;
+            background: #25d366;
+            color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
         }
 
-        .order-btn:hover {
-            background: var(--primary-gold);
-            color: #000;
+        /* --- Reviews Section --- */
+        .reviews {
+            background: #111;
+        }
+
+        .review-card {
+            background: var(--card-dark);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .stars {
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        /* --- Booking Form --- */
+        .booking-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.8);
+            padding: 40px;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-radius: 5px;
         }
 
         /* --- Footer --- */
         footer {
-            background: #050505;
-            padding: 50px 20px;
+            background: black;
+            padding: 50px 10%;
             text-align: center;
-            border-top: 2px solid var(--primary-gold);
+            border-top: 1px solid var(--gold);
         }
 
-        .footer-content h2 {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
         }
 
-        .contact-details p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-
-        .map-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        /* Floating WhatsApp */
         .float-wa {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
             color: white;
             width: 60px;
             height: 60px;
@@ -289,128 +313,174 @@
             align-items: center;
             justify-content: center;
             font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            z-index: 1000;
-            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 999;
+            animation: bounce 2s infinite;
         }
 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-text">THEOS <span style="color:white">CAFE</span></div>
+            </div>
+        <a href="#book" class="nav-btn">Book Table</a>
+    </nav>
+
     <header class="hero">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Theos Cafe</h1>
-            <h2>Premium Dessert & Late Night Cafe</h2>
-            <p style="color: #bbb; margin-bottom: 30px;">OPEN DAILY: 9:00 AM – 2:00 AM</p>
-            
-            <div class="hero-buttons">
-                <a href="tel:+919377702828" class="btn btn-gold">Call Now</a>
-                <a href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe,%20I%20want%20to%20order." class="btn btn-outline">WhatsApp Order</a>
+            <p>Where Sweet Cravings Meet Late Night Vibes | Vesu, Surat</p>
+            <div class="btn-group">
+                <a href="#menu" class="cta-btn filled">View Menu</a>
+                <a href="https://wa.me/919377702828?text=Hi,%20I%20want%20to%20order%20something." class="cta-btn">Order on WhatsApp</a>
             </div>
         </div>
     </header>
 
-    <div class="usp-bar">
-        <div class="usp-grid">
-            <div class="usp-item">
-                <i class="fas fa-leaf"></i>
-                <p>100% Pure Veg</p>
-            </div>
-            <div class="usp-item">
-                <i class="fas fa-moon"></i>
-                <p>Open Till 2 AM</p>
-            </div>
-            <div class="usp-item">
-                <i class="fas fa-couch"></i>
-                <p>Cozy Ambience</p>
-            </div>
-            <div class="usp-item">
-                <i class="fas fa-motorcycle"></i>
-                <p>Fast Delivery</p>
-            </div>
-        </div>
-    </div>
-
-    <section class="about-section">
-        <div class="divider"></div>
-        <h2>Experience Theos Cafe</h2>
-        <div class="about-text">
-            <p>
-                Welcome to <strong>Theos Cafe</strong>, Surat’s premier destination where culinary artistry meets a cozy, late-night vibe. Located in the heart of Vesu, we are not just a cafe; we are a sanctuary for dessert lovers and coffee connoisseurs. 
-            </p>
-            <p style="margin-top: 15px;">
-                Whether you are craving our signature <strong>Biscoff Brownies</strong> at midnight or looking for a perfect <strong>Cold Coffee</strong> brew to start your evening, Theos offers an experience like no other. With our <strong>100% Pure Veg menu</strong> and relaxing outdoor seating, every visit is a treat for your senses.
-            </p>
-        </div>
-        <div class="divider"></div>
-    </section>
-
-    <section class="menu-section">
-        <div class="section-header">
+    <section id="menu" class="section">
+        <div class="section-title" data-aos="fade-up">
             <h2>Our Signatures</h2>
-            <p style="color: #888;">Handcrafted Perfection</p>
+            <div class="line"></div>
         </div>
 
         <div class="menu-grid">
-            <div class="menu-card">
+            <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=500&auto=format&fit=crop');"></div>
-                <div class="menu-details">
+                <div class="menu-info">
                     <h3>Biscoff Brownie</h3>
-                    <p>Served warm with premium Vanilla Ice Cream.</p>
-                    <a href="https://wa.me/919377702828?text=Order%20Biscoff%20Brownie" class="order-btn">Order Now</a>
+                    <p class="price">₹249</p>
+                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%201%20Biscoff%20Brownie" class="order-link">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </a>
                 </div>
             </div>
 
-            <div class="menu-card">
+            <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1568051243851-f9b136146e97?w=500&auto=format&fit=crop');"></div>
-                <div class="menu-details">
+                <div class="menu-info">
                     <h3>Nutella Waffle</h3>
-                    <p>Crispy waffle loaded with Nutella & Hazelnut crunch.</p>
-                    <a href="https://wa.me/919377702828?text=Order%20Nutella%20Waffle" class="order-btn">Order Now</a>
+                    <p class="price">₹199</p>
+                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%201%20Nutella%20Waffle" class="order-link">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </a>
                 </div>
             </div>
 
-            <div class="menu-card">
+            <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1517701604599-bb29b5dd7359?w=500&auto=format&fit=crop');"></div>
-                <div class="menu-details">
-                    <h3>Classic Cold Coffee</h3>
-                    <p>Rich, creamy, and brewed to perfection.</p>
-                    <a href="https://wa.me/919377702828?text=Order%20Cold%20Coffee" class="order-btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop');"></div>
-                <div class="menu-details">
-                    <h3>Cake & Ice Cream</h3>
-                    <p>The perfect sweet finish to your late night.</p>
-                    <a href="https://wa.me/919377702828?text=Order%20Cake%20Ice%20Cream" class="order-btn">Order Now</a>
+                <div class="menu-info">
+                    <h3>Cold Coffee</h3>
+                    <p class="price">₹149</p>
+                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%201%20Cold%20Coffee" class="order-link">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <h2>Theos Cafe</h2>
-            <div class="contact-details">
-                <p><i class="fas fa-map-marker-alt" style="color:var(--primary-gold)"></i> Vesu, Surat</p>
-                <p><i class="fas fa-phone" style="color:var(--primary-gold)"></i> +91 93777 02828</p>
-                <p><i class="fas fa-clock" style="color:var(--primary-gold)"></i> 9:00 AM – 2:00 AM</p>
-            </div>
-            
-            <a href="https://goo.gl/maps/WxCBYkEfrta3sWFeA" target="_blank" class="map-btn">
-                <i class="fas fa-location-arrow"></i> Get Directions
-            </a>
-
-            <p style="margin-top: 40px; font-size: 0.8rem; color: #444;">© 2026 Theos Cafe. All Rights Reserved.</p>
+    <section class="section reviews">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Customer Love</h2>
+            <div class="line"></div>
         </div>
+        <div class="menu-grid">
+            <div class="review-card" data-aos="flip-left">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Best Brownies in Vesu! The late night vibe is amazing."</p>
+                <p class="customer-name">- Rahul P.</p>
+            </div>
+            <div class="review-card" data-aos="flip-left" data-aos-delay="100">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Loved the Cold Coffee. Service is super fast."</p>
+                <p class="customer-name">- Priya S.</p>
+            </div>
+            <div class="review-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Great place for couples. Cozy and premium feel."</p>
+                <p class="customer-name">- Amit K.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="section booking-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Book Your Table</h2>
+            <p style="color:#ddd">Reserve your spot instantly via WhatsApp</p>
+        </div>
+        
+        <form class="booking-form" onsubmit="sendBooking(event)" data-aos="zoom-in">
+            <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="guests" class="form-control" placeholder="No. of Guests" required>
+            </div>
+            <div class="form-group">
+                <select id="time" class="form-control">
+                    <option>7:00 PM</option>
+                    <option>8:00 PM</option>
+                    <option>9:00 PM</option>
+                    <option>10:00 PM</option>
+                    <option>11:00 PM</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Reserve Now</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="map-container" data-aos="fade-in">
+            <iframe src="https://maps.google.com/maps?q=Theos%20Cafe%20Vesu%20Surat&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+        </div>
+        
+        <h3>Theos Cafe</h3>
+        <p style="color: #888; margin: 10px 0;">Phoenix Market, Opp. Aagam Viviana, Vesu, Surat</p>
+        <p style="color: var(--gold); font-size: 1.2rem;">+91 93777 02828</p>
+        
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #555;">© 2026 Designed by Netbuild.in</p>
     </footer>
 
-    <a href="https://wa.me/919377702828" class="float-wa" target="_blank">
+    <a href="https://wa.me/919377702828" class="float-wa">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Booking Logic
+        function sendBooking(e) {
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            let guests = document.getElementById('guests').value;
+            let time = document.getElementById('time').value;
+
+            // Construct WhatsApp Message
+            let msg = `Hi Theos Cafe, I want to book a table.%0A%0AName: ${name}%0AGuests: ${guests}%0ATime: ${time}`;
+            
+            // Redirect to WhatsApp
+            window.location.href = `https://wa.me/919377702828?text=${msg}`;
+        }
+    </script>
 
 </body>
 </html>
