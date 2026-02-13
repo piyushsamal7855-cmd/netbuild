@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Theos Cafe | Premium Dessert Cafe</title>
-  <meta name="description" content="Theos Cafe – Premium Dessert Cafe. Brownies, Waffles, Coffee, Cakes. Open till 2 AM. Call/WhatsApp for order & directions." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,16 +23,20 @@
       --r18:18px;
       --r26:26px;
       --max: 1180px;
+
+      /* ✅ Original image sprite */
+      --sprite: url("theos.png");
+      /* theos.png size is usually 1024x1536 (generated). We'll use it as sprite. */
+      --spriteW: 1024px;
+      --spriteH: 1536px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(1100px 520px at 14% 0%, rgba(255,191,63,.13), transparent 60%),
-        radial-gradient(900px 520px at 92% 18%, rgba(255,122,24,.10), transparent 58%),
-        radial-gradient(800px 520px at 60% 110%, rgba(37,211,102,.06), transparent 65%),
-        var(--bg);
+      background: radial-gradient(1100px 520px at 14% 0%, rgba(255,191,63,.13), transparent 60%),
+                  radial-gradient(900px 520px at 92% 18%, rgba(255,122,24,.10), transparent 58%),
+                  var(--bg);
       color:var(--text);
       overflow-x:hidden;
     }
@@ -47,8 +50,6 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.35);
       transition:.2s ease;
       white-space:nowrap;
-      cursor:pointer;
-      user-select:none;
     }
     .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
     .btn-primary{
@@ -86,32 +87,27 @@
     .top-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
     .top-actions{display:flex;gap:10px;flex-wrap:wrap}
 
-    /* HERO */
+    /* ✅ HERO uses ORIGINAL image */
     header.hero{
       position:relative;
       padding:26px 0 18px;
       overflow:hidden;
     }
-    /* Cinematic background generated only with CSS + noise + lights */
-    header.hero:before{
+    header.hero::before{
       content:"";
       position:absolute;inset:-2px;z-index:-3;
-      background:
-        radial-gradient(900px 420px at 70% 20%, rgba(255,191,63,.22), transparent 60%),
-        radial-gradient(900px 420px at 15% 40%, rgba(255,122,24,.20), transparent 55%),
-        radial-gradient(700px 420px at 88% 80%, rgba(37,211,102,.10), transparent 60%),
-        linear-gradient(120deg, rgba(255,255,255,.06), transparent 45%),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.86));
-      filter: saturate(1.08) contrast(1.02);
+
+      /* Use theos.png as hero background */
+      background-image: var(--sprite);
+      background-size: cover;
+      background-position: center top;
+      filter: saturate(1.1) contrast(1.05);
+      opacity:.95;
     }
-    /* subtle grain */
-    header.hero:after{
+    header.hero::after{
       content:"";
       position:absolute;inset:0;z-index:-2;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      opacity:.55;
-      mix-blend-mode: overlay;
-      pointer-events:none;
+      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.88));
     }
 
     .hero-grid{
@@ -121,7 +117,6 @@
       align-items:center;
       padding:24px 0 14px;
     }
-
     .brand{display:flex;align-items:center;gap:14px;margin-bottom:10px}
     .logoBox{
       width:74px;height:74px;border-radius:22px;
@@ -133,48 +128,35 @@
     }
     .logoBox img{width:100%;height:100%;object-fit:cover}
     .bname{line-height:1.05}
-    .bname b{
-      font-family:"Playfair Display", serif;
-      font-size:28px;letter-spacing:.2px
-    }
+    .bname b{font-family:"Playfair Display", serif;font-size:28px;letter-spacing:.2px}
     .bname span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
 
-    h1{
-      font-family:"Playfair Display", serif;
-      font-size:58px;line-height:1.02;
-      margin:10px 0 10px;
-    }
+    h1{font-family:"Playfair Display", serif;font-size:58px;line-height:1.02;margin:10px 0 10px}
     h1 em{font-style:normal;color:var(--gold)}
-    .sub{
-      color:rgba(245,245,247,.88);
-      line-height:1.75;
-      font-size:16px;
-      max-width:560px;
-    }
-
+    .sub{color:rgba(245,245,247,.88);line-height:1.75;font-size:16px;max-width:560px}
     .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 16px}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 
-    /* RIGHT card (hero product) */
+    /* Right card */
     .heroCard{
       border-radius:var(--r26);
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(12,12,14,.60);
+      background:rgba(12,12,14,.68);
       backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
+
+    /* ✅ Use theos.png inside card too (same-to-same vibe) */
     .heroArt{
       height:240px;
-      background:
-        radial-gradient(600px 260px at 70% 20%, rgba(255,191,63,.18), transparent 60%),
-        radial-gradient(500px 240px at 30% 60%, rgba(255,122,24,.18), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.50));
-      display:grid;place-items:center;
+      background-image: var(--sprite);
+      background-size: cover;
+      background-position: center 25%;
       position:relative;
     }
     .glowRing{
-      position:absolute;inset:auto auto 18px 18px;
+      position:absolute;left:16px;bottom:16px;
       display:inline-flex;align-items:center;gap:10px;
       padding:10px 12px;border-radius:999px;
       background:rgba(0,0,0,.35);
@@ -182,7 +164,6 @@
       color:rgba(245,245,247,.92);
       font-size:13px;
     }
-
     .heroCard .body{padding:18px}
     .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
     .kpi .box{
@@ -195,55 +176,37 @@
     .kpi small{color:var(--muted);font-size:12px}
     .addr{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.65}
 
-    /* sections */
     section{padding:56px 0}
     .titleRow{
       display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
       margin-bottom:18px;
     }
-    .titleRow h2{
-      font-family:"Playfair Display", serif;
-      font-size:34px;line-height:1.1;
-    }
+    .titleRow h2{font-family:"Playfair Display", serif;font-size:34px;line-height:1.1}
     .titleRow p{color:var(--muted);line-height:1.7;max-width:560px}
 
-    /* features row */
-    .features{
-      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
-    }
-    .fgrid{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap:14px;
-    }
+    /* features */
+    .features{background: linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
+    .fgrid{display:grid;grid-template-columns: repeat(5, 1fr);gap:14px}
     .f{
-      border-radius:18px;
-      background:rgba(15,15,18,.80);
+      border-radius:18px;background:rgba(15,15,18,.80);
       border:1px solid rgba(255,255,255,.10);
       box-shadow: 0 12px 30px rgba(0,0,0,.28);
-      padding:16px 14px;
-      text-align:center;
+      padding:16px 14px;text-align:center;
     }
     .icon{
       width:44px;height:44px;border-radius:14px;margin:0 auto 10px;
       display:grid;place-items:center;
       background:radial-gradient(circle at 30% 20%, rgba(255,191,63,.42), rgba(255,122,24,.14));
       border:1px solid rgba(255,191,63,.18);
-      color:var(--gold);
-      font-weight:900;
+      color:var(--gold);font-weight:900;
     }
     .f b{display:block;font-size:14px}
     .f small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
 
-    /* cards */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:16px;
-    }
+    /* ✅ Best sellers with original image sprite (no extra images) */
+    .cards{display:grid;grid-template-columns: repeat(4, 1fr);gap:16px}
     .card{
-      border-radius:22px;
-      background:rgba(15,15,18,.86);
+      border-radius:22px;background:rgba(15,15,18,.86);
       border:1px solid rgba(255,255,255,.10);
       box-shadow: 0 18px 45px rgba(0,0,0,.35);
       overflow:hidden;
@@ -252,11 +215,19 @@
     .card:hover{transform:translateY(-4px)}
     .art{
       height:168px;
-      display:grid;place-items:center;
-      background:
-        radial-gradient(520px 220px at 50% 10%, rgba(255,191,63,.16), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.30));
+      background-image: var(--sprite);
+      background-repeat:no-repeat;
+      background-size: var(--spriteW) var(--spriteH);
+      /* default position; each card overrides */
+      background-position: 0 0;
+      filter:saturate(1.1) contrast(1.05);
     }
+    /* Adjust these positions if you want perfect crop */
+    .art.brownie { background-position: 0px -720px; }
+    .art.nutella { background-position: -210px -720px; }
+    .art.waffle  { background-position: -420px -720px; }
+    .art.coffee  { background-position: -630px -720px; }
+
     .pad{padding:14px 14px 16px}
     .tag{
       display:inline-flex;align-items:center;gap:8px;
@@ -281,22 +252,12 @@
         linear-gradient(135deg, rgba(255,122,24,.20), rgba(15,15,18,.78));
       box-shadow: var(--shadow);
     }
-    .bannerIn{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      padding:22px;
-      align-items:center;
-    }
-    .bannerIn h3{
-      font-family:"Playfair Display", serif;
-      font-size:28px;line-height:1.1;margin:8px 0 8px;
-    }
+    .bannerIn{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;padding:22px;align-items:center}
+    .bannerIn h3{font-family:"Playfair Display", serif;font-size:28px;line-height:1.1;margin:8px 0 8px}
     .bannerIn p{color:rgba(245,245,247,.88);line-height:1.65}
     .pillgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .pill{
-      border-radius:18px;
-      background:rgba(0,0,0,.30);
+      border-radius:18px;background:rgba(0,0,0,.30);
       border:1px solid rgba(255,255,255,.12);
       padding:14px;
     }
@@ -311,30 +272,19 @@
       border:1px solid rgba(255,255,255,.10);
       box-shadow: 0 18px 45px rgba(0,0,0,.35);
     }
-    .panel .head{
-      padding:18px 18px 10px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-    }
+    .panel .head{padding:18px 18px 10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .panel .head h3{font-family:"Playfair Display", serif;font-size:22px}
     .panel .body{padding:0 18px 18px}
     .quote{
-      border-radius:18px;
-      background:rgba(255,255,255,.05);
+      border-radius:18px;background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      padding:14px;
-      color:rgba(245,245,247,.90);
-      line-height:1.7;
-      margin-top:10px;
+      padding:14px;color:rgba(245,245,247,.90);
+      line-height:1.7;margin-top:10px;
     }
     .quote small{display:block;color:var(--muted);margin-top:8px}
     .map{height:260px;border-top:1px solid rgba(255,255,255,.08);background:#0f0f10}
-    footer{
-      padding:26px 0 40px;text-align:center;color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.08);
-      background:rgba(0,0,0,.12);
-    }
+    footer{padding:26px 0 40px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.12)}
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       h1{font-size:46px}
@@ -353,7 +303,6 @@
 
 <body>
 
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap">
       <div class="in">
@@ -362,7 +311,6 @@
           <span class="chip">📍 Vesu, Surat</span>
         </div>
         <div class="top-actions">
-          <!-- Change numbers/links if needed -->
           <a class="btn btn-ghost" href="tel:+919377702828">📞 Call</a>
           <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20to%20order%20%2F%20visit%20today.%20Please%20share%20best%20sellers%20and%20offers." target="_blank">💬 WhatsApp</a>
           <a class="btn btn-ghost" href="https://maps.app.goo.gl/KU8XbeKuQTHd2Ep7A" target="_blank">🧭 Directions</a>
@@ -371,7 +319,6 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="hero-grid">
@@ -379,7 +326,7 @@
         <div>
           <div class="brand">
             <div class="logoBox">
-              <!-- ONLY FILE YOU NEED TO UPLOAD -->
+              <!-- ✅ only you upload logo.png -->
               <img src="logo.png" alt="Theos Cafe Logo">
             </div>
             <div class="bname">
@@ -408,40 +355,10 @@
           </div>
         </div>
 
-        <!-- Right Hero Card -->
         <aside class="heroCard">
           <div class="heroArt">
-            <!-- Generated dessert illustration (no image file needed) -->
-            <svg width="320" height="190" viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" aria-label="Dessert Illustration">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#ffbf3f" stop-opacity=".35"/>
-                  <stop offset="1" stop-color="#ff7a18" stop-opacity=".22"/>
-                </linearGradient>
-                <linearGradient id="ch" x1="0" x2="1">
-                  <stop offset="0" stop-color="#3b2418"/>
-                  <stop offset="1" stop-color="#1b100b"/>
-                </linearGradient>
-                <filter id="s" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000" flood-opacity=".55"/>
-                </filter>
-              </defs>
-              <rect x="22" y="128" width="276" height="28" rx="14" fill="url(#g1)" opacity=".35"/>
-              <g filter="url(#s)">
-                <rect x="74" y="90" width="172" height="48" rx="16" fill="url(#ch)"/>
-                <rect x="88" y="72" width="144" height="26" rx="13" fill="#2a180f"/>
-                <path d="M105 74 C120 55, 200 55, 215 74" fill="none" stroke="#ffbf3f" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
-                <circle cx="160" cy="56" r="22" fill="#fff" opacity=".92"/>
-                <path d="M146 56 C150 44, 170 44, 174 56 C171 70, 149 70, 146 56Z" fill="#ffe7c4" opacity=".95"/>
-                <path d="M142 58 C150 50, 170 50, 178 58" stroke="#3b2418" stroke-width="5" stroke-linecap="round"/>
-                <path d="M112 80 C120 90, 140 88, 146 78" stroke="#ff7a18" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
-                <path d="M208 80 C200 90, 180 88, 174 78" stroke="#ff7a18" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
-              </g>
-            </svg>
-
             <div class="glowRing"><span class="dot"></span> Today’s Must-Try: Brownie + Ice Cream</div>
           </div>
-
           <div class="body">
             <div class="kpi">
               <div class="box"><b>4.8★</b><small>Google Rating</small></div>
@@ -459,7 +376,6 @@
     </div>
   </header>
 
-  <!-- WHY CHOOSE -->
   <section class="features">
     <div class="wrap">
       <div class="titleRow">
@@ -479,141 +395,65 @@
     </div>
   </section>
 
-  <!-- BEST SELLERS -->
   <section>
     <div class="wrap">
       <div class="titleRow">
         <div>
           <h2>Our Best Sellers</h2>
-          <p>These are the most loved items — perfect for first-time visitors.</p>
+          <p>Original image se crop karke same look cards.</p>
         </div>
         <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20please%20recommend%20best%20sellers%20for%202%20people." target="_blank">💬 Ask Recommendations</a>
       </div>
 
       <div class="cards">
-        <!-- Brownie -->
         <div class="card">
-          <div class="art">
-            <svg width="210" height="140" viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg" aria-label="Brownie">
-              <defs>
-                <linearGradient id="b1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#3b2418"/>
-                  <stop offset="1" stop-color="#140c08"/>
-                </linearGradient>
-                <filter id="sh" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity=".55"/>
-                </filter>
-              </defs>
-              <rect x="30" y="86" width="150" height="18" rx="9" fill="#ffbf3f" opacity=".18"/>
-              <g filter="url(#sh)">
-                <rect x="52" y="58" width="106" height="40" rx="14" fill="url(#b1)"/>
-                <rect x="62" y="46" width="86" height="18" rx="9" fill="#2a180f"/>
-                <circle cx="105" cy="36" r="16" fill="#fff" opacity=".92"/>
-                <path d="M95 36 C98 28, 112 28, 115 36 C112 46, 98 46, 95 36Z" fill="#ffe7c4"/>
-                <path d="M86 62 C98 72, 112 72, 124 62" stroke="#ff7a18" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
-              </g>
-            </svg>
-          </div>
+          <div class="art brownie"></div>
           <div class="pad">
             <span class="tag">🍫 Must Try</span>
             <h3>Biscoff Brownie + Ice Cream</h3>
             <p>Rich brownie + creamy ice cream combo.</p>
             <div class="act">
               <a class="btn btn-primary" href="tel:+919377702828">Call</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Biscoff%20Brownie%20with%20Ice%20Cream.%20Please%20share%20price%20and%20order%20options." target="_blank">WhatsApp</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Biscoff%20Brownie%20with%20Ice%20Cream." target="_blank">WhatsApp</a>
             </div>
           </div>
         </div>
 
-        <!-- Nutella -->
         <div class="card">
-          <div class="art">
-            <svg width="210" height="140" viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg" aria-label="Nutella Brownie">
-              <defs>
-                <linearGradient id="n1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#2b180f"/>
-                  <stop offset="1" stop-color="#0d0705"/>
-                </linearGradient>
-              </defs>
-              <rect x="26" y="92" width="158" height="16" rx="8" fill="#ffbf3f" opacity=".16"/>
-              <rect x="54" y="58" width="102" height="44" rx="14" fill="url(#n1)"/>
-              <path d="M70 62 C92 78, 118 78, 140 62" stroke="#3b2418" stroke-width="8" stroke-linecap="round" opacity=".9"/>
-              <circle cx="105" cy="44" r="14" fill="#fff" opacity=".92"/>
-              <path d="M97 44 C100 36, 110 36, 113 44 C110 52, 100 52, 97 44Z" fill="#ffe7c4"/>
-              <path d="M92 54 C102 46, 108 46, 118 54" stroke="#ff7a18" stroke-opacity=".30" stroke-width="6" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <div class="art nutella"></div>
           <div class="pad">
             <span class="tag">🍫 Rich</span>
             <h3>Nutella Brownie + Ice Cream</h3>
             <p>Chocolate drizzle + premium taste.</p>
             <div class="act">
               <a class="btn btn-primary" href="tel:+919377702828">Call</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Nutella%20Brownie%20with%20Ice%20Cream.%20Please%20share%20price%20and%20order%20options." target="_blank">WhatsApp</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Nutella%20Brownie%20with%20Ice%20Cream." target="_blank">WhatsApp</a>
             </div>
           </div>
         </div>
 
-        <!-- Waffle -->
         <div class="card">
-          <div class="art">
-            <svg width="210" height="140" viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg" aria-label="Waffle">
-              <defs>
-                <linearGradient id="w1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#f3b45a"/>
-                  <stop offset="1" stop-color="#c57a2e"/>
-                </linearGradient>
-              </defs>
-              <rect x="30" y="92" width="150" height="16" rx="8" fill="#ffbf3f" opacity=".16"/>
-              <rect x="60" y="46" width="90" height="60" rx="14" fill="url(#w1)"/>
-              <g opacity=".35" stroke="#8a4b16">
-                <path d="M70 58 H140"/>
-                <path d="M70 72 H140"/>
-                <path d="M70 86 H140"/>
-                <path d="M80 52 V100"/>
-                <path d="M95 52 V100"/>
-                <path d="M110 52 V100"/>
-                <path d="M125 52 V100"/>
-              </g>
-              <path d="M74 44 C92 58, 118 58, 136 44" stroke="#3b2418" stroke-width="8" stroke-linecap="round" opacity=".75"/>
-              <circle cx="105" cy="40" r="12" fill="#fff" opacity=".92"/>
-            </svg>
-          </div>
+          <div class="art waffle"></div>
           <div class="pad">
             <span class="tag">🧇 Crispy</span>
             <h3>Crispy Waffles</h3>
             <p>Golden waffles with chocolate drizzle.</p>
             <div class="act">
               <a class="btn btn-primary" href="tel:+919377702828">Call</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Crispy%20Waffles.%20Please%20share%20available%20flavours." target="_blank">WhatsApp</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Crispy%20Waffles." target="_blank">WhatsApp</a>
             </div>
           </div>
         </div>
 
-        <!-- Coffee -->
         <div class="card">
-          <div class="art">
-            <svg width="210" height="140" viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg" aria-label="Coffee">
-              <defs>
-                <linearGradient id="c1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#7a4a2a"/>
-                  <stop offset="1" stop-color="#2a160c"/>
-                </linearGradient>
-              </defs>
-              <rect x="34" y="92" width="142" height="16" rx="8" fill="#25D366" opacity=".10"/>
-              <rect x="76" y="40" width="58" height="68" rx="16" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.14)"/>
-              <rect x="82" y="56" width="46" height="48" rx="14" fill="url(#c1)"/>
-              <path d="M134 60 C154 58, 154 94, 134 92" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/>
-              <path d="M90 54 C100 42, 110 42, 120 54" stroke="#ffbf3f" stroke-opacity=".30" stroke-width="6" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <div class="art coffee"></div>
           <div class="pad">
             <span class="tag">🧊 Refreshing</span>
             <h3>Iced / Cold Coffee</h3>
             <p>Chilled coffee for perfect pairing.</p>
             <div class="act">
               <a class="btn btn-primary" href="tel:+919377702828">Call</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Iced%20Coffee.%20Please%20share%20menu%20options." target="_blank">WhatsApp</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20Iced%20Coffee." target="_blank">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -621,7 +461,6 @@
     </div>
   </section>
 
-  <!-- OFFERS -->
   <section class="offer">
     <div class="wrap">
       <div class="banner">
@@ -629,10 +468,10 @@
           <div>
             <span class="chip"><span class="dot"></span> Limited Time</span>
             <h3>Special Offers & Combos</h3>
-            <p>Want the best value? Ask for today’s combo deals on WhatsApp — we’ll reply fast.</p>
+            <p>Ask for today’s combo deals on WhatsApp — we’ll reply fast.</p>
             <div class="cta" style="margin-top:14px">
               <a class="btn btn-primary" href="tel:+919377702828">📞 Call for Offer</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20please%20share%20today%E2%80%99s%20combo%20offers%20and%20best%20deal." target="_blank">💬 WhatsApp Offers</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20please%20share%20today%E2%80%99s%20combo%20offers." target="_blank">💬 WhatsApp Offers</a>
             </div>
           </div>
           <div class="pillgrid">
@@ -646,7 +485,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS + VISIT -->
   <section>
     <div class="wrap">
       <div class="titleRow">
@@ -663,8 +501,8 @@
             <span class="chip">⭐ 4.8/5</span>
           </div>
           <div class="body">
-            <div class="quote">“Brownies, waffles & iced coffee were awesome!” <small>— Customer feedback highlight</small></div>
-            <div class="quote">“Perfect late-night spot, open till 2 AM!” <small>— Customer feedback highlight</small></div>
+            <div class="quote">“Perfect chill spot!” <small>— Customer feedback highlight</small></div>
+            <div class="quote">“Late night dessert best!” <small>— Customer feedback highlight</small></div>
             <div class="cta" style="margin-top:14px">
               <a class="btn btn-ghost" href="https://maps.app.goo.gl/KU8XbeKuQTHd2Ep7A" target="_blank">Read Reviews</a>
               <a class="btn btn-primary" href="tel:+919377702828">Call Now</a>
@@ -685,13 +523,12 @@
             </p>
             <div class="cta" style="margin-top:12px">
               <a class="btn btn-primary" href="tel:+919377702828">📞 Call</a>
-              <a class="btn btn-wa" href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe%2C%20I%20want%20to%20visit%20today.%20Please%20share%20best%20time%20and%20recommendations." target="_blank">💬 WhatsApp</a>
+              <a class="btn btn-wa" href="https://wa.me/919377702828" target="_blank">💬 WhatsApp</a>
               <a class="btn btn-ghost" href="https://maps.app.goo.gl/KU8XbeKuQTHd2Ep7A" target="_blank">🧭 Directions</a>
             </div>
           </div>
 
           <div class="map">
-            <!-- Replace this with exact Google embed later if you want -->
             <iframe
               width="100%" height="100%" style="border:0"
               loading="lazy" allowfullscreen
@@ -705,9 +542,7 @@
     </div>
   </section>
 
-  <footer>
-    © Theos Cafe • Vesu, Surat • Call: +91 93777 02828
-  </footer>
+  <footer>© Theos Cafe • Vesu, Surat • Call: +91 93777 02828</footer>
 
 </body>
 </html>
