@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5%; /* Padding thoda kam kiya taaki bada logo fit ho */
+            padding: 10px 5%;
             background: rgba(0,0,0,0.95);
             position: fixed;
             width: 100%;
@@ -56,15 +56,10 @@
             align-items: center;
         }
 
-        /* LOGO SIZE UPDATE - BADA KIYA HAI */
         .logo img {
-            height: 80px; /* Pehle 55px tha, ab 80px */
+            height: 80px; 
             width: auto;
             transition: 0.3s;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
         }
 
         .nav-btn {
@@ -260,11 +255,12 @@
             color: black;
         }
 
-        /* --- NEW: Offers Section --- */
+        /* --- OFFERS SECTION WITH ANIMATION --- */
         .offers-section {
             background: url('https://images.unsplash.com/photo-1544070078-a212eda27b49?w=1920&q=80') center/cover fixed;
             padding: 80px 20px;
             position: relative;
+            overflow: hidden;
         }
         
         .offers-overlay {
@@ -291,18 +287,18 @@
 
         .offer-card:hover { transform: rotate(0deg) scale(1.02); }
 
-        /* --- Reviews Section --- */
-        .reviews-section {
-            background: #111;
-            text-align: center;
+        /* Animation CSS for Confetti */
+        .confetti {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            animation: fall linear infinite;
+            z-index: 1;
         }
 
-        .review-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 10px;
-            border-top: 3px solid var(--gold);
-            margin: 10px;
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
         }
 
         /* --- Celebration Section --- */
@@ -385,6 +381,7 @@
             border: 1px solid #444;
             color: white;
             border-radius: 5px;
+            color-scheme: dark; /* For Date Picker Dark Mode */
         }
 
         .submit-btn {
@@ -455,7 +452,7 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 3rem; }
             .icon-grid { gap: 20px; }
-            .logo img { height: 60px; } /* Mobile par thoda chhota */
+            .logo img { height: 60px; }
         }
     </style>
 </head>
@@ -551,8 +548,16 @@
         </div>
     </section>
 
-    <section class="offers-section">
+    <section class="offers-section" id="offers">
         <div class="offers-overlay"></div>
+        <div class="confetti" style="left: 10%; animation-duration: 3s; animation-delay: 0s;">🎉</div>
+        <div class="confetti" style="left: 20%; animation-duration: 4s; animation-delay: 1s;">✨</div>
+        <div class="confetti" style="left: 30%; animation-duration: 2.5s; animation-delay: 2s;">🎉</div>
+        <div class="confetti" style="left: 50%; animation-duration: 3.5s; animation-delay: 0.5s;">🎉</div>
+        <div class="confetti" style="left: 70%; animation-duration: 2.8s; animation-delay: 1.5s;">✨</div>
+        <div class="confetti" style="left: 80%; animation-duration: 4s; animation-delay: 0s;">🎉</div>
+        <div class="confetti" style="left: 90%; animation-duration: 3s; animation-delay: 1s;">🎉</div>
+
         <div class="offers-container">
             <div class="section-title">
                 <h2>Limited Time Offer</h2>
@@ -649,11 +654,13 @@
         <form class="booking-form" onsubmit="sendBooking(event)" data-aos="fade-up">
             <input type="text" id="name" class="form-control" placeholder="Your Name" required>
             <input type="number" id="guests" class="form-control" placeholder="No. of Guests" required>
+            <input type="date" id="date" class="form-control" required>
             <select id="time" class="form-control">
                 <option>7:00 PM</option>
                 <option>8:00 PM</option>
                 <option>9:00 PM</option>
                 <option>10:00 PM</option>
+                <option>11:00 PM</option>
             </select>
             <button type="submit" class="submit-btn">Reserve Now</button>
         </form>
@@ -680,8 +687,10 @@
             e.preventDefault();
             let name = document.getElementById('name').value;
             let guests = document.getElementById('guests').value;
+            let date = document.getElementById('date').value;
             let time = document.getElementById('time').value;
-            let msg = `Hi Theos Cafe, I want to book a table.%0A%0AName: ${name}%0AGuests: ${guests}%0ATime: ${time}`;
+            
+            let msg = `Hi Theos Cafe, I want to book a table.%0A%0AName: ${name}%0AGuests: ${guests}%0ADate: ${date}%0ATime: ${time}`;
             window.location.href = `https://wa.me/919377702828?text=${msg}`;
         }
     </script>
