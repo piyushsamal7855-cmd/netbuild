@@ -3,102 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theos Cafe | Surat</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
+    <title>Theos Cafe | Premium Dessert & Late Night Cafe in Vesu, Surat</title>
+    <meta name="description" content="Welcome to Theos Cafe, Vesu. Surat's premium spot for Brownies, Waffles, and Coffee. Open till 2 AM. 100% Pure Veg. Order Now!">
+    <meta name="keywords" content="Theos Cafe Surat, Late Night Cafe Vesu, Brownies Surat, Waffles Vesu, Best Cafe in Surat, Pure Veg Cafe">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
-        body { margin: 0; padding: 0; background-color: #0c0908; color: #ffffff; font-family: 'Inter', sans-serif; }
-        .gold-text { color: #d4af37; font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); }
+        :root {
+            --primary-gold: #D4AF37; /* Rich Gold */
+            --dark-bg: #0f0f0f;      /* Deep Black */
+            --card-bg: #1a1a1a;      /* Dark Grey */
+            --text-light: #f8f8f8;
+            --accent-brown: #5D4037;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Premium Font */
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--dark-bg), transparent);
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+        }
+
+        .btn-gold {
+            background: var(--primary-gold);
+            color: #000;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            background: transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* --- USPs --- */
+        .usp-bar {
+            background: #151515;
+            padding: 30px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .usp-item i {
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+        
+        .usp-item p {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #ccc;
+        }
+
+        /* --- About Section (Professional) --- */
+        .about-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .divider {
+            height: 2px;
+            width: 100px;
+            background: var(--primary-gold);
+            margin: 0 auto 30px;
+        }
+
+        /* --- Menu Section --- */
+        .menu-section {
+            padding: 60px 20px;
+            background: #111;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--primary-gold);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #2a2a2a;
+        }
+
+        .menu-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-details {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .menu-details h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .menu-details p {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .order-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: var(--primary-gold);
+            color: #000;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #050505;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary-gold);
+        }
+
+        .footer-content h2 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        .contact-details p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Floating WhatsApp */
+        .float-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { motion, AnimatePresence } = FramerMotion;
-        const { useState, useEffect } = React;
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Theos Cafe</h1>
+            <h2>Premium Dessert & Late Night Cafe</h2>
+            <p style="color: #bbb; margin-bottom: 30px;">OPEN DAILY: 9:00 AM – 2:00 AM</p>
+            
+            <div class="hero-buttons">
+                <a href="tel:+919377702828" class="btn btn-gold">Call Now</a>
+                <a href="https://wa.me/919377702828?text=Hi%20Theos%20Cafe,%20I%20want%20to%20order." class="btn btn-outline">WhatsApp Order</a>
+            </div>
+        </div>
+    </header>
 
-        const App = () => {
-            const [isLoaded, setIsLoaded] = useState(false);
-            const [showPop, setShowPop] = useState(false);
+    <div class="usp-bar">
+        <div class="usp-grid">
+            <div class="usp-item">
+                <i class="fas fa-leaf"></i>
+                <p>100% Pure Veg</p>
+            </div>
+            <div class="usp-item">
+                <i class="fas fa-moon"></i>
+                <p>Open Till 2 AM</p>
+            </div>
+            <div class="usp-item">
+                <i class="fas fa-couch"></i>
+                <p>Cozy Ambience</p>
+            </div>
+            <div class="usp-item">
+                <i class="fas fa-motorcycle"></i>
+                <p>Fast Delivery</p>
+            </div>
+        </div>
+    </div>
 
-            useEffect(() => {
-                setIsLoaded(true);
-                setTimeout(() => setShowPop(true), 4000);
-            }, []);
+    <section class="about-section">
+        <div class="divider"></div>
+        <h2>Experience Theos Cafe</h2>
+        <div class="about-text">
+            <p>
+                Welcome to <strong>Theos Cafe</strong>, Surat’s premier destination where culinary artistry meets a cozy, late-night vibe. Located in the heart of Vesu, we are not just a cafe; we are a sanctuary for dessert lovers and coffee connoisseurs. 
+            </p>
+            <p style="margin-top: 15px;">
+                Whether you are craving our signature <strong>Biscoff Brownies</strong> at midnight or looking for a perfect <strong>Cold Coffee</strong> brew to start your evening, Theos offers an experience like no other. With our <strong>100% Pure Veg menu</strong> and relaxing outdoor seating, every visit is a treat for your senses.
+            </p>
+        </div>
+        <div class="divider"></div>
+    </section>
 
-            return (
-                <div className="min-h-screen">
-                    {/* Navigation */}
-                    <nav className="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-[#0c0908]/80 backdrop-blur-md">
-                        <div className="text-3xl gold-text italic font-bold">Theos.</div>
-                        <a href="https://wa.me/9377702828" className="bg-[#d4af37] text-black px-6 py-2 rounded-full font-bold text-sm">ORDER NOW</a>
-                    </nav>
+    <section class="menu-section">
+        <div class="section-header">
+            <h2>Our Signatures</h2>
+            <p style="color: #888;">Handcrafted Perfection</p>
+        </div>
 
-                    {/* Hero Section */}
-                    <section className="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-                        {/* Background Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1412] to-[#0c0908] z-0"></div>
-                        
-                        <motion.div 
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }}
-                            className="z-10"
-                        >
-                            <h2 className="text-[#d4af37] tracking-[0.3em] uppercase text-xs mb-4">Surat's Premium Dessert Cafe</h2>
-                            <h1 className="text-6xl md:text-8xl gold-text mb-6">Theos Cafe</h1>
-                            <p className="text-gray-400 max-w-xl mx-auto mb-10 italic">"Late Night Cravings? We are open till 2 AM!"</p>
-                            
-                            <div className="flex flex-wrap justify-center gap-4">
-                                <a href="https://wa.me/9377702828" className="border border-[#d4af37] text-[#d4af37] px-8 py-3 rounded-full hover:bg-[#d4af37] hover:text-black transition">WhatsApp</a>
-                                <a href="https://goo.gl/maps/WxCBYkEfrta3sWFeA" className="bg-white/10 px-8 py-3 rounded-full hover:bg-white/20 transition">Get Directions</a>
-                            </div>
-                        </motion.div>
-                    </section>
-
-                    {/* Features (Why Choose Us) */}
-                    <section className="py-20 px-6 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-                        {["100% Pure Veg", "Late Night (2 AM)", "Cozy Ambience", "Fast Delivery"].map((f, i) => (
-                            <div key={i} className="glass p-6 rounded-2xl text-center">
-                                <p className="text-[#d4af37] font-semibold">{f}</p>
-                            </div>
-                        ))}
-                    </section>
-
-                    {/* Discount Pop-up */}
-                    <AnimatePresence>
-                        {showPop && (
-                            <motion.div 
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="fixed bottom-10 right-10 z-[100] glass p-8 rounded-3xl max-w-xs shadow-2xl border-yellow-500"
-                            >
-                                <button onClick={() => setShowPop(false)} className="absolute top-2 right-4 text-gray-400">×</button>
-                                <h3 className="gold-text text-3xl mb-2">10% OFF</h3>
-                                <p className="text-sm text-gray-300 mb-4 font-light">Get a discount on your first order via WhatsApp!</p>
-                                <a href="https://wa.me/9377702828" className="block text-center bg-[#d4af37] text-black font-bold py-3 rounded-xl">Claim Now</a>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                    {/* Footer */}
-                    <footer className="py-10 text-center border-t border-white/10 text-gray-500 text-xs">
-                        <p>Past Phoenix Market, Opp. Agam Vivianna, Vesu, Surat</p>
-                        <p className="mt-2 tracking-widest uppercase">Theos Cafe © 2026</p>
-                    </footer>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=500&auto=format&fit=crop');"></div>
+                <div class="menu-details">
+                    <h3>Biscoff Brownie</h3>
+                    <p>Served warm with premium Vanilla Ice Cream.</p>
+                    <a href="https://wa.me/919377702828?text=Order%20Biscoff%20Brownie" class="order-btn">Order Now</a>
                 </div>
-            );
-        };
+            </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1568051243851-f9b136146e97?w=500&auto=format&fit=crop');"></div>
+                <div class="menu-details">
+                    <h3>Nutella Waffle</h3>
+                    <p>Crispy waffle loaded with Nutella & Hazelnut crunch.</p>
+                    <a href="https://wa.me/919377702828?text=Order%20Nutella%20Waffle" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1517701604599-bb29b5dd7359?w=500&auto=format&fit=crop');"></div>
+                <div class="menu-details">
+                    <h3>Classic Cold Coffee</h3>
+                    <p>Rich, creamy, and brewed to perfection.</p>
+                    <a href="https://wa.me/919377702828?text=Order%20Cold%20Coffee" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop');"></div>
+                <div class="menu-details">
+                    <h3>Cake & Ice Cream</h3>
+                    <p>The perfect sweet finish to your late night.</p>
+                    <a href="https://wa.me/919377702828?text=Order%20Cake%20Ice%20Cream" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Theos Cafe</h2>
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt" style="color:var(--primary-gold)"></i> Vesu, Surat</p>
+                <p><i class="fas fa-phone" style="color:var(--primary-gold)"></i> +91 93777 02828</p>
+                <p><i class="fas fa-clock" style="color:var(--primary-gold)"></i> 9:00 AM – 2:00 AM</p>
+            </div>
+            
+            <a href="https://goo.gl/maps/WxCBYkEfrta3sWFeA" target="_blank" class="map-btn">
+                <i class="fas fa-location-arrow"></i> Get Directions
+            </a>
+
+            <p style="margin-top: 40px; font-size: 0.8rem; color: #444;">© 2026 Theos Cafe. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919377702828" class="float-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
 </body>
 </html>
