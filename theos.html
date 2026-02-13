@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 10px 5%; /* Padding thoda kam kiya taaki bada logo fit ho */
             background: rgba(0,0,0,0.95);
             position: fixed;
             width: 100%;
@@ -51,21 +51,34 @@
             border-bottom: 1px solid #333;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        /* LOGO SIZE UPDATE - BADA KIYA HAI */
         .logo img {
-            height: 55px;
+            height: 80px; /* Pehle 55px tha, ab 80px */
             width: auto;
             transition: 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         .nav-btn {
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
-            padding: 8px 25px;
+            padding: 10px 30px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .nav-btn:hover {
@@ -292,6 +305,27 @@
             margin: 10px;
         }
 
+        /* --- Celebration Section --- */
+        .celebration-section {
+            background: linear-gradient(to right, #111, #1a1a1a);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .event-card {
+            background: #000;
+            border: 1px solid #333;
+            padding: 30px 20px;
+            border-radius: 10px;
+            width: 300px;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
         /* --- Opening Hours --- */
         .hours-section {
             padding: 80px 20px;
@@ -421,6 +455,7 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 3rem; }
             .icon-grid { gap: 20px; }
+            .logo img { height: 60px; } /* Mobile par thoda chhota */
         }
     </style>
 </head>
@@ -529,6 +564,39 @@
                 <p style="color: #aaa; margin: 10px 0;">2 Premium Cold Coffees + 1 Nutella Brownie</p>
                 <h2 style="color: var(--gold); font-size: 2.5rem; margin: 15px 0;">@ ₹499 Only</h2>
                 <a href="https://wa.me/919377702828?text=I%20want%20the%20Coffee%20Date%20Combo" class="cta-btn">Claim Offer</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="celebration-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2 style="color: var(--gold);">Celebrate With Us</h2>
+            <p style="color: #bbb; max-width: 600px; margin: 0 auto;">
+                Planning a Birthday, Anniversary, or a Romantic Date? 
+                Reserve our premium outdoor seating for your special moments.
+            </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
+            <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-birthday-cake" style="font-size: 3rem; color: #ff6b6b; margin-bottom: 20px;"></i>
+                <h3 style="color: white; font-size: 1.5rem;">Birthdays</h3>
+                <p style="color: #888; margin-bottom: 20px;">Special decoration setup available on request.</p>
+                <a href="https://wa.me/919377702828?text=I%20want%20to%20book%20a%20Birthday%20Party" class="nav-btn" style="display: inline-block;">Book Now</a>
+            </div>
+
+            <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-heart" style="font-size: 3rem; color: #e84393; margin-bottom: 20px;"></i>
+                <h3 style="color: white; font-size: 1.5rem;">Date Night</h3>
+                <p style="color: #888; margin-bottom: 20px;">Candle light vibe with premium dessert combos.</p>
+                <a href="https://wa.me/919377702828?text=I%20want%20to%20book%20a%20Date%20Night" class="nav-btn" style="display: inline-block;">Reserve Table</a>
+            </div>
+
+            <div class="event-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-users" style="font-size: 3rem; color: #0984e3; margin-bottom: 20px;"></i>
+                <h3 style="color: white; font-size: 1.5rem;">Group Hangout</h3>
+                <p style="color: #888; margin-bottom: 20px;">Perfect outdoor seating for large groups.</p>
+                <a href="https://wa.me/919377702828?text=I%20want%20to%20book%20for%20a%20Group" class="nav-btn" style="display: inline-block;">Book Seats</a>
             </div>
         </div>
     </section>
