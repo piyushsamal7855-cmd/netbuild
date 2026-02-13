@@ -247,6 +247,37 @@
             color: black;
         }
 
+        /* --- NEW: Offers Section --- */
+        .offers-section {
+            background: url('https://images.unsplash.com/photo-1544070078-a212eda27b49?w=1920&q=80') center/cover fixed;
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .offers-overlay {
+            background: rgba(0,0,0,0.8);
+            position: absolute; top:0; left:0; width:100%; height:100%;
+        }
+
+        .offers-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .offer-card {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border: 2px dashed var(--gold);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            transform: rotate(-1deg);
+            transition: 0.3s;
+        }
+
+        .offer-card:hover { transform: rotate(0deg) scale(1.02); }
+
         /* --- Reviews Section --- */
         .reviews-section {
             background: #111;
@@ -475,12 +506,29 @@
 
             <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="tag">CLASSIC</div>
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1517701604599-bb29b5dd7359?w=500&auto=format&fit=crop');"></div>
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=500&auto=format&fit=crop');"></div>
                 <div class="menu-info">
                     <h3>Premium Cold Coffee</h3>
                     <p style="color: #aaa; font-size: 0.9rem;">Thick, creamy and perfectly brewed.</p>
                     <a href="https://wa.me/919377702828?text=I%20want%20to%20order%20Cold%20Coffee" class="order-link">Order Now</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers-section">
+        <div class="offers-overlay"></div>
+        <div class="offers-container">
+            <div class="section-title">
+                <h2>Limited Time Offer</h2>
+                <div style="width: 60px; height: 3px; background: var(--gold); margin: 10px auto;"></div>
+            </div>
+            
+            <div class="offer-card" data-aos="zoom-in">
+                <h3 style="color: #fff; font-size: 2rem;">Coffee Date Combo</h3>
+                <p style="color: #aaa; margin: 10px 0;">2 Premium Cold Coffees + 1 Nutella Brownie</p>
+                <h2 style="color: var(--gold); font-size: 2.5rem; margin: 15px 0;">@ ₹499 Only</h2>
+                <a href="https://wa.me/919377702828?text=I%20want%20the%20Coffee%20Date%20Combo" class="cta-btn">Claim Offer</a>
             </div>
         </div>
     </section>
