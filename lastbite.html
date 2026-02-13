@@ -9,133 +9,180 @@
     <meta name="keywords" content="Last Bite Cafe Surat, Cafe in Vesu Surat, brownies in Surat, waffles in Surat, late night cafe Surat, pure veg cafe Surat">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- CSS STYLES (THEME MATCHING THE IMAGE) --- */
         :root {
             --primary-gold: #d4af37;
-            --primary-orange: #e67e22;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
-            --text-light: #f4f4f4;
-            --whatsapp-green: #25d366;
+            --primary-orange: #e65100; /* For Call Button */
+            --primary-green: #2e7d32; /* For WhatsApp Button */
+            --bg-dark: #1a0f0a; /* Dark Coffee/Chocolate Tone */
+            --bg-card: #2c1e16;
+            --text-white: #ffffff;
+            --text-gold: #f5c518;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            overflow-x: hidden;
         }
 
-        /* --- Hero Section --- */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- HERO SECTION (Background Image & Main Info) --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            position: relative;
+            /* Using a dark cafe placeholder image to match the theme */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            height: 90vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
+            border-bottom: 4px solid var(--primary-gold);
         }
 
-        .hero-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        .logo-area {
+            margin-bottom: 20px;
         }
 
-        .hero-content h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .logo-text {
+            font-size: 3.5rem;
+            color: var(--text-gold);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            line-height: 1;
+        }
+
+        .sub-logo {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
             color: #fff;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
 
-        .trust-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 15px 0;
+            background: -webkit-linear-gradient(#fff, #ddd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #eee;
+            max-width: 800px;
+        }
+
+        .open-badge {
+            background: #b71c1c;
+            color: white;
             padding: 5px 15px;
             border-radius: 20px;
-            margin-bottom: 20px;
+            font-weight: bold;
             font-size: 0.9rem;
-            border: 1px solid var(--primary-gold);
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px #b71c1c;
         }
 
-        .hero-buttons {
+        .rating-loc {
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .stars { color: var(--text-gold); }
+
+        /* --- CTA BUTTONS (Glossy look like image) --- */
+        .cta-container {
             display: flex;
             gap: 15px;
-            justify-content: center;
             flex-wrap: wrap;
-            margin-top: 20px;
+            justify-content: center;
+            margin-bottom: 10px;
         }
 
         .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
             font-weight: bold;
             font-size: 1rem;
-            transition: transform 0.3s;
+            text-transform: uppercase;
+            transition: transform 0.2s;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
         }
+
+        .btn:hover { transform: scale(1.05); }
 
         .btn-call {
-            background: linear-gradient(45deg, #ff6b6b, var(--primary-orange));
+            background: linear-gradient(to bottom, #ff9800, #e65100);
             color: white;
-            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
-            animation: pulse 2s infinite;
         }
 
-        .btn-whatsapp {
-            background: linear-gradient(45deg, #25d366, #128c7e);
+        .btn-wa {
+            background: linear-gradient(to bottom, #4caf50, #2e7d32);
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
+        .btn-dir {
+            background: linear-gradient(to bottom, #5c4033, #3e2723); /* Brownish */
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .micro-copy {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 10px;
         }
 
-        /* --- Section Titles --- */
-        .section-title {
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 50px 20px;
             text-align: center;
-            margin: 50px 0 30px;
         }
 
-        .section-title h2 {
+        .section-title {
             font-size: 2.2rem;
             color: var(--primary-gold);
-            font-family: 'Great Vibes', cursive;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 10px auto 0;
         }
 
-        .section-title p {
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-
-        /* --- USPs Grid --- */
+        /* --- WHY CHOOSE US (Icons) --- */
         .usp-section {
-            padding: 40px 20px;
-            background: #1a1a1a;
+            background: linear-gradient(to bottom, #2b1b17, #1a0f0a);
         }
 
         .usp-grid {
@@ -144,293 +191,275 @@
             gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .usp-card {
-            background: var(--card-bg);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 20px;
             border-radius: 10px;
-            border: 1px solid #333;
+            transition: 0.3s;
         }
+        .usp-card:hover { border-color: var(--primary-gold); background: rgba(255,255,255,0.1); }
+        .usp-icon { font-size: 2rem; color: var(--primary-gold); margin-bottom: 10px; }
+        .usp-text { font-size: 0.9rem; font-weight: 600; }
 
-        .usp-card i {
-            font-size: 2rem;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
-        }
-
-        /* --- Menu Section --- */
+        /* --- MENU HIGHLIGHTS (Images Grid) --- */
         .menu-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            background-color: var(--bg-dark);
         }
 
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .menu-card {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-            border: 1px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
         }
-
-        .menu-card:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-5px);
-        }
+        .menu-card:hover { transform: translateY(-5px); }
 
         .menu-img {
+            width: 100%;
             height: 200px;
-            background-size: cover;
-            background-position: center;
+            object-fit: cover;
+            /* Placeholder styling */
+            background-color: #444; 
         }
 
-        .menu-content {
-            padding: 20px;
+        .menu-info {
+            padding: 15px;
+            text-align: left;
         }
 
-        .menu-content h3 {
+        .menu-name {
+            font-size: 1.1rem;
             color: var(--primary-gold);
+            font-weight: bold;
             margin-bottom: 5px;
         }
+        .menu-desc { font-size: 0.9rem; color: #ccc; }
 
-        .price-tag {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-            color: #fff;
+        /* --- OFFERS BANNER --- */
+        .offers-section {
+            background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), linear-gradient(to right, #3e2723, #5d4037);
+            border-top: 2px solid var(--primary-gold);
+            border-bottom: 2px solid var(--primary-gold);
+            padding: 40px 20px;
         }
-
-        .menu-cta {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-            margin-top: 15px;
+        
+        .offer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .offer-box {
+            border: 1px dashed var(--primary-gold);
+            padding: 15px 25px;
             border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
+            background: rgba(0,0,0,0.3);
         }
+        .offer-title { font-size: 1.2rem; font-weight: bold; color: #fff; }
+        .offer-detail { color: var(--text-gold); font-size: 1rem; margin-top: 5px; }
 
-        .menu-cta:hover {
-            background: var(--primary-gold);
-            color: black;
+        /* --- REVIEWS & FOOTER --- */
+        .reviews-section {
+            background: #151515;
         }
-
-        /* --- Social Proof & Conversion --- */
-        .proof-section {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            padding: 60px 20px;
-            text-align: center;
-            background-attachment: fixed;
-        }
-
-        .rating-box {
-            font-size: 2rem;
-            color: #f1c40f;
+        
+        .review-quote {
+            font-style: italic;
+            color: #ddd;
             margin-bottom: 10px;
         }
 
-        /* --- Footer --- */
-        footer {
+        .footer {
             background: #000;
             padding: 40px 20px;
             text-align: center;
-            border-top: 3px solid var(--primary-gold);
-        }
-
-        .map-container {
-            margin: 20px auto;
-            max-width: 600px;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .contact-info p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-
-        .sticky-bottom {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
+            border-top: 1px solid #333;
         }
         
-        .sticky-whatsapp {
-            background: #25d366;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        .map-container {
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            background: #333;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
         }
 
+        /* --- MOBILE TWEAKS --- */
+        @media (max-width: 600px) {
+            .logo-text { font-size: 2.5rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .usp-grid { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1>Last Bite Cafe</h1>
-            <h2>Pure Veg Dessert Café in Vesu, Surat</h2>
-            <p>Famous for Brownies, Waffles & Iced Coffee (Open Till 2 AM)</p>
-            
-            <div class="trust-badge">
-                ⭐ 4.8/5 Google Rating • 107+ Reviews
-            </div>
-
-            <div class="hero-buttons">
-                <a href="tel:+919377702828" class="btn btn-call">
-                    <i class="fas fa-phone-alt"></i> Call Now
-                </a>
-                <a href="https://wa.me/919377702828?text=Hi%20Last%20Bite%20Cafe%2C%20I%20want%20to%20order%20%2F%20visit%20today." class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Order
-                </a>
-            </div>
-            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">📍 Phoenix Market, Opp. Aagam Viviana</p>
+        <div class="logo-area">
+            <div class="logo-text">Last Bite</div>
+            <div class="sub-logo">CAFE</div>
         </div>
+
+        <h1>Surat's Premium Dessert Cafe</h1>
+        <p class="tagline">Pure Veg Dessert Café in Vesu, Surat — Famous for Brownies, Waffles & Iced Coffee</p>
+        
+        <div class="open-badge">OPEN TILL 2 AM</div>
+
+        <div class="rating-loc">
+            <span class="stars">★★★★☆ 4.8/5</span> • 107+ Google Reviews <br>
+            <i class="fas fa-map-marker-alt" style="color:red;"></i> Phoenix Market, Opp. Aagam Viviana, Surat
+        </div>
+
+        <div class="cta-container">
+            <a href="tel:+919377702828" class="btn btn-call">
+                <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="https://wa.me/919377702828?text=Hi%20Last%20Bite%20Cafe%2C%20I%20want%20to%20order%20%2F%20visit%20today.%20Please%20share%20recommendations%20and%20current%20offers." class="btn btn-wa">
+                <i class="fab fa-whatsapp"></i> WhatsApp Order
+            </a>
+            <a href="#" class="btn btn-dir"> <i class="fas fa-location-arrow"></i> Directions
+            </a>
+        </div>
+        <p class="micro-copy">Fast response • Takeaway + Delivery • Open 9 AM–2 AM</p>
     </header>
 
     <section class="usp-section">
-        <div class="section-title">
-            <h2>Why Locals Love Us</h2>
-        </div>
+        <h2 class="section-title">Why Choose Us?</h2>
         <div class="usp-grid">
             <div class="usp-card">
-                <i class="fas fa-leaf"></i>
-                <h4>100% Pure Veg</h4>
+                <div class="usp-icon"><i class="fas fa-leaf"></i></div>
+                <div class="usp-text">100% Pure Veg</div>
             </div>
             <div class="usp-card">
-                <i class="fas fa-moon"></i>
-                <h4>Open Till 2 AM</h4>
+                <div class="usp-icon"><i class="fas fa-moon"></i></div>
+                <div class="usp-text">Late Night (Till 2 AM)</div>
             </div>
             <div class="usp-card">
-                <i class="fas fa-coffee"></i>
-                <h4>Best Cold Coffee</h4>
+                <div class="usp-icon"><i class="fas fa-couch"></i></div>
+                <div class="usp-text">Cozy Ambience</div>
             </div>
             <div class="usp-card">
-                <i class="fas fa-motorcycle"></i>
-                <h4>Fast Delivery</h4>
+                <div class="usp-icon"><i class="fas fa-chair"></i></div>
+                <div class="usp-text">Outdoor Seating</div>
             </div>
             <div class="usp-card">
-                <i class="fas fa-chair"></i>
-                <h4>Outdoor Seating</h4>
-            </div>
-            <div class="usp-card">
-                <i class="fas fa-wifi"></i>
-                <h4>Free WiFi</h4>
+                <div class="usp-icon"><i class="fas fa-motorcycle"></i></div>
+                <div class="usp-text">Fast Delivery</div>
             </div>
         </div>
     </section>
 
-    <section class="menu-section" id="menu">
-        <div class="section-title">
-            <h2>Our Best Sellers</h2>
-            <p>Try these fan favorites!</p>
-        </div>
-        
+    <section class="menu-section">
+        <h2 class="section-title">Our Best Sellers</h2>
         <div class="menu-grid">
             <div class="menu-card">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="menu-content">
-                    <h3>Biscoff Brownie</h3>
-                    <p>Rich brownie topped with Lotus Biscoff & Ice Cream.</p>
-                    <span class="price-tag">Must Try ⭐</span>
-                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%20Biscoff%20Brownie" class="menu-cta">Order Now</a>
+                <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=800&auto=format&fit=crop" alt="Biscoff Brownie" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-name">Biscoff Brownie</div>
+                    <div class="menu-desc">Served with Ice Cream - Fan Favorite</div>
                 </div>
             </div>
-
             <div class="menu-card">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1568051243851-f9b136146e97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="menu-content">
-                    <h3>Nutella Waffle</h3>
-                    <p>Crispy waffle loaded with Nutella & Vanilla Ice Cream.</p>
-                    <span class="price-tag">Best Seller 🔥</span>
-                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%20Nutella%20Waffle" class="menu-cta">Order Now</a>
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476d?q=80&w=800&auto=format&fit=crop" alt="Nutella Brownie" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-name">Nutella Brownie</div>
+                    <div class="menu-desc">Rich & Indulgent with Ice Cream</div>
                 </div>
             </div>
-
             <div class="menu-card">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1517701604599-bb29b5dd7359?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="menu-content">
-                    <h3>Classic Cold Coffee</h3>
-                    <p>Thick, creamy and brewed to perfection.</p>
-                    <span class="price-tag">Refreshing ❄️</span>
-                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%20Cold%20Coffee" class="menu-cta">Order Now</a>
+                <img src="https://images.unsplash.com/photo-1562086254-2c0693574d6c?q=80&w=800&auto=format&fit=crop" alt="Classic Waffles" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-name">Crispy Waffles</div>
+                    <div class="menu-desc">Chocolatey, made for sharing</div>
                 </div>
             </div>
-
             <div class="menu-card">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1576618148400-f54bed99fcf8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="menu-content">
-                    <h3>Cheesy Fries</h3>
-                    <p>Crispy fries topped with melted liquid cheese.</p>
-                    <span class="price-tag">Snack Time 🍟</span>
-                    <a href="https://wa.me/919377702828?text=I%20want%20to%20order%20Cheesy%20Fries" class="menu-cta">Order Now</a>
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b5aa50a6?q=80&w=800&auto=format&fit=crop" alt="Iced Coffee" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-name">Iced Coffee</div>
+                    <div class="menu-desc">Chill, smooth & refreshing</div>
                 </div>
             </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://wa.me/919377702828?text=Please%20send%20full%20menu" class="btn btn-whatsapp" style="display: inline-block;">
-                View Full Menu on WhatsApp
-            </a>
+        <div style="margin-top: 30px;">
+            <p>👉 Want recommendations? <a href="https://wa.me/919377702828" style="color:var(--primary-gold); text-decoration: underline;">WhatsApp us now</a></p>
         </div>
     </section>
 
-    <section class="proof-section">
-        <div class="rating-box">★★★★★</div>
-        <h2>"Best Brownies in Vesu!"</h2>
-        <p>Rated 4.8/5 on Google by 107+ Happy Customers</p>
-        <div style="margin-top: 20px;">
-            <span class="trust-badge">Open Till 2 AM</span>
-            <span class="trust-badge">Takeaway Available</span>
+    <section class="offers-section">
+        <h2 class="section-title" style="color: #fff; border-color: #fff;">Special Offers</h2>
+        <div class="offer-grid">
+            <div class="offer-box">
+                <div class="offer-title">Combo Deal</div>
+                <div class="offer-detail">Brownie + Coffee @ Best Price</div>
+            </div>
+            <div class="offer-box">
+                <div class="offer-title">Waffle Weekend</div>
+                <div class="offer-detail">Ask for specials!</div>
+            </div>
+            <div class="offer-box">
+                <div class="offer-title">Late Night</div>
+                <div class="offer-detail">Open till 2:00 AM</div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="section-title">
-            <h2>Visit Us</h2>
-            <p>Open Daily: 9:00 AM - 2:00 AM</p>
+    <section class="reviews-section">
+        <h2 class="section-title">Rated 4.8★ by 1000+ Happy Customers</h2>
+        <div style="max-width: 800px; margin: 0 auto; color: #ccc;">
+            <p class="review-quote">"Frequently mentioned: brownies, waffles, iced coffee, great service, cozy vibe."</p>
+            <p class="review-quote">"Perfect late-night café — open till 2 AM."</p>
+            
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <span style="color: var(--primary-gold); border: 1px solid var(--primary-gold); padding: 5px 10px; border-radius: 4px;">✅ 4.8/5 Google Rating</span>
+                <span style="color: var(--primary-gold); border: 1px solid var(--primary-gold); padding: 5px 10px; border-radius: 4px;">✅ 100% Veg</span>
+            </div>
         </div>
+    </section>
 
-        <div class="contact-info">
-            <p><i class="fas fa-map-marker-alt"></i> Phoenix Market, Opp. Aagam Viviana, Surat</p>
-            <p><i class="fas fa-phone"></i> +91 93777 02828</p>
-        </div>
+    <footer class="footer">
+        <h2 class="section-title">Visit Us</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 10px;">
+            <i class="fas fa-map-marker-alt" style="color:red;"></i> 
+            Phoenix Market, opposite Aagam Viviana, Surat, Gujarat
+        </p>
+        <p style="font-size: 1.1rem; margin-bottom: 10px;">
+            <i class="fas fa-clock" style="color:var(--primary-gold);"></i> 
+            Daily: 9:00 AM – 2:00 AM
+        </p>
+        <p style="font-size: 1.2rem; margin-bottom: 20px; font-weight: bold;">
+            <i class="fas fa-phone"></i> +91 93777 02828
+        </p>
 
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.2345!2d72.769460!3d21.158400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3ALastBiteCafe!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            [ Google Map will load here ]
         </div>
 
-        <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
-            &copy; 2024 Last Bite Cafe. Designed by Netbuild.in
+        <div class="cta-container">
+            <a href="tel:+919377702828" class="btn btn-call">Call Now</a>
+            <a href="#" class="btn btn-dir">Get Directions</a>
         </div>
+
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #555;">© Last Bite Cafe • Vesu, Surat</p>
     </footer>
-
-    <a href="https://wa.me/919377702828" class="sticky-bottom sticky-whatsapp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
 </body>
 </html>
