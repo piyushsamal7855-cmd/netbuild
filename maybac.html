@@ -9,54 +9,56 @@
     
     <style>
         :root {
-            --gold: #C8A97E;
-            --dark-bg: #0f0d0c; 
+            --gold: #c49b66; /* Elegant bronze/gold from your reference */
+            --dark-bg: #0c0a09; /* Deep dark base */
             --light-text: #e0d8d0;
+            --nav-bg: rgba(12, 10, 9, 0.95);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             background-color: var(--dark-bg);
-            background-image: repeating-linear-gradient(45deg, rgba(200,169,126,0.03) 0px, rgba(200,169,126,0.03) 2px, transparent 2px, transparent 10px);
+            /* Subtle texture overlay to mimic dark stone/marble */
+            background-image: repeating-linear-gradient(45deg, rgba(196, 155, 102, 0.02) 0px, rgba(196, 155, 102, 0.02) 2px, transparent 2px, transparent 15px);
             color: var(--light-text);
             font-family: 'Lato', sans-serif;
-            overflow-x: hidden; /* Important for animations */
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-weight: 400; text-align: center; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--gold); font-weight: 400; text-align: center; }
 
-        /* --- ALL ANIMATION CLASSES --- */
-        .hidden-anim {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        /* --- NAVBAR (HEADER) --- */
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(196, 155, 102, 0.15);
         }
-        .show-anim {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--light-text); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-wa-btn { border: 1px solid var(--gold); padding: 8px 18px; border-radius: 25px; color: var(--gold) !important; display: flex; align-items: center; gap: 8px; }
+        .nav-wa-btn:hover { background: var(--gold); color: var(--dark-bg) !important; }
+
+        /* --- ANIMATIONS --- */
+        .hidden-anim { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .show-anim { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
 
-        /* --- Floating WhatsApp Button Animation --- */
+        /* Floating WA Button */
         .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            z-index: 1000;
-            animation: pulse-wa 2s infinite;
+            position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 1000; animation: pulse-wa 2s infinite;
         }
         @keyframes pulse-wa {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -64,69 +66,92 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Hero Section */
+        /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(15, 13, 12, 0.7), rgba(15, 13, 12, 0.9)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600') center/cover;
-            padding: 120px 20px;
+            background: linear-gradient(rgba(12, 10, 9, 0.8), rgba(12, 10, 9, 0.95)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600') center/cover;
+            padding: 160px 20px 100px; /* Extra top padding for navbar */
             text-align: center;
-            border-bottom: 1px solid rgba(200, 169, 126, 0.2);
-            animation: fadeInHero 1.5s ease-out;
+            min-height: 80vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-bottom: 1px solid rgba(196, 155, 102, 0.1);
         }
-        @keyframes fadeInHero { from { opacity: 0; } to { opacity: 1; } }
-        
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero h3 { font-style: italic; font-size: 1.5rem; margin-bottom: 20px; }
-        .hero p { max-width: 600px; margin: 0 auto 30px; line-height: 1.6; color: #b5a99d; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; letter-spacing: 1px; }
+        .hero h3 { font-style: italic; font-size: 1.5rem; margin-bottom: 20px; color: #a3896c; }
+        .hero p { max-width: 600px; margin: 0 auto 30px; line-height: 1.8; color: #b5a99d; }
 
         .btn {
-            background: transparent; border: 1px solid var(--gold); color: var(--gold);
-            padding: 12px 30px; font-family: 'Lato', sans-serif; text-transform: uppercase;
-            letter-spacing: 1px; cursor: pointer; transition: 0.3s; margin: 5px; text-decoration: none; display: inline-block;
+            background: rgba(196, 155, 102, 0.1); border: 1px solid var(--gold); color: var(--gold);
+            padding: 12px 35px; font-family: 'Lato', sans-serif; text-transform: uppercase;
+            letter-spacing: 2px; cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-block; margin: 10px;
         }
         .btn:hover, .btn-solid { background: var(--gold); color: var(--dark-bg); }
 
-        /* Sections */
-        section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid rgba(200, 169, 126, 0.1); }
-        .section-title { font-size: 2.5rem; margin-bottom: 40px; }
+        /* --- GENERAL SECTIONS --- */
+        section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid rgba(196, 155, 102, 0.08); }
+        .section-title { font-size: 2.8rem; margin-bottom: 10px; }
+        .section-subtitle { font-style: italic; color: #a3896c; text-align: center; margin-bottom: 40px; font-family: 'Playfair Display', serif; }
 
-        /* Grids & Flexboxes */
-        .about-grid { display: flex; align-items: center; gap: 40px; }
-        .about-img { flex: 1; width: 100%; border: 2px solid rgba(200, 169, 126, 0.3); border-radius: 5px; }
-        .about-text { flex: 1; line-height: 1.8; text-align: left; }
+        /* --- ABOUT --- */
+        .about-grid { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .about-img { flex: 1 1 400px; width: 100%; border: 1px solid var(--gold); padding: 10px; border-radius: 2px; }
+        .about-text { flex: 1 1 400px; line-height: 1.8; text-align: left; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        
-        /* Menu Item Hover Animation */
-        .menu-card { background: rgba(200, 169, 126, 0.03); border: 1px solid rgba(200, 169, 126, 0.2); padding: 20px; border-radius: 8px; text-align: center; transition: transform 0.4s, box-shadow 0.4s; }
-        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(200, 169, 126, 0.1); border-color: var(--gold); }
-        .menu-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        /* --- SERVICES (Pill Design like reference) --- */
+        .services-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .service-box { border: 1px solid rgba(196, 155, 102, 0.4); padding: 12px 30px; border-radius: 30px; font-family: 'Lato', sans-serif; font-size: 1rem; color: #d0c8c0; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .service-box:hover { border-color: var(--gold); background: rgba(196, 155, 102, 0.05); color: var(--gold); }
 
-        /* Services & Facilities */
-        .services-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .service-box { border: 1px solid rgba(200, 169, 126, 0.4); padding: 15px 25px; border-radius: 4px; font-family: 'Playfair Display', serif; font-size: 1.1rem; transition: background 0.3s; }
-        .service-box:hover { background: rgba(200, 169, 126, 0.1); }
+        /* --- GALLERY --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border: 1px solid rgba(196, 155, 102, 0.2); transition: 0.4s; cursor: pointer; filter: brightness(0.7); }
+        .gallery-img:hover { filter: brightness(1.1); border-color: var(--gold); }
 
-        /* Gallery Grid */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; transition: 0.4s; cursor: pointer; filter: grayscale(30%); }
-        .gallery-img:hover { filter: grayscale(0%); transform: scale(1.03); }
+        /* --- MENU HIGHLIGHTS --- */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .menu-card { text-align: center; padding: 20px; background: rgba(196, 155, 102, 0.02); border: 1px solid rgba(196, 155, 102, 0.1); transition: 0.3s; }
+        .menu-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .menu-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--gold); }
 
-        /* Reviews Section */
-        .review-box { background: rgba(200, 169, 126, 0.05); padding: 25px; border-left: 3px solid var(--gold); text-align: left; font-style: italic; position: relative; }
-        .review-box::before { content: "“"; font-size: 4rem; color: rgba(200, 169, 126, 0.2); position: absolute; top: -10px; left: 10px; font-family: serif; }
-
-        /* Contact & Booking Split */
-        .split-section { display: flex; gap: 50px; text-align: left; }
-        .split-half { flex: 1; }
-        .booking-form { background: rgba(200, 169, 126, 0.05); padding: 30px; border: 1px solid rgba(200, 169, 126, 0.2); border-radius: 5px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(200, 169, 126, 0.4); color: white; font-family: 'Lato', sans-serif; }
+        /* --- SPLIT BOOKING & CONTACT --- */
+        .split-section { display: flex; gap: 50px; flex-wrap: wrap; }
+        .split-half { flex: 1 1 400px; }
+        .booking-form { background: rgba(196, 155, 102, 0.03); padding: 35px; border: 1px solid rgba(196, 155, 102, 0.2); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; background: transparent; border: 1px solid rgba(196, 155, 102, 0.3); color: white; font-family: 'Lato', sans-serif; }
         .form-group input:focus { outline: none; border-color: var(--gold); }
 
-        @media (max-width: 768px) { .about-grid, .split-section { flex-direction: column; } .about-text h2 { text-align: center; } }
+        /* Reviews */
+        .review-box { padding: 20px; border-left: 2px solid var(--gold); font-style: italic; color: #b5a99d; margin-bottom: 20px; }
+
+        /* Footer */
+        footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #666; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .nav-links { display: none; /* Hides text links on mobile to keep it clean, only logo and WA button remain */ }
+            .hero h1 { font-size: 2.8rem; }
+            .hero { padding-top: 120px; }
+            .section-title { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <a href="#" class="nav-logo">MAYBAC</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="https://wa.me/918140608376" target="_blank" class="nav-wa-btn">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+    </nav>
 
     <a href="https://wa.me/918140608376" target="_blank" class="whatsapp-float">
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
@@ -135,59 +160,47 @@
     </a>
 
     <header class="hero">
-        <h1>Maybac</h1>
-        <h3>Luxury Café & Pâtisserie</h3>
-        <p>Experience Refined Indulgence. A luxurious café located in the heart of Vesu.</p>
-        <a href="#menu" class="btn">View Menu</a>
-        <a href="#booking" class="btn btn-solid">Book Table</a>
+        <h1 class="hidden-anim">Luxury Café & Pâtisserie<br>in Surat</h1>
+        <h3 class="hidden-anim delay-1">Experience Refined Indulgence</h3>
+        <p class="hidden-anim delay-2">Maybac is a luxurious café & pâtisserie located in the heart of Vesu, offering an elegant atmosphere, gourmet coffees, and exquisite desserts.</p>
+        <div class="hidden-anim delay-2">
+            <a href="#menu" class="btn">View Menu</a>
+            <a href="#contact" class="btn btn-solid">Book Table</a>
+        </div>
     </header>
 
     <section id="about" class="hidden-anim">
+        <h2 class="section-title">About Us</h2>
         <div class="about-grid">
             <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800" alt="Maybac Interior" class="about-img hidden-anim delay-1">
             <div class="about-text hidden-anim delay-2">
-                <h2 style="text-align: left; color: var(--gold); margin-bottom: 20px;">About Us</h2>
-                <p>Maybac is a luxury café & pâtisserie in Vesu, Surat—known for premium desserts, coffee, and a classy ambience. Perfect for dates, celebrations, and late-night dessert cravings.</p>
+                <p>Maybac is a luxury café & pâtisserie in Vesu, Surat—known for premium desserts, coffee, and a classy ambience. Perfect for dates, meetups, and late-night indulgence.</p>
                 <br>
-                <p>We offer finely crafted desserts, gourmet coffees, and exquisite light bites made with the finest ingredients, providing a refined indulgent experience.</p>
+                <p>Our finely crafted desserts, gourmet coffees, and exquisite light bites are made with the finest ingredients, providing a refined indulgent experience.</p>
+                <br>
+                <a href="#contact" class="btn">Learn More</a>
             </div>
         </div>
     </section>
 
     <section id="services" class="hidden-anim">
         <h2 class="section-title">Our Services</h2>
+        <h4 class="section-subtitle">Indulge in Luxury</h4>
+        
         <div class="services-container hidden-anim delay-1">
-            <div class="service-box">🥗 Jain Food</div>
+            <div class="service-box">🥬 Jain Food</div>
             <div class="service-box">📶 Free Wi-Fi</div>
             <div class="service-box">🪑 Reservations</div>
             <div class="service-box">🅿️ Parking Available</div>
-            <div class="service-box">🚬 Smoking Area</div>
         </div>
-    </section>
-
-    <section id="menu" class="hidden-anim">
-        <h2 class="section-title">Signature Delights</h2>
-        <div class="grid-3">
-            <div class="menu-card hidden-anim delay-1">
-                <img src="https://images.unsplash.com/photo-1571115177098-24c428132427?auto=format&fit=crop&w=500" alt="Pastry">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Luxury Pastries</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem;">Made with rich Belgian chocolate and premium ingredients.</p>
-            </div>
-            <div class="menu-card hidden-anim delay-2">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500" alt="Coffee">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Artisan Coffee</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem;">Freshly roasted beans for the perfect gourmet blend.</p>
-            </div>
-            <div class="menu-card hidden-anim delay-1">
-                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=500" alt="Dessert">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Continental Bites</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem;">Exquisite light bites crafted for a refined palate.</p>
-            </div>
-        </div>
+        <p style="text-align: center; color: #888; font-size: 0.9rem;" class="hidden-anim delay-2">
+            ✓ Smoking Area &nbsp;&nbsp; ✓ Luxury Ambience &nbsp;&nbsp; ✓ Late Night
+        </p>
     </section>
 
     <section id="gallery" class="hidden-anim">
-        <h2 class="section-title">Our Ambience</h2>
+        <h2 class="section-title">Gallery</h2>
+        <h4 class="section-subtitle">Our Ambience & Delights</h4>
         <div class="gallery-grid hidden-anim delay-1">
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=400" class="gallery-img">
             <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=400" class="gallery-img">
@@ -196,87 +209,103 @@
         </div>
     </section>
 
-    <section id="reviews" class="hidden-anim">
-        <h2 class="section-title">Guest Experiences</h2>
-        <div class="grid-3">
-            <div class="review-box hidden-anim delay-1">
-                <p>"The best luxury cafe in Surat. The ambience is incredibly classy, and the artisan cakes are absolutely mouth-watering!"</p>
-                <br><span style="color: var(--gold);">- Rahul Sharma ⭐⭐⭐⭐⭐</span>
-            </div>
-            <div class="review-box hidden-anim delay-2">
-                <p>"Perfect spot for a late-night date. We loved the continental dishes and the fast service. Highly recommended."</p>
-                <br><span style="color: var(--gold);">- Sneha Patel ⭐⭐⭐⭐⭐</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="booking" class="hidden-anim">
+    <section id="contact" class="hidden-anim">
         <div class="split-section">
-            <div class="split-half hidden-anim delay-1">
-                <h2 style="text-align: left; margin-bottom: 20px;">Visit Us</h2>
-                <p style="margin-bottom: 20px; color: #b5a99d;">📍 Plot No. 316, 3rd Floor, International Wealth Centre (IWC), VIP Road, Vesu, Surat, Gujarat – 395007</p>
+            
+            <div class="split-half hidden-anim delay-1" id="menu">
+                <h2 class="section-title" style="text-align: left;">Our Menu</h2>
+                <h4 class="section-subtitle" style="text-align: left; margin-bottom: 20px;">Highlights - Treat Yourself</h4>
                 
-                <h3 style="text-align: left; margin-bottom: 10px; font-size: 1.3rem;">🕒 Timings</h3>
-                <p style="margin-bottom: 20px; color: #b5a99d;">Open Daily: 11:00 AM – 1:00 AM</p>
-
-                <h3 style="text-align: left; margin-bottom: 10px; font-size: 1.3rem;">📞 Contact</h3>
-                <p style="color: #b5a99d;">+91 8140608376<br>+91 9825144196</p>
+                <div class="grid-2">
+                    <div class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1571115177098-24c428132427?auto=format&fit=crop&w=400" alt="Pastry">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 10px;">Luxury Pastries</h3>
+                        <p style="color: #888; font-size: 0.85rem; margin-bottom: 15px;">Made with rich Belgian chocolate.</p>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Order Now</a>
+                    </div>
+                    <div class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400" alt="Coffee">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 10px;">Artisan Coffee</h3>
+                        <p style="color: #888; font-size: 0.85rem; margin-bottom: 15px;">Freshly roasted premium beans.</p>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Order Now</a>
+                    </div>
+                </div>
             </div>
 
             <div class="split-half hidden-anim delay-2">
                 <div class="booking-form">
-                    <h2 style="margin-bottom: 10px;">Get In Touch</h2>
-                    <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem;">Reservation & Booking Form</p>
-                    <div class="form-group"><input type="text" id="custName" placeholder="Your Name" required></div>
-                    <div class="form-group" style="display: flex; gap: 10px;">
-                        <input type="date" id="custDate" required>
-                        <input type="time" id="custTime" required>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.2rem; margin-bottom: 5px;">Get In Touch</h2>
+                    <p style="color: #a3896c; margin-bottom: 25px; font-style: italic;">Reservation & Booking Form</p>
+                    
+                    <div class="form-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <input type="text" id="custName" placeholder="Your Name" style="flex: 1;" required>
+                        <input type="tel" id="custPhone" placeholder="Phone Number" style="flex: 1;" required>
                     </div>
-                    <div class="form-group"><input type="number" id="custGuests" placeholder="Number of Guests" required></div>
-                    <button onclick="sendToWhatsApp()" class="btn btn-solid" style="width: 100%;">Book Now via WhatsApp</button>
+                    <div class="form-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <input type="date" id="custDate" style="flex: 1;" required>
+                        <input type="time" id="custTime" style="flex: 1;" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="custRequests" rows="3" placeholder="Special Requests..."></textarea>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <p style="color: #888; font-size: 0.9rem;">Open Daily: 11:00 AM – 1:00 AM</p>
+                        <button onclick="sendToWhatsApp()" class="btn btn-solid">Book Now</button>
+                    </div>
+                </div>
+                
+                <div id="reviews" style="margin-top: 40px;">
+                    <div class="review-box">
+                        <p>"The best luxury cafe in Surat. The ambience is incredibly classy, and the artisan cakes are absolutely mouth-watering!"</p>
+                        <p style="color: var(--gold); margin-top: 10px; font-size: 0.9rem;">- Verified Guest ⭐⭐⭐⭐⭐</p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <footer>
-        <p style="text-align: center; color: #888; padding: 20px;">Powered by Netbuild.in</p>
+        <p style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px;">Maybac</p>
+        <p>📍 Plot No. 316, 3rd Floor, IWC, VIP Road, Vesu, Surat</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: #555;">Powered by Netbuild.in</p>
     </footer>
 
     <script>
-        // 1. WhatsApp Booking Logic
+        // WhatsApp Booking Function
         function sendToWhatsApp() {
             var name = document.getElementById("custName").value;
+            var phone = document.getElementById("custPhone").value;
             var date = document.getElementById("custDate").value;
             var time = document.getElementById("custTime").value;
-            var guests = document.getElementById("custGuests").value;
+            var req = document.getElementById("custRequests").value;
 
-            if(!name || !date || !time || !guests) {
-                alert("Please fill all details for booking!");
+            if(!name || !phone || !date || !time) {
+                alert("Please fill name, phone, date, and time for booking!");
                 return;
             }
 
             var text = "Hello Maybac Team! I want to book a table. %0a%0a" +
                        "*Name:* " + name + "%0a" +
+                       "*Phone:* " + phone + "%0a" +
                        "*Date:* " + date + "%0a" +
                        "*Time:* " + time + "%0a" +
-                       "*Guests:* " + guests;
+                       "*Special Request:* " + (req ? req : "None");
 
             window.open("https://wa.me/918140608376?text=" + text, "_blank");
         }
 
-        // 2. Scroll Animation Logic
+        // Intersection Observer for Animations
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Jab section screen par aaye, 'show-anim' class add kar do
                         entry.target.classList.add('show-anim');
                     }
                 });
-            }, { threshold: 0.15 }); // 15% section dikhne par animate hoga
+            }, { threshold: 0.1 }); 
 
-            // Sabhi hidden elements ko observe karo
             const hiddenElements = document.querySelectorAll('.hidden-anim');
             hiddenElements.forEach((el) => observer.observe(el));
         });
