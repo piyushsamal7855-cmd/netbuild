@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pie Café | Premium 3D Experience by NETBUILD</title>
+    <title>Pie Café | Premium 3D Pouring by NETBUILD</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -12,74 +12,52 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
-        
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #fdfaf7; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-        /* 3D Canvas Background */
-        #canvas-container { height: 600px; width: 100%; cursor: grab; outline: none; }
-
-        /* Glassmorphism Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.4s ease;
-        }
-        .glass-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-
-        /* Animations */
+        #canvas-container { height: 600px; width: 100%; cursor: grab; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .menu-card img { transition: transform 0.5s ease; }
+        .menu-card:hover img { transform: scale(1.1); }
         .pulse { animation: pulse-animation 2s infinite; }
-        @keyframes pulse-animation {
-            0% { box-shadow: 0 0 0 0px rgba(34, 197, 94, 0.7); }
-            100% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
-        }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        /* Map Hover Animation */
-        .map-container { filter: grayscale(100%); transition: filter 1s ease; }
-        .map-container:hover { filter: grayscale(0%); }
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(34, 197, 94, 0.4); } 100% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); } }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md py-4 px-8 flex justify-between items-center border-b">
-        <div class="text-2xl font-black text-amber-900 tracking-tighter">PIE CAFÉ</div>
+    <nav class="fixed w-full z-50 glass-nav py-4 px-8 flex justify-between items-center border-b">
+        <div class="text-2xl font-black text-amber-900">PIE CAFÉ</div>
         <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
-            <a href="#about" class="hover:text-amber-600 transition">About</a>
-            <a href="#menu" class="hover:text-amber-600 transition">Menu</a>
-            <a href="#gallery" class="hover:text-amber-600 transition">Gallery</a>
-            <a href="#location" class="hover:text-amber-600 transition">Location</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#location">Location</a>
         </div>
         <button onclick="document.getElementById('booking').scrollIntoView()" class="bg-amber-900 text-white px-6 py-2 rounded-full text-xs font-bold pulse">BOOK TABLE</button>
     </nav>
 
-    <section class="min-h-screen flex flex-col md:flex-row items-center pt-20 px-10 bg-[#fdfaf7]">
-        <div class="md:w-1/2 space-y-6 z-10" data-aos="fade-right">
-            <span class="text-amber-700 font-bold tracking-[0.2em] uppercase text-sm">Design by NETBUILD</span>
-            <h1 class="text-6xl md:text-8xl font-bold leading-none">Pure <br><span class="text-amber-800">Aroma.</span></h1>
-            <p class="text-stone-500 text-lg max-w-md italic">Surat's premium café experience with realistic cinematic 3D chai pouring vibes.</p>
-            <div class="flex gap-4">
-                <button class="bg-stone-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-amber-900 transition shadow-lg">Order Now</button>
-            </div>
+    <section class="min-h-screen flex flex-col md:flex-row items-center pt-24 px-10">
+        <div class="md:w-1/2 space-y-6" data-aos="fade-right">
+            <span class="text-amber-700 font-bold tracking-widest uppercase text-sm">Design by NETBUILD</span>
+            <h1 class="text-6xl md:text-8xl font-bold leading-none text-stone-900">Pure <br><span class="text-amber-800">Aroma.</span></h1>
+            <p class="text-stone-500 text-lg italic">Experience the magic of pouring perfection with realistic cinematic 3D chai vibes.</p>
+            <button class="bg-stone-900 text-white px-10 py-4 rounded-xl font-bold hover:bg-amber-900 transition shadow-2xl">Order Now</button>
         </div>
-        <div class="md:w-1/2 w-full" id="canvas-container" data-aos="zoom-in"></div>
+        <div class="md:w-1/2 w-full" id="canvas-container"></div>
     </section>
 
     <section id="about" class="py-24 bg-white">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-6">Hamari Kahani</h2>
-                <p class="text-stone-600 leading-relaxed">Gaurav Path Road, Surat mein sthit Pie Café ek jazbaat hai. Hum original taste aur sukoon dene ke liye jane jate hain.</p>
-                <div class="mt-8 grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 text-center">
+                <p class="text-stone-600 leading-relaxed mb-6">Gaurav Path Road, Surat mein sthit Pie Café ek jazbaat hai. Hum asli swad aur sukoon dene ke liye jane jate hain.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 shadow-sm text-center">
                         <h3 class="text-2xl font-bold">5.0 ⭐</h3>
-                        <p class="text-xs text-stone-500">Google Rating</p>
+                        <p class="text-xs text-stone-400 font-bold">Google Rating</p>
                     </div>
-                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 text-center">
+                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 shadow-sm text-center">
                         <h3 class="text-2xl font-bold">12 AM</h3>
-                        <p class="text-xs text-stone-500">Midnight Vibes</p>
+                        <p class="text-xs text-stone-400 font-bold">Midnight Vibes</p>
                     </div>
                 </div>
             </div>
@@ -89,22 +67,22 @@
 
     <section id="menu" class="py-24 bg-stone-100">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-16">Famous Specials</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up">
-                    <div class="h-64 rounded-3xl mb-4 bg-[url('https://images.unsplash.com/photo-1541167760496-162955ed8a9f?w=500')] bg-cover"></div>
-                    <h3 class="text-xl font-bold">Cold Coffee</h3>
-                    <p class="text-amber-800 font-bold">₹180</p>
+            <h2 class="text-4xl font-bold mb-16">Our Delicious Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-4 rounded-[2.5rem] shadow-xl menu-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?w=400" class="w-full h-56 object-cover rounded-3xl mb-4">
+                    <h4 class="text-xl font-bold">Cold Coffee</h4>
+                    <p class="text-amber-800 font-bold text-lg">₹180</p>
                 </div>
-                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-64 rounded-3xl mb-4 bg-[url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500')] bg-cover"></div>
-                    <h3 class="text-xl font-bold">Peri-Peri Pizza</h3>
-                    <p class="text-amber-800 font-bold">₹350</p>
+                <div class="bg-white p-4 rounded-[2.5rem] shadow-xl menu-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" class="w-full h-56 object-cover rounded-3xl mb-4">
+                    <h4 class="text-xl font-bold">Peri-Peri Pizza</h4>
+                    <p class="text-amber-800 font-bold text-lg">₹350</p>
                 </div>
-                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-64 rounded-3xl mb-4 bg-[url('https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=500')] bg-cover"></div>
-                    <h3 class="text-xl font-bold">Nutella Waffles</h3>
-                    <p class="text-amber-800 font-bold">₹220</p>
+                <div class="bg-white p-4 rounded-[2.5rem] shadow-xl menu-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400" class="w-full h-56 object-cover rounded-3xl mb-4">
+                    <h4 class="text-xl font-bold">Nutella Waffles</h4>
+                    <p class="text-amber-800 font-bold text-lg">₹220</p>
                 </div>
             </div>
         </div>
@@ -112,35 +90,29 @@
 
     <section id="gallery" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">Our Gallery</h2>
+            <h2 class="text-4xl font-bold text-center mb-16 underline decoration-amber-800 underline-offset-8">Gallery</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" class="w-full h-full object-cover transition duration-700 hover:scale-110"></div>
-                <div class="h-80 md:h-auto md:row-span-2 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" class="w-full h-full object-cover transition duration-700 hover:scale-110"></div>
-                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1559925393-8be0ec41b501?w=400" class="w-full h-full object-cover transition duration-700 hover:scale-110"></div>
-                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" class="w-full h-full object-cover transition duration-700 hover:scale-110"></div>
-                <div class="h-64 md:col-span-2 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="400"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" class="w-full h-full object-cover transition duration-700 hover:scale-110"></div>
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-80 md:h-auto md:row-span-2 rounded-2xl overflow-hidden shadow-lg"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg"><img src="https://images.unsplash.com/photo-1559925393-8be0ec41b501?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" class="w-full h-full object-cover"></div>
             </div>
         </div>
     </section>
 
     <section id="booking" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl shadow-2xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row border border-stone-100 bg-white">
-            <div class="md:w-1/3 bg-amber-900 p-12 text-white flex flex-col justify-center">
+        <div class="container mx-auto px-6 max-w-4xl shadow-2xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row border border-stone-100">
+            <div class="md:w-1/3 bg-amber-900 p-12 text-white flex flex-col justify-center text-center">
                 <h3 class="text-3xl font-bold mb-4">Book a Seat</h3>
-                <p class="text-sm text-amber-100 italic">Plan your visit to Surat's most loved café.</p>
+                <p class="text-sm italic">Reserve your cinematic spot.</p>
             </div>
-            <div class="md:w-2/3 p-12 relative">
+            <div class="md:w-2/3 p-12">
                 <form id="bookingForm" class="space-y-6">
-                    <input type="text" placeholder="Your Name" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800 transition">
-                    <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800 transition">
-                    <input type="datetime-local" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800 transition">
-                    <button type="submit" class="w-full bg-amber-900 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-stone-900 transition shadow-lg">Confirm Booking</button>
+                    <input type="text" placeholder="Your Name" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800">
+                    <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800">
+                    <input type="datetime-local" required class="w-full p-4 bg-stone-100 rounded-xl outline-none">
+                    <button type="submit" class="w-full bg-amber-900 text-white py-4 rounded-xl font-bold hover:bg-stone-900 transition shadow-lg">Confirm Booking</button>
                 </form>
-                <div id="successMsg" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center">
-                    <i class="fas fa-check-circle text-green-500 text-7xl mb-4"></i>
-                    <h3 class="text-3xl font-bold">Reserved!</h3>
-                    <p class="text-stone-500">Wait for our call.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -148,22 +120,17 @@
     <section id="location" class="py-20 bg-stone-50">
         <div class="container mx-auto px-6 text-center mb-10">
             <h2 class="text-3xl font-bold">Find Us</h2>
-            <p class="text-stone-500 italic">Gaurav Path Road, Pal Gam, Surat</p>
+            <p class="text-stone-500">Fire Station, Gaurav Path Road, Surat</p>
         </div>
-        <div class="h-[450px] w-full map-container shadow-inner border-y border-stone-200">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.0827253572886!2d72.77583711096057!3d21.188874182103447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04d92cf76d6bb%3A0x5d76823ca8748526!2z4KSq4KS-4KSHIOCkleCliOCp-ClhyAoUGllIENhZmUp!5e0!3m2!1shi!2sin!4v1700000000000!5m2!1shi!2sin" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+        <div class="h-[450px] w-full shadow-inner grayscale hover:grayscale-0 transition-all duration-1000">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.012316823908!2d72.77884487503612!3d21.19166948049688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e67cf75b6bb%3A0x7d6c223c6a348526!2z4KSq4KS-4KSHIOCkleCliOCp-ClhyAoUGllIENhZsOpKQ!5e0!3m2!1sen!2sin!4v1700000000000" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
-    <div id="aiChat" class="fixed bottom-24 right-8 w-72 bg-white shadow-2xl rounded-2xl hidden z-50 border">
-        <div class="bg-amber-900 p-4 text-white rounded-t-2xl flex justify-between"><span>PieBot AI</span><button onclick="toggleChat()">×</button></div>
-        <div class="h-48 p-4 text-sm bg-stone-50 italic text-stone-400">Try: 'Order Pizza'</div>
-        <div class="p-2 border-t"><input type="text" placeholder="Type here..." class="w-full p-2 text-xs outline-none"></div>
-    </div>
-
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <button onclick="toggleChat()" class="bg-stone-900 text-white w-14 h-14 rounded-full shadow-xl hover:scale-110 transition flex items-center justify-center"><i class="fas fa-robot text-xl"></i></button>
-        <a href="https://wa.me/918141957957" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-xl hover:scale-110 transition flex items-center justify-center pulse"><i class="fab fa-whatsapp text-2xl"></i></a>
+        <a href="https://wa.me/918141957957" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl hover:scale-110 transition flex items-center justify-center pulse">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
     </div>
 
     <footer class="py-12 bg-white text-center border-t border-stone-100">
@@ -173,15 +140,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        function toggleChat() { document.getElementById('aiChat').classList.toggle('hidden'); }
-        
-        document.getElementById('bookingForm').onsubmit = (e) => {
-            e.preventDefault();
-            document.getElementById('bookingForm').classList.add('hidden');
-            document.getElementById('successMsg').classList.remove('hidden');
-        };
 
-        // --- REALISTIC CINEMATIC CHAI POURING ANIMATION (Three.js) ---
+        // --- REALISTIC CINEMATIC CHAI POURING ANIMATION ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(40, container.clientWidth/container.clientHeight, 0.1, 1000);
@@ -194,59 +154,57 @@
         const cupGroup = new THREE.Group();
         const cupMat = new THREE.MeshPhysicalMaterial({ color: 0xc48c5b, roughness: 0.1, metalness: 0.1 });
         const cupBody = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 1.8, 3.8, 64), cupMat);
-        const handle = new THREE.Mesh(new THREE.TorusGeometry(1, 0.25, 16, 100, Math.PI), cupMat);
-        handle.position.set(2, 0, 0); handle.rotation.z = -Math.PI/2;
-        cupGroup.add(cupBody, handle);
+        const cupHandle = new THREE.Mesh(new THREE.TorusGeometry(1, 0.25, 16, 100, Math.PI), cupMat);
+        cupHandle.position.set(2, 0, 0); cupHandle.rotation.z = -Math.PI/2;
+        cupGroup.add(cupBody, cupHandle);
         scene.add(cupGroup);
 
         // Chai Liquid Surface
-        const chaiSurface = new THREE.Mesh(
+        const liquidSurface = new THREE.Mesh(
             new THREE.CylinderGeometry(2.2, 2.2, 0.1, 32),
             new THREE.MeshStandardMaterial({ color: 0xb57b45, roughness: 0.3 })
         );
-        chaiSurface.position.y = 1.7; cupGroup.add(chaiSurface);
+        liquidSurface.position.y = 1.7; cupGroup.add(liquidSurface);
 
-        // THE POURING STREAM (Cinematic Flow)
-        const streamGeo = new THREE.CylinderGeometry(0.25, 0.4, 15, 16);
-        const streamMat = new THREE.MeshPhongMaterial({ color: 0xb57b45, shininess: 100, transparent: true, opacity: 0.95 });
+        // THE POURING STREAM
+        const streamGeo = new THREE.CylinderGeometry(0.2, 0.35, 12, 16);
+        const streamMat = new THREE.MeshPhongMaterial({ color: 0xb57b45, shininess: 80, transparent: true, opacity: 0.9 });
         const stream = new THREE.Mesh(streamGeo, streamMat);
-        stream.position.set(0, 9, 0); scene.add(stream);
+        stream.position.set(0, 7, 0); scene.add(stream);
 
-        // SPLASH PARTICLES (Dynamic Drops)
-        const pCount = 200;
-        const pGeo = new THREE.BufferGeometry();
-        const pPos = new Float32Array(pCount * 3);
-        const pVel = new Float32Array(pCount * 3);
-        for(let i=0; i<pCount; i++) {
-            pPos[i*3]=0; pPos[i*3+1]=1.8; pPos[i*3+2]=0;
-            pVel[i*3]=(Math.random()-0.5)*0.15; pVel[i*3+1]=Math.random()*0.2; pVel[i*3+2]=(Math.random()-0.5)*0.15;
+        // DYNAMIC SPLASH DROPS
+        const splashCount = 100;
+        const splashGeo = new THREE.BufferGeometry();
+        const splashPos = new Float32Array(splashCount * 3);
+        const splashVel = new Float32Array(splashCount * 3);
+        for(let i=0; i<splashCount; i++) {
+            splashPos[i*3]=0; splashPos[i*3+1]=1.8; splashPos[i*3+2]=0;
+            splashVel[i*3]=(Math.random()-0.5)*0.1; splashVel[i*3+1]=Math.random()*0.15; splashVel[i*3+2]=(Math.random()-0.5)*0.1;
         }
-        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-        const pMat = new THREE.PointsMaterial({ color: 0xb57b45, size: 0.08, transparent: true, opacity: 0.8 });
-        const splashParticles = new THREE.Points(pGeo, pMat);
-        scene.add(splashParticles);
+        splashGeo.setAttribute('position', new THREE.BufferAttribute(splashPos, 3));
+        const splashMat = new THREE.PointsMaterial({ color: 0xb57b45, size: 0.08, transparent: true, opacity: 0.8 });
+        const splashes = new THREE.Points(splashGeo, splashMat);
+        scene.add(splashes);
 
         // Lights
-        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-        const sLight = new THREE.SpotLight(0xffffff, 1.5); sLight.position.set(10, 15, 10); scene.add(sLight);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+        const spotLight = new THREE.SpotLight(0xffffff, 1); spotLight.position.set(5, 10, 5); scene.add(spotLight);
 
-        camera.position.set(0, 5, 13); camera.lookAt(0, 1, 0);
+        camera.position.set(0, 5, 12); camera.lookAt(0, 1, 0);
 
         function animate() {
             requestAnimationFrame(animate);
-            stream.rotation.y += 0.05;
-            stream.position.x = Math.sin(Date.now()*0.003)*0.04;
-            
-            const posArr = splashParticles.geometry.attributes.position.array;
-            for(let i=0; i<pCount; i++) {
-                posArr[i*3]+=pVel[i*3]; posArr[i*3+1]+=pVel[i*3+1]; posArr[i*3+2]+=pVel[i*3+2];
-                pVel[i*3+1]-=0.008; // Gravity
-                if(posArr[i*3+1]<1.8) {
-                    posArr[i*3]=(Math.random()-0.5)*0.5; posArr[i*3+1]=1.8; posArr[i*3+2]=(Math.random()-0.5)*0.5;
-                    pVel[i*3+1]=Math.random()*0.2;
+            stream.rotation.y += 0.02;
+            const sPos = splashes.geometry.attributes.position.array;
+            for(let i=0; i<splashCount; i++) {
+                sPos[i*3]+=splashVel[i*3]; sPos[i*3+1]+=splashVel[i*3+1]; sPos[i*3+2]+=splashVel[i*3+2];
+                splashVel[i*3+1]-=0.005; // Gravity
+                if(sPos[i*3+1]<1.8) {
+                    sPos[i*3]=(Math.random()-0.5)*0.4; sPos[i*3+1]=1.8; sPos[i*3+2]=(Math.random()-0.5)*0.4;
+                    splashVel[i*3+1]=Math.random()*0.15;
                 }
             }
-            splashParticles.geometry.attributes.position.needsUpdate = true;
+            splashes.geometry.attributes.position.needsUpdate = true;
             cupGroup.rotation.y = Math.sin(Date.now()*0.001)*0.2;
             renderer.render(scene, camera);
         }
