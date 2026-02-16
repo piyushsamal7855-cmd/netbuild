@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Maybac is a luxury café & pâtisserie in Vesu, Surat—known for premium desserts, coffee, and a classy ambience. Perfect for dates, celebrations, and late-night dessert cravings.">
+    <meta name="keywords" content="Luxury cafe in Vesu Surat, Patisserie in Surat, Desserts & Coffee Surat, Maybac IWC VIP Road, Late night cafe Surat">
+    <title>Maybac - Luxury Café & Pâtisserie in Surat</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C8A97E;
+            --dark-bg: #0f0d0c; /* Dark base replacing marble */
+            --light-text: #e0d8d0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            /* Adds a subtle marble-like texture effect using CSS gradient */
+            background-image: repeating-linear-gradient(45deg, rgba(200,169,126,0.03) 0px, rgba(200,169,126,0.03) 2px, transparent 2px, transparent 10px);
+            color: var(--light-text);
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(15, 13, 12, 0.7), rgba(15, 13, 12, 0.9)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600') center/cover;
+            padding: 100px 20px;
+            border-bottom: 1px solid rgba(200, 169, 126, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: #b5a99d;
+        }
+
+        .btn {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 12px 30px;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover, .btn-solid {
+            background: var(--gold);
+            color: var(--dark-bg);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(200, 169, 126, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .about-img {
+            flex: 1;
+            width: 100%;
+            border: 2px solid rgba(200, 169, 126, 0.3);
+            border-radius: 5px;
+        }
+
+        .about-text {
+            flex: 1;
+            line-height: 1.8;
+        }
+
+        /* --- Services --- */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-box {
+            border: 1px solid rgba(200, 169, 126, 0.4);
+            padding: 15px 25px;
+            border-radius: 4px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }
+
+        /* --- Split Section: Menu & Contact --- */
+        .split-section {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .split-half {
+            flex: 1;
+        }
+
+        /* --- Form Styling --- */
+        .booking-form {
+            background: rgba(200, 169, 126, 0.05);
+            padding: 30px;
+            border: 1px solid rgba(200, 169, 126, 0.2);
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid rgba(200, 169, 126, 0.4);
+            color: white;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid, .split-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Maybac</h1>
+        <h3>Luxury Café & Pâtisserie in Surat</h3>
+        <p>Experience Refined Indulgence. A luxurious café located in the heart of Vesu, offering an elegant and upscale atmosphere.</p>
+        <a href="#menu" class="btn">View Menu</a>
+        <a href="#contact" class="btn btn-solid">Book Table</a>
+    </header>
+
+    <section id="about">
+        <div class="about-grid">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800" alt="Maybac Interior" class="about-img">
+            <div class="about-text">
+                <h2 class="section-title">About Us</h2>
+                <p>Maybac is a luxury café & pâtisserie in Vesu, Surat—known for premium desserts, coffee, and a classy ambience. Perfect for dates, celebrations, and late-night dessert cravings.</p>
+                <br>
+                <p>We offer finely crafted desserts, gourmet coffees, and exquisite light bites made with the finest ingredients, providing a refined indulgent experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Indulge in Luxury</h3>
+        <div class="services-container">
+            <div class="service-box">🥗 Jain Food</div>
+            <div class="service-box">📶 Free Wi-Fi</div>
+            <div class="service-box">🪑 Reservations</div>
+            <div class="service-box">🅿️ Parking Available</div>
+            <div class="service-box">🚬 Smoking Area</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="split-section">
+            
+            <div class="split-half">
+                <h2 class="section-title" style="margin-bottom: 10px;">Visit Us</h2>
+                <p style="margin-bottom: 20px; color: #b5a99d;">Plot No. 316, 3rd Floor, International Wealth Centre (IWC), VIP Road, Vesu, Surat, Gujarat – 395007</p>
+                
+                <h3 style="margin-bottom: 10px; font-size: 1.3rem;">Timings</h3>
+                <p style="margin-bottom: 20px; color: #b5a99d;">Open Daily: 11:00 AM – 1:00 AM</p>
+
+                <h3 style="margin-bottom: 10px; font-size: 1.3rem;">Ratings</h3>
+                <p style="color: #b5a99d;">⭐ 4.4 / 5 (Loved by our guests)</p>
+            </div>
+
+            <div class="split-half">
+                <div class="booking-form">
+                    <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">Get In Touch</h2>
+                    <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem;">Reservation & Booking Form</p>
+                    
+                    <div class="form-group">
+                        <input type="text" id="custName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group" style="display: flex; gap: 10px;">
+                        <input type="date" id="custDate" required>
+                        <input type="time" id="custTime" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="custGuests" placeholder="Number of Guests" required>
+                    </div>
+                    <button onclick="sendToWhatsApp()" class="btn btn-solid" style="width: 100%;">Book Now via WhatsApp</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p><span>Maybac</span> Luxury Café & Pâtisserie</p>
+        <p>+91 81406 08376 | +91 98251 44196</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Powered by Netbuild.in</p>
+    </footer>
+
+    <script>
+        function sendToWhatsApp() {
+            var name = document.getElementById("custName").value;
+            var date = document.getElementById("custDate").value;
+            var time = document.getElementById("custTime").value;
+            var guests = document.getElementById("custGuests").value;
+
+            if(name === "" || date === "" || time === "" || guests === "") {
+                alert("Please fill all details for booking!");
+                return;
+            }
+
+            var whatsappNumber = "918140608376"; // Client's number
+            var text = "Hello Maybac Team! I want to book a table. %0a%0a" +
+                       "*Name:* " + name + "%0a" +
+                       "*Date:* " + date + "%0a" +
+                       "*Time:* " + time + "%0a" +
+                       "*Guests:* " + guests + "%0a%0a" +
+                       "Please confirm my booking.";
+
+            var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
