@@ -3,155 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pie Café Premium 3D</title>
+<title>Pie Café 3D AI Demo</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
-body{background:#0f001f;color:white;overflow-x:hidden}
-
-/* VIDEO HERO */
-.hero{
-position:relative;
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#0f001f,#1a0033);
+color:white;
+overflow-x:hidden;
 }
 
-.hero video{
-position:absolute;
-top:0;left:0;
-width:100%;height:100%;
-object-fit:cover;
-z-index:-1;
+/* HERO */
+.hero{
+text-align:center;
+padding:60px 20px;
 }
 
 .hero h1{
-font-size:60px;
+font-size:50px;
 background:linear-gradient(90deg,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* 3D CANVAS */
+/* 3D Container */
 #coffee3d{
 width:300px;
 height:300px;
-margin-top:20px;
+margin:30px auto;
 }
 
-/* MENU */
-.menu{
-padding:60px 20px;
-text-align:center;
-}
-
-.menu-items{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-margin-top:40px;
-}
-
-.item{
-background:rgba(255,255,255,0.1);
-padding:20px;
+/* CHATBOT */
+.chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:340px;
+background:#1a0033;
 border-radius:15px;
-width:200px;
+box-shadow:0 0 25px #ff00ff;
+overflow:hidden;
+}
+
+.header{
+background:#ff00ff;
+padding:10px;
+text-align:center;
+font-weight:bold;
+}
+
+.messages{
+height:260px;
+overflow-y:auto;
+padding:10px;
+font-size:14px;
+}
+
+.input-area{
+display:flex;
+}
+
+input{
+flex:1;
+padding:10px;
+border:none;
+outline:none;
 }
 
 button{
-padding:8px 15px;
+padding:10px;
 border:none;
-border-radius:20px;
 background:#ff00ff;
 color:white;
 cursor:pointer;
-margin-top:10px;
-}
-
-/* CART */
-.cart{
-position:fixed;
-right:20px;
-top:100px;
-background:rgba(0,0,0,0.7);
-padding:20px;
-border-radius:15px;
-width:250px;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#111;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
-</audio>
-
-<section class="hero">
-<video autoplay muted loop>
-<source src="https://cdn.coverr.co/videos/coverr-coffee-making-1574/1080p.mp4" type="video/mp4">
-</video>
-
+<div class="hero">
 <h1>Pie Café</h1>
-<p>Premium 3D Experience</p>
-
+<p>3D AI Powered Ordering Experience</p>
 <div id="coffee3d"></div>
-</section>
-
-<section class="menu">
-<h2>Order Now</h2>
-<div class="menu-items">
-
-<div class="item">
-<h3>Cappuccino</h3>
-<p>₹150</p>
-<button onclick="addToCart('Cappuccino',150)">Add</button>
 </div>
 
-<div class="item">
-<h3>Brownie</h3>
-<p>₹120</p>
-<button onclick="addToCart('Brownie',120)">Add</button>
+<div class="chatbot">
+<div class="header">Pie Café AI</div>
+<div class="messages" id="messages">
+<p><b>AI:</b> Hello 👋 Welcome! Type menu to see items.</p>
 </div>
-
-<div class="item">
-<h3>Pizza</h3>
-<p>₹250</p>
-<button onclick="addToCart('Pizza',250)">Add</button>
+<div class="input-area">
+<input type="text" id="userInput" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
 </div>
-
 </div>
-</section>
-
-<div class="cart">
-<h3>Cart</h3>
-<ul id="cartItems"></ul>
-<p>Total: ₹<span id="total">0</span></p>
-<button onclick="payNow()">Pay Now</button>
-</div>
-
-<footer>
-© 2026 Pie Café | Ultimate Experience
-</footer>
 
 <script>
-/* 3D Coffee Cup */
+/* 3D COFFEE CUP */
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,1,0.1,1000);
 const renderer = new THREE.WebGLRenderer({alpha:true});
@@ -163,43 +116,87 @@ const cupMaterial = new THREE.MeshStandardMaterial({color:0xffffff});
 const cup = new THREE.Mesh(cupGeometry,cupMaterial);
 scene.add(cup);
 
+/* Coffee top */
+const coffeeTopGeometry = new THREE.CircleGeometry(1,32);
+const coffeeMaterial = new THREE.MeshBasicMaterial({color:0x4b2e2e});
+const coffeeTop = new THREE.Mesh(coffeeTopGeometry,coffeeMaterial);
+coffeeTop.rotation.x = -Math.PI/2;
+coffeeTop.position.y = 1;
+scene.add(coffeeTop);
+
+/* Light */
 const light = new THREE.PointLight(0xffffff,1);
 light.position.set(5,5,5);
 scene.add(light);
 
-camera.position.z=5;
+camera.position.z = 5;
 
 function animate(){
 requestAnimationFrame(animate);
-cup.rotation.y+=0.01;
+cup.rotation.y += 0.01;
+coffeeTop.rotation.z += 0.01;
 renderer.render(scene,camera);
 }
 animate();
 
-/* CART SYSTEM */
-let total=0;
-function addToCart(name,price){
-let li=document.createElement("li");
-li.textContent=name+" - ₹"+price;
-document.getElementById("cartItems").appendChild(li);
-total+=price;
-document.getElementById("total").innerText=total;
+/* SMART AI DEMO CHATBOT */
+let total = 0;
+
+const menu = {
+"cappuccino":150,
+"brownie":120,
+"pizza":250,
+"cold coffee":180
+};
+
+function aiResponse(message){
+
+message = message.toLowerCase();
+
+if(message.includes("menu")){
+return "Our Menu: ☕ Cappuccino ₹150, 🍰 Brownie ₹120, 🍕 Pizza ₹250, 🥤 Cold Coffee ₹180";
 }
 
-/* PAYMENT */
-function payNow(){
-var options = {
-"key": "rzp_test_xxxxxxxxxx",
-"amount": total*100,
-"currency": "INR",
-"name": "Pie Café",
-"description": "Order Payment",
-"handler": function (response){
-alert("Payment Successful!");
+for(let item in menu){
+if(message.includes(item)){
+total += menu[item];
+return item + " added ✅ Total ₹" + total;
 }
-};
-var rzp = new Razorpay(options);
-rzp.open();
+}
+
+if(message.includes("total")){
+return "Your total bill is ₹" + total;
+}
+
+if(message.includes("checkout")){
+return "Click below to complete via WhatsApp.";
+}
+
+if(message.includes("hi") || message.includes("hello")){
+return "Hi 😊 What would you like to order?";
+}
+
+return "I'm your AI assistant 🤖. Type menu or order item name.";
+}
+
+function sendMessage(){
+
+let input = document.getElementById("userInput").value;
+let messages = document.getElementById("messages");
+
+messages.innerHTML += "<p><b>You:</b> "+input+"</p>";
+
+let reply = aiResponse(input);
+
+messages.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
+
+if(input.toLowerCase().includes("checkout")){
+let orderText = "My order total is ₹"+total;
+messages.innerHTML += "<p><a href='https://wa.me/918141957957?text="+encodeURIComponent(orderText)+"' target='_blank' style='color:#00ffcc;'>Complete Order on WhatsApp</a></p>";
+}
+
+document.getElementById("userInput").value="";
+messages.scrollTop = messages.scrollHeight;
 }
 </script>
 
