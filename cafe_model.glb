@@ -1,0 +1,25 @@
+// Pehle Loader define karein
+const loader = new THREE.GLTFLoader();
+
+// Model load karne ka function
+loader.load(
+    'path/to/your/cafe_model.glb', // Yahan apni file ka link dalein
+    function (gltf) {
+        const model = gltf.scene;
+        model.scale.set(1, 1, 1); // Size adjust karein
+        model.position.set(0, 0, 0); // Position set karein
+        scene.add(model);
+        
+        // Animation loop mein model ko rotate karein
+        function animate() {
+            requestAnimationFrame(animate);
+            model.rotation.y += 0.005; 
+            renderer.render(scene, camera);
+        }
+        animate();
+    },
+    undefined,
+    function (error) {
+        console.error('Model load nahi ho paya:', error);
+    }
+);
