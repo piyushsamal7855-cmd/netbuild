@@ -17,7 +17,7 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
         /* 3D Canvas Background */
-        #canvas-container { height: 550px; cursor: grab; }
+        #canvas-container { height: 550px; cursor: grab; outline: none; }
 
         /* Glassmorphism Effect */
         .glass-card {
@@ -52,8 +52,8 @@
     <section class="min-h-screen flex flex-col md:flex-row items-center pt-20 px-10 bg-[#fdfaf7]">
         <div class="md:w-1/2 space-y-6" data-aos="fade-right">
             <span class="text-amber-700 font-bold tracking-[0.2em] uppercase text-sm">Design by NETBUILD</span>
-            <h1 class="text-6xl md:text-8xl font-bold leading-none">Fresh <br><span class="text-amber-800">Brews.</span></h1>
-            <p class="text-stone-500 text-lg max-w-md italic">Surat ka sabse behtareen café experience, ab 3D vibes ke saath.</p>
+            <h1 class="text-6xl md:text-8xl font-bold leading-none">Pure <br><span class="text-amber-800">Aroma.</span></h1>
+            <p class="text-stone-500 text-lg max-w-md italic">Experience the magic of pouring perfection, ab 3D vibes ke saath.</p>
             <div class="flex gap-4">
                 <button class="bg-stone-900 text-white px-8 py-4 rounded-xl font-bold hover:shadow-2xl transition">Order Now</button>
             </div>
@@ -127,19 +127,8 @@
         </div>
     </section>
 
-    <section class="py-20 bg-stone-50">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-10">Happy Customers</h2>
-            <div class="flex space-x-6 overflow-x-auto no-scrollbar pb-10">
-                <div class="min-w-[300px] glass-card p-8 rounded-3xl shadow-lg italic">"Best Coffee in Surat!" - Raj</div>
-                <div class="min-w-[300px] glass-card p-8 rounded-3xl shadow-lg italic">"Late night vibes are amazing." - Sneha</div>
-                <div class="min-w-[300px] glass-card p-8 rounded-3xl shadow-lg italic">"Great service by Pie Café team." - Amit</div>
-            </div>
-        </div>
-    </section>
-
     <section id="booking" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl shadow-2xl rounded-[3rem] overflow-hidden flex flex-col md:row md:flex-row border">
+        <div class="container mx-auto px-6 max-w-4xl shadow-2xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row border">
             <div class="md:w-1/3 bg-amber-900 p-10 text-white">
                 <h3 class="text-2xl font-bold mb-4">Book a Seat</h3>
                 <p class="text-sm text-amber-200">Apni pasandeeda seat pehle se reserve karein.</p>
@@ -157,10 +146,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="h-96 w-full grayscale hover:grayscale-0 transition duration-1000">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.123456789!2d72.7812345!3d21.1812345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEwJzU0LjQiTiA3MsKwNDYnNTIuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" class="w-full h-full border-0"></iframe>
     </section>
 
     <div id="aiChat" class="fixed bottom-24 right-8 w-72 bg-white shadow-2xl rounded-2xl hidden z-50 border">
@@ -189,7 +174,7 @@
             document.getElementById('successMsg').classList.remove('hidden');
         };
 
-        // 3D COFFEE CUP
+        // --- UPDATED 3D POURING COFFEE ANIMATION ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.1, 1000);
@@ -197,21 +182,77 @@
         renderer.setSize(container.clientWidth, container.clientHeight);
         container.appendChild(renderer.domElement);
 
-        const group = new THREE.Group();
-        const cup = new THREE.Mesh(new THREE.CylinderGeometry(2, 1.5, 3, 32), new THREE.MeshStandardMaterial({color: 0xffffff}));
-        const liquid = new THREE.Mesh(new THREE.CylinderGeometry(1.9, 1.9, 0.1, 32), new THREE.MeshStandardMaterial({color: 0x3C2A21}));
-        liquid.position.y = 1.45;
-        group.add(cup, liquid);
-        scene.add(group, new THREE.AmbientLight(0xffffff, 0.8));
-        const pLight = new THREE.PointLight(0xffffff, 1); pLight.position.set(5,5,5); scene.add(pLight);
-        camera.position.z = 8; camera.position.y = 1;
+        // Cup Creation
+        const cupGroup = new THREE.Group();
+        const cupMat = new THREE.MeshStandardMaterial({color: 0xffffff, roughness: 0.1});
+        const cupBody = new THREE.Mesh(new THREE.CylinderGeometry(2, 1.5, 3, 32), cupMat);
+        const handle = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.2, 16, 100, Math.PI), cupMat);
+        handle.position.set(1.8, 0, 0);
+        handle.rotation.z = -Math.PI/2;
+        cupGroup.add(cupBody, handle);
+        scene.add(cupGroup);
+
+        // Coffee Surface inside cup
+        const surface = new THREE.Mesh(
+            new THREE.CylinderGeometry(1.85, 1.85, 0.2, 32),
+            new THREE.MeshStandardMaterial({color: 0x3C2A21})
+        );
+        surface.position.y = 1.4;
+        cupGroup.add(surface);
+
+        // POURING PARTICLES (Girti hui Coffee)
+        const particleCount = 120;
+        const particles = new THREE.BufferGeometry();
+        const posArray = new Float32Array(particleCount * 3);
+
+        for(let i=0; i<particleCount; i++) {
+            posArray[i*3] = (Math.random() - 0.5) * 0.15; // X
+            posArray[i*3+1] = Math.random() * 10;         // Y (Height)
+            posArray[i*3+2] = (Math.random() - 0.5) * 0.15; // Z
+        }
+
+        particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particleMat = new THREE.PointsMaterial({
+            color: 0x4b2c20, 
+            size: 0.12,
+            transparent: true,
+            opacity: 0.8
+        });
+        const coffeeStream = new THREE.Points(particles, particleMat);
+        scene.add(coffeeStream);
+
+        // Lights
+        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+        const pLight = new THREE.PointLight(0xffffff, 1.2);
+        pLight.position.set(5, 8, 5);
+        scene.add(pLight);
+
+        camera.position.set(0, 4, 10);
+        camera.lookAt(0, 0, 0);
 
         function animate() {
             requestAnimationFrame(animate);
-            group.rotation.y += 0.01;
+            
+            // Particle Falling Logic
+            const positions = coffeeStream.geometry.attributes.position.array;
+            for(let i=0; i<particleCount; i++) {
+                positions[i*3+1] -= 0.25; // Speed
+                if(positions[i*3+1] < 1.4) {
+                    positions[i*3+1] = 10; // Reset to top
+                }
+            }
+            coffeeStream.geometry.attributes.position.needsUpdate = true;
+            
+            cupGroup.rotation.y += 0.005; // Gentle rotation
             renderer.render(scene, camera);
         }
         animate();
+
+        window.onresize = () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        };
     </script>
 </body>
 </html>
