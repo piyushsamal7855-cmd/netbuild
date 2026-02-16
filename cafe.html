@@ -1,278 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrewLab - Modern Coffee Roasters</title>
+    <title>Pie Café | Official Site by NETBUILD</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Base Styles & Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #fdfaf7; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        :root {
-            --bg-color: #1a1614; /* Deep rich espresso tone */
-            --text-light: #f4ece6; /* Creamy off-white */
-            --accent-color: #d4813b; /* Copper/Caramel accent */
-            --card-bg: #28221f;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
+        .glass-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            overflow-x: hidden;
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(34, 197, 94, 0.7); }
+            100% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
         }
-
-        /* Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 5%;
-        }
-
-        .logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text-light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 3rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #a9a29e;
-            font-size: 1rem;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--accent-color);
-        }
-
-        .header-actions .btn {
-            background-color: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .header-actions .btn:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 4rem 5%;
-            min-height: 80vh;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: var(--card-bg);
-            color: var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .hero h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 5.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #a9a29e;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #b86e30;
-            transform: translateY(-3px);
-        }
-
-        .btn-secondary {
-            background-color: var(--card-bg);
-            color: var(--text-light);
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background-color: #38302c;
-        }
-
-        /* Hero Image/Visual Area */
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            position: relative;
-        }
-
-        /* This represents the "Expressive product imagery" */
-        .image-container {
-            width: 500px;
-            height: 600px;
-            background: url('https://images.unsplash.com/photo-1559525839-b184a4d698c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .floating-card {
-            position: absolute;
-            bottom: -30px;
-            left: -50px;
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .floating-card .icon {
-            background-color: var(--accent-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--bg-color);
-            font-weight: bold;
-        }
-
-        .floating-card .text h4 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .floating-card .text p {
-            font-size: 0.85rem;
-            color: #a9a29e;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body>
+<body class="bg-stone-50 text-stone-900">
 
-    <header>
-        <a href="#" class="logo">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                <line x1="6" y1="1" x2="6" y2="4"></line>
-                <line x1="10" y1="1" x2="10" y2="4"></line>
-                <line x1="14" y1="1" x2="14" y2="4"></line>
-            </svg>
-            Brew<span>Lab</span>
-        </a>
-
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Roasts</a></li>
-                <li><a href="#">Equipment</a></li>
-                <li><a href="#">Our Process</a></li>
-                <li><a href="#">Locations</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-actions">
-            <a href="#" class="btn">Shop Now</a>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md py-4 px-8 flex justify-between items-center border-b">
+        <div class="text-2xl font-black text-amber-900 tracking-tighter uppercase">Pie Café</div>
+        <div class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-widest text-stone-600">
+            <a href="#about" class="hover:text-amber-700">About</a>
+            <a href="#services" class="hover:text-amber-700">Services</a>
+            <a href="#menu" class="hover:text-amber-700">Menu</a>
+            <a href="#gallery" class="hover:text-amber-700">Gallery</a>
+            <a href="#reviews" class="hover:text-amber-700">Reviews</a>
+            <a href="#location" class="hover:text-amber-700">Location</a>
         </div>
-    </header>
+        <button onclick="document.getElementById('booking').scrollIntoView()" class="bg-amber-900 text-white px-6 py-2 rounded-full text-xs font-bold pulse uppercase tracking-tighter">Book Table</button>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge">Artisan Roasters</div>
-            <h1>Precision in <br>Every Drop.</h1>
-            <p>Welcome to BrewLab, where coffee is both an art and a science. We source the finest single-origin beans and roast them with exact precision to unlock their truest flavors.</p>
-            
-            <div class="hero-buttons">
-                <a href="#" class="btn-primary">Explore Roasts</a>
-                <a href="#" class="btn-secondary">Watch Video</a>
-            </div>
+    <section class="min-h-screen flex flex-col md:flex-row items-center pt-24 px-10 bg-[#fdfaf7] overflow-hidden">
+        <div class="md:w-1/2 space-y-6 z-10" data-aos="fade-right">
+            <span class="text-amber-700 font-bold tracking-[0.2em] uppercase text-sm">Design by NETBUILD</span>
+            <h1 class="text-6xl md:text-8xl font-bold leading-none text-stone-900">Original <br><span class="text-amber-800">Chai.</span></h1>
+            <p class="text-stone-500 text-lg max-w-md italic">Experience the magic of pouring perfection at Surat's premium café.</p>
+            <button class="bg-stone-900 text-white px-10 py-4 rounded-xl font-bold hover:bg-amber-900 transition shadow-2xl">Order Now</button>
         </div>
 
-        <div class="hero-image">
-            <div class="image-container">
-                <div class="floating-card">
-                    <div class="icon">✓</div>
-                    <div class="text">
-                        <h4>Freshly Roasted</h4>
-                        <p>Shipped within 24 hours</p>
+        <div class="md:w-1/2 w-full flex justify-center items-center" data-aos="zoom-in">
+            <video autoplay loop muted playsinline class="w-full max-w-lg rounded-[3rem] shadow-2xl border-8 border-white">
+                <source src="chai-hero.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-6">Hamari Kahani</h2>
+                <p class="text-stone-600 leading-relaxed mb-6">Pie Café Gaurav Path Road, Surat par sthit ek stylish aur cozy café hai jo apne relaxing ambience ke liye jana jata hai.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 text-center">
+                        <h3 class="text-2xl font-bold">5.0 ⭐</h3>
+                        <p class="text-xs text-stone-500 font-bold uppercase">43 Reviews</p>
                     </div>
+                    <div class="p-6 bg-stone-50 rounded-2xl border-b-4 border-amber-800 text-center">
+                        <h3 class="text-2xl font-bold">12 AM</h3>
+                        <p class="text-xs text-stone-500 font-bold uppercase">Midnight Vibes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-3xl h-96 bg-[url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800')] bg-cover shadow-2xl" data-aos="fade-left"></div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-stone-900 text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+            <div data-aos="zoom-in"><i class="fas fa-coffee text-amber-500 text-4xl mb-4"></i><h4 class="font-bold">Premium Brews</h4></div>
+            <div data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-utensils text-amber-500 text-4xl mb-4"></i><h4 class="font-bold">Continental Food</h4></div>
+            <div data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-wifi text-amber-500 text-4xl mb-4"></i><h4 class="font-bold">Free Wi-Fi</h4></div>
+            <div data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-moon text-amber-500 text-4xl mb-4"></i><h4 class="font-bold">Late Night</h4></div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 bg-stone-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-16 underline decoration-amber-800 underline-offset-8">Our Delicious Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?w=400" class="w-full h-60 object-cover rounded-3xl mb-4">
+                    <h3 class="text-xl font-bold">Cold Coffee</h3>
+                    <p class="text-amber-800 font-bold">₹180</p>
+                </div>
+                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" class="w-full h-60 object-cover rounded-3xl mb-4">
+                    <h3 class="text-xl font-bold">Peri-Peri Pizza</h3>
+                    <p class="text-amber-800 font-bold">₹350</p>
+                </div>
+                <div class="glass-card p-4 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400" class="w-full h-60 object-cover rounded-3xl mb-4">
+                    <h3 class="text-xl font-bold">Nutella Waffles</h3>
+                    <p class="text-amber-800 font-bold">₹220</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="gallery" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-12">Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-80 md:h-auto md:row-span-2 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1559925393-8be0ec41b501?w=400" class="w-full h-full object-cover"></div>
+                <div class="h-64 rounded-2xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" class="w-full h-full object-cover"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 bg-stone-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12 uppercase">What Our Fans Say</h2>
+            <div class="flex space-x-6 overflow-x-auto no-scrollbar pb-10">
+                <div class="min-w-[300px] bg-white p-8 rounded-3xl shadow-xl italic" data-aos="fade-left">
+                    "Surat ka best café for coffee and chats!" - ⭐⭐⭐⭐⭐
+                </div>
+                <div class="min-w-[300px] bg-white p-8 rounded-3xl shadow-xl italic" data-aos="fade-left" data-aos-delay="100">
+                    "Amazing ambience and friendly vibes." - ⭐⭐⭐⭐⭐
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl shadow-2xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row border">
+            <div class="md:w-1/3 bg-amber-900 p-12 text-white flex flex-col justify-center text-center">
+                <h3 class="text-3xl font-bold mb-4 uppercase">Book Seat</h3>
+                <p class="text-sm italic tracking-widest">Reserve your cinematic spot.</p>
+            </div>
+            <div class="md:w-2/3 p-12 relative">
+                <form id="bookingForm" class="space-y-6">
+                    <input type="text" placeholder="Full Name" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800 transition">
+                    <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-stone-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-800 transition">
+                    <input type="datetime-local" required class="w-full p-4 bg-stone-100 rounded-xl outline-none">
+                    <button type="submit" class="w-full bg-amber-900 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-stone-900 transition shadow-lg">Confirm Booking</button>
+                </form>
+                <div id="successMsg" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center text-center">
+                    <i class="fas fa-check-circle text-green-500 text-7xl mb-4"></i>
+                    <h3 class="text-3xl font-bold">Reserved!</h3>
+                    <p class="text-stone-500">We'll call you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-20 bg-stone-50 text-center">
+        <h2 class="text-3xl font-bold mb-8">Visit Us</h2>
+        <div class="h-[450px] w-full shadow-inner border-y border-stone-200 grayscale hover:grayscale-0 transition-all duration-1000">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.0163351984255!2d72.77583767526081!3d21.1915017804987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04d60cf76d6bb%3A0x5d76823ca8748526!2z4KSq4KS-4KSHIOCkleCliOCp-ClhyAoUGllIENhZmUp!5e0!3m2!1shi!2sin!4v1707900000000!5m2!1shi!2sin" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <a href="https://wa.me/918141957957" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl hover:scale-110 transition flex items-center justify-center pulse">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <footer class="py-12 bg-white text-center border-t border-stone-100">
+        <p class="text-stone-400 text-xs tracking-widest uppercase italic">© 2026 PIE CAFÉ | Designed & Developed by <span class="text-amber-900 font-bold">NETBUILD</span></p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        document.getElementById('bookingForm').onsubmit = (e) => {
+            e.preventDefault();
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('successMsg').classList.remove('hidden');
+        };
+    </script>
 </body>
 </html>
