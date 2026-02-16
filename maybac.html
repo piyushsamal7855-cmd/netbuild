@@ -31,11 +31,11 @@
         /* --- NAVBAR --- */
         .navbar {
             position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center; padding: 15px 50px;
+            display: flex; justify-content: space-between; align-items: center; padding: 10px 50px;
             z-index: 1000; border-bottom: 1px solid rgba(196, 155, 102, 0.15);
         }
-        /* LOGO STYLE UPDATED */
-        .nav-logo img { height: 45px; object-fit: contain; } 
+        .nav-logo { display: flex; align-items: center; justify-content: center; }
+        .nav-logo img { height: 75px; object-fit: contain; transition: 0.3s; } 
         
         .nav-links { display: flex; gap: 25px; align-items: center; }
         .nav-links a { color: var(--light-text); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
@@ -83,16 +83,25 @@
         .service-box { border: 1px solid rgba(196, 155, 102, 0.4); padding: 12px 25px; border-radius: 30px; font-size: 1rem; color: #d0c8c0; transition: 0.3s; }
         .service-box:hover { border-color: var(--gold); background: rgba(196, 155, 102, 0.05); color: var(--gold); }
 
-        /* --- MENU & ITEM SECTION --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .menu-card { background: rgba(196, 155, 102, 0.02); border: 1px solid rgba(196, 155, 102, 0.1); padding: 20px; text-align: center; transition: 0.3s; }
-        .menu-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        /* Placeholder styling in case image fails */
-        .menu-card img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--gold); background-color: #1a1614; color: #a3896c; display: flex; justify-content: center; align-items: center; font-size: 0.9rem; font-style: italic; }
+        /* --- MENU (SINGLE IMAGE UPDATE) --- */
+        .menu-single-container { text-align: center; margin-top: 20px; }
+        .menu-single-img { 
+            max-width: 100%; 
+            height: auto; 
+            border: 2px solid rgba(196, 155, 102, 0.3); 
+            border-radius: 5px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            background-color: #1a1614; 
+            color: #a3896c; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-style: italic; 
+        }
 
         /* --- GALLERY --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .gallery-img { width: 100%; height: 200px; object-fit: cover; border: 1px solid rgba(196, 155, 102, 0.2); transition: 0.4s; cursor: pointer; filter: brightness(0.7); background-color: #1a1614; color: #a3896c; font-size: 0.8rem; text-align: center; line-height: 200px; }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border: 1px solid rgba(196, 155, 102, 0.2); transition: 0.4s; cursor: pointer; filter: brightness(0.7); background-color: #1a1614; }
         .gallery-img:hover { filter: brightness(1.1); border-color: var(--gold); transform: scale(1.02); }
 
         /* --- REVIEWS --- */
@@ -123,10 +132,11 @@
 
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            .navbar { padding: 15px 20px; }
+            .navbar { justify-content: center; padding: 15px 20px; }
+            .nav-logo img { height: 75px; margin: 0 auto; }
             .nav-links { display: none; }
             .hero h1 { font-size: 2.5rem; }
-            .hero { padding-top: 140px; min-height: 70vh; }
+            .hero { padding-top: 150px; min-height: 70vh; }
             .about-grid, .split-section { flex-direction: column; gap: 40px; }
             .about-text { text-align: center; }
             .form-group input { min-width: 100%; }
@@ -196,27 +206,15 @@
     </section>
 
     <section id="menu" class="hidden-anim">
-        <h2 class="section-title">Signature Delights</h2>
-        <h4 class="section-subtitle">Highlights from our Menu</h4>
-        <div class="grid-3">
-            <div class="menu-card hidden-anim delay-1">
-                <img src="https://images.unsplash.com/photo-1571115177098-24c428132427?auto=format&fit=crop&w=500" alt="Pastry Image">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Luxury Pastries</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem; margin-bottom: 15px;">Made with rich Belgian chocolate.</p>
-                <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Order Now</a>
-            </div>
-            <div class="menu-card hidden-anim delay-1">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500" alt="Coffee Image">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Artisan Coffee</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem; margin-bottom: 15px;">Freshly roasted premium beans.</p>
-                <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Order Now</a>
-            </div>
-            <div class="menu-card hidden-anim delay-2">
-                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=500" alt="Dessert Image">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Continental Bites</h3>
-                <p style="color: #b5a99d; font-size: 0.9rem; margin-bottom: 15px;">Exquisite light bites crafted for you.</p>
-                <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Order Now</a>
-            </div>
+        <h2 class="section-title">Our Menu</h2>
+        <h4 class="section-subtitle">Explore Our Culinary Offerings</h4>
+        
+        <div class="menu-single-container hidden-anim delay-1">
+            <img src="maybac-menu.jpg" alt="Maybac Menu" class="menu-single-img">
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;" class="hidden-anim delay-2">
+            <a href="#contact" class="btn btn-solid">Order Now</a>
         </div>
     </section>
 
