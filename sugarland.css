@@ -28,108 +28,54 @@ body {
     color: var(--primary-color);
 }
 
-/* --- ORIGINAL REAL BUTTERFLY ANIMATION 🦋 --- */
+/* --- FAIL-PROOF GIF BUTTERFLY ANIMATION 🦋 --- */
 .butterflies {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
+    pointer-events: none; /* Clicking through butterflies */
     z-index: 50;
     overflow: hidden;
 }
 
-.butterfly {
+.butterfly-gif {
     position: absolute;
-    opacity: 0;
-    will-change: transform, opacity;
+    will-change: transform;
+    /* Pastel color effect match karne ke liye */
+    filter: hue-rotate(330deg) saturate(1.5);
 }
 
-/* Butterfly sizes */
-.size-1 .real-butterfly { width: 50px; height: 35px; }
-.size-2 .real-butterfly { width: 35px; height: 25px; }
-.size-3 .real-butterfly { width: 60px; height: 42px; }
-.size-4 .real-butterfly { width: 40px; height: 28px; }
+/* Size and starting points */
+.b1 { width: 55px; top: 60%; left: -100px; animation: flyRight 14s linear infinite; }
+.b2 { width: 40px; top: 15%; left: -100px; animation: flyRightCurve 22s linear infinite 5s; }
+.b3 { width: 65px; top: 35%; right: -100px; animation: flyLeft 16s linear infinite 2s; }
+.b4 { width: 45px; top: 75%; right: -100px; animation: flyLeftCurve 26s linear infinite 8s; }
 
-/* Real Photo Container */
-.real-butterfly {
-    position: relative;
-    transform-style: preserve-3d;
-    /* Hue-rotate turns the original orange photo into a pink/purple tone to match Sugar Land */
-    filter: hue-rotate(300deg) saturate(1.5) drop-shadow(0 5px 5px rgba(0,0,0,0.2));
-}
-
-/* Left & Right Wings made from splitting the original photo */
-.wing-left, .wing-right {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    /* 100% Real Butterfly PNG from Wikimedia */
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Monarch_butterfly_transparent.png');
-    background-size: 200% 100%;
-    background-repeat: no-repeat;
-}
-
-.wing-left {
-    left: 0;
-    background-position: left center;
-    transform-origin: right center;
-    animation: flap-l 0.12s infinite alternate ease-in-out;
-}
-
-.wing-right {
-    left: 50%;
-    background-position: right center;
-    transform-origin: left center;
-    animation: flap-r 0.12s infinite alternate ease-in-out;
-}
-
-/* 3D Flapping effect */
-@keyframes flap-l {
-    0% { transform: rotateY(10deg) rotateX(15deg); }
-    100% { transform: rotateY(70deg) rotateX(15deg); }
-}
-@keyframes flap-r {
-    0% { transform: rotateY(-10deg) rotateX(15deg); }
-    100% { transform: rotateY(-70deg) rotateX(15deg); }
-}
-
-/* Flying Paths */
-.b1 { bottom: 10%; left: -10%; animation: flyRight 16s linear infinite; }
-.b2 { top: 20%; left: -10%; animation: flyRightCurve 24s linear infinite 4s; }
-.b3 { bottom: 30%; right: -10%; animation: flyLeft 18s linear infinite 2s; }
-.b4 { top: 60%; right: -10%; animation: flyLeftCurve 28s linear infinite 8s; }
-
+/* Movement Animations */
 @keyframes flyRight {
-    0% { transform: translate(0, 0) rotate(25deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translate(120vw, -40vh) rotate(25deg); opacity: 0; }
+    0% { transform: translate(0, 0) rotate(15deg); }
+    100% { transform: translate(120vw, -40vh) rotate(15deg); }
 }
 
 @keyframes flyRightCurve {
-    0% { transform: translate(0, 0) rotate(15deg); opacity: 0; }
-    10% { opacity: 0.8; }
-    50% { transform: translate(60vw, 20vh) rotate(5deg); opacity: 0.8; }
-    100% { transform: translate(120vw, -10vh) rotate(15deg); opacity: 0; }
+    0% { transform: translate(0, 0) rotate(5deg); }
+    50% { transform: translate(60vw, 20vh) rotate(-5deg); }
+    100% { transform: translate(120vw, -10vh) rotate(5deg); }
 }
 
 @keyframes flyLeft {
-    0% { transform: translate(0, 0) scaleX(-1) rotate(25deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translate(-120vw, -30vh) scaleX(-1) rotate(25deg); opacity: 0; }
+    /* scaleX(-1) makes the butterfly face left */
+    0% { transform: translate(0, 0) scaleX(-1) rotate(15deg); }
+    100% { transform: translate(-120vw, -30vh) scaleX(-1) rotate(15deg); }
 }
 
 @keyframes flyLeftCurve {
-    0% { transform: translate(0, 0) scaleX(-1) rotate(10deg); opacity: 0; }
-    10% { opacity: 0.9; }
-    50% { transform: translate(-60vw, -20vh) scaleX(-1) rotate(30deg); opacity: 0.9; }
-    100% { transform: translate(-120vw, 10vh) scaleX(-1) rotate(10deg); opacity: 0; }
+    0% { transform: translate(0, 0) scaleX(-1) rotate(0deg); }
+    50% { transform: translate(-60vw, -20vh) scaleX(-1) rotate(20deg); }
+    100% { transform: translate(-120vw, 10vh) scaleX(-1) rotate(0deg); }
 }
-
 
 /* --- NAVBAR --- */
 .navbar {
@@ -561,4 +507,10 @@ footer {
         height: 50px;
         font-size: 30px;
     }
+    
+    /* Mobile ke hisab se size adjust kiya gaya hai */
+    .b1 { width: 45px; }
+    .b2 { width: 30px; }
+    .b3 { width: 50px; }
+    .b4 { width: 35px; }
 }
