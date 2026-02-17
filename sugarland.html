@@ -11,6 +11,13 @@
 </head>
 <body>
 
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fa-solid fa-cupcake fa-bounce" style="font-size: 50px; color: #FF8FAB;"></i>
+            <h3 style="margin-top: 15px; color: #4A2C2C;">Baking your experience...</h3>
+        </div>
+    </div>
+
     <div class="promo-bar">
         🎉 Special Offer: Get <strong>10% OFF</strong> on your first order! Use code: <span class="promo-code">SUGAR10</span>
     </div>
@@ -27,10 +34,9 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-actions">
             <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Design Cake</a>
@@ -59,6 +65,13 @@
         </div>
     </section>
 
+    <section class="trust-badges" data-aos="fade-up">
+        <div class="badge-item"><i class="fa-solid fa-leaf"></i><h4>100% Pure Veg</h4><p>Eggless Baking</p></div>
+        <div class="badge-item"><i class="fa-solid fa-certificate"></i><h4>FSSAI Certified</h4><p>Safe & Hygienic</p></div>
+        <div class="badge-item"><i class="fa-solid fa-truck-fast"></i><h4>Fast Delivery</h4><p>Same Day Available</p></div>
+        <div class="badge-item"><i class="fa-solid fa-star"></i><h4>Premium Quality</h4><p>Best Ingredients</p></div>
+    </section>
+
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-image" data-aos="fade-right">
@@ -67,7 +80,6 @@
             <div class="about-content" data-aos="fade-left">
                 <h2>Our <span class="highlight">Story</span></h2>
                 <p>Located in the heart of Surat, Sugar Land is more than just a bakery—it is a place where sweet memories are born. Our journey started with a simple passion for baking and a dream to bring smiles to our community.</p>
-                <p>From our daily fresh bread to our luxurious custom wedding cakes, we use only the highest quality ingredients. Every creation is 100% eggless, baked fresh daily, and crafted to perfection.</p>
                 <ul class="features-list">
                     <li><i class="fa-solid fa-check-circle highlight"></i> 100% Eggless Options</li>
                     <li><i class="fa-solid fa-check-circle highlight"></i> Freshly Baked Daily</li>
@@ -85,53 +97,17 @@
 
         <div class="menu-grid">
             <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes">
-                    <span class="price-tag">₹350</span>
-                </div>
-                <div class="card-content">
-                    <h3>Assorted Cupcake Box</h3>
-                    <p>A box of 6 delightful flavors fit for any small celebration.</p>
-                    <button class="btn-card">Order Now</button>
-                </div>
+                <div class="card-image"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes"><span class="price-tag">₹350</span></div>
+                <div class="card-content"><h3>Assorted Cupcake Box</h3><p>A box of 6 delightful flavors fit for any small celebration.</p><button class="btn-card">Order Now</button></div>
             </div>
-
             <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake">
-                    <span class="price-tag">₹850</span>
-                </div>
-                <div class="card-content">
-                    <h3>Berry Cheesecake</h3>
-                    <p>Creamy, rich cheesecake topped with fresh seasonal berries.</p>
-                    <button class="btn-card">Order Now</button>
-                </div>
+                <div class="card-image"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake"><span class="price-tag">₹850</span></div>
+                <div class="card-content"><h3>Berry Cheesecake</h3><p>Creamy, rich cheesecake topped with fresh seasonal berries.</p><button class="btn-card">Order Now</button></div>
             </div>
-
              <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake">
-                    <span class="price-tag">₹1200+</span>
-                </div>
-                <div class="card-content">
-                    <h3>Custom Birthday Cakes</h3>
-                    <p>Tell us your dream design, and we will bake it to reality.</p>
-                    <button class="btn-card">Enquire Now</button>
-                </div>
+                <div class="card-image"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake"><span class="price-tag">₹1200+</span></div>
+                <div class="card-content"><h3>Custom Birthday Cakes</h3><p>Tell us your dream design, and we will bake it to reality.</p><button class="btn-card">Enquire Now</button></div>
             </div>
-        </div>
-    </section>
-
-    <section class="gallery-section" id="gallery">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Our <span class="highlight">Creations</span></h2>
-            <p>A glimpse of happiness we baked recently</p>
-        </div>
-        <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Cake 1" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop" alt="Cake 2" data-aos="zoom-in" data-aos-delay="100">
-            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Cake 3" data-aos="zoom-in" data-aos-delay="200">
-            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Cake 4" data-aos="zoom-in" data-aos-delay="300">
         </div>
     </section>
 
@@ -152,9 +128,7 @@
                             <option value="" disabled selected>Select Size</option>
                             <option value="Round - 1/2 Kg">Round - 1/2 Kg</option>
                             <option value="Round - 1 Kg">Round - 1 Kg</option>
-                            <option value="Square - 1 Kg">Square - 1 Kg</option>
                             <option value="2 Tier - 2 Kg">2 Tier - 2 Kg</option>
-                            <option value="Custom Size">Custom Size</option>
                         </select>
                     </div>
                     <div class="input-group">
@@ -163,44 +137,37 @@
                             <option value="" disabled selected>Select Flavor</option>
                             <option value="Chocolate Truffle">Chocolate Truffle</option>
                             <option value="Red Velvet">Red Velvet</option>
-                            <option value="Vanilla Bean">Vanilla Bean</option>
                             <option value="Fresh Pineapple">Fresh Pineapple</option>
-                            <option value="Mixed Fruit">Mixed Fruit</option>
                         </select>
                     </div>
                 </div>
-                
-                <div class="form-row">
-                    <div class="input-group">
-                        <label>Frosting Color</label>
-                        <select id="frostingColor" required>
-                            <option value="" disabled selected>Select Color</option>
-                            <option value="Pastel Pink">Pastel Pink</option>
-                            <option value="Classic White">Classic White</option>
-                            <option value="Chocolate Brown">Chocolate Brown</option>
-                            <option value="Mint Green">Mint Green</option>
-                            <option value="Custom Color">Custom Color</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Toppings & Decorations</label>
-                        <select id="toppings" required>
-                            <option value="" disabled selected>Select Topping</option>
-                            <option value="Fresh Strawberries & Berries">Fresh Berries</option>
-                            <option value="Macarons & Chocolates">Macarons & Chocolates</option>
-                            <option value="Fondant Art">Fondant Art / Figures</option>
-                            <option value="Edible Flowers">Edible Flowers</option>
-                            <option value="Minimalist Smooth Finish">Minimalist Smooth Finish</option>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="input-group">
                     <label>Message on Cake & Extra Details</label>
-                    <textarea id="extraDetails" rows="2" placeholder="E.g., Happy Birthday Neha! Please make it eggless and less sweet..."></textarea>
+                    <textarea id="extraDetails" rows="2" placeholder="E.g., Happy Birthday Neha! Please make it less sweet..."></textarea>
                 </div>
                 <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Send My Design to WhatsApp</button>
             </form>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+            <p>Everything you need to know before ordering.</p>
+        </div>
+        <div class="faq-container" data-aos="fade-up">
+            <details class="faq-item">
+                <summary>Do you offer Midnight Delivery?</summary>
+                <p>Yes! We offer special midnight delivery across Surat. Please place your order at least 24 hours in advance.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are all your cakes 100% Eggless?</summary>
+                <p>Absolutely! Our entire facility is 100% pure vegetarian and eggless. You don't have to worry about a thing.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How much time do you need for a Custom Theme Cake?</summary>
+                <p>For custom fondant or multi-tier theme cakes, we request a minimum notice of 2 to 3 days to perfect the details.</p>
+            </details>
         </div>
     </section>
 
@@ -209,7 +176,6 @@
             <h2>Happy <span class="highlight">Customers</span></h2>
             <p>Rated 4.9 ⭐ by Surat's dessert lovers!</p>
         </div>
-        
         <div class="marquee-wrapper">
             <div class="marquee-track">
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
@@ -236,19 +202,44 @@
         </div>
     </section>
 
+    <section class="instagram-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Follow Us on <span class="highlight">Instagram</span></h2>
+            <p>@SugarLandBakery</p>
+        </div>
+        <div class="insta-grid">
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Ig 1"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop" alt="Ig 2"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Ig 3"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Ig 4"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+        </div>
+    </section>
+
     <section class="location-section" id="location">
         <div class="location-content" data-aos="fade-right">
             <h2>Visit <span class="highlight">Sugar Land</span></h2>
             <p>Come smell the fresh baking! We are keen to serve you our fresh delights.</p>
             <ul class="contact-info">
-                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Vanita Heights, 1203, Vesu Canal Rd, nr. Soham Circle, Althan, Surat, Gujarat 395017</span></li>
+                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Vanita Heights, 1203, Vesu Canal Rd, Althan, Surat, Gujarat</span></li>
                 <li><i class="fa-solid fa-clock highlight"></i> <span>Open Daily: 10:00 AM - 8:00 PM</span></li>
                 <li><i class="fa-solid fa-phone highlight"></i> <span>+91 75675 68060</span></li>
             </ul>
         </div>
         <div class="map-container" data-aos="fade-left">
-            <iframe src="https://maps.google.com/maps?q=Sugar+Land,+Vanita+Heights,+Vesu+Canal+Rd,+Surat&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://maps.google.com/maps?q=Vanita%20Heights,%20Vesu%20Canal%20Rd,%20Surat&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="birthday-club">
+        <div class="club-container" data-aos="zoom-in">
+            <h2>🎂 Join Our Birthday Club</h2>
+            <p>Enter your details and get a flat <strong>20% OFF</strong> coupon code during your birthday month!</p>
+            <form class="club-form" onsubmit="event.preventDefault(); alert('Yay! You are successfully registered for the Birthday Club! 🎉');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email or WhatsApp No." required>
+                <input type="month" required title="Select your birthday month">
+                <button type="submit" class="btn-primary">Join the Club</button>
+            </form>
         </div>
     </section>
 
@@ -283,25 +274,29 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 1. Initialize Scroll Animations
+        // 1. PRELOADER LOGIC (Hides after 1.5 seconds)
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                let preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 1000); 
+        });
+
+        // 2. Initialize Animations
         AOS.init({ once: true, offset: 100 });
 
-        // 2. Cake Builder Form Logic
+        // 3. Cake Builder Form
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             let size = document.getElementById('cakeSize').value;
             let flavor = document.getElementById('cakeFlavor').value;
-            let color = document.getElementById('frostingColor').value;
-            let toppings = document.getElementById('toppings').value;
             let details = document.getElementById('extraDetails').value;
-            
-            let message = `Hello Sugar Land Team! 🍰\n\nI have designed my custom cake on your website. Here are the details:\n\n*🎂 Size/Shape:* ${size}\n*🍫 Flavor:* ${flavor}\n*🎨 Frosting Color:* ${color}\n*🍒 Toppings:* ${toppings}\n*📝 Message & Extra Info:* ${details}\n\nPlease let me know the total price and delivery details!\n\n*(Also, I want to use my 10% OFF PROMO CODE: SUGAR10)*`;
-            
-            let whatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent(message);
-            window.open(whatsappURL, '_blank');
+            let message = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${size}\n*Flavor:* ${flavor}\n*Details:* ${details}\n\n(Promo Code: SUGAR10)`;
+            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(message), '_blank');
         });
 
-        // 3. Floating AI Chatbot Logic
+        // 4. Chatbot Logic
         const chatbotToggler = document.querySelector(".chatbot-toggler");
         const closeBtn = document.querySelector(".close-btn");
         const chatbox = document.querySelector(".chatbox");
@@ -311,8 +306,7 @@
         const createChatLi = (message, className) => {
             const chatLi = document.createElement("li");
             chatLi.classList.add("chat", className);
-            let chatContent = className === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
-            chatLi.innerHTML = chatContent;
+            chatLi.innerHTML = className === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
             chatLi.querySelector("p").textContent = message;
             return chatLi;
         }
@@ -321,37 +315,23 @@
             let userMessage = chatInput.value.trim();
             if(!userMessage) return;
             chatInput.value = "";
-            
-            // Append user's message
             chatbox.appendChild(createChatLi(userMessage, "outgoing"));
             chatbox.scrollTo(0, chatbox.scrollHeight);
-
-            // Simulate AI Thinking
             setTimeout(() => {
                 const incomingChatLi = createChatLi("Thinking...", "incoming");
                 chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-                
-                // AI Response & Redirect to WhatsApp
                 setTimeout(() => {
-                    incomingChatLi.querySelector("p").innerHTML = `That sounds delicious! 🍰 I am redirecting your request to our Bakery Expert on WhatsApp to finalize this for you...`;
-                    
+                    incomingChatLi.querySelector("p").innerHTML = `Redirecting to our WhatsApp Expert...`;
                     setTimeout(() => {
-                        let aiWhatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent("Hi Sugar Land! I was chatting with your AI assistant. Here is what I need: " + userMessage + "\n\n*(Also, I want to use my 10% OFF PROMO CODE: SUGAR10)*");
-                        window.open(aiWhatsappURL, '_blank');
-                    }, 1800);
-                }, 1200);
+                        window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI Assistant sent me. I need: " + userMessage), '_blank');
+                    }, 1500);
+                }, 1000);
             }, 600);
         }
 
-        // Event Listeners for Chatbot
         sendChatBtn.addEventListener("click", handleChat);
-        chatInput.addEventListener("keypress", (e) => {
-            if(e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleChat();
-            }
-        });
+        chatInput.addEventListener("keypress", (e) => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
         chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
         closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
     </script>
