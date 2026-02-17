@@ -28,7 +28,7 @@ body {
     color: var(--primary-color);
 }
 
-/* --- FAIL-PROOF GIF BUTTERFLY ANIMATION 🦋 --- */
+/* --- 100% WORKING REAL BUTTERFLY ANIMATION 🦋 --- */
 .butterflies {
     position: fixed;
     top: 0;
@@ -40,41 +40,46 @@ body {
     overflow: hidden;
 }
 
-.butterfly-gif {
+.butterfly {
     position: absolute;
     will-change: transform;
-    /* Pastel color effect match karne ke liye */
-    filter: hue-rotate(330deg) saturate(1.5);
 }
 
-/* Size and starting points */
-.b1 { width: 55px; top: 60%; left: -100px; animation: flyRight 14s linear infinite; }
-.b2 { width: 40px; top: 15%; left: -100px; animation: flyRightCurve 22s linear infinite 5s; }
-.b3 { width: 65px; top: 35%; right: -100px; animation: flyLeft 16s linear infinite 2s; }
-.b4 { width: 45px; top: 75%; right: -100px; animation: flyLeftCurve 26s linear infinite 8s; }
+.butterfly img {
+    width: 100%;
+    /* Ye filter orange photo ko aapke theme ke pink color mein badal dega */
+    filter: hue-rotate(300deg) saturate(1.8) drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    /* Ye animation 3D pankh fadfadayegi */
+    animation: flap 0.12s infinite alternate ease-in-out;
+}
 
-/* Movement Animations */
+/* 3D Wing Flap Illusion */
+@keyframes flap {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0.1); }
+}
+
+/* Sizes and Animations - Ye screen par proper angle par udengi */
+.b1 { width: 55px; top: 30%; left: -20%; animation: flyRight 14s linear infinite; }
+.b2 { width: 45px; top: 60%; right: -20%; animation: flyLeft 16s linear infinite 3s; }
+.b3 { width: 40px; top: 10%; left: -20%; animation: flyDiagonal 18s linear infinite 6s; }
+
+/* Move Across Screen Animations */
 @keyframes flyRight {
-    0% { transform: translate(0, 0) rotate(15deg); }
-    100% { transform: translate(120vw, -40vh) rotate(15deg); }
-}
-
-@keyframes flyRightCurve {
-    0% { transform: translate(0, 0) rotate(5deg); }
-    50% { transform: translate(60vw, 20vh) rotate(-5deg); }
-    100% { transform: translate(120vw, -10vh) rotate(5deg); }
+    /* 70deg rotate hone se butterfly ka munh right direction mein ho jata hai */
+    0% { transform: translateX(0) translateY(0) rotate(70deg); }
+    100% { transform: translateX(130vw) translateY(-20vh) rotate(70deg); }
 }
 
 @keyframes flyLeft {
-    /* scaleX(-1) makes the butterfly face left */
-    0% { transform: translate(0, 0) scaleX(-1) rotate(15deg); }
-    100% { transform: translate(-120vw, -30vh) scaleX(-1) rotate(15deg); }
+    /* -70deg se butterfly left dekhti hai */
+    0% { transform: translateX(0) translateY(0) rotate(-70deg); }
+    100% { transform: translateX(-130vw) translateY(20vh) rotate(-70deg); }
 }
 
-@keyframes flyLeftCurve {
-    0% { transform: translate(0, 0) scaleX(-1) rotate(0deg); }
-    50% { transform: translate(-60vw, -20vh) scaleX(-1) rotate(20deg); }
-    100% { transform: translate(-120vw, 10vh) scaleX(-1) rotate(0deg); }
+@keyframes flyDiagonal {
+    0% { transform: translateX(0) translateY(0) rotate(110deg); }
+    100% { transform: translateX(130vw) translateY(50vh) rotate(110deg); }
 }
 
 /* --- NAVBAR --- */
@@ -508,9 +513,8 @@ footer {
         font-size: 30px;
     }
     
-    /* Mobile ke hisab se size adjust kiya gaya hai */
+    /* Mobile par butterflies aur perfect dikhengi */
     .b1 { width: 45px; }
-    .b2 { width: 30px; }
-    .b3 { width: 50px; }
-    .b4 { width: 35px; }
+    .b2 { width: 35px; }
+    .b3 { width: 30px; }
 }
