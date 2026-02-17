@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugar Land - Cake & Bakery Shop</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sugarland.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" data-aos="fade-down">
         <div class="logo">
             <h2>Sugar <span class="highlight">Land</span> 🧁</h2>
         </div>
@@ -26,38 +27,31 @@
     </nav>
 
     <section class="hero" id="home">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
             <span class="badge">✨ Sweetness in Every Bite</span>
             <h1>Welcome to <span class="highlight">Sugar Land</span> Bakery</h1>
             <p>We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic for your special moments.</p>
             <div class="hero-buttons">
                 <button class="btn-primary large">View Full Menu</button>
             </div>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <h3>Today's Special</h3>
-                    <p>Red Velvet Supreme</p>
-                </div>
-            </div>
         </div>
 
-        <div class="hero-image">
+        <div class="hero-image" data-aos="fade-left" data-aos-duration="1200">
             <div class="blob"></div>
-            <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=800&auto=format&fit=crop" alt="Sugar Land Signature Cake" class="main-cake">
+            <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=800&auto=format&fit=crop" alt="Signature Cake" class="main-cake floating-anim">
         </div>
     </section>
 
     <section class="popular-section" id="menu">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2>Our Popular <span class="highlight">Treats</span></h2>
             <p>Handpicked favorites loved by our customers</p>
         </div>
 
         <div class="menu-grid">
-            <div class="menu-card">
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1614707267469-b2c3d7c56b7f?w=500&auto=format&fit=crop" alt="Cupcakes">
+                    <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes">
                     <span class="price-tag">$15.99</span>
                 </div>
                 <div class="card-content">
@@ -67,9 +61,9 @@
                 </div>
             </div>
 
-            <div class="menu-card">
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1563729768442-e08690a7cb79?w=500&auto=format&fit=crop" alt="Cheesecake">
+                    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake">
                     <span class="price-tag">$28.50</span>
                 </div>
                 <div class="card-content">
@@ -79,9 +73,9 @@
                 </div>
             </div>
 
-             <div class="menu-card">
+             <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1558961363-fa955018b3a3?w=500&auto=format&fit=crop" alt="Custom Cake">
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake">
                     <span class="price-tag">$55.00+</span>
                 </div>
                 <div class="card-content">
@@ -94,17 +88,17 @@
     </section>
 
     <section class="location-section" id="location">
-        <div class="location-content">
+        <div class="location-content" data-aos="fade-right">
             <h2>Visit <span class="highlight">Sugar Land</span></h2>
             <p>Come smell the fresh baking! We are keen to serve you our fresh delights.</p>
             
             <ul class="contact-info">
-                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Address details here, Near Landmark, Your City.</span></li>
+                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Your Street, Landmark, Sugar Land City.</span></li>
                 <li><i class="fa-solid fa-clock highlight"></i> <span>Open Daily: 9:00 AM - 9:00 PM</span></li>
             </ul>
         </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153169!3d-37.81732344202116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1656598765456!5m2!1sen!2sin" 
+        <div class="map-container" data-aos="fade-left">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d221832.22295624795!2d-95.77239021430045!3d29.60156965825227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e67142273c53%3A0xc319b25fb4702b89!2sSugar%20Land%2C%20TX%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
             width="100%" height="400" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
@@ -113,5 +107,13 @@
         <p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true, // Animation happens only once when scrolling down
+            offset: 100 // Starts animation 100px before element hits screen
+        });
+    </script>
 </body>
 </html>
