@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugar Land - Cake & Bakery Shop</title>
+    <title>Sugar Land - Premium Cake & Bakery Shop</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sugarland.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,12 +23,13 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#menu">Popular Menu</a></li>
-            <li><a href="#location">Visit Us</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
         </ul>
         <div class="nav-actions">
-            <button class="btn-login"><i class="fa-solid fa-phone"></i> Call Us</button>
-            <button class="btn-primary"><i class="fa-solid fa-cart-shopping"></i> Order Now</button>
+            <a href="#assistant" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Custom Order</a>
         </div>
     </nav>
 
@@ -38,7 +39,7 @@
             <h1>Welcome to <span class="highlight">Sugar Land</span> Bakery</h1>
             <p>We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic for your special moments.</p>
             <div class="hero-buttons">
-                <button class="btn-primary large">View Full Menu</button>
+                <a href="#menu" class="btn-primary large" style="text-decoration:none;">View Full Menu</a>
             </div>
         </div>
 
@@ -54,6 +55,24 @@
         </div>
     </section>
 
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?q=80&w=600&auto=format&fit=crop" alt="Baker working">
+            </div>
+            <div class="about-content" data-aos="fade-left">
+                <h2>Our <span class="highlight">Story</span></h2>
+                <p>Located in the heart of Surat, Sugar Land is more than just a bakery—it is a place where sweet memories are born. Our journey started with a simple passion for baking and a dream to bring smiles to our community.</p>
+                <p>From our daily fresh bread to our luxurious custom wedding cakes, we use only the highest quality ingredients. Every creation is 100% eggless, baked fresh daily, and crafted to perfection.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check-circle highlight"></i> 100% Eggless Options</li>
+                    <li><i class="fa-solid fa-check-circle highlight"></i> Freshly Baked Daily</li>
+                    <li><i class="fa-solid fa-check-circle highlight"></i> Premium Quality Ingredients</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section class="popular-section" id="menu">
         <div class="section-header" data-aos="fade-up">
             <h2>Our Popular <span class="highlight">Treats</span></h2>
@@ -64,57 +83,125 @@
             <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-image">
                     <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes">
-                    <span class="price-tag">$15.99</span>
+                    <span class="price-tag">₹350</span>
                 </div>
                 <div class="card-content">
                     <h3>Assorted Cupcake Box</h3>
                     <p>A box of 6 delightful flavors fit for any small celebration.</p>
-                    <button class="btn-card">Add to Cart +</button>
+                    <button class="btn-card">Order Now</button>
                 </div>
             </div>
 
             <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-image">
                     <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake">
-                    <span class="price-tag">$28.50</span>
+                    <span class="price-tag">₹850</span>
                 </div>
                 <div class="card-content">
                     <h3>Berry Cheesecake</h3>
                     <p>Creamy, rich cheesecake topped with fresh seasonal berries.</p>
-                    <button class="btn-card">Add to Cart +</button>
+                    <button class="btn-card">Order Now</button>
                 </div>
             </div>
 
              <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="card-image">
                     <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake">
-                    <span class="price-tag">$55.00+</span>
+                    <span class="price-tag">₹1200+</span>
                 </div>
                 <div class="card-content">
                     <h3>Custom Birthday Cakes</h3>
                     <p>Tell us your dream design, and we will bake it to reality.</p>
-                    <button class="btn-card">Enquire Now > </button>
+                    <button class="btn-card">Enquire Now</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials-section">
+    <section class="gallery-section" id="gallery">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our <span class="highlight">Creations</span></h2>
+            <p>A glimpse of happiness we baked recently</p>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Cake 1" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1558961363-fa955018b3a3?w=400&auto=format&fit=crop" alt="Cake 2" data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Cake 3" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Cake 4" data-aos="zoom-in" data-aos-delay="300">
+        </div>
+    </section>
+
+    <section class="assistant-section" id="assistant">
+        <div class="assistant-container" data-aos="fade-up">
+            <div class="assistant-header">
+                <i class="fa-solid fa-robot"></i>
+                <div>
+                    <h2>Smart Order Assistant</h2>
+                    <p>Tell me what you need, and I'll send it directly to the bakery via WhatsApp!</p>
+                </div>
+            </div>
+            <form id="aiChatForm" class="assistant-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>What's the Occasion?</label>
+                        <select id="occasion" required>
+                            <option value="" disabled selected>Select Occasion</option>
+                            <option value="Birthday">Birthday</option>
+                            <option value="Anniversary">Anniversary</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Just Craving">Just Craving</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Select Flavor</label>
+                        <select id="flavor" required>
+                            <option value="" disabled selected>Select Flavor</option>
+                            <option value="Chocolate Truffle">Chocolate Truffle</option>
+                            <option value="Red Velvet">Red Velvet</option>
+                            <option value="Black Forest">Black Forest</option>
+                            <option value="Pineapple">Pineapple</option>
+                            <option value="Custom/Other">Custom / Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Describe your dream cake (Design, Weight, Add-ons)</label>
+                    <textarea id="details" rows="3" placeholder="E.g., I want a 1kg Spider-Man theme cake with less sugar..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Generate & Send to WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="testimonials-marquee" id="reviews">
         <div class="section-header" data-aos="fade-up">
             <h2>Happy <span class="highlight">Customers</span></h2>
             <p>Rated 4.9 ⭐ by Surat's dessert lovers!</p>
         </div>
         
-        <div class="review-grid">
-            <div class="review-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Absolutely delicious! The custom cake we ordered was perfect in design and taste. Highly recommended."</p>
-                <h4>- Neha P.</h4>
-            </div>
-            <div class="review-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Best pastries in Vesu! Their cheesecake is a must-try. Always fresh and premium quality."</p>
-                <h4>- Rahul S.</h4>
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered right on time."</p><h4>- Vikram K.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The cheesecake is heaven."</p><h4>- Priya R.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Highly recommend their pastries."</p><h4>- Amit J.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Kids loved the Batman cake."</p><h4>- Sneha D.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Perfect balance of sugar."</p><h4>- Rohan B.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"My go-to bakery now."</p><h4>- Pooja V.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Excellent customer service."</p><h4>- Karan T.</h4></div>
+                
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered right on time."</p><h4>- Vikram K.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The cheesecake is heaven."</p><h4>- Priya R.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Highly recommend their pastries."</p><h4>- Amit J.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Kids loved the Batman cake."</p><h4>- Sneha D.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Perfect balance of sugar."</p><h4>- Rohan B.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"My go-to bakery now."</p><h4>- Pooja V.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Excellent customer service."</p><h4>- Karan T.</h4></div>
             </div>
         </div>
     </section>
@@ -146,9 +233,22 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true,
-            offset: 100
+        // Initialize Scroll Animations
+        AOS.init({ once: true, offset: 100 });
+
+        // AI Chatbot WhatsApp Logic
+        document.getElementById('aiChatForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Page reload hone se rokega
+            let occasion = document.getElementById('occasion').value;
+            let flavor = document.getElementById('flavor').value;
+            let details = document.getElementById('details').value;
+            
+            // Format the WhatsApp Message
+            let message = `Hello Sugar Land Team! 🍰\n\nI used your smart order form. Here is what I need:\n*Occasion:* ${occasion}\n*Flavor:* ${flavor}\n*My Requirements:* ${details}\n\nPlease let me know the price and availability!`;
+            
+            // Open WhatsApp App / Web automatically
+            let whatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent(message);
+            window.open(whatsappURL, '_blank');
         });
     </script>
 </body>
