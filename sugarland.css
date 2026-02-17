@@ -1,0 +1,304 @@
+/* --- GLOBAL VARIABLES & RESET --- */
+:root {
+    --primary-color: #FF8FAB; /* Adjusted Pink for Sugar Land theme */
+    --secondary-color: #FFC2D1; /* Lighter Pink */
+    --bg-color: #FFF9FB; /* Very light pinkish white background */
+    --text-dark: #4A2C2C; /* Dark Brownish text instead of harsh black */
+    --text-light: #8E6E6E;
+    --white: #FFFFFF;
+    --card-shadow: 0 10px 30px rgba(255, 143, 171, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(255, 249, 251, 0.9); /* Semi-transparent */
+    backdrop-filter: blur(10px);
+    position: fixed; /* Fixed navbar for modern feel */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo h2 {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+/* Buttons Global */
+.btn-primary, .btn-login, .btn-card {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(255, 143, 171, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background-color: #ff7a9e;
+    box-shadow: 0 12px 25px rgba(255, 143, 171, 0.5);
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--text-dark);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 140px 8% 60px; /* Added top padding because navbar is fixed */
+    min-height: 90vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 45%;
+}
+
+.badge {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: var(--text-light);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    padding-right: 50px;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: var(--secondary-color);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    z-index: -1;
+    opacity: 0.3;
+    right: -50px;
+    filter: blur(60px);
+}
+
+.main-cake {
+    width: 90%;
+    max-width: 550px;
+    border-radius: 30px;
+    /* Makes the image look floaty and soft */
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.05); 
+}
+
+/* --- POPULAR MENU SECTION --- */
+.popular-section {
+    padding: 80px 8%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.menu-card {
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-color);
+}
+
+.card-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.price-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.card-content p {
+    color: var(--text-light);
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.btn-card {
+    width: 100%;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+.btn-card:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* --- LOCATION SECTION --- */
+.location-section {
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background-color: #FFF0F5; /* Slightly different background */
+}
+
+.location-content {
+    flex: 1;
+}
+
+.location-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.contact-info i {
+    font-size: 24px;
+}
+
+.map-container {
+    flex: 1;
+    height: 450px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 5px solid var(--white);
+}
+
+/* Footer basic */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-light);
+    font-size: 14px;
+}
