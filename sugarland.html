@@ -29,7 +29,7 @@
             <li><a href="#reviews">Reviews</a></li>
         </ul>
         <div class="nav-actions">
-            <a href="#assistant" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Custom Order</a>
+            <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Design Cake</a>
         </div>
     </nav>
 
@@ -125,50 +125,77 @@
         </div>
         <div class="gallery-grid">
             <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Cake 1" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1558961363-fa955018b3a3?w=400&auto=format&fit=crop" alt="Cake 2" data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop" alt="Cake 2" data-aos="zoom-in" data-aos-delay="100">
             <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Cake 3" data-aos="zoom-in" data-aos-delay="200">
             <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Cake 4" data-aos="zoom-in" data-aos-delay="300">
         </div>
     </section>
 
-    <section class="assistant-section" id="assistant">
+    <section class="assistant-section" id="builder">
         <div class="assistant-container" data-aos="fade-up">
             <div class="assistant-header">
-                <i class="fa-solid fa-robot"></i>
+                <i class="fa-solid fa-cake-candles"></i>
                 <div>
-                    <h2>Smart Order Assistant</h2>
-                    <p>Tell me what you need, and I'll send it directly to the bakery via WhatsApp!</p>
+                    <h2>Design Your Dream Cake</h2>
+                    <p>Select your preferences below, and we'll send your custom design directly to our WhatsApp!</p>
                 </div>
             </div>
-            <form id="aiChatForm" class="assistant-form">
+            <form id="cakeBuilderForm" class="assistant-form">
                 <div class="form-row">
                     <div class="input-group">
-                        <label>What's the Occasion?</label>
-                        <select id="occasion" required>
-                            <option value="" disabled selected>Select Occasion</option>
-                            <option value="Birthday">Birthday</option>
-                            <option value="Anniversary">Anniversary</option>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Just Craving">Just Craving</option>
+                        <label>Cake Size & Shape</label>
+                        <select id="cakeSize" required>
+                            <option value="" disabled selected>Select Size</option>
+                            <option value="Round - 1/2 Kg">Round - 1/2 Kg</option>
+                            <option value="Round - 1 Kg">Round - 1 Kg</option>
+                            <option value="Square - 1 Kg">Square - 1 Kg</option>
+                            <option value="2 Tier - 2 Kg">2 Tier - 2 Kg</option>
+                            <option value="Custom Size">Custom Size</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label>Select Flavor</label>
-                        <select id="flavor" required>
+                        <label>Base Flavor</label>
+                        <select id="cakeFlavor" required>
                             <option value="" disabled selected>Select Flavor</option>
                             <option value="Chocolate Truffle">Chocolate Truffle</option>
                             <option value="Red Velvet">Red Velvet</option>
-                            <option value="Black Forest">Black Forest</option>
-                            <option value="Pineapple">Pineapple</option>
-                            <option value="Custom/Other">Custom / Other</option>
+                            <option value="Vanilla Bean">Vanilla Bean</option>
+                            <option value="Fresh Pineapple">Fresh Pineapple</option>
+                            <option value="Mixed Fruit">Mixed Fruit</option>
                         </select>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label>Describe your dream cake (Design, Weight, Add-ons)</label>
-                    <textarea id="details" rows="3" placeholder="E.g., I want a 1kg Spider-Man theme cake with less sugar..."></textarea>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Frosting Color</label>
+                        <select id="frostingColor" required>
+                            <option value="" disabled selected>Select Color</option>
+                            <option value="Pastel Pink">Pastel Pink</option>
+                            <option value="Classic White">Classic White</option>
+                            <option value="Chocolate Brown">Chocolate Brown</option>
+                            <option value="Mint Green">Mint Green</option>
+                            <option value="Custom Color">Custom Color</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Toppings & Decorations</label>
+                        <select id="toppings" required>
+                            <option value="" disabled selected>Select Topping</option>
+                            <option value="Fresh Strawberries & Berries">Fresh Berries</option>
+                            <option value="Macarons & Chocolates">Macarons & Chocolates</option>
+                            <option value="Fondant Art">Fondant Art / Figures</option>
+                            <option value="Edible Flowers">Edible Flowers</option>
+                            <option value="Minimalist Smooth Finish">Minimalist Smooth Finish</option>
+                        </select>
+                    </div>
                 </div>
-                <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Generate & Send to WhatsApp</button>
+
+                <div class="input-group">
+                    <label>Message on Cake & Extra Details</label>
+                    <textarea id="extraDetails" rows="2" placeholder="E.g., Happy Birthday Neha! Please make it eggless and less sweet..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Send My Design to WhatsApp</button>
             </form>
         </div>
     </section>
@@ -191,7 +218,6 @@
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Perfect balance of sugar."</p><h4>- Rohan B.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"My go-to bakery now."</p><h4>- Pooja V.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Excellent customer service."</p><h4>- Karan T.</h4></div>
-                
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
@@ -210,7 +236,6 @@
         <div class="location-content" data-aos="fade-right">
             <h2>Visit <span class="highlight">Sugar Land</span></h2>
             <p>Come smell the fresh baking! We are keen to serve you our fresh delights.</p>
-            
             <ul class="contact-info">
                 <li><i class="fa-solid fa-location-dot highlight"></i> <span>Vanita Heights, 1203, Vesu Canal Rd, nr. Soham Circle, Althan, Surat, Gujarat 395017</span></li>
                 <li><i class="fa-solid fa-clock highlight"></i> <span>Open Daily: 10:00 AM - 8:00 PM</span></li>
@@ -227,29 +252,104 @@
         <p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p>
     </footer>
 
-    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20saw%20your%20website%20and%20want%20to%20order." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float left-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <button class="chatbot-toggler">
+        <i class="fa-solid fa-robot"></i>
+    </button>
+    
+    <div class="chatbot-window">
+        <div class="chat-header">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Sugar Land AI</h3>
+            <span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <i class="fa-solid fa-robot bot-avatar"></i>
+                <p>Hi there 👋<br>I am your smart AI baking assistant. Tell me, what kind of cake are you looking for today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Type your dream cake..." spellcheck="false" required></textarea>
+            <span id="send-btn"><i class="fa-solid fa-paper-plane"></i></span>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Scroll Animations
+        // 1. Initialize Scroll Animations
         AOS.init({ once: true, offset: 100 });
 
-        // AI Chatbot WhatsApp Logic
-        document.getElementById('aiChatForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Page reload hone se rokega
-            let occasion = document.getElementById('occasion').value;
-            let flavor = document.getElementById('flavor').value;
-            let details = document.getElementById('details').value;
+        // 2. Cake Builder Form Logic
+        document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            let size = document.getElementById('cakeSize').value;
+            let flavor = document.getElementById('cakeFlavor').value;
+            let color = document.getElementById('frostingColor').value;
+            let toppings = document.getElementById('toppings').value;
+            let details = document.getElementById('extraDetails').value;
             
-            // Format the WhatsApp Message
-            let message = `Hello Sugar Land Team! 🍰\n\nI used your smart order form. Here is what I need:\n*Occasion:* ${occasion}\n*Flavor:* ${flavor}\n*My Requirements:* ${details}\n\nPlease let me know the price and availability!`;
+            let message = `Hello Sugar Land Team! 🍰\n\nI have designed my custom cake on your website. Here are the details:\n\n*🎂 Size/Shape:* ${size}\n*🍫 Flavor:* ${flavor}\n*🎨 Frosting Color:* ${color}\n*🍒 Toppings:* ${toppings}\n*📝 Message & Extra Info:* ${details}\n\nPlease let me know the total price and delivery details!`;
             
-            // Open WhatsApp App / Web automatically
             let whatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent(message);
             window.open(whatsappURL, '_blank');
         });
+
+        // 3. Floating AI Chatbot Logic
+        const chatbotToggler = document.querySelector(".chatbot-toggler");
+        const closeBtn = document.querySelector(".close-btn");
+        const chatbox = document.querySelector(".chatbox");
+        const chatInput = document.querySelector(".chat-input textarea");
+        const sendChatBtn = document.querySelector("#send-btn");
+
+        const createChatLi = (message, className) => {
+            const chatLi = document.createElement("li");
+            chatLi.classList.add("chat", className);
+            let chatContent = className === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
+            chatLi.innerHTML = chatContent;
+            chatLi.querySelector("p").textContent = message;
+            return chatLi;
+        }
+
+        const handleChat = () => {
+            let userMessage = chatInput.value.trim();
+            if(!userMessage) return;
+            chatInput.value = "";
+            
+            // Append user's message
+            chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+
+            // Simulate AI Thinking
+            setTimeout(() => {
+                const incomingChatLi = createChatLi("Thinking...", "incoming");
+                chatbox.appendChild(incomingChatLi);
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+                
+                // AI Response & Redirect to WhatsApp
+                setTimeout(() => {
+                    incomingChatLi.querySelector("p").innerHTML = `That sounds delicious! 🍰 I am redirecting your request to our Bakery Expert on WhatsApp to finalize this for you...`;
+                    
+                    setTimeout(() => {
+                        let aiWhatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent("Hi Sugar Land! I was chatting with your AI assistant. Here is what I need: " + userMessage);
+                        window.open(aiWhatsappURL, '_blank');
+                    }, 1800);
+                }, 1200);
+            }, 600);
+        }
+
+        // Event Listeners for Chatbot
+        sendChatBtn.addEventListener("click", handleChat);
+        chatInput.addEventListener("keypress", (e) => {
+            if(e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleChat();
+            }
+        });
+        chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+        closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
     </script>
 </body>
 </html>
