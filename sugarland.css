@@ -148,13 +148,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 140px 8% 60px;
+    padding: 140px 8% 120px; /* Added more bottom padding for the wave */
     min-height: 90vh;
+    position: relative; /* Crucial for wave divider positioning */
 }
 
 .hero-content {
     flex: 1;
     max-width: 45%;
+    position: relative;
+    z-index: 2;
 }
 
 .badge {
@@ -188,6 +191,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    z-index: 2;
 }
 
 .blob {
@@ -219,11 +223,35 @@ body {
     100% { transform: translateY(0px) rotate(3deg); }
 }
 
+/* --- WAVE DIVIDER --- */
+.wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+}
+
+.wave-divider .shape-fill {
+    fill: #FFE4EC; /* Matches the background of the Popular Menu section */
+}
+
 /* --- POPULAR MENU SECTION --- */
 .popular-section {
     padding: 80px 8%;
     position: relative;
     z-index: 100;
+    background-color: #FFE4EC; /* Light pastel background linking with the wave */
 }
 
 .section-header {
@@ -448,36 +476,36 @@ footer {
 }
 
 /* =========================================
-   📱 MOBILE RESPONSIVENESS (UPDATED FIX) 
+   📱 MOBILE RESPONSIVENESS (CENTER ALIGNED) 
    ========================================= */
 @media (max-width: 768px) {
-    /* Navbar fixes */
     .navbar {
         flex-direction: column;
         padding: 15px;
         gap: 15px;
     }
+    
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
     }
+
     .nav-actions {
         display: none;
     }
 
-    /* Hero Section Fixes (Center Alignment) */
     .hero {
         flex-direction: column;
-        padding: 160px 5% 50px; /* Adjusted padding */
+        padding: 180px 5% 100px; /* Space for wave at bottom */
         text-align: center;
     }
-    
+
     .hero-content {
         max-width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center; /* Forces everything to center */
+        align-items: center;
         margin-bottom: 40px;
     }
 
@@ -489,19 +517,18 @@ footer {
     .hero p {
         padding-right: 0;
         text-align: center;
-        margin: 0 auto 30px auto; /* Centers the paragraph block */
+        margin: 0 auto 30px auto;
     }
 
-    /* Fix for Cake Image sticking to the right */
     .hero-image {
         width: 100%;
-        justify-content: center; /* Pulls image to the absolute center */
+        justify-content: center;
         align-items: center;
     }
 
     .main-cake {
         width: 100%;
-        max-width: 400px; /* Prevents overflow */
+        max-width: 400px;
     }
 
     .blob {
@@ -510,7 +537,6 @@ footer {
         right: auto;
     }
 
-    /* Location Section Fixes */
     .location-section {
         flex-direction: column;
         padding: 50px 5%;
@@ -518,8 +544,8 @@ footer {
     }
 
     .contact-info li {
-        justify-content: center; /* Centers the address text */
-        text-align: left; /* Keeps icon and text aligned nicely */
+        justify-content: center;
+        text-align: left;
     }
 
     .map-container {
@@ -527,7 +553,6 @@ footer {
         height: 300px;
     }
 
-    /* WhatsApp Button Mobile Fix */
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
@@ -536,7 +561,6 @@ footer {
         font-size: 30px;
     }
     
-    /* Butterflies Mobile Fix */
     .b1 { width: 45px; }
     .b2 { width: 35px; }
     .b3 { width: 30px; }
