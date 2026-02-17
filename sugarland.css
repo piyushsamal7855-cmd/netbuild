@@ -28,7 +28,7 @@ body {
     color: var(--primary-color);
 }
 
-/* --- 100% WORKING REAL BUTTERFLY ANIMATION 🦋 --- */
+/* --- LOCAL PNG BUTTERFLY ANIMATION 🦋 --- */
 .butterflies {
     position: fixed;
     top: 0;
@@ -47,16 +47,16 @@ body {
 
 .butterfly img {
     width: 100%;
-    /* Ye filter orange photo ko aapke theme ke pink color mein badal dega */
-    filter: hue-rotate(300deg) saturate(1.8) drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    /* Halki si parchayi (shadow) real look ke liye */
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
     /* Ye animation 3D pankh fadfadayegi */
-    animation: flap 0.12s infinite alternate ease-in-out;
+    animation: flap 0.15s infinite alternate ease-in-out;
 }
 
 /* 3D Wing Flap Illusion */
 @keyframes flap {
     0% { transform: scaleX(1); }
-    100% { transform: scaleX(0.1); }
+    100% { transform: scaleX(0.2); }
 }
 
 /* Sizes and Animations - Ye screen par proper angle par udengi */
@@ -66,13 +66,11 @@ body {
 
 /* Move Across Screen Animations */
 @keyframes flyRight {
-    /* 70deg rotate hone se butterfly ka munh right direction mein ho jata hai */
     0% { transform: translateX(0) translateY(0) rotate(70deg); }
     100% { transform: translateX(130vw) translateY(-20vh) rotate(70deg); }
 }
 
 @keyframes flyLeft {
-    /* -70deg se butterfly left dekhti hai */
     0% { transform: translateX(0) translateY(0) rotate(-70deg); }
     100% { transform: translateX(-130vw) translateY(20vh) rotate(-70deg); }
 }
