@@ -28,7 +28,7 @@ body {
     color: var(--primary-color);
 }
 
-/* --- PURE CSS BUTTERFLY ANIMATION 🦋 --- */
+/* --- ORIGINAL REAL BUTTERFLY ANIMATION 🦋 --- */
 .butterflies {
     position: fixed;
     top: 0;
@@ -46,99 +46,88 @@ body {
     will-change: transform, opacity;
 }
 
-/* Butterfly Structure */
-.css-butterfly {
+/* Butterfly sizes */
+.size-1 .real-butterfly { width: 50px; height: 35px; }
+.size-2 .real-butterfly { width: 35px; height: 25px; }
+.size-3 .real-butterfly { width: 60px; height: 42px; }
+.size-4 .real-butterfly { width: 40px; height: 28px; }
+
+/* Real Photo Container */
+.real-butterfly {
     position: relative;
-    width: 30px;
-    height: 25px;
     transform-style: preserve-3d;
+    /* Hue-rotate turns the original orange photo into a pink/purple tone to match Sugar Land */
+    filter: hue-rotate(300deg) saturate(1.5) drop-shadow(0 5px 5px rgba(0,0,0,0.2));
 }
 
-/* Left Wing */
-.css-butterfly::before {
-    content: '';
+/* Left & Right Wings made from splitting the original photo */
+.wing-left, .wing-right {
     position: absolute;
     top: 0;
+    width: 50%;
+    height: 100%;
+    /* 100% Real Butterfly PNG from Wikimedia */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Monarch_butterfly_transparent.png');
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
+.wing-left {
     left: 0;
-    width: 15px;
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 100% 20% 50% 80%;
+    background-position: left center;
     transform-origin: right center;
-    animation: flap-l 0.15s infinite alternate ease-in-out;
-    opacity: 0.8;
+    animation: flap-l 0.12s infinite alternate ease-in-out;
 }
 
-/* Right Wing */
-.css-butterfly::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15px;
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 20% 100% 80% 50%;
+.wing-right {
+    left: 50%;
+    background-position: right center;
     transform-origin: left center;
-    animation: flap-r 0.15s infinite alternate ease-in-out;
-    opacity: 0.8;
+    animation: flap-r 0.12s infinite alternate ease-in-out;
 }
 
-/* Butterfly Body */
-.css-butterfly-body {
-    position: absolute;
-    top: 10%;
-    left: 14px;
-    width: 2px;
-    height: 80%;
-    background-color: var(--text-dark);
-    border-radius: 10px;
-    z-index: 2;
-    opacity: 0.8;
-}
-
-/* Wing Flapping Animations */
+/* 3D Flapping effect */
 @keyframes flap-l {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(65deg); }
+    0% { transform: rotateY(10deg) rotateX(15deg); }
+    100% { transform: rotateY(70deg) rotateX(15deg); }
 }
 @keyframes flap-r {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(-65deg); }
+    0% { transform: rotateY(-10deg) rotateX(15deg); }
+    100% { transform: rotateY(-70deg) rotateX(15deg); }
 }
 
-/* Flying Paths and Speeds */
-.b1 { bottom: 10%; left: -10%; transform: scale(1.2); animation: flyRight 15s linear infinite; }
-.b2 { top: 20%; left: -10%; transform: scale(0.8); animation: flyRightCurve 22s linear infinite 4s; }
-.b3 { bottom: 30%; right: -10%; transform: scale(1.4); animation: flyLeft 18s linear infinite 2s; }
-.b4 { top: 60%; right: -10%; transform: scale(0.9); animation: flyLeftCurve 25s linear infinite 8s; }
+/* Flying Paths */
+.b1 { bottom: 10%; left: -10%; animation: flyRight 16s linear infinite; }
+.b2 { top: 20%; left: -10%; animation: flyRightCurve 24s linear infinite 4s; }
+.b3 { bottom: 30%; right: -10%; animation: flyLeft 18s linear infinite 2s; }
+.b4 { top: 60%; right: -10%; animation: flyLeftCurve 28s linear infinite 8s; }
 
 @keyframes flyRight {
-    0% { transform: translate(0, 0) rotate(15deg); opacity: 0; }
+    0% { transform: translate(0, 0) rotate(25deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { transform: translate(120vw, -40vh) rotate(15deg); opacity: 0; }
+    100% { transform: translate(120vw, -40vh) rotate(25deg); opacity: 0; }
 }
 
 @keyframes flyRightCurve {
-    0% { transform: translate(0, 0) rotate(5deg); opacity: 0; }
-    10% { opacity: 1; }
-    50% { transform: translate(60vw, 20vh) rotate(-5deg); opacity: 1; }
-    100% { transform: translate(120vw, -10vh) rotate(5deg); opacity: 0; }
+    0% { transform: translate(0, 0) rotate(15deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    50% { transform: translate(60vw, 20vh) rotate(5deg); opacity: 0.8; }
+    100% { transform: translate(120vw, -10vh) rotate(15deg); opacity: 0; }
 }
 
 @keyframes flyLeft {
-    0% { transform: translate(0, 0) scaleX(-1) rotate(15deg); opacity: 0; }
+    0% { transform: translate(0, 0) scaleX(-1) rotate(25deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { transform: translate(-120vw, -30vh) scaleX(-1) rotate(15deg); opacity: 0; }
+    100% { transform: translate(-120vw, -30vh) scaleX(-1) rotate(25deg); opacity: 0; }
 }
 
 @keyframes flyLeftCurve {
-    0% { transform: translate(0, 0) scaleX(-1) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    50% { transform: translate(-60vw, -20vh) scaleX(-1) rotate(20deg); opacity: 1; }
-    100% { transform: translate(-120vw, 10vh) scaleX(-1) rotate(0deg); opacity: 0; }
+    0% { transform: translate(0, 0) scaleX(-1) rotate(10deg); opacity: 0; }
+    10% { opacity: 0.9; }
+    50% { transform: translate(-60vw, -20vh) scaleX(-1) rotate(30deg); opacity: 0.9; }
+    100% { transform: translate(-120vw, 10vh) scaleX(-1) rotate(10deg); opacity: 0; }
 }
 
 
@@ -571,9 +560,5 @@ footer {
         width: 50px;
         height: 50px;
         font-size: 30px;
-    }
-    
-    .css-butterfly {
-        transform: scale(0.6);
     }
 }
