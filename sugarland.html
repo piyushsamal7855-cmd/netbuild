@@ -11,6 +11,10 @@
 </head>
 <body>
 
+    <div class="promo-bar">
+        🎉 Special Offer: Get <strong>10% OFF</strong> on your first order! Use code: <span class="promo-code">SUGAR10</span>
+    </div>
+
     <div class="butterflies">
         <div class="butterfly b1"><img src="butterfly.png" alt="butterfly"></div>
         <div class="butterfly b2"><img src="butterfly.png" alt="butterfly"></div>
@@ -252,7 +256,7 @@
         <p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p>
     </footer>
 
-    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float left-float" target="_blank">
+    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -291,7 +295,7 @@
             let toppings = document.getElementById('toppings').value;
             let details = document.getElementById('extraDetails').value;
             
-            let message = `Hello Sugar Land Team! 🍰\n\nI have designed my custom cake on your website. Here are the details:\n\n*🎂 Size/Shape:* ${size}\n*🍫 Flavor:* ${flavor}\n*🎨 Frosting Color:* ${color}\n*🍒 Toppings:* ${toppings}\n*📝 Message & Extra Info:* ${details}\n\nPlease let me know the total price and delivery details!`;
+            let message = `Hello Sugar Land Team! 🍰\n\nI have designed my custom cake on your website. Here are the details:\n\n*🎂 Size/Shape:* ${size}\n*🍫 Flavor:* ${flavor}\n*🎨 Frosting Color:* ${color}\n*🍒 Toppings:* ${toppings}\n*📝 Message & Extra Info:* ${details}\n\nPlease let me know the total price and delivery details!\n\n*(Also, I want to use my 10% OFF PROMO CODE: SUGAR10)*`;
             
             let whatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent(message);
             window.open(whatsappURL, '_blank');
@@ -333,7 +337,7 @@
                     incomingChatLi.querySelector("p").innerHTML = `That sounds delicious! 🍰 I am redirecting your request to our Bakery Expert on WhatsApp to finalize this for you...`;
                     
                     setTimeout(() => {
-                        let aiWhatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent("Hi Sugar Land! I was chatting with your AI assistant. Here is what I need: " + userMessage);
+                        let aiWhatsappURL = "https://wa.me/917567568060?text=" + encodeURIComponent("Hi Sugar Land! I was chatting with your AI assistant. Here is what I need: " + userMessage + "\n\n*(Also, I want to use my 10% OFF PROMO CODE: SUGAR10)*");
                         window.open(aiWhatsappURL, '_blank');
                     }, 1800);
                 }, 1200);
