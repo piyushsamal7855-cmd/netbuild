@@ -172,7 +172,6 @@
         }
         body.dark-mode .navbar.scrolled { background-color: rgba(13, 43, 35, 0.95); }
 
-        /* Modified Logo Section for caphetra.png */
         .logo-container { display: flex; align-items: center; }
         .logo-img { max-height: 50px; transition: transform 0.3s; }
         .logo-container:hover .logo-img { transform: scale(1.05); }
@@ -192,7 +191,8 @@
         .hero-text p { margin-bottom: 30px; max-width: 480px; font-size: 1.1rem; opacity: 0.9; line-height: 1.8; color: #fff; }
         
         .hero-image-container { flex: 1; min-width: 300px; text-align: center; position: relative; z-index: 2; }
-        .hero-image { max-width: 90%; height: auto; border-radius: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); animation: floatImg 4s ease-in-out infinite; content: url('https://images.unsplash.com/photo-1634316427484-d21c41300600?q=80&w=1974&auto=format&fit=crop'); }
+        /* Removed CSS 'content' property to fix mobile loading issue */
+        .hero-image { max-width: 90%; height: auto; border-radius: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); animation: floatImg 4s ease-in-out infinite; }
 
         /* --- Trusted By Bar --- */
         .trusted-by {
@@ -225,14 +225,14 @@
             background: var(--card-bg); padding: 40px 20px; border-radius: 25px; 
             box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.1s ease-out, box-shadow 0.3s ease; 
             cursor: pointer; border: 1px solid var(--border-color);
-            transform-style: preserve-3d; /* For 3D Tilt */
+            transform-style: preserve-3d;
         }
         .product-card.hide { display: none; }
         .product-card:hover { box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
         .product-card img { 
             width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 25px; 
             border: 6px solid var(--bg-cream); transition: transform 0.5s, border-color 0.4s;
-            transform: translateZ(30px); /* 3D pop out effect */
+            transform: translateZ(30px);
         }
         .product-card:hover img { transform: translateZ(50px) scale(1.05) rotate(5deg); }
         .product-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary-green); transition: color 0.4s; transform: translateZ(20px); }
@@ -249,7 +249,7 @@
         .ambiance-text h2 { font-size: 3rem; color: var(--accent-brown); margin-bottom: 30px; line-height: 1.2; font-weight: 900; }
         .ambiance-text p { margin-bottom: 25px; font-size: 1.1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.8; }
 
-        /* --- Yellow Banner (PARALLAX) --- */
+        /* --- Yellow Banner --- */
         .yellow-banner {
             background-color: var(--primary-yellow); padding: 70px 20px; text-align: center;
             display: flex; justify-content: center; align-items: center; gap: 40px;
@@ -398,7 +398,7 @@
                 <a href="#menu" class="btn interactive-element lang-target" data-en="Explore Menu" data-gu="મેનુ જુઓ" style="padding: 15px 35px; font-size: 1rem;">Explore Menu</a>
             </div>
             <div class="hero-image-container">
-                <img class="hero-image" alt="Vietnamese Phin Coffee"> 
+                <img class="hero-image" src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=800&auto=format&fit=crop" alt="Vietnamese Phin Coffee"> 
             </div>
         </div>
     </header>
@@ -428,25 +428,25 @@
 
         <div class="products-grid">
             <div class="product-card tilt-card reveal fade-up hot interactive-element">
-                <img src="https://images.unsplash.com/photo-1565660892335-28970964c62c?q=80&w=1936&auto=format&fit=crop" alt="Vietnamese Coffee">
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=800&auto=format&fit=crop" alt="Vietnamese Coffee">
                 <h3>Vietnamese Signature</h3>
                 <p>Classic Hot Drip with sweet condensed milk.</p>
                 <span class="price-tag">₹180</span>
             </div>
             <div class="product-card tilt-card reveal fade-up cold delay-1 interactive-element">
-                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=1974&auto=format&fit=crop" alt="Cold Brew">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop" alt="Cold Brew">
                 <h3>Signature Cold Brew</h3>
                 <p>Refreshing, steeped for 16 hours.</p>
                 <span class="price-tag">₹220</span>
             </div>
             <div class="product-card tilt-card reveal fade-up cold delay-2 interactive-element">
-                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=2071&auto=format&fit=crop" alt="Matcha Drink">
+                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800&auto=format&fit=crop" alt="Matcha Drink">
                 <h3>Matcha Frappe</h3>
                 <p>Premium grade matcha blended with ice.</p>
                 <span class="price-tag">₹250</span>
             </div>
             <div class="product-card tilt-card reveal fade-up snacks delay-3 interactive-element">
-                <img src="https://images.unsplash.com/photo-1563729768477-019680d34617?q=80&w=1974&auto=format&fit=crop" alt="Desserts">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800&auto=format&fit=crop" alt="Desserts">
                 <h3>Cheesecake Slice</h3>
                 <p>The perfect sweet companion to your brew.</p>
                 <span class="price-tag">₹190</span>
@@ -456,9 +456,9 @@
 
     <section id="about" class="ambiance-section">
         <div class="ambiance-images reveal fade-left">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Cafe Interior">
-            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" alt="Cafe Vibes">
-            <img src="https://images.unsplash.com/photo-1559925393-8be033611534?q=80&w=2070&auto=format&fit=crop" alt="Coffee making">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" alt="Cafe Interior">
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=800&auto=format&fit=crop" alt="Cafe Vibes">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800&auto=format&fit=crop" alt="Coffee making">
         </div>
         <div class="ambiance-text reveal fade-right">
             <h2 class="lang-target" data-en="Premium Quality Beans And Ambiance" data-gu="પ્રીમિયમ ગુણવત્તાવાળી કોફી અને વાતાવરણ">Premium Quality Beans And Ambiance</h2>
@@ -501,19 +501,19 @@
         </div>
         <div class="insta-grid reveal fade-up delay-1">
             <div class="insta-item interactive-element">
-                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" alt="Insta 1">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" alt="Insta 1">
                 <div class="insta-overlay">❤️ 124 💬 12</div>
             </div>
             <div class="insta-item interactive-element">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="Insta 2">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Insta 2">
                 <div class="insta-overlay">❤️ 89 💬 5</div>
             </div>
             <div class="insta-item interactive-element">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="Insta 3">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="Insta 3">
                 <div class="insta-overlay">❤️ 210 💬 34</div>
             </div>
             <div class="insta-item interactive-element">
-                <img src="https://images.unsplash.com/photo-1444418185997-1145401101e0?q=80&w=2069&auto=format&fit=crop" alt="Insta 4">
+                <img src="https://images.unsplash.com/photo-1444418185997-1145401101e0?q=80&w=800&auto=format&fit=crop" alt="Insta 4">
                 <div class="insta-overlay">❤️ 156 💬 18</div>
             </div>
         </div>
