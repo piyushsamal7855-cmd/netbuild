@@ -41,8 +41,13 @@
             <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-actions">
+            <select id="langToggle" class="lang-select">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="gu">GU</option>
+            </select>
             <button id="darkModeToggle" class="btn-login" style="font-size: 20px;"><i class="fa-solid fa-moon"></i></button>
-            <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Design Cake</a>
+            <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-trans="navBtn">Design Cake</span></a>
         </div>
     </nav>
 
@@ -59,13 +64,21 @@
         </div>
     </div>
 
+    <div class="fomo-popup" id="fomoPopup">
+        <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=100&auto=format&fit=crop" id="fomoImg" alt="Cake">
+        <div class="fomo-text">
+            <h4 id="fomoTitle">Someone ordered a cake</h4>
+            <p id="fomoTime">Just now</p>
+        </div>
+    </div>
+
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
             <span class="badge">✨ Sweetness in Every Bite</span>
-            <h1>Welcome to <span class="highlight">Sugar Land</span> Bakery</h1>
-            <p>We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic for your special moments.</p>
+            <h1 data-trans="heroTitle">Welcome to <span class="highlight">Sugar Land</span> Bakery</h1>
+            <p data-trans="heroDesc">We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic for your special moments.</p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn-primary large" style="text-decoration:none;">View Full Menu</a>
+                <a href="#menu" class="btn-primary large" style="text-decoration:none;" data-trans="heroBtn">View Full Menu</a>
             </div>
         </div>
         <div class="hero-image" data-aos="fade-left" data-aos-duration="1200">
@@ -81,7 +94,7 @@
 
     <section class="how-it-works">
         <div class="section-header" data-aos="fade-up">
-            <h2>How It <span class="highlight">Works</span></h2>
+            <h2 data-trans="howTitle">How It <span class="highlight">Works</span></h2>
             <p>Your dream cake in 3 simple steps</p>
         </div>
         <div class="steps-container">
@@ -103,6 +116,13 @@
         </div>
     </section>
 
+    <section class="trust-badges" data-aos="fade-up">
+        <div class="badge-item"><i class="fa-solid fa-leaf"></i><h4>100% Pure Veg</h4><p>Eggless Baking</p></div>
+        <div class="badge-item"><i class="fa-solid fa-certificate"></i><h4>FSSAI Certified</h4><p>Safe & Hygienic</p></div>
+        <div class="badge-item"><i class="fa-solid fa-truck-fast"></i><h4>Fast Delivery</h4><p>Same Day Available</p></div>
+        <div class="badge-item"><i class="fa-solid fa-star"></i><h4>Premium Quality</h4><p>Best Ingredients</p></div>
+    </section>
+
     <section class="flash-sale" data-aos="zoom-in">
         <div class="flash-content">
             <h2>⚡ Today's Special Deal</h2>
@@ -116,21 +136,41 @@
         <a href="#menu" class="btn-primary" style="text-decoration:none; background:white; color:var(--primary-color);">Grab Deal Now</a>
     </section>
 
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-video-wrapper" data-aos="fade-right">
+                <video autoplay loop muted playsinline class="about-video">
+                    <source src="https://cdn.pixabay.com/video/2021/05/13/74033-550069004_large.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+            <div class="about-content" data-aos="fade-left">
+                <h2>Our <span class="highlight">Story</span></h2>
+                <p>Located in the heart of Surat, Sugar Land is more than just a bakery—it is a place where sweet memories are born. Our journey started with a simple passion for baking and a dream to bring smiles to our community.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check-circle highlight"></i> 100% Eggless Options</li>
+                    <li><i class="fa-solid fa-check-circle highlight"></i> Freshly Baked Daily</li>
+                    <li><i class="fa-solid fa-check-circle highlight"></i> Premium Quality Ingredients</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section class="popular-section" id="menu">
         <div class="section-header" data-aos="fade-up">
-            <h2>Our Popular <span class="highlight">Treats</span></h2>
+            <h2 data-trans="menuTitle">Our Popular <span class="highlight">Treats</span></h2>
             <p>Handpicked favorites loved by our customers</p>
         </div>
         <div class="menu-grid">
-            <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes"><span class="price-tag">₹350</span></div>
                 <div class="card-content"><h3>Assorted Cupcake Box</h3><p>A box of 6 delightful flavors fit for any celebration.</p><button class="btn-card">Order Now</button></div>
             </div>
-            <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake"><span class="price-tag">₹850</span></div>
                 <div class="card-content"><h3>Berry Cheesecake</h3><p>Creamy, rich cheesecake topped with fresh berries.</p><button class="btn-card">Order Now</button></div>
             </div>
-             <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
+             <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake"><span class="price-tag">₹1200+</span></div>
                 <div class="card-content"><h3>Custom Birthday Cakes</h3><p>Tell us your dream design, we bake it to reality.</p><button class="btn-card">Enquire Now</button></div>
             </div>
@@ -142,7 +182,7 @@
             <div class="assistant-header">
                 <i class="fa-solid fa-cake-candles"></i>
                 <div>
-                    <h2>Design Your Dream Cake</h2>
+                    <h2 data-trans="builderTitle">Design Your Dream Cake</h2>
                     <p>Select your preferences below, and we'll send your custom design directly to our WhatsApp!</p>
                 </div>
             </div>
@@ -173,6 +213,30 @@
                 </div>
                 <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Send My Design to WhatsApp</button>
             </form>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Meet Our <span class="highlight">Master Bakers</span></h2>
+            <p>The magic hands behind our delicious creations</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul">
+                <h3>Chef Rahul</h3>
+                <p>Head Pastry Chef - 10 Yrs Exp.</p>
+            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali">
+                <h3>Chef Anjali</h3>
+                <p>Fondant Art Specialist</p>
+            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop" alt="Chef Vikram">
+                <h3>Chef Vikram</h3>
+                <p>Bread & Artisanal Expert</p>
+            </div>
         </div>
     </section>
 
@@ -289,8 +353,9 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
     <script>
-        // 1. PRELOADER
+        // --- 1. PRELOADER & POPUP ---
         window.addEventListener('load', function() {
             setTimeout(function() {
                 let preloader = document.getElementById('preloader');
@@ -298,7 +363,6 @@
                 setTimeout(() => preloader.style.display = 'none', 500);
             }, 1000); 
             
-            // 2. WELCOME POPUP
             setTimeout(function() {
                 let popup = document.getElementById('welcomePopup');
                 if(!sessionStorage.getItem('popupShown')){
@@ -312,54 +376,112 @@
             document.getElementById('welcomePopup').style.display = 'none';
         });
 
-        // 3. DARK MODE TOGGLE 🌙
+        // --- 2. FOMO POPUP LOGIC 🔔 ---
+        const fomoData = [
+            { name: "Rahul from Vesu", cake: "Red Velvet Cake", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" },
+            { name: "Priya from Althan", cake: "Custom Birthday Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" },
+            { name: "Amit from Adajan", cake: "Assorted Cupcakes", img: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=100&auto=format&fit=crop" },
+            { name: "Neha from Piplod", cake: "Berry Cheesecake", img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=100&auto=format&fit=crop" }
+        ];
+        
+        setInterval(() => {
+            const fomoPopup = document.getElementById('fomoPopup');
+            const randomOrder = fomoData[Math.floor(Math.random() * fomoData.length)];
+            
+            document.getElementById('fomoTitle').innerText = `${randomOrder.name} ordered a ${randomOrder.cake}`;
+            document.getElementById('fomoTime').innerText = `${Math.floor(Math.random() * 10) + 1} mins ago`;
+            document.getElementById('fomoImg').src = randomOrder.img;
+            
+            fomoPopup.classList.add('show');
+            setTimeout(() => { fomoPopup.classList.remove('show'); }, 4000); // Hide after 4s
+        }, 12000); // Show every 12s
+
+        // --- 3. 3D PARALLAX HOVER EFFECT 🪄 ---
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                let rect = card.getBoundingClientRect();
+                let x = e.clientX - rect.left; // x position within the element.
+                let y = e.clientY - rect.top;  // y position within the element.
+                let xOut = (x / rect.width - 0.5) * 15; // rotate degree
+                let yOut = (y / rect.height - 0.5) * -15;
+                card.style.transform = `perspective(1000px) rotateY(${xOut}deg) rotateX(${yOut}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transition = 'none'; // remove transition for smooth tracking
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease';
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // --- 4. LANGUAGE TRANSLATOR 🌐 ---
+        const translations = {
+            en: {
+                navBtn: "Design Cake", heroTitle: "Welcome to <span class='highlight'>Sugar Land</span> Bakery", 
+                heroDesc: "We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic.",
+                heroBtn: "View Full Menu", howTitle: "How It <span class='highlight'>Works</span>", 
+                menuTitle: "Our Popular <span class='highlight'>Treats</span>", builderTitle: "Design Your Dream Cake"
+            },
+            hi: {
+                navBtn: "केक डिजाइन करें", heroTitle: "<span class='highlight'>शुगर लैंड</span> बेकरी में आपका स्वागत है", 
+                heroDesc: "हम शहर में बेहतरीन केक और पेस्ट्री बनाते हैं। प्यार, ताज़ा सामग्री और जादू के छिड़काव के साथ तैयार किया गया।",
+                heroBtn: "पूरा मेनू देखें", howTitle: "यह कैसे काम <span class='highlight'>करता है</span>", 
+                menuTitle: "हमारी लोकप्रिय <span class='highlight'>मिठाइयाँ</span>", builderTitle: "अपने सपनों का केक डिजाइन करें"
+            },
+            gu: {
+                navBtn: "કેક ડિઝાઇન કરો", heroTitle: "<span class='highlight'>સુગર લેન્ડ</span> બેકરીમાં તમારું સ્વાગત છે", 
+                heroDesc: "અમે શહેરમાં શ્રેષ્ઠ કેક અને પેસ્ટ્રી બનાવીએ છીએ. પ્રેમ, શુદ્ધ સામગ્રી અને જાદુ સાથે તૈયાર.",
+                heroBtn: "આખું મેનૂ જુઓ", howTitle: "આ કેવી રીતે <span class='highlight'>કામ કરે છે</span>", 
+                menuTitle: "અમારી લોકપ્રિય <span class='highlight'>મીઠાઈઓ</span>", builderTitle: "તમારો ડ્રીમ કેક ડિઝાઇન કરો"
+            }
+        };
+
+        document.getElementById('langToggle').addEventListener('change', function() {
+            let lang = this.value;
+            document.querySelectorAll('[data-trans]').forEach(el => {
+                let key = el.getAttribute('data-trans');
+                if(translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+        });
+
+        // --- 5. DARK MODE TOGGLE 🌙 ---
         const darkModeBtn = document.getElementById('darkModeToggle');
         darkModeBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             let icon = darkModeBtn.querySelector('i');
             if(document.body.classList.contains('dark-theme')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
             }
         });
 
-        // 4. SCROLL PROGRESS BAR 🚀
+        // --- 6. SCROLL PROGRESS BAR 🚀 ---
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scrollProgress").style.width = scrolled + "%";
+            document.getElementById("scrollProgress").style.width = (winScroll / height) * 100 + "%";
         };
 
-        // 5. CONFETTI ANIMATION 🎉
+        // --- 7. CONFETTI ANIMATION 🎉 ---
         document.getElementById('birthdayForm').addEventListener('submit', function(e) {
             e.preventDefault();
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
             setTimeout(() => alert('Yay! You are successfully registered for the Birthday Club! 🎉'), 800);
         });
 
-        // 6. FAQ ACCORDION ICON LOGIC ⬇️
-        const faqs = document.querySelectorAll('.faq-item');
-        faqs.forEach(faq => {
+        // --- 8. FAQ ACCORDION LOGIC ⬇️ ---
+        document.querySelectorAll('.faq-item').forEach(faq => {
             faq.addEventListener('click', () => {
                 let icon = faq.querySelector('.faq-icon');
-                if(faq.hasAttribute('open')) {
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    icon.style.transform = 'rotate(180deg)';
-                }
+                if(faq.hasAttribute('open')) { icon.style.transform = 'rotate(0deg)'; } 
+                else { icon.style.transform = 'rotate(180deg)'; }
             });
         });
 
-        // 7. FLASH SALE TIMER
+        // --- 9. FLASH SALE TIMER ⏱️ ---
         let time = 4 * 3600 + 45 * 60 + 30;
         setInterval(function() {
-            let h = Math.floor(time / 3600);
-            let m = Math.floor((time % 3600) / 60);
-            let s = time % 60;
+            let h = Math.floor(time / 3600), m = Math.floor((time % 3600) / 60), s = time % 60;
             document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
             document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
             document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
@@ -369,46 +491,33 @@
         // Init Animations
         AOS.init({ once: true, offset: 50 });
 
-        // Builder & Chatbot Logic
+        // Builder Logic
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
-            let message = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n(Promo Code: SUGAR10)`;
-            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(message), '_blank');
+            let msg = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n(Promo Code: SUGAR10)`;
+            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         });
 
-        const chatbotToggler = document.querySelector(".chatbot-toggler");
-        const closeBtn = document.querySelector(".close-btn");
-        const chatbox = document.querySelector(".chatbox");
-        const chatInput = document.querySelector(".chat-input textarea");
-        const sendChatBtn = document.querySelector("#send-btn");
-        
-        const createChatLi = (message, className) => {
-            const chatLi = document.createElement("li");
-            chatLi.classList.add("chat", className);
-            chatLi.innerHTML = className === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
-            chatLi.querySelector("p").textContent = message;
-            return chatLi;
+        // Chatbot Logic
+        const chatbotToggler = document.querySelector(".chatbot-toggler"), closeBtn = document.querySelector(".close-btn"), chatbox = document.querySelector(".chatbox"), chatInput = document.querySelector(".chat-input textarea"), sendChatBtn = document.querySelector("#send-btn");
+        const createChatLi = (msg, cls) => {
+            let li = document.createElement("li"); li.classList.add("chat", cls);
+            li.innerHTML = cls === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
+            li.querySelector("p").textContent = msg; return li;
         }
-
         const handleChat = () => {
-            let userMessage = chatInput.value.trim();
-            if(!userMessage) return;
-            chatInput.value = "";
-            chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-            chatbox.scrollTo(0, chatbox.scrollHeight);
+            let msg = chatInput.value.trim(); if(!msg) return; chatInput.value = "";
+            chatbox.appendChild(createChatLi(msg, "outgoing")); chatbox.scrollTo(0, chatbox.scrollHeight);
             setTimeout(() => {
-                const incomingChatLi = createChatLi("Thinking...", "incoming");
-                chatbox.appendChild(incomingChatLi);
-                chatbox.scrollTo(0, chatbox.scrollHeight);
+                let incLi = createChatLi("Thinking...", "incoming"); chatbox.appendChild(incLi); chatbox.scrollTo(0, chatbox.scrollHeight);
                 setTimeout(() => {
-                    incomingChatLi.querySelector("p").innerHTML = `Redirecting to our WhatsApp Expert...`;
-                    setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI Assistant sent me. I need: " + userMessage), '_blank'), 1500);
+                    incLi.querySelector("p").innerHTML = `Redirecting to WhatsApp Expert...`;
+                    setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI sent me: " + msg), '_blank'), 1500);
                 }, 1000);
             }, 600);
         }
-
         sendChatBtn.addEventListener("click", handleChat);
-        chatInput.addEventListener("keypress", (e) => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
+        chatInput.addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
         chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
         closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
     </script>
