@@ -238,7 +238,8 @@
         <div class="team-grid">
             <div class="team-card" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul"><h3>Chef Rahul</h3><p>Head Pastry Chef</p></div>
             <div class="team-card" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali"><h3>Chef Anjali</h3><p>Fondant Art Specialist</p></div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop" alt="Chef Vikram"><h3>Chef Vikram</h3><p>Artisanal Expert</p></div>
+            
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1606822557451-b85194cc36b9?w=400&auto=format&fit=crop" alt="Chef Vikram"><h3>Chef Vikram</h3><p>Artisanal Expert</p></div>
         </div>
     </section>
 
@@ -325,7 +326,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // 1. PRELOADER & POPUP
+        // PRELOADER & POPUP
         window.addEventListener('load', function() {
             setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(() => document.getElementById('preloader').style.display = 'none', 500); }, 1000); 
             setTimeout(() => { if(!sessionStorage.getItem('popupShown')){ document.getElementById('welcomePopup').style.display = 'flex'; sessionStorage.setItem('popupShown', 'true'); } }, 3500); 
@@ -337,7 +338,7 @@
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
         }
 
-        // 2. PINCODE CHECKER 📍
+        // PINCODE CHECKER 📍
         function checkPincode() {
             let pin = document.getElementById('pinInput').value;
             let result = document.getElementById('pinResult');
@@ -346,7 +347,7 @@
             else { result.innerHTML = "<span style='color:red;'><i class='fa-solid fa-xmark'></i> Sorry, out of delivery zone.</span>"; }
         }
 
-        // 3. MENU CATEGORY FILTERS 🗂️
+        // MENU CATEGORY FILTERS 🗂️
         const filterBtns = document.querySelectorAll('.filter-btn');
         const menuCards = document.querySelectorAll('.menu-card');
         filterBtns.forEach(btn => {
@@ -360,7 +361,7 @@
             });
         });
 
-        // 4. SLIDE OUT CART SYSTEM 🛒
+        // SLIDE OUT CART SYSTEM 🛒
         let cart = [];
         function addToCart(name, price) {
             cart.push({name, price});
@@ -395,7 +396,7 @@
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         }
 
-        // 5. LIVE PRICE CALCULATOR 🧮
+        // LIVE PRICE CALCULATOR 🧮
         function calculateLivePrice() {
             let sizeEl = document.getElementById('cakeSize');
             let flavorEl = document.getElementById('cakeFlavor');
@@ -405,7 +406,7 @@
             document.getElementById('livePriceDisplay').innerText = total > 0 ? `₹${total}` : `₹0`;
         }
 
-        // 6. FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ, TIMERS
+        // FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ, TIMERS
         const fomoData = [ { name: "Rahul from Vesu", cake: "Red Velvet", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" }, { name: "Priya from Althan", cake: "Custom Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" } ];
         setInterval(() => { const f = document.getElementById('fomoPopup'); const r = fomoData[Math.floor(Math.random() * fomoData.length)]; document.getElementById('fomoTitle').innerText = `${r.name} ordered a ${r.cake}`; f.classList.add('show'); setTimeout(() => f.classList.remove('show'), 4000); }, 15000);
         
@@ -427,6 +428,7 @@
         document.querySelectorAll('.faq-item').forEach(f => f.addEventListener('click', () => { let i = f.querySelector('.faq-icon'); i.style.transform = f.hasAttribute('open') ? 'rotate(0deg)' : 'rotate(180deg)'; }));
         AOS.init({ once: true, offset: 50 });
 
+        // Builder Whatsapp
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             let msg = `Hello Sugar Land! 🍰\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n*Total Estimate: ${document.getElementById('livePriceDisplay').innerText}*`;
