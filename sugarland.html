@@ -30,6 +30,21 @@
         <div class="butterfly b3"><img src="butterfly.png" alt="butterfly"></div>
     </div>
 
+    <div class="tracker-overlay" id="trackerPopup">
+        <div class="tracker-box">
+            <h2><i class="fa-solid fa-motorcycle fa-bounce"></i> Processing Order...</h2>
+            <p>Please wait while we connect to our bakery</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="trackerFill"></div>
+            </div>
+            <ul class="tracker-steps">
+                <li id="step1" class="active"><i class="fa-solid fa-check"></i> Order Placed</li>
+                <li id="step2"><i class="fa-solid fa-fire-burner"></i> Sending to Kitchen</li>
+                <li id="step3"><i class="fa-brands fa-whatsapp"></i> Opening WhatsApp</li>
+            </ul>
+        </div>
+    </div>
+
     <nav class="navbar" data-aos="fade-down">
         <div class="logo">
             <h2>Sugar <span class="highlight">Land</span> 🧁</h2>
@@ -41,6 +56,8 @@
             <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-actions">
+            <div class="coin-badge" title="Your Sugar Coins"><i class="fa-solid fa-coins"></i> 150</div>
+            
             <select id="langToggle" class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="gu">GU</option></select>
             <button id="darkModeToggle" class="btn-login" style="font-size: 20px;"><i class="fa-solid fa-moon"></i></button>
             <button id="navCartBtn" class="btn-login" style="font-size: 20px; position:relative;">
@@ -76,9 +93,28 @@
         <div class="cart-items" id="cartItemsList">
             <p style="text-align:center; color: var(--text-light); margin-top: 50px;">Your cart is empty. Let's add some sweetness!</p>
         </div>
+        
+        <div class="cart-addons-section" id="cartAddonsSection" style="display: none;">
+            <h4>Make it special! ✨</h4>
+            <div class="addon-grid">
+                <div class="addon-item" onclick="addToCart('Magic Candles', 50)">🕯️ Candles (+₹50)</div>
+                <div class="addon-item" onclick="addToCart('Party Popper', 100)">🎉 Popper (+₹100)</div>
+                <div class="addon-item" onclick="addToCart('Happy Bday Tag', 30)">🏷️ Tag (+₹30)</div>
+            </div>
+        </div>
+
         <div class="cart-footer">
+            <div class="delivery-picker">
+                <input type="date" id="deliveryDate" required>
+                <select id="deliveryTime" required>
+                    <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
+                    <option value="Afternoon (1 PM - 5 PM)">Afternoon (1 PM - 5 PM)</option>
+                    <option value="Evening (5 PM - 8 PM)">Evening (5 PM - 8 PM)</option>
+                    <option value="Midnight (11 PM - 12 AM) +₹150">Midnight Delivery (+₹150)</option>
+                </select>
+            </div>
             <div class="cart-total"><span>Total:</span> <h3 id="cartTotalPrice">₹0</h3></div>
-            <button class="btn-primary w-100" onclick="checkoutCart()"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
+            <button class="btn-primary w-100" onclick="checkoutCart()"><i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp</button>
         </div>
     </div>
 
@@ -102,7 +138,7 @@
             </div>
             <p id="pinResult" style="font-size: 13px; margin-top: 5px; font-weight: 600;"></p>
 
-            <div class="hero-buttons">
+            <div class="hero-buttons" style="margin-top: 20px;">
                 <a href="#menu" class="btn-primary large" style="text-decoration:none;" data-trans="heroBtn">View Full Menu</a>
             </div>
         </div>
@@ -177,15 +213,15 @@
         <div class="menu-grid">
             <div class="menu-card tilt-card" data-category="cupcakes" data-aos="fade-up">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes"><span class="price-tag">₹350</span></div>
-                <div class="card-content"><h3>Assorted Cupcake Box</h3><p>6 delightful flavors.</p><button class="btn-card" onclick="addToCart('Assorted Cupcake Box', 350)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
+                <div class="card-content"><h3>Assorted Cupcakes</h3><p class="earn-coins"><i class="fa-solid fa-coins"></i> Earn 35 Coins</p><button class="btn-card" onclick="addToCart('Assorted Cupcakes', 350)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
             <div class="menu-card tilt-card" data-category="cakes" data-aos="fade-up">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake"><span class="price-tag">₹850</span></div>
-                <div class="card-content"><h3>Berry Cheesecake</h3><p>Creamy, rich cheesecake.</p><button class="btn-card" onclick="addToCart('Berry Cheesecake', 850)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
+                <div class="card-content"><h3>Berry Cheesecake</h3><p class="earn-coins"><i class="fa-solid fa-coins"></i> Earn 85 Coins</p><button class="btn-card" onclick="addToCart('Berry Cheesecake', 850)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
              <div class="menu-card tilt-card" data-category="cakes" data-aos="fade-up">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake"><span class="price-tag">₹650</span></div>
-                <div class="card-content"><h3>Chocolate Truffle Cake</h3><p>Dark chocolate heaven.</p><button class="btn-card" onclick="addToCart('Chocolate Truffle Cake', 650)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
+                <div class="card-content"><h3>Chocolate Truffle Cake</h3><p class="earn-coins"><i class="fa-solid fa-coins"></i> Earn 65 Coins</p><button class="btn-card" onclick="addToCart('Chocolate Truffle Cake', 650)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
         </div>
     </section>
@@ -236,18 +272,9 @@
     <section class="team-section" id="team">
         <div class="section-header" data-aos="fade-up"><h2>Meet Our <span class="highlight">Master Bakers</span></h2></div>
         <div class="team-grid">
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=400&auto=format&fit=crop" alt="Chef Rahul">
-                <h3>Chef Rahul</h3><p>Head Pastry Chef</p>
-            </div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=400&auto=format&fit=crop" alt="Chef Anjali">
-                <h3>Chef Anjali</h3><p>Fondant Art Specialist</p>
-            </div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?q=80&w=400&auto=format&fit=crop" alt="Chef Vikram">
-                <h3>Chef Vikram</h3><p>Artisanal Expert</p>
-            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=400&auto=format&fit=crop" alt="Chef Rahul"><h3>Chef Rahul</h3><p>Head Pastry Chef</p></div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=400&auto=format&fit=crop" alt="Chef Anjali"><h3>Chef Anjali</h3><p>Fondant Art Specialist</p></div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?q=80&w=400&auto=format&fit=crop" alt="Chef Vikram"><h3>Chef Vikram</h3><p>Artisanal Expert</p></div>
         </div>
     </section>
 
@@ -322,7 +349,11 @@
     <div class="chatbot-window">
         <div class="chat-header"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Sugar Land AI</h3><span class="close-btn"><i class="fa-solid fa-xmark"></i></span></div>
         <ul class="chatbox"><li class="chat incoming"><i class="fa-solid fa-robot bot-avatar"></i><p>Hi there 👋<br>I am your smart AI baking assistant. What kind of cake are you looking for?</p></li></ul>
-        <div class="chat-input"><textarea placeholder="Type your dream cake..." required></textarea><span id="send-btn"><i class="fa-solid fa-paper-plane"></i></span></div>
+        <div class="chat-input">
+            <textarea placeholder="Type your dream cake..." id="aiInput" required></textarea>
+            <span id="mic-btn" title="Speak your order"><i class="fa-solid fa-microphone"></i></span>
+            <span id="send-btn"><i class="fa-solid fa-paper-plane"></i></span>
+        </div>
     </div>
 
     <div class="mobile-sticky-footer">
@@ -369,17 +400,18 @@
             });
         });
 
-        // SLIDE OUT CART SYSTEM 🛒
+        // SLIDE OUT CART SYSTEM & TRACKER LOGIC 🛒🛵
         let cart = [];
         function addToCart(name, price) {
             cart.push({name, price});
             updateCartUI();
             document.getElementById('cartSidebar').classList.add('open');
+            document.getElementById('cartAddonsSection').style.display = 'block'; // Show addons
         }
         function updateCartUI() {
             let cartList = document.getElementById('cartItemsList');
             let total = 0; cartList.innerHTML = '';
-            if(cart.length === 0) { cartList.innerHTML = '<p style="text-align:center; color:#888; margin-top:50px;">Your cart is empty.</p>'; }
+            if(cart.length === 0) { cartList.innerHTML = '<p style="text-align:center; color:#888; margin-top:50px;">Your cart is empty.</p>'; document.getElementById('cartAddonsSection').style.display = 'none';}
             else {
                 cart.forEach((item, index) => {
                     total += item.price;
@@ -396,21 +428,41 @@
         function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
         document.getElementById('navCartBtn').addEventListener('click', () => document.getElementById('cartSidebar').classList.add('open'));
         document.getElementById('closeCartBtn').addEventListener('click', () => document.getElementById('cartSidebar').classList.remove('open'));
+        
+        // CHECKOUT & ORDER TRACKER UI
         function checkoutCart() {
             if(cart.length === 0) return alert('Add some items first!');
-            let list = cart.map(i => `- ${i.name} (₹${i.price})`).join('\n');
-            let total = cart.reduce((a, b) => a + b.price, 0);
-            let msg = `Hello Sugar Land Team! 🍰\n\nI want to order:\n${list}\n\n*Total Bill: ₹${total}*\nPlease confirm my order!`;
-            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
+            let date = document.getElementById('deliveryDate').value;
+            let time = document.getElementById('deliveryTime').value;
+            if(!date) return alert('Please select a delivery date!');
+
+            // Close cart, show tracker
+            document.getElementById('cartSidebar').classList.remove('open');
+            let tracker = document.getElementById('trackerPopup');
+            tracker.style.display = 'flex';
+            
+            // Animate Tracker Steps
+            setTimeout(() => { document.getElementById('trackerFill').style.width = '50%'; document.getElementById('step2').classList.add('active'); }, 1500);
+            setTimeout(() => { document.getElementById('trackerFill').style.width = '100%'; document.getElementById('step3').classList.add('active'); }, 3000);
+            
+            setTimeout(() => {
+                tracker.style.display = 'none';
+                let list = cart.map(i => `- ${i.name} (₹${i.price})`).join('\n');
+                let total = cart.reduce((a, b) => a + b.price, 0);
+                let msg = `Hello Sugar Land Team! 🍰\n\nI want to order:\n${list}\n\n*Delivery Date:* ${date}\n*Time Slot:* ${time}\n\n*Total Bill: ₹${total}*\nPlease confirm my order!`;
+                window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
+            }, 4000);
         }
+
+        // Set minimum date to today
+        document.getElementById('deliveryDate').min = new Date().toISOString().split("T")[0];
 
         // LIVE PRICE CALCULATOR 🧮
         function calculateLivePrice() {
-            let sizeEl = document.getElementById('cakeSize');
-            let flavorEl = document.getElementById('cakeFlavor');
+            let sizeEl = document.getElementById('cakeSize'); let flavorEl = document.getElementById('cakeFlavor');
             let total = 0;
-            if(sizeEl.options[sizeEl.selectedIndex].dataset.base) { total += parseInt(sizeEl.options[sizeEl.selectedIndex].dataset.base); }
-            if(flavorEl.options[flavorEl.selectedIndex].dataset.extra) { total += parseInt(flavorEl.options[flavorEl.selectedIndex].dataset.extra); }
+            if(sizeEl.options[sizeEl.selectedIndex].dataset.base) total += parseInt(sizeEl.options[sizeEl.selectedIndex].dataset.base);
+            if(flavorEl.options[flavorEl.selectedIndex].dataset.extra) total += parseInt(flavorEl.options[flavorEl.selectedIndex].dataset.extra);
             document.getElementById('livePriceDisplay').innerText = total > 0 ? `₹${total}` : `₹0`;
         }
 
@@ -439,33 +491,32 @@
         // FIXED TIMER JS ⏱️
         function startTimer() {
             let time = 4 * 3600 + 45 * 60 + 30; // 4h 45m 30s
-            let hoursEl = document.getElementById('hours');
-            let minsEl = document.getElementById('minutes');
-            let secsEl = document.getElementById('seconds');
-            
+            let hoursEl = document.getElementById('hours'); let minsEl = document.getElementById('minutes'); let secsEl = document.getElementById('seconds');
             if(hoursEl && minsEl && secsEl) {
                 setInterval(function() {
-                    let h = Math.floor(time / 3600);
-                    let m = Math.floor((time % 3600) / 60);
-                    let s = time % 60;
-                    hoursEl.innerText = h < 10 ? '0'+h : h;
-                    minsEl.innerText = m < 10 ? '0'+m : m;
-                    secsEl.innerText = s < 10 ? '0'+s : s;
+                    let h = Math.floor(time / 3600), m = Math.floor((time % 3600) / 60), s = time % 60;
+                    hoursEl.innerText = h < 10 ? '0'+h : h; minsEl.innerText = m < 10 ? '0'+m : m; secsEl.innerText = s < 10 ? '0'+s : s;
                     if(time > 0) time--;
                 }, 1000);
             }
         }
         startTimer();
 
-        // Builder Whatsapp
-        document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            let msg = `Hello Sugar Land! 🍰\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n*Total Estimate: ${document.getElementById('livePriceDisplay').innerText}*`;
-            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
+        // Chatbot Logics & Voice UI 🎤
+        const chatbotToggler = document.querySelector(".chatbot-toggler"), closeBtn = document.querySelector(".close-btn"), chatbox = document.querySelector(".chatbox"), chatInput = document.getElementById("aiInput"), sendChatBtn = document.querySelector("#send-btn"), micBtn = document.getElementById("mic-btn");
+        
+        micBtn.addEventListener("click", () => {
+            chatInput.placeholder = "Listening... Speak now 🎤";
+            micBtn.style.color = "#ff6b8b";
+            micBtn.classList.add("fa-beat-fade");
+            setTimeout(() => {
+                chatInput.value = "I need a beautiful red velvet cake for tomorrow.";
+                chatInput.placeholder = "Type your dream cake...";
+                micBtn.style.color = "var(--primary-color)";
+                micBtn.classList.remove("fa-beat-fade");
+            }, 2500);
         });
 
-        // Chatbot Logics
-        const chatbotToggler = document.querySelector(".chatbot-toggler"), closeBtn = document.querySelector(".close-btn"), chatbox = document.querySelector(".chatbox"), chatInput = document.querySelector(".chat-input textarea"), sendChatBtn = document.querySelector("#send-btn");
         const createChatLi = (msg, cls) => { let li = document.createElement("li"); li.classList.add("chat", cls); li.innerHTML = cls === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`; li.querySelector("p").textContent = msg; return li; }
         const handleChat = () => { let msg = chatInput.value.trim(); if(!msg) return; chatInput.value = ""; chatbox.appendChild(createChatLi(msg, "outgoing")); chatbox.scrollTo(0, chatbox.scrollHeight); setTimeout(() => { let incLi = createChatLi("Thinking...", "incoming"); chatbox.appendChild(incLi); chatbox.scrollTo(0, chatbox.scrollHeight); setTimeout(() => { incLi.querySelector("p").innerHTML = `Redirecting to WhatsApp...`; setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI sent me: " + msg), '_blank'), 1500); }, 1000); }, 600); }
         sendChatBtn.addEventListener("click", handleChat); chatInput.addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
