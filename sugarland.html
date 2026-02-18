@@ -41,26 +41,44 @@
             <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-actions">
-            <select id="langToggle" class="lang-select">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="gu">GU</option>
-            </select>
+            <select id="langToggle" class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="gu">GU</option></select>
             <button id="darkModeToggle" class="btn-login" style="font-size: 20px;"><i class="fa-solid fa-moon"></i></button>
+            <button id="navCartBtn" class="btn-login" style="font-size: 20px; position:relative;">
+                <i class="fa-solid fa-cart-shopping"></i><span id="cartBadge" class="cart-badge">0</span>
+            </button>
             <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-trans="navBtn">Design Cake</span></a>
         </div>
     </nav>
 
     <div class="popup-overlay" id="welcomePopup">
-        <div class="popup-box">
+        <div class="popup-box" id="giftBoxContainer">
             <span class="close-popup" id="closePopup"><i class="fa-solid fa-xmark"></i></span>
-            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=400&auto=format&fit=crop" alt="Free Cupcake">
-            <h2>Wait! A Sweet Treat For You 🧁</h2>
-            <p>Get a <strong>FREE Special Cupcake</strong> on your first order above ₹1000!</p>
-            <form class="popup-form" onsubmit="event.preventDefault(); alert('Coupon Sent to your Email! 🎉'); document.getElementById('welcomePopup').style.display='none';">
-                <input type="email" placeholder="Enter your Email" required>
-                <button type="submit" class="btn-primary w-100">Claim My Free Cupcake</button>
-            </form>
+            <div id="unopenedGift" style="cursor: pointer;">
+                <i class="fa-solid fa-gift fa-shake" style="font-size: 80px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <h2>You've found a Mystery Gift!</h2>
+                <p>Tap the box to reveal your sweet surprise before it expires.</p>
+                <button class="btn-primary w-100" onclick="revealGift()">Tap to Open 🎁</button>
+            </div>
+            <div id="openedGift" style="display: none;">
+                <i class="fa-solid fa-ticket" style="font-size: 60px; color: #25D366; margin-bottom: 20px;"></i>
+                <h2>Yay! 20% OFF 🎉</h2>
+                <p>Use code <strong>SWEET20</strong> at WhatsApp Checkout!</p>
+                <button class="btn-primary w-100" onclick="document.getElementById('welcomePopup').style.display='none'">Claim Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Your Cart</h3>
+            <span class="close-cart" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="cart-items" id="cartItemsList">
+            <p style="text-align:center; color: var(--text-light); margin-top: 50px;">Your cart is empty. Let's add some sweetness!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Total:</span> <h3 id="cartTotalPrice">₹0</h3></div>
+            <button class="btn-primary w-100" onclick="checkoutCart()"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
         </div>
     </div>
 
@@ -77,7 +95,14 @@
             <span class="badge">✨ Sweetness in Every Bite</span>
             <h1 data-trans="heroTitle">Welcome to <span class="highlight">Sugar Land</span> Bakery</h1>
             <p data-trans="heroDesc">We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic for your special moments.</p>
-            <div class="hero-buttons">
+            
+            <div class="pincode-checker">
+                <input type="number" id="pinInput" placeholder="Enter Pincode (e.g. 395017)">
+                <button onclick="checkPincode()"><i class="fa-solid fa-location-crosshairs"></i> Check</button>
+            </div>
+            <p id="pinResult" style="font-size: 13px; margin-top: 5px; font-weight: 600;"></p>
+
+            <div class="hero-buttons" style="margin-top: 20px;">
                 <a href="#menu" class="btn-primary large" style="text-decoration:none;" data-trans="heroBtn">View Full Menu</a>
             </div>
         </div>
@@ -86,9 +111,7 @@
             <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=800&auto=format&fit=crop" alt="Signature Cake" class="main-cake floating-anim">
         </div>
         <div class="wave-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C79.86,118.84,159.27,118.3,232.44,103.11c24.63-5.11,48.16-11.23,72.4-18.06,10.63-2.94,21.3-6.14,32.32-9.69Z" class="shape-fill"></path>
-            </svg>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C79.86,118.84,159.27,118.3,232.44,103.11c24.63-5.11,48.16-11.23,72.4-18.06,10.63-2.94,21.3-6.14,32.32-9.69Z" class="shape-fill"></path></svg>
         </div>
     </section>
 
@@ -98,21 +121,9 @@
             <p>Your dream cake in 3 simple steps</p>
         </div>
         <div class="steps-container">
-            <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="step-icon"><i class="fa-solid fa-cake-candles"></i></div>
-                <h3>1. Choose Your Cake</h3>
-                <p>Select from our menu or design custom.</p>
-            </div>
-            <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="step-icon"><i class="fa-solid fa-kitchen-set"></i></div>
-                <h3>2. We Bake with Love</h3>
-                <p>Prepared using premium, fresh ingredients.</p>
-            </div>
-            <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                <h3>3. Fresh Delivery</h3>
-                <p>Fast and safe delivery right to your doorstep.</p>
-            </div>
+            <div class="step-card" data-aos="fade-up" data-aos-delay="100"><div class="step-icon"><i class="fa-solid fa-cake-candles"></i></div><h3>1. Choose Your Cake</h3><p>Select from our menu or design custom.</p></div>
+            <div class="step-card" data-aos="fade-up" data-aos-delay="200"><div class="step-icon"><i class="fa-solid fa-kitchen-set"></i></div><h3>2. We Bake with Love</h3><p>Prepared using premium, fresh ingredients.</p></div>
+            <div class="step-card" data-aos="fade-up" data-aos-delay="300"><div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div><h3>3. Fresh Delivery</h3><p>Fast and safe delivery right to your doorstep.</p></div>
         </div>
     </section>
 
@@ -133,16 +144,12 @@
             <div class="time-box"><span id="minutes">45</span><p>Mins</p></div>
             <div class="time-box"><span id="seconds">30</span><p>Secs</p></div>
         </div>
-        <a href="#menu" class="btn-primary" style="text-decoration:none; background:white; color:var(--primary-color);">Grab Deal Now</a>
     </section>
 
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-video-wrapper" data-aos="fade-right">
-                <video autoplay loop muted playsinline class="about-video">
-                    <source src="https://cdn.pixabay.com/video/2021/05/13/74033-550069004_large.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
+                <video autoplay loop muted playsinline class="about-video"><source src="https://cdn.pixabay.com/video/2021/05/13/74033-550069004_large.mp4" type="video/mp4"></video>
             </div>
             <div class="about-content" data-aos="fade-left">
                 <h2>Our <span class="highlight">Story</span></h2>
@@ -150,7 +157,6 @@
                 <ul class="features-list">
                     <li><i class="fa-solid fa-check-circle highlight"></i> 100% Eggless Options</li>
                     <li><i class="fa-solid fa-check-circle highlight"></i> Freshly Baked Daily</li>
-                    <li><i class="fa-solid fa-check-circle highlight"></i> Premium Quality Ingredients</li>
                 </ul>
             </div>
         </div>
@@ -161,18 +167,25 @@
             <h2 data-trans="menuTitle">Our Popular <span class="highlight">Treats</span></h2>
             <p>Handpicked favorites loved by our customers</p>
         </div>
+        
+        <div class="menu-filters" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All Treats</button>
+            <button class="filter-btn" data-filter="cakes">Cakes</button>
+            <button class="filter-btn" data-filter="cupcakes">Cupcakes</button>
+        </div>
+
         <div class="menu-grid">
-            <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="menu-card tilt-card" data-category="cupcakes" data-aos="fade-up">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=600&auto=format&fit=crop" alt="Cupcakes"><span class="price-tag">₹350</span></div>
-                <div class="card-content"><h3>Assorted Cupcake Box</h3><p>A box of 6 delightful flavors fit for any celebration.</p><button class="btn-card">Order Now</button></div>
+                <div class="card-content"><h3>Assorted Cupcake Box</h3><p>6 delightful flavors.</p><button class="btn-card" onclick="addToCart('Assorted Cupcake Box', 350)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
-            <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="menu-card tilt-card" data-category="cakes" data-aos="fade-up">
                 <div class="card-image"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600&auto=format&fit=crop" alt="Cheesecake"><span class="price-tag">₹850</span></div>
-                <div class="card-content"><h3>Berry Cheesecake</h3><p>Creamy, rich cheesecake topped with fresh berries.</p><button class="btn-card">Order Now</button></div>
+                <div class="card-content"><h3>Berry Cheesecake</h3><p>Creamy, rich cheesecake.</p><button class="btn-card" onclick="addToCart('Berry Cheesecake', 850)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
-             <div class="menu-card tilt-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Custom Cake"><span class="price-tag">₹1200+</span></div>
-                <div class="card-content"><h3>Custom Birthday Cakes</h3><p>Tell us your dream design, we bake it to reality.</p><button class="btn-card">Enquire Now</button></div>
+             <div class="menu-card tilt-card" data-category="cakes" data-aos="fade-up">
+                <div class="card-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake"><span class="price-tag">₹650</span></div>
+                <div class="card-content"><h3>Chocolate Truffle Cake</h3><p>Dark chocolate heaven.</p><button class="btn-card" onclick="addToCart('Chocolate Truffle Cake', 650)">Add to Cart <i class="fa-solid fa-plus"></i></button></div>
             </div>
         </div>
     </section>
@@ -190,20 +203,20 @@
                 <div class="form-row">
                     <div class="input-group">
                         <label>Cake Size & Shape</label>
-                        <select id="cakeSize" required>
+                        <select id="cakeSize" required onchange="calculateLivePrice()">
                             <option value="" disabled selected>Select Size</option>
-                            <option value="Round - 1/2 Kg">Round - 1/2 Kg</option>
-                            <option value="Round - 1 Kg">Round - 1 Kg</option>
-                            <option value="2 Tier - 2 Kg">2 Tier - 2 Kg</option>
+                            <option value="Round - 1/2 Kg" data-base="400">Round - 1/2 Kg (₹400 Base)</option>
+                            <option value="Round - 1 Kg" data-base="800">Round - 1 Kg (₹800 Base)</option>
+                            <option value="2 Tier - 2 Kg" data-base="1800">2 Tier - 2 Kg (₹1800 Base)</option>
                         </select>
                     </div>
                     <div class="input-group">
                         <label>Base Flavor</label>
-                        <select id="cakeFlavor" required>
+                        <select id="cakeFlavor" required onchange="calculateLivePrice()">
                             <option value="" disabled selected>Select Flavor</option>
-                            <option value="Chocolate Truffle">Chocolate Truffle</option>
-                            <option value="Red Velvet">Red Velvet</option>
-                            <option value="Fresh Pineapple">Fresh Pineapple</option>
+                            <option value="Vanilla" data-extra="0">Vanilla (No extra charge)</option>
+                            <option value="Chocolate Truffle" data-extra="150">Chocolate Truffle (+₹150)</option>
+                            <option value="Red Velvet" data-extra="200">Red Velvet (+₹200)</option>
                         </select>
                     </div>
                 </div>
@@ -211,315 +224,185 @@
                     <label>Message on Cake & Extra Details</label>
                     <textarea id="extraDetails" rows="2" placeholder="E.g., Happy Birthday Neha! Please make it less sweet..."></textarea>
                 </div>
-                <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Send My Design to WhatsApp</button>
+                <div class="live-price-box">
+                    <span>Estimated Total:</span>
+                    <h3 id="livePriceDisplay">₹0</h3>
+                </div>
+                <button type="submit" class="btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Send Design to WhatsApp</button>
             </form>
         </div>
     </section>
 
     <section class="team-section" id="team">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Meet Our <span class="highlight">Master Bakers</span></h2>
-            <p>The magic hands behind our delicious creations</p>
-        </div>
+        <div class="section-header" data-aos="fade-up"><h2>Meet Our <span class="highlight">Master Bakers</span></h2></div>
         <div class="team-grid">
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul">
-                <h3>Chef Rahul</h3>
-                <p>Head Pastry Chef - 10 Yrs Exp.</p>
-            </div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali">
-                <h3>Chef Anjali</h3>
-                <p>Fondant Art Specialist</p>
-            </div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop" alt="Chef Vikram">
-                <h3>Chef Vikram</h3>
-                <p>Bread & Artisanal Expert</p>
-            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul"><h3>Chef Rahul</h3><p>Head Pastry Chef</p></div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali"><h3>Chef Anjali</h3><p>Fondant Art Specialist</p></div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop" alt="Chef Vikram"><h3>Chef Vikram</h3><p>Artisanal Expert</p></div>
         </div>
     </section>
 
     <section class="faq-section" id="faq">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Frequently Asked <span class="highlight">Questions</span></h2>
-            <p>Clear all your doubts before you order a sweet treat.</p>
-        </div>
+        <div class="section-header" data-aos="fade-up"><h2>Frequently Asked <span class="highlight">Questions</span></h2></div>
         <div class="faq-container" data-aos="fade-up">
-            <details class="faq-item">
-                <summary>Do you offer Midnight Delivery in Surat? <i class="fa-solid fa-chevron-down faq-icon"></i></summary>
-                <div class="faq-content"><p>Yes! We offer special midnight delivery across Surat. Please place your order at least 24 hours in advance to secure a slot.</p></div>
-            </details>
-            <details class="faq-item">
-                <summary>Are all your cakes 100% Eggless? <i class="fa-solid fa-chevron-down faq-icon"></i></summary>
-                <div class="faq-content"><p>Absolutely! Our entire facility is 100% pure vegetarian and eggless. We use premium substitutes to ensure the cake stays soft and fluffy.</p></div>
-            </details>
-            <details class="faq-item">
-                <summary>How much time do you need for a Custom Theme Cake? <i class="fa-solid fa-chevron-down faq-icon"></i></summary>
-                <div class="faq-content"><p>For custom fondant or multi-tier theme cakes, we request a minimum notice of 2 to 3 days so our chefs can perfect the details.</p></div>
-            </details>
-            <details class="faq-item">
-                <summary>Can I customize the sugar level? <i class="fa-solid fa-chevron-down faq-icon"></i></summary>
-                <div class="faq-content"><p>Yes, health is important! Just mention "Low Sugar" in the extra details box while ordering your custom cake.</p></div>
-            </details>
+            <details class="faq-item"><summary>Do you offer Midnight Delivery? <i class="fa-solid fa-chevron-down faq-icon"></i></summary><div class="faq-content"><p>Yes! We offer special midnight delivery across Surat.</p></div></details>
+            <details class="faq-item"><summary>Are all your cakes 100% Eggless? <i class="fa-solid fa-chevron-down faq-icon"></i></summary><div class="faq-content"><p>Absolutely! Our entire facility is 100% pure vegetarian and eggless.</p></div></details>
         </div>
     </section>
 
     <section class="testimonials-marquee" id="reviews">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Happy <span class="highlight">Customers</span></h2>
-            <p>Rated 4.9 ⭐ by Surat's dessert lovers!</p>
-        </div>
+        <div class="section-header" data-aos="fade-up"><h2>Happy <span class="highlight">Customers</span></h2></div>
         <div class="marquee-wrapper">
             <div class="marquee-track">
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat! The design was perfect."</p><h4>- Neha P.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet! It melts in the mouth."</p><h4>- Rahul S.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh, pure veg and eggless. Loved it."</p><h4>- Anjali M.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered right on time for our midnight party."</p><h4>- Vikram K.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The cheesecake is absolute heaven. Must try!"</p><h4>- Priya R.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat! The design was perfect."</p><h4>- Neha P.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet! It melts in the mouth."</p><h4>- Rahul S.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh, pure veg and eggless. Loved it."</p><h4>- Anjali M.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered right on time for our midnight party."</p><h4>- Vikram K.</h4></div>
-                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The cheesecake is absolute heaven. Must try!"</p><h4>- Priya R.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
             </div>
-        </div>
-    </section>
-
-    <section class="location-section" id="location">
-        <div class="location-content" data-aos="fade-right">
-            <h2>Visit <span class="highlight">Sugar Land</span></h2>
-            <p>Come smell the fresh baking! We are keen to serve you our fresh delights.</p>
-            <ul class="contact-info">
-                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Vanita Heights, 1203, Vesu Canal Rd, Althan, Surat</span></li>
-                <li><i class="fa-solid fa-clock highlight"></i> <span>Open Daily: 10:00 AM - 8:00 PM</span></li>
-                <li><i class="fa-solid fa-phone highlight"></i> <span>+91 75675 68060</span></li>
-            </ul>
-        </div>
-        <div class="map-container" data-aos="fade-left">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0543666299496!2d72.8105!3d21.1498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f005c879831%3A0xe54d2cd5017df716!2sSugar%20Land!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <section class="birthday-club">
         <div class="club-container" data-aos="zoom-in">
             <h2>🎂 Join Our Birthday Club</h2>
-            <p>Enter your details and get a flat <strong>20% OFF</strong> coupon code during your birthday month!</p>
+            <p>Enter your details and get a flat <strong>20% OFF</strong> coupon code!</p>
             <form class="club-form" id="birthdayForm">
                 <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Email or WhatsApp No." required>
-                <input type="month" required title="Select your birthday month">
+                <input type="email" placeholder="Email or WhatsApp" required>
                 <button type="submit" class="btn-primary">Join the Club</button>
             </form>
         </div>
     </section>
 
-    <footer>
-        <p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p>
-    </footer>
+    <footer><p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p></footer>
 
-    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <button class="chatbot-toggler">
-        <i class="fa-solid fa-robot"></i>
-    </button>
-    
+    <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <button class="chatbot-toggler"><i class="fa-solid fa-robot"></i></button>
     <div class="chatbot-window">
-        <div class="chat-header">
-            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Sugar Land AI</h3>
-            <span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
-        </div>
-        <ul class="chatbox">
-            <li class="chat incoming">
-                <i class="fa-solid fa-robot bot-avatar"></i>
-                <p>Hi there 👋<br>I am your smart AI baking assistant. Tell me, what kind of cake are you looking for today?</p>
-            </li>
-        </ul>
-        <div class="chat-input">
-            <textarea placeholder="Type your dream cake..." spellcheck="false" required></textarea>
-            <span id="send-btn"><i class="fa-solid fa-paper-plane"></i></span>
-        </div>
+        <div class="chat-header"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Sugar Land AI</h3><span class="close-btn"><i class="fa-solid fa-xmark"></i></span></div>
+        <ul class="chatbox"><li class="chat incoming"><i class="fa-solid fa-robot bot-avatar"></i><p>Hi there 👋<br>I am your smart AI baking assistant. What kind of cake are you looking for?</p></li></ul>
+        <div class="chat-input"><textarea placeholder="Type your dream cake..." required></textarea><span id="send-btn"><i class="fa-solid fa-paper-plane"></i></span></div>
     </div>
 
     <div class="mobile-sticky-footer">
-        <div class="sticky-price">
-            <span>Starting at</span>
-            <h4>₹350</h4>
-        </div>
-        <a href="#menu" class="btn-primary">View Menu & Order</a>
+        <div class="sticky-price"><span>Your Cart</span><h4 id="mobileCartTotal">₹0</h4></div>
+        <button class="btn-primary" onclick="document.getElementById('cartSidebar').classList.add('open')"><i class="fa-solid fa-bag-shopping"></i> View Cart</button>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // --- 1. PRELOADER & POPUP ---
+        // 1. PRELOADER & POPUP
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                let preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 1000); 
-            
-            setTimeout(function() {
-                let popup = document.getElementById('welcomePopup');
-                if(!sessionStorage.getItem('popupShown')){
-                    popup.style.display = 'flex';
-                    sessionStorage.setItem('popupShown', 'true');
-                }
-            }, 4000); 
+            setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(() => document.getElementById('preloader').style.display = 'none', 500); }, 1000); 
+            setTimeout(() => { if(!sessionStorage.getItem('popupShown')){ document.getElementById('welcomePopup').style.display = 'flex'; sessionStorage.setItem('popupShown', 'true'); } }, 3500); 
         });
-
-        document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('welcomePopup').style.display = 'none';
-        });
-
-        // --- 2. FOMO POPUP LOGIC 🔔 ---
-        const fomoData = [
-            { name: "Rahul from Vesu", cake: "Red Velvet Cake", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" },
-            { name: "Priya from Althan", cake: "Custom Birthday Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" },
-            { name: "Amit from Adajan", cake: "Assorted Cupcakes", img: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=100&auto=format&fit=crop" },
-            { name: "Neha from Piplod", cake: "Berry Cheesecake", img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=100&auto=format&fit=crop" }
-        ];
-        
-        setInterval(() => {
-            const fomoPopup = document.getElementById('fomoPopup');
-            const randomOrder = fomoData[Math.floor(Math.random() * fomoData.length)];
-            
-            document.getElementById('fomoTitle').innerText = `${randomOrder.name} ordered a ${randomOrder.cake}`;
-            document.getElementById('fomoTime').innerText = `${Math.floor(Math.random() * 10) + 1} mins ago`;
-            document.getElementById('fomoImg').src = randomOrder.img;
-            
-            fomoPopup.classList.add('show');
-            setTimeout(() => { fomoPopup.classList.remove('show'); }, 4000); // Hide after 4s
-        }, 12000); // Show every 12s
-
-        // --- 3. 3D PARALLAX HOVER EFFECT 🪄 ---
-        document.querySelectorAll('.tilt-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                let rect = card.getBoundingClientRect();
-                let x = e.clientX - rect.left; // x position within the element.
-                let y = e.clientY - rect.top;  // y position within the element.
-                let xOut = (x / rect.width - 0.5) * 15; // rotate degree
-                let yOut = (y / rect.height - 0.5) * -15;
-                card.style.transform = `perspective(1000px) rotateY(${xOut}deg) rotateX(${yOut}deg) scale3d(1.02, 1.02, 1.02)`;
-                card.style.transition = 'none'; // remove transition for smooth tracking
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transition = 'transform 0.5s ease';
-                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-
-        // --- 4. LANGUAGE TRANSLATOR 🌐 ---
-        const translations = {
-            en: {
-                navBtn: "Design Cake", heroTitle: "Welcome to <span class='highlight'>Sugar Land</span> Bakery", 
-                heroDesc: "We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic.",
-                heroBtn: "View Full Menu", howTitle: "How It <span class='highlight'>Works</span>", 
-                menuTitle: "Our Popular <span class='highlight'>Treats</span>", builderTitle: "Design Your Dream Cake"
-            },
-            hi: {
-                navBtn: "केक डिजाइन करें", heroTitle: "<span class='highlight'>शुगर लैंड</span> बेकरी में आपका स्वागत है", 
-                heroDesc: "हम शहर में बेहतरीन केक और पेस्ट्री बनाते हैं। प्यार, ताज़ा सामग्री और जादू के छिड़काव के साथ तैयार किया गया।",
-                heroBtn: "पूरा मेनू देखें", howTitle: "यह कैसे काम <span class='highlight'>करता है</span>", 
-                menuTitle: "हमारी लोकप्रिय <span class='highlight'>मिठाइयाँ</span>", builderTitle: "अपने सपनों का केक डिजाइन करें"
-            },
-            gu: {
-                navBtn: "કેક ડિઝાઇન કરો", heroTitle: "<span class='highlight'>સુગર લેન્ડ</span> બેકરીમાં તમારું સ્વાગત છે", 
-                heroDesc: "અમે શહેરમાં શ્રેષ્ઠ કેક અને પેસ્ટ્રી બનાવીએ છીએ. પ્રેમ, શુદ્ધ સામગ્રી અને જાદુ સાથે તૈયાર.",
-                heroBtn: "આખું મેનૂ જુઓ", howTitle: "આ કેવી રીતે <span class='highlight'>કામ કરે છે</span>", 
-                menuTitle: "અમારી લોકપ્રિય <span class='highlight'>મીઠાઈઓ</span>", builderTitle: "તમારો ડ્રીમ કેક ડિઝાઇન કરો"
-            }
-        };
-
-        document.getElementById('langToggle').addEventListener('change', function() {
-            let lang = this.value;
-            document.querySelectorAll('[data-trans]').forEach(el => {
-                let key = el.getAttribute('data-trans');
-                if(translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-        });
-
-        // --- 5. DARK MODE TOGGLE 🌙 ---
-        const darkModeBtn = document.getElementById('darkModeToggle');
-        darkModeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            let icon = darkModeBtn.querySelector('i');
-            if(document.body.classList.contains('dark-theme')) {
-                icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
-            }
-        });
-
-        // --- 6. SCROLL PROGRESS BAR 🚀 ---
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("scrollProgress").style.width = (winScroll / height) * 100 + "%";
-        };
-
-        // --- 7. CONFETTI ANIMATION 🎉 ---
-        document.getElementById('birthdayForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('closePopup').addEventListener('click', () => document.getElementById('welcomePopup').style.display = 'none');
+        function revealGift() {
+            document.getElementById('unopenedGift').style.display = 'none';
+            document.getElementById('openedGift').style.display = 'block';
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-            setTimeout(() => alert('Yay! You are successfully registered for the Birthday Club! 🎉'), 800);
-        });
+        }
 
-        // --- 8. FAQ ACCORDION LOGIC ⬇️ ---
-        document.querySelectorAll('.faq-item').forEach(faq => {
-            faq.addEventListener('click', () => {
-                let icon = faq.querySelector('.faq-icon');
-                if(faq.hasAttribute('open')) { icon.style.transform = 'rotate(0deg)'; } 
-                else { icon.style.transform = 'rotate(180deg)'; }
+        // 2. PINCODE CHECKER 📍
+        function checkPincode() {
+            let pin = document.getElementById('pinInput').value;
+            let result = document.getElementById('pinResult');
+            if(pin.startsWith('395') && pin.length === 6) { result.innerHTML = "<span style='color:#25D366;'><i class='fa-solid fa-check'></i> Fast Delivery Available in Surat!</span>"; } 
+            else if(pin.length < 6) { result.innerHTML = "<span style='color:red;'>Please enter 6 digit Pincode.</span>"; } 
+            else { result.innerHTML = "<span style='color:red;'><i class='fa-solid fa-xmark'></i> Sorry, out of delivery zone.</span>"; }
+        }
+
+        // 3. MENU CATEGORY FILTERS 🗂️
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active');
+                let filterValue = btn.getAttribute('data-filter');
+                menuCards.forEach(card => {
+                    if(filterValue === 'all' || card.getAttribute('data-category') === filterValue) card.style.display = 'block';
+                    else card.style.display = 'none';
+                });
             });
         });
 
-        // --- 9. FLASH SALE TIMER ⏱️ ---
-        let time = 4 * 3600 + 45 * 60 + 30;
-        setInterval(function() {
-            let h = Math.floor(time / 3600), m = Math.floor((time % 3600) / 60), s = time % 60;
-            document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
-            document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
-            document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
-            if(time > 0) time--;
-        }, 1000);
+        // 4. SLIDE OUT CART SYSTEM 🛒
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCartUI();
+            document.getElementById('cartSidebar').classList.add('open'); // Open drawer
+        }
+        function updateCartUI() {
+            let cartList = document.getElementById('cartItemsList');
+            let total = 0; cartList.innerHTML = '';
+            if(cart.length === 0) { cartList.innerHTML = '<p style="text-align:center; color:#888; margin-top:50px;">Your cart is empty.</p>'; }
+            else {
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    cartList.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                        <span style="color:#4A2C2C; font-weight:600;">${item.name}</span>
+                        <span style="color:#FF8FAB; font-weight:700;">₹${item.price} <i class="fa-solid fa-trash" style="color:gray; cursor:pointer; margin-left:10px;" onclick="removeFromCart(${index})"></i></span>
+                    </div>`;
+                });
+            }
+            document.getElementById('cartTotalPrice').innerText = `₹${total}`;
+            document.getElementById('cartBadge').innerText = cart.length;
+            document.getElementById('mobileCartTotal').innerText = `₹${total}`;
+        }
+        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
+        document.getElementById('navCartBtn').addEventListener('click', () => document.getElementById('cartSidebar').classList.add('open'));
+        document.getElementById('closeCartBtn').addEventListener('click', () => document.getElementById('cartSidebar').classList.remove('open'));
+        function checkoutCart() {
+            if(cart.length === 0) return alert('Add some items first!');
+            let list = cart.map(i => `- ${i.name} (₹${i.price})`).join('\n');
+            let total = cart.reduce((a, b) => a + b.price, 0);
+            let msg = `Hello Sugar Land Team! 🍰\n\nI want to order:\n${list}\n\n*Total Bill: ₹${total}*\nPlease confirm my order!`;
+            window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
+        }
 
-        // Init Animations
+        // 5. LIVE PRICE CALCULATOR (Builder) 🧮
+        function calculateLivePrice() {
+            let sizeEl = document.getElementById('cakeSize');
+            let flavorEl = document.getElementById('cakeFlavor');
+            let total = 0;
+            if(sizeEl.options[sizeEl.selectedIndex].dataset.base) { total += parseInt(sizeEl.options[sizeEl.selectedIndex].dataset.base); }
+            if(flavorEl.options[flavorEl.selectedIndex].dataset.extra) { total += parseInt(flavorEl.options[flavorEl.selectedIndex].dataset.extra); }
+            document.getElementById('livePriceDisplay').innerText = total > 0 ? `₹${total}` : `₹0`;
+        }
+
+        // 6. FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ, TIMERS
+        const fomoData = [ { name: "Rahul from Vesu", cake: "Red Velvet", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" }, { name: "Priya from Althan", cake: "Custom Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" } ];
+        setInterval(() => { const f = document.getElementById('fomoPopup'); const r = fomoData[Math.floor(Math.random() * fomoData.length)]; document.getElementById('fomoTitle').innerText = `${r.name} ordered a ${r.cake}`; f.classList.add('show'); setTimeout(() => f.classList.remove('show'), 4000); }, 15000);
+        
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => { let rect = card.getBoundingClientRect(); let xOut = ((e.clientX - rect.left) / rect.width - 0.5) * 15; let yOut = ((e.clientY - rect.top) / rect.height - 0.5) * -15; card.style.transform = `perspective(1000px) rotateY(${xOut}deg) rotateX(${yOut}deg) scale3d(1.02, 1.02, 1.02)`; card.style.transition = 'none'; });
+            card.addEventListener('mouseleave', () => { card.style.transition = 'transform 0.5s ease'; card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`; });
+        });
+
+        document.getElementById('darkModeToggle').addEventListener('click', () => { document.body.classList.toggle('dark-theme'); let i = document.getElementById('darkModeToggle').querySelector('i'); i.classList.toggle('fa-moon'); i.classList.toggle('fa-sun'); });
+        window.onscroll = function() { document.getElementById("scrollProgress").style.width = (document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight) * 100 + "%"; };
+        document.getElementById('birthdayForm').addEventListener('submit', function(e) { e.preventDefault(); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); setTimeout(() => alert('Successfully registered! 🎉'), 800); });
+        document.querySelectorAll('.faq-item').forEach(f => f.addEventListener('click', () => { let i = f.querySelector('.faq-icon'); i.style.transform = f.hasAttribute('open') ? 'rotate(0deg)' : 'rotate(180deg)'; }));
         AOS.init({ once: true, offset: 50 });
 
-        // Builder Logic
+        // Builder Whatsapp
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
-            let msg = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n(Promo Code: SUGAR10)`;
+            let msg = `Hello Sugar Land! 🍰\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n*Total Estimate: ${document.getElementById('livePriceDisplay').innerText}*`;
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         });
 
-        // Chatbot Logic
+        // Chatbot Logics
         const chatbotToggler = document.querySelector(".chatbot-toggler"), closeBtn = document.querySelector(".close-btn"), chatbox = document.querySelector(".chatbox"), chatInput = document.querySelector(".chat-input textarea"), sendChatBtn = document.querySelector("#send-btn");
-        const createChatLi = (msg, cls) => {
-            let li = document.createElement("li"); li.classList.add("chat", cls);
-            li.innerHTML = cls === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`;
-            li.querySelector("p").textContent = msg; return li;
-        }
-        const handleChat = () => {
-            let msg = chatInput.value.trim(); if(!msg) return; chatInput.value = "";
-            chatbox.appendChild(createChatLi(msg, "outgoing")); chatbox.scrollTo(0, chatbox.scrollHeight);
-            setTimeout(() => {
-                let incLi = createChatLi("Thinking...", "incoming"); chatbox.appendChild(incLi); chatbox.scrollTo(0, chatbox.scrollHeight);
-                setTimeout(() => {
-                    incLi.querySelector("p").innerHTML = `Redirecting to WhatsApp Expert...`;
-                    setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI sent me: " + msg), '_blank'), 1500);
-                }, 1000);
-            }, 600);
-        }
-        sendChatBtn.addEventListener("click", handleChat);
-        chatInput.addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
-        chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
-        closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+        const createChatLi = (msg, cls) => { let li = document.createElement("li"); li.classList.add("chat", cls); li.innerHTML = cls === "outgoing" ? `<p></p>` : `<i class="fa-solid fa-robot bot-avatar"></i><p></p>`; li.querySelector("p").textContent = msg; return li; }
+        const handleChat = () => { let msg = chatInput.value.trim(); if(!msg) return; chatInput.value = ""; chatbox.appendChild(createChatLi(msg, "outgoing")); chatbox.scrollTo(0, chatbox.scrollHeight); setTimeout(() => { let incLi = createChatLi("Thinking...", "incoming"); chatbox.appendChild(incLi); chatbox.scrollTo(0, chatbox.scrollHeight); setTimeout(() => { incLi.querySelector("p").innerHTML = `Redirecting to WhatsApp...`; setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI sent me: " + msg), '_blank'), 1500); }, 1000); }, 600); }
+        sendChatBtn.addEventListener("click", handleChat); chatInput.addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChat(); }});
+        chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot")); closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
     </script>
 </body>
 </html>
