@@ -148,8 +148,8 @@
 
     <section class="about-section" id="about">
         <div class="about-container">
-            <div class="about-video-wrapper" data-aos="fade-right">
-                <video autoplay loop muted playsinline class="about-video"><source src="https://cdn.pixabay.com/video/2021/05/13/74033-550069004_large.mp4" type="video/mp4"></video>
+            <div class="about-image-wrapper" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=800&auto=format&fit=crop" alt="Bakery Shop" class="about-image-fix">
             </div>
             <div class="about-content" data-aos="fade-left">
                 <h2>Our <span class="highlight">Story</span></h2>
@@ -236,10 +236,18 @@
     <section class="team-section" id="team">
         <div class="section-header" data-aos="fade-up"><h2>Meet Our <span class="highlight">Master Bakers</span></h2></div>
         <div class="team-grid">
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul"><h3>Chef Rahul</h3><p>Head Pastry Chef</p></div>
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali"><h3>Chef Anjali</h3><p>Fondant Art Specialist</p></div>
-            
-            <div class="team-card" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1606822557451-b85194cc36b9?w=400&auto=format&fit=crop" alt="Chef Vikram"><h3>Chef Vikram</h3><p>Artisanal Expert</p></div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=400&auto=format&fit=crop" alt="Chef Rahul">
+                <h3>Chef Rahul</h3><p>Head Pastry Chef</p>
+            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=400&auto=format&fit=crop" alt="Chef Anjali">
+                <h3>Chef Anjali</h3><p>Fondant Art Specialist</p>
+            </div>
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?q=80&w=400&auto=format&fit=crop" alt="Chef Vikram">
+                <h3>Chef Vikram</h3><p>Artisanal Expert</p>
+            </div>
         </div>
     </section>
 
@@ -326,7 +334,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // PRELOADER & POPUP
+        // 1. PRELOADER & POPUP
         window.addEventListener('load', function() {
             setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(() => document.getElementById('preloader').style.display = 'none', 500); }, 1000); 
             setTimeout(() => { if(!sessionStorage.getItem('popupShown')){ document.getElementById('welcomePopup').style.display = 'flex'; sessionStorage.setItem('popupShown', 'true'); } }, 3500); 
@@ -338,7 +346,7 @@
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
         }
 
-        // PINCODE CHECKER 📍
+        // 2. PINCODE CHECKER 📍
         function checkPincode() {
             let pin = document.getElementById('pinInput').value;
             let result = document.getElementById('pinResult');
@@ -347,7 +355,7 @@
             else { result.innerHTML = "<span style='color:red;'><i class='fa-solid fa-xmark'></i> Sorry, out of delivery zone.</span>"; }
         }
 
-        // MENU CATEGORY FILTERS 🗂️
+        // 3. MENU CATEGORY FILTERS 🗂️
         const filterBtns = document.querySelectorAll('.filter-btn');
         const menuCards = document.querySelectorAll('.menu-card');
         filterBtns.forEach(btn => {
@@ -361,7 +369,7 @@
             });
         });
 
-        // SLIDE OUT CART SYSTEM 🛒
+        // 4. SLIDE OUT CART SYSTEM 🛒
         let cart = [];
         function addToCart(name, price) {
             cart.push({name, price});
@@ -396,7 +404,7 @@
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         }
 
-        // LIVE PRICE CALCULATOR 🧮
+        // 5. LIVE PRICE CALCULATOR 🧮
         function calculateLivePrice() {
             let sizeEl = document.getElementById('cakeSize');
             let flavorEl = document.getElementById('cakeFlavor');
@@ -406,7 +414,7 @@
             document.getElementById('livePriceDisplay').innerText = total > 0 ? `₹${total}` : `₹0`;
         }
 
-        // FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ, TIMERS
+        // 6. FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ
         const fomoData = [ { name: "Rahul from Vesu", cake: "Red Velvet", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" }, { name: "Priya from Althan", cake: "Custom Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" } ];
         setInterval(() => { const f = document.getElementById('fomoPopup'); const r = fomoData[Math.floor(Math.random() * fomoData.length)]; document.getElementById('fomoTitle').innerText = `${r.name} ordered a ${r.cake}`; f.classList.add('show'); setTimeout(() => f.classList.remove('show'), 4000); }, 15000);
         
@@ -427,6 +435,27 @@
         document.getElementById('birthdayForm').addEventListener('submit', function(e) { e.preventDefault(); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); setTimeout(() => alert('Successfully registered! 🎉'), 800); });
         document.querySelectorAll('.faq-item').forEach(f => f.addEventListener('click', () => { let i = f.querySelector('.faq-icon'); i.style.transform = f.hasAttribute('open') ? 'rotate(0deg)' : 'rotate(180deg)'; }));
         AOS.init({ once: true, offset: 50 });
+
+        // 7. FIXED TIMER JS ⏱️
+        function startTimer() {
+            let time = 4 * 3600 + 45 * 60 + 30; // 4h 45m 30s
+            let hoursEl = document.getElementById('hours');
+            let minsEl = document.getElementById('minutes');
+            let secsEl = document.getElementById('seconds');
+            
+            if(hoursEl && minsEl && secsEl) {
+                setInterval(function() {
+                    let h = Math.floor(time / 3600);
+                    let m = Math.floor((time % 3600) / 60);
+                    let s = time % 60;
+                    hoursEl.innerText = h < 10 ? '0'+h : h;
+                    minsEl.innerText = m < 10 ? '0'+m : m;
+                    secsEl.innerText = s < 10 ? '0'+s : s;
+                    if(time > 0) time--;
+                }, 1000);
+            }
+        }
+        startTimer(); // Ensure timer starts
 
         // Builder Whatsapp
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
