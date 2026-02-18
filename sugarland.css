@@ -29,18 +29,6 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--bg-color); z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
 .loader-content { text-align: center; }
 
-/* --- WELCOME POP-UP 🎁 --- */
-.popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 99998; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-.popup-box { background: var(--white); padding: 40px; border-radius: 25px; width: 90%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.popup-box img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--secondary-color); }
-.popup-box h2 { color: var(--text-dark); font-size: 24px; margin-bottom: 10px; }
-.popup-box p { color: var(--text-light); margin-bottom: 25px; font-size: 15px; line-height: 1.5; }
-.close-popup { position: absolute; top: 15px; right: 20px; font-size: 24px; color: var(--text-light); cursor: pointer; transition: 0.3s; }
-.close-popup:hover { color: var(--primary-color); }
-.popup-form input { width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid var(--secondary-color); margin-bottom: 15px; font-family: 'Poppins'; outline: none; background: var(--bg-color); color: var(--text-dark);}
-.popup-form input:focus { border-color: var(--primary-color); }
-@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-
 /* --- TOP PROMO BAR --- */
 .promo-bar { position: fixed; top: 0; left: 0; width: 100%; background-color: #ff6b8b; color: #fff; text-align: center; padding: 10px 15px; font-size: 14px; font-weight: 500; z-index: 1005; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 .promo-code { background: #fff; color: #ff6b8b; padding: 2px 8px; border-radius: 12px; font-weight: 700; margin-left: 5px; }
@@ -57,12 +45,14 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 @keyframes flyLeft { 0% { transform: translateX(0) translateY(0) rotate(-70deg); } 100% { transform: translateX(-130vw) translateY(20vh) rotate(-70deg); } }
 @keyframes flyDiagonal { 0% { transform: translateX(0) translateY(0) rotate(110deg); } 100% { transform: translateX(130vw) translateY(50vh) rotate(110deg); } }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR & LANG TOGGLE 🌐 --- */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(var(--bg-color), 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 40px; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.02); transition: 0.4s; }
 .logo h2 { font-size: 26px; font-weight: 800; color: var(--text-dark); }
 .nav-links { list-style: none; display: flex; gap: 30px; }
 .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 15px; transition: color 0.3s; }
 .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+.nav-actions { display: flex; align-items: center; gap: 15px;}
+.lang-select { padding: 5px 10px; border-radius: 20px; border: 1px solid var(--primary-color); background: var(--bg-color); color: var(--text-dark); font-family: 'Poppins'; outline: none; cursor: pointer; font-weight: 600;}
 
 /* --- BUTTONS --- */
 .btn-primary, .btn-login, .btn-card { padding: 12px 28px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; }
@@ -70,6 +60,25 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .btn-primary:hover { transform: translateY(-3px); background-color: #ff7a9e; box-shadow: 0 12px 25px rgba(255, 143, 171, 0.5); }
 .btn-login { background: transparent; color: var(--text-dark); }
 .w-100 { width: 100%; padding: 15px; font-size: 16px; margin-top: 10px;}
+
+/* --- WELCOME POP-UP 🎁 --- */
+.popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 99998; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+.popup-box { background: var(--white); padding: 40px; border-radius: 25px; width: 90%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.popup-box img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--secondary-color); }
+.popup-box h2 { color: var(--text-dark); font-size: 24px; margin-bottom: 10px; }
+.popup-box p { color: var(--text-light); margin-bottom: 25px; font-size: 15px; line-height: 1.5; }
+.close-popup { position: absolute; top: 15px; right: 20px; font-size: 24px; color: var(--text-light); cursor: pointer; transition: 0.3s; }
+.close-popup:hover { color: var(--primary-color); }
+.popup-form input { width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid var(--secondary-color); margin-bottom: 15px; font-family: 'Poppins'; outline: none; background: var(--bg-color); color: var(--text-dark);}
+.popup-form input:focus { border-color: var(--primary-color); }
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* --- NEW 1: LIVE FOMO POPUP 🔔 --- */
+.fomo-popup { position: fixed; bottom: 90px; left: 30px; background: var(--white); padding: 15px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 15px; z-index: 998; transform: translateX(-150%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-left: 5px solid var(--primary-color);}
+.fomo-popup.show { transform: translateX(0); }
+.fomo-popup img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+.fomo-text h4 { font-size: 14px; color: var(--text-dark); margin-bottom: 2px;}
+.fomo-text p { font-size: 12px; color: var(--text-light); }
 
 /* --- HERO SECTION --- */
 .hero { display: flex; align-items: center; justify-content: space-between; padding: 160px 8% 120px; min-height: 90vh; position: relative; }
@@ -114,16 +123,27 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .time-box span { font-size: 28px; font-weight: 700; color: var(--primary-color); display: block; }
 .time-box p { font-size: 12px; font-weight: 600; margin-top: 5px; color: #4A2C2C; }
 
-/* --- POPULAR MENU SECTION --- */
+/* --- NEW 4: ABOUT VIDEO SECTION 🎥 --- */
+.about-section { padding: 80px 8%; background-color: var(--white); transition: 0.4s; }
+.about-container { display: flex; align-items: center; gap: 50px; }
+.about-video-wrapper { flex: 1; border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); height: 400px;}
+.about-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-content { flex: 1; }
+.about-content h2 { font-size: 42px; margin-bottom: 20px; color: var(--text-dark);}
+.about-content p { color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
+.features-list { list-style: none; margin-top: 20px; }
+.features-list li { margin-bottom: 15px; font-weight: 500; display: flex; align-items: center; gap: 10px; color: var(--text-dark); }
+
+/* --- POPULAR MENU SECTION (3D CARDS) --- */
 .popular-section { padding: 80px 8%; background-color: var(--bg-color); position: relative; z-index: 10; transition: 0.4s;}
 .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.menu-card { background: var(--white); border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); transition: 0.4s; border: 2px solid transparent; }
-.menu-card:hover { transform: translateY(-15px); border-color: var(--secondary-color); }
-.card-image { position: relative; height: 250px; overflow: hidden; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.menu-card:hover .card-image img { transform: scale(1.1); }
+/* Changed for 3D logic via JS */
+.menu-card { background: var(--white); border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); transition: transform 0.5s ease; border: 2px solid transparent; transform-style: preserve-3d; }
+.menu-card:hover { border-color: var(--secondary-color); box-shadow: 0 25px 50px rgba(255,143,171,0.3);}
+.card-image { position: relative; height: 250px; overflow: hidden; transform: translateZ(30px); }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
 .price-tag { position: absolute; top: 20px; right: 20px; background: var(--bg-color); padding: 8px 15px; border-radius: 20px; font-weight: 700; color: var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.card-content { padding: 30px; text-align: center; }
+.card-content { padding: 30px; text-align: center; transform: translateZ(20px); }
 .card-content h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-dark);}
 .card-content p { color: var(--text-light); font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
 .btn-card { width: 100%; justify-content: center; background-color: var(--secondary-color); color: var(--text-dark); }
@@ -141,7 +161,17 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .input-group select, .input-group textarea { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid var(--secondary-color); font-size: 15px; outline: none; background: var(--bg-color); color: var(--text-dark); font-family: 'Poppins', sans-serif;}
 .input-group select:focus, .input-group textarea:focus { border-color: var(--primary-color); }
 
-/* --- ✅ 100% FIXED & UPGRADED: FAQ SECTION ❓ --- */
+/* --- TEAM SECTION 👨‍🍳 --- */
+.team-section { padding: 80px 8%; background-color: var(--white); text-align: center; transition: 0.4s;}
+.team-section .section-header { margin-bottom: 50px; }
+.team-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.team-card { width: 250px; }
+.team-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--secondary-color); box-shadow: var(--card-shadow); transition: 0.3s; }
+.team-card:hover img { transform: scale(1.05); border-color: var(--primary-color); }
+.team-card h3 { font-size: 22px; color: var(--text-dark); margin-bottom: 5px; }
+.team-card p { font-size: 14px; color: var(--text-light); }
+
+/* --- FAQ SECTION ❓ --- */
 .faq-section { padding: 80px 8%; background-color: var(--white); transition: 0.4s; }
 .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
 .faq-item { background: var(--bg-color); border-radius: 15px; border-left: 5px solid var(--primary-color); box-shadow: var(--card-shadow); transition: 0.3s; overflow: hidden; }
@@ -151,21 +181,17 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .faq-icon { color: var(--primary-color); font-size: 18px; transition: transform 0.3s ease; }
 .faq-content p { padding: 0 20px 20px; color: var(--text-light); font-size: 15px; line-height: 1.6; }
 
-/* --- ✅ 100% FIXED: MARQUEE REVIEWS --- */
+/* --- MARQUEE REVIEWS --- */
 .testimonials-marquee { padding: 80px 0; background-color: var(--bg-color); overflow: hidden; transition: 0.4s;}
 .testimonials-marquee .section-header { padding: 0 8%; margin-bottom: 40px; }
 .marquee-wrapper { width: 100%; overflow: hidden; position: relative; display: flex; }
-/* This ensures it flexes without breaking on mobile */
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 25s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
 .review-slide { width: 320px; flex-shrink: 0; padding: 30px; margin: 0 15px; background: var(--white); border-radius: 20px; box-shadow: var(--card-shadow); border-top: 5px solid var(--primary-color); text-align: center; }
 .review-slide .stars { font-size: 20px; margin-bottom: 15px; }
 .review-slide p { font-size: 15px; font-style: italic; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; white-space: normal; }
 .review-slide h4 { color: var(--text-dark); font-weight: 600; }
-@keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Half translation because 5 original + 5 duplicated */
-}
+@keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* --- LOCATION SECTION --- */
 .location-section { padding: 80px 8%; display: flex; align-items: center; gap: 50px; background-color: var(--white); transition: 0.4s;}
@@ -187,7 +213,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .club-form input:focus { border-color: var(--primary-color); }
 .club-form button { padding: 15px; border-radius: 50px; font-size: 16px; border: none; cursor: pointer; color: #fff;}
 
-/* --- FLOATING BUTTONS (Right Side) --- */
+/* --- FLOATING BUTTONS --- */
 .whatsapp-float { position: fixed; bottom: 105px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0px 10px 20px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; text-decoration: none; }
 .whatsapp-float:hover { transform: scale(1.1) translateY(-5px); }
 
@@ -225,9 +251,12 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
     .scroll-progress { top: 34px; }
     .navbar { flex-direction: column; padding: 15px; gap: 15px; top: 34px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .nav-actions { display: none; }
+    .nav-actions { width: 100%; justify-content: space-around; }
+    .nav-actions .btn-primary { display: none; } /* hide big btn on mobile nav to save space */
     
-    .hero { flex-direction: column; padding: 160px 5% 100px; text-align: center; }
+    .fomo-popup { bottom: 85px; left: 15px; right: 15px; padding: 10px; } /* Mobile FOMO adjustments */
+
+    .hero { flex-direction: column; padding: 180px 5% 100px; text-align: center; }
     .hero-content { max-width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
     .hero h1 { font-size: 36px; text-align: center; }
     .hero p { padding-right: 0; text-align: center; margin: 0 auto 30px auto; }
@@ -241,6 +270,10 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
     
     .trust-badges { flex-direction: column; gap: 30px; }
     .badge-item { width: 100%; }
+    
+    .about-container { flex-direction: column; text-align: center; }
+    .features-list li { justify-content: center; }
+    .about-video-wrapper { width: 100%; height: 250px; } /* smaller video on mobile */
     
     .form-row { flex-direction: column; gap: 0; }
     .assistant-header { flex-direction: column; text-align: center; }
