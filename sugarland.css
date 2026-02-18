@@ -51,7 +51,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .btn-primary, .btn-login, .btn-card { padding: 12px 28px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; }
 .btn-primary { background-color: var(--primary-color); color: #fff; box-shadow: 0 8px 20px rgba(255, 143, 171, 0.4); }
 .btn-primary:hover { transform: translateY(-3px); background-color: #ff7a9e; box-shadow: 0 12px 25px rgba(255, 143, 171, 0.5); }
-.btn-login { background: transparent; color: var(--text-dark); }
+.btn-login { background: transparent; color: var(--text-dark); border:none; cursor: pointer;}
 .w-100 { width: 100%; padding: 15px; font-size: 16px; margin-top: 10px;}
 
 /* --- CART SIDEBAR 🛒 --- */
@@ -118,6 +118,15 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .badge-item h4 { font-size: 18px; color: var(--text-dark); }
 .badge-item p { font-size: 14px; color: var(--text-light); }
 
+/* --- 🌟 FIXED: FLASH SALE TIMER ⏱️ --- */
+.flash-sale { padding: 60px 8%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: space-between; border-radius: 30px; margin: 0 8% 80px; box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2); flex-wrap: wrap; gap: 30px; color: #4A2C2C; transition: 0.4s; }
+.flash-content h2 { font-size: 32px; margin-bottom: 10px; color: #4A2C2C; }
+.flash-content p { font-size: 16px; opacity: 0.9; color: #4A2C2C; }
+.flash-timer { display: flex; gap: 15px; }
+.time-box { background: rgba(255,255,255,0.9); padding: 15px; border-radius: 15px; text-align: center; min-width: 70px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.time-box span { font-size: 28px; font-weight: 700; color: var(--primary-color); display: block; }
+.time-box p { font-size: 12px; font-weight: 600; margin-top: 5px; color: #4A2C2C; }
+
 /* --- ABOUT VIDEO --- */
 .about-section { padding: 80px 8%; background-color: var(--white); transition: 0.4s; }
 .about-container { display: flex; align-items: center; gap: 50px; }
@@ -143,6 +152,8 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .card-content { padding: 30px; text-align: center; transform: translateZ(20px); }
 .card-content h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-dark);}
 .card-content p { color: var(--text-light); font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
+.btn-card { width: 100%; justify-content: center; background-color: var(--secondary-color); color: var(--text-dark); }
+.btn-card:hover { background-color: var(--primary-color); color: #fff; }
 
 /* --- LIVE CALC CAKE BUILDER --- */
 .assistant-section { padding: 80px 8%; background-color: var(--secondary-color); transition: 0.4s;}
@@ -188,7 +199,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .review-slide h4 { color: var(--text-dark); font-weight: 600; }
 @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* --- ✅ RE-ADDED: INSTAGRAM FEED 📸 --- */
+/* --- INSTAGRAM FEED 📸 --- */
 .instagram-section { padding: 80px 0; background: var(--white); transition: 0.4s; }
 .instagram-section .section-header { text-align: center; margin-bottom: 50px; padding: 0 8%; }
 .insta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; width: 100%; }
@@ -245,20 +256,22 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .chat-input span { cursor: pointer; color: var(--primary-color); font-size: 22px; }
 
 /* --- FOOTER --- */
-footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 14px; background-color: var(--white); margin-bottom: 0; transition: 0.4s;}
+footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 14px; background-color: var(--bg-color); margin-bottom: 0; transition: 0.4s;}
 
 /* --- STICKY MOBILE FOOTER 📱 --- */
 .mobile-sticky-footer { display: none; }
 
 /* =========================================
-   📱 MOBILE RESPONSIVENESS
+   📱 MOBILE RESPONSIVENESS (PERFECTED SPACING)
    ========================================= */
 @media (max-width: 768px) {
     .promo-bar { font-size: 12px; padding: 8px 10px; }
     .scroll-progress { top: 34px; }
     .navbar { flex-direction: column; padding: 15px; gap: 15px; top: 34px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .nav-actions { width: 100%; justify-content: space-around; }
+    
+    /* 🌟 FIXED: Mobile Navbar Icons Spacing */
+    .nav-actions { width: 100%; display: flex; justify-content: center; gap: 25px; align-items: center; }
     .nav-actions .btn-primary { display: none; } 
     
     .cart-sidebar { width: 100%; right: -100%; }
@@ -288,7 +301,6 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
     .assistant-header { flex-direction: column; text-align: center; }
     .assistant-container { padding: 30px 20px; }
     
-    /* Instagram Mobile Grid */
     .insta-grid { grid-template-columns: repeat(2, 1fr); }
     .insta-item img { height: 200px; }
 
