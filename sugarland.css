@@ -118,20 +118,11 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .badge-item h4 { font-size: 18px; color: var(--text-dark); }
 .badge-item p { font-size: 14px; color: var(--text-light); }
 
-/* --- 🌟 FIXED: FLASH SALE TIMER ⏱️ --- */
-.flash-sale { padding: 60px 8%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: space-between; border-radius: 30px; margin: 0 8% 80px; box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2); flex-wrap: wrap; gap: 30px; color: #4A2C2C; transition: 0.4s; }
-.flash-content h2 { font-size: 32px; margin-bottom: 10px; color: #4A2C2C; }
-.flash-content p { font-size: 16px; opacity: 0.9; color: #4A2C2C; }
-.flash-timer { display: flex; gap: 15px; }
-.time-box { background: rgba(255,255,255,0.9); padding: 15px; border-radius: 15px; text-align: center; min-width: 70px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.time-box span { font-size: 28px; font-weight: 700; color: var(--primary-color); display: block; }
-.time-box p { font-size: 12px; font-weight: 600; margin-top: 5px; color: #4A2C2C; }
-
-/* --- ABOUT VIDEO --- */
+/* --- ABOUT SECTION & BAKERY IMAGE 🍰 --- */
 .about-section { padding: 80px 8%; background-color: var(--white); transition: 0.4s; }
 .about-container { display: flex; align-items: center; gap: 50px; }
-.about-video-wrapper { flex: 1; border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); height: 400px;}
-.about-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-image-wrapper { flex: 1; border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); height: 400px;}
+.about-image-fix { width: 100%; height: 100%; object-fit: cover; display: block; }
 .about-content { flex: 1; }
 .about-content h2 { font-size: 42px; margin-bottom: 20px; color: var(--text-dark);}
 .about-content p { color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
@@ -256,22 +247,20 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .chat-input span { cursor: pointer; color: var(--primary-color); font-size: 22px; }
 
 /* --- FOOTER --- */
-footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 14px; background-color: var(--bg-color); margin-bottom: 0; transition: 0.4s;}
+footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 14px; background: var(--bg-color); margin-bottom: 0; transition: 0.4s;}
 
 /* --- STICKY MOBILE FOOTER 📱 --- */
 .mobile-sticky-footer { display: none; }
 
 /* =========================================
-   📱 MOBILE RESPONSIVENESS (PERFECTED SPACING)
+   📱 MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
     .promo-bar { font-size: 12px; padding: 8px 10px; }
     .scroll-progress { top: 34px; }
     .navbar { flex-direction: column; padding: 15px; gap: 15px; top: 34px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    
-    /* 🌟 FIXED: Mobile Navbar Icons Spacing */
-    .nav-actions { width: 100%; display: flex; justify-content: center; gap: 25px; align-items: center; }
+    .nav-actions { width: 100%; justify-content: center; gap: 20px;}
     .nav-actions .btn-primary { display: none; } 
     
     .cart-sidebar { width: 100%; right: -100%; }
@@ -295,7 +284,7 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
     
     .about-container { flex-direction: column; text-align: center; }
     .features-list li { justify-content: center; }
-    .about-video-wrapper { width: 100%; height: 250px; } 
+    .about-image-wrapper { width: 100%; height: 250px; } 
     
     .form-row { flex-direction: column; gap: 0; }
     .assistant-header { flex-direction: column; text-align: center; }
