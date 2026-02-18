@@ -51,27 +51,47 @@
 
         section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
 
-        /* --- Custom Interactive Cursor --- */
+        /* --- Scroll Progress Bar --- */
+        #progressBar {
+            position: fixed; top: 0; left: 0; height: 5px; background: var(--primary-yellow);
+            width: 0%; z-index: 100000; border-radius: 0 5px 5px 0;
+            box-shadow: 0 0 10px rgba(242, 201, 76, 0.8);
+        }
+
+        /* --- Toast Notifications --- */
+        #toastBox {
+            position: fixed; bottom: 30px; right: 30px; display: flex;
+            align-items: flex-end; flex-direction: column; overflow: hidden; padding: 20px; z-index: 10000; pointer-events: none;
+        }
+        .toast {
+            width: 300px; height: 60px; background: var(--primary-green); color: var(--text-light);
+            font-weight: bold; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex; align-items: center; padding: 0 20px; border-radius: 10px;
+            position: relative; transform: translateX(120%);
+            animation: showToast 0.5s forwards, hideToast 0.5s 3s forwards;
+            border-left: 6px solid var(--primary-yellow); font-family: 'Montserrat', sans-serif;
+        }
+        @keyframes showToast { 100% { transform: translateX(0); } }
+        @keyframes hideToast { 100% { transform: translateX(120%); } }
+
+        /* --- Custom Cursor --- */
         .custom-cursor {
             position: fixed; top: 0; left: 0; width: 25px; height: 25px;
             border: 2px solid var(--primary-yellow); border-radius: 50%;
             pointer-events: none; z-index: 99999;
             transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
-        .custom-cursor.hovering {
-            width: 50px; height: 50px; background-color: rgba(242, 201, 76, 0.2);
-            border-color: rgba(242, 201, 76, 0.5);
-        }
+        .custom-cursor.hovering { width: 50px; height: 50px; background-color: rgba(242, 201, 76, 0.2); border-color: rgba(242, 201, 76, 0.5); }
 
         /* --- Preloader --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #0A4D3C; z-index: 9999;
+            background-color: var(--primary-green); z-index: 9999;
             display: flex; justify-content: center; align-items: center;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
         .loader-text {
-            color: #F2C94C; font-family: 'Montserrat', sans-serif;
+            color: var(--primary-yellow); font-family: 'Montserrat', sans-serif;
             font-size: 2rem; font-weight: 800; letter-spacing: 2px;
             animation: pulse 1.5s infinite;
         }
@@ -79,38 +99,29 @@
 
         /* --- Floating Buttons --- */
         #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
+            position: fixed; bottom: 30px; left: 100px;
             background-color: var(--primary-yellow); color: #222;
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 1.5rem; font-weight: bold; cursor: pointer;
-            border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000;
         }
         #backToTop.show { opacity: 1; visibility: visible; }
         #backToTop:hover { transform: translateY(-5px); background-color: #e0b83a; }
 
         .whatsapp-float {
-            position: fixed; bottom: 30px; left: 30px;
-            background-color: #25D366; color: white;
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 2rem; text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease; z-index: 1000;
-            animation: bounce 2s infinite;
+            position: fixed; bottom: 30px; left: 30px; background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; text-decoration: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease; z-index: 1000; animation: bounce 2s infinite;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* --- Audio Player Button --- */
         .audio-float {
-            position: fixed; bottom: 110px; left: 35px;
-            background-color: var(--card-bg); color: var(--primary-green);
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 1.2rem; cursor: pointer; border: 2px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 1000;
+            position: fixed; bottom: 110px; left: 35px; background-color: var(--card-bg); color: var(--primary-green);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.2rem; cursor: pointer; border: 2px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease; z-index: 1000;
         }
         .audio-float.playing { background-color: var(--primary-yellow); color: #222; border-color: var(--primary-yellow); animation: spin 4s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -118,28 +129,21 @@
         /* --- Buttons --- */
         .btn {
             display: inline-block; padding: 12px 28px; background-color: var(--primary-yellow);
-            color: #222 !important; text-decoration: none; border-radius: 30px;
-            font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;
-            transition: all 0.3s ease; border: none; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(242, 201, 76, 0.3);
+            color: #222 !important; text-decoration: none; border-radius: 30px; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;
+            transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(242, 201, 76, 0.3);
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(242, 201, 76, 0.5); background-color: #e0b83a; }
 
         /* --- Theme & Language Toggles --- */
         .nav-controls { display: flex; align-items: center; gap: 15px; }
-        .theme-toggle {
-            background: transparent; border: none; font-size: 1.5rem; color: var(--text-light);
-            cursor: pointer; transition: transform 0.3s; display: flex; align-items: center;
-        }
+        .theme-toggle { background: transparent; border: none; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: transform 0.3s; display: flex; align-items: center; }
         .theme-toggle:hover { transform: rotate(20deg); color: var(--primary-yellow); }
         .navbar.scrolled .theme-toggle { color: var(--primary-yellow); }
-        body.dark-mode .theme-toggle::after { content: '☀️'; }
-        body:not(.dark-mode) .theme-toggle::after { content: '🌙'; }
+        body.dark-mode .theme-toggle::after { content: '☀️'; } body:not(.dark-mode) .theme-toggle::after { content: '🌙'; }
 
         .lang-toggle {
-            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);
-            color: var(--text-light); padding: 5px 10px; border-radius: 15px; font-weight: bold;
-            cursor: pointer; transition: all 0.3s; font-size: 0.8rem;
+            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: var(--text-light);
+            padding: 5px 10px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 0.8rem;
         }
         .lang-toggle:hover { background: var(--primary-yellow); color: #222; border-color: var(--primary-yellow); }
         .navbar.scrolled .lang-toggle { border-color: var(--primary-yellow); color: var(--primary-yellow); }
@@ -147,31 +151,16 @@
 
         /* --- Animations --- */
         .reveal { opacity: 0; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .reveal.fade-up { transform: translateY(40px); }
-        .reveal.fade-left { transform: translateX(-50px); }
-        .reveal.fade-right { transform: translateX(50px); }
+        .reveal.fade-up { transform: translateY(40px); } .reveal.fade-left { transform: translateX(-50px); } .reveal.fade-right { transform: translateX(50px); }
         .reveal.active { opacity: 1; transform: translate(0) scale(1); }
         .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
 
         /* --- Header & Navbar --- */
-        header {
-            background-color: var(--primary-green); color: var(--text-light);
-            padding-bottom: 120px; clip-path: ellipse(150% 100% at 50% 0%);
-            position: relative; transition: background-color 0.4s;
-        }
-
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 50px; max-width: 1200px; margin: 0 auto;
-            transition: all 0.3s ease; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        }
-        .navbar.scrolled {
-            background-color: rgba(10, 77, 60, 0.95);
-            backdrop-filter: blur(10px); padding: 15px 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
+        header { background-color: var(--primary-green); color: var(--text-light); padding-bottom: 120px; clip-path: ellipse(150% 100% at 50% 0%); position: relative; transition: background-color 0.4s; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; max-width: 1200px; margin: 0 auto; transition: all 0.3s ease; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+        .navbar.scrolled { background-color: rgba(10, 77, 60, 0.95); backdrop-filter: blur(10px); padding: 15px 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
         body.dark-mode .navbar.scrolled { background-color: rgba(13, 43, 35, 0.95); }
-
+        
         .logo-container { display: flex; align-items: center; }
         .logo-img { max-height: 50px; transition: transform 0.3s; }
         .logo-container:hover .logo-img { transform: scale(1.05); }
@@ -180,24 +169,19 @@
         .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
         .nav-links a:hover { color: var(--primary-yellow); }
 
-        /* --- Hero Section --- */
-        .hero-content {
-            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-            max-width: 1200px; margin: 100px auto 0; padding: 0 50px;
-        }
+        /* --- Hero Section & Typing Effect --- */
+        .hero-content { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; max-width: 1200px; margin: 100px auto 0; padding: 0 50px; }
         .hero-text { flex: 1; min-width: 300px; }
         .hero-text h1 { font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px; font-weight: 900; }
-        .hero-text h1 span { color: var(--primary-yellow); border-bottom: 4px solid var(--primary-yellow); }
-        .hero-text p { margin-bottom: 30px; max-width: 480px; font-size: 1.1rem; opacity: 0.9; line-height: 1.8; color: #fff; }
+        .typing-text { color: var(--primary-yellow); border-bottom: 4px solid var(--primary-yellow); border-right: 4px solid var(--primary-yellow); padding-right: 5px; animation: blinkCursor 0.7s infinite; }
+        @keyframes blinkCursor { 50% { border-right-color: transparent; } }
         
+        .hero-text p { margin-bottom: 30px; max-width: 480px; font-size: 1.1rem; opacity: 0.9; line-height: 1.8; color: #fff; }
         .hero-image-container { flex: 1; min-width: 300px; text-align: center; position: relative; z-index: 2; }
         .hero-image { max-width: 90%; height: auto; border-radius: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); animation: floatImg 4s ease-in-out infinite; }
 
         /* --- Trusted By Bar --- */
-        .trusted-by {
-            background-color: var(--primary-yellow); padding: 30px 20px; text-align: center;
-            margin-top: -80px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+        .trusted-by { background-color: var(--primary-yellow); padding: 30px 20px; text-align: center; margin-top: -80px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         body.dark-mode .trusted-by { background-color: #E6C280; }
         .trusted-by p { font-weight: 800; margin-bottom: 15px; color: #3E2723; font-size: 0.9rem; }
         .brand-logos { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; font-weight: 900; color: #3E2723; opacity: 0.8; font-size: 1.2rem; }
@@ -209,35 +193,25 @@
 
         /* --- Menu Filter Tabs --- */
         .menu-filter { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filter-btn {
-            background: transparent; border: 2px solid var(--primary-green); color: var(--primary-green);
-            padding: 8px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 0.8rem;
-        }
+        .filter-btn { background: transparent; border: 2px solid var(--primary-green); color: var(--primary-green); padding: 8px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 0.8rem; }
         body.dark-mode .filter-btn { border-color: var(--accent-brown); color: var(--accent-brown); }
         .filter-btn.active, .filter-btn:hover { background: var(--primary-green); color: #fff; }
         body.dark-mode .filter-btn.active, body.dark-mode .filter-btn:hover { background: var(--accent-brown); color: #121212; }
 
-        /* --- Products Section (3D TILT EFFECT) --- */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: center; perspective: 1000px; }
-        .product-card { 
-            background: var(--card-bg); padding: 40px 20px; border-radius: 25px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.1s ease-out, box-shadow 0.3s ease; 
-            cursor: pointer; border: 1px solid var(--border-color);
-            transform-style: preserve-3d;
-        }
+        /* --- Products Section (3D TILT EFFECT + WHATSAPP ORDER BUTTON) --- */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: center; perspective: 1000px; }
+        .product-card { background: var(--card-bg); padding: 40px 20px 25px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.1s ease-out, box-shadow 0.3s ease; cursor: pointer; border: 1px solid var(--border-color); transform-style: preserve-3d; }
         .product-card.hide { display: none; }
         .product-card:hover { box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
-        .product-card img { 
-            width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 25px; 
-            border: 6px solid var(--bg-cream); transition: transform 0.5s, border-color 0.4s;
-            transform: translateZ(30px);
-        }
+        .product-card img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 25px; border: 6px solid var(--bg-cream); transition: transform 0.5s, border-color 0.4s; transform: translateZ(30px); }
         .product-card:hover img { transform: translateZ(50px) scale(1.05) rotate(5deg); }
-        .product-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary-green); transition: color 0.4s; transform: translateZ(20px); }
+        .product-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--primary-green); transition: color 0.4s; transform: translateZ(20px); }
         body.dark-mode .product-card h3 { color: var(--accent-brown); }
-        .product-card p { font-size: 0.9rem; color: var(--text-dark); opacity: 0.7; margin-bottom: 15px; transform: translateZ(15px); }
-        .price-tag { font-weight: 800; color: var(--accent-brown); font-size: 1.1rem; display: block; transform: translateZ(20px); }
+        .product-card p { font-size: 0.9rem; color: var(--text-dark); opacity: 0.7; margin-bottom: 15px; transform: translateZ(15px); height: 45px; overflow: hidden; }
+        .price-tag { font-weight: 800; color: var(--accent-brown); font-size: 1.2rem; display: block; transform: translateZ(20px); margin-bottom: 20px; }
+        
+        .order-btn { background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 80%; transform: translateZ(25px); display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; }
+        .order-btn:hover { transform: translateZ(25px) scale(1.05); background-color: #1ebe57; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
 
         /* --- Ambiance Section --- */
         .ambiance-section { display: flex; align-items: center; gap: 60px; margin-top: 40px; }
@@ -249,28 +223,17 @@
         .ambiance-text p { margin-bottom: 25px; font-size: 1.1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.8; }
 
         /* --- Yellow Banner --- */
-        .yellow-banner {
-            background-color: var(--primary-yellow); padding: 70px 20px; text-align: center;
-            display: flex; justify-content: center; align-items: center; gap: 40px;
-            background-image: url('https://www.transparenttextures.com/patterns/food.png');
-            background-attachment: fixed; margin: 80px 0; border-radius: 0 50px 0 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+        .yellow-banner { background-color: var(--primary-yellow); padding: 70px 20px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 40px; background-image: url('https://www.transparenttextures.com/patterns/food.png'); background-attachment: fixed; margin: 80px 0; border-radius: 0 50px 0 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         body.dark-mode .yellow-banner { background-color: #A9803C; }
         .yellow-banner h2 { color: #3E2723; margin: 0; font-size: 2.2rem; background: rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 10px; backdrop-filter: blur(5px); }
         .bean-icon { font-size: 3.5rem; animation: floatImg 3s ease-in-out infinite; }
 
-        /* --- Instagram Feed Mockup --- */
-        .insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
-        .insta-item { position: relative; overflow: hidden; border-radius: 15px; height: 200px; cursor: pointer; }
-        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .insta-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; gap: 15px;
-            color: white; font-weight: bold; font-size: 1.2rem; opacity: 0; transition: opacity 0.3s;
-        }
-        .insta-item:hover img { transform: scale(1.1); }
-        .insta-item:hover .insta-overlay { opacity: 1; }
+        /* --- Features Section --- */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px; text-align: center; }
+        .feature-card .icon { font-size: 4rem; margin-bottom: 20px; display: inline-block; transition: transform 0.3s; }
+        .feature-card:hover .icon { transform: scale(1.2); }
+        .feature-card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--accent-brown); }
+        .feature-card p { color: var(--text-dark); opacity: 0.7; }
 
         /* --- Stats & Map --- */
         .stats-map-container { display: flex; gap: 60px; align-items: center; background-color: var(--card-bg); padding: 60px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-top: 80px; border: 1px solid var(--border-color); transition: background-color 0.4s; }
@@ -280,28 +243,41 @@
         body.dark-mode .big-stat { color: var(--accent-brown); }
         .stat-box { background: var(--bg-cream); padding: 25px; border-radius: 20px; margin-top: 20px; border-left: 5px solid var(--primary-yellow); transition: background-color 0.4s; }
         
-        /* Live Status Indicator */
         .live-status { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
         .status-open { background: rgba(37, 211, 102, 0.2); color: #1ebe57; }
         .status-closed { background: rgba(203, 32, 45, 0.2); color: #cb202d; }
         .pulse-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; animation: opacityPulse 1.5s infinite; }
-        .status-open .pulse-dot { background-color: #1ebe57; }
-        .status-closed .pulse-dot { background-color: #cb202d; }
+        .status-open .pulse-dot { background-color: #1ebe57; } .status-closed .pulse-dot { background-color: #cb202d; }
 
-        /* --- Testimonial Section & Slider (UPDATED) --- */
+        /* --- FAQ Accordion --- */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--card-bg); border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.3s; }
+        .faq-question { padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-size: 1.1rem; }
+        body.dark-mode .faq-question { color: var(--accent-brown); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; background: rgba(0,0,0,0.02); padding: 0 25px; color: var(--text-dark); opacity: 0.8; }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 15px 25px 25px; }
+        .faq-icon { transition: transform 0.3s; font-size: 1.2rem; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        /* --- Instagram Feed Mockup --- */
+        .insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
+        .insta-item { position: relative; overflow: hidden; border-radius: 15px; height: 200px; cursor: pointer; }
+        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .insta-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; gap: 15px; color: white; font-weight: bold; font-size: 1.2rem; opacity: 0; transition: opacity 0.3s; }
+        .insta-item:hover img { transform: scale(1.1); }
+        .insta-item:hover .insta-overlay { opacity: 1; }
+
+        /* --- Testimonial Slider --- */
         .testimonial-section { text-align: center; background-color: var(--card-bg); padding: 80px 20px; margin: 100px auto; border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); position: relative; overflow: hidden; max-width: 900px; border: 1px solid var(--border-color); }
         .testimonial-section::before { content: '"'; font-size: 25rem; position: absolute; top: -60px; left: 20px; color: var(--bg-cream); z-index: 0; font-family: Georgia, serif; }
         .zomato-logo { color: #cb202d; font-weight: 900; font-size: 2.2rem; margin-bottom: 30px; display: inline-block; letter-spacing: -1px; position: relative; z-index: 1; }
-        
-        /* Slider Specific CSS */
         .testimonial-slider { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; z-index: 1; }
         .slides-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; box-sizing: border-box; padding: 0 20px; }
-        .quote { font-size: 1.8rem; font-style: italic; color: var(--text-dark); font-weight: 600; line-height: 1.5; margin-bottom: 20px; }
+        .quote { font-size: 1.6rem; font-style: italic; color: var(--text-dark); font-weight: 600; line-height: 1.5; margin-bottom: 20px; }
         .rating { color: #FFD700; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 5px; }
         .customer-name { font-weight: 800; color: var(--primary-green); font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
         body.dark-mode .customer-name { color: var(--accent-brown); }
-
         .slider-dots { text-align: center; margin-top: 30px; position: relative; z-index: 1; }
         .dot { display: inline-block; width: 12px; height: 12px; margin: 0 6px; background-color: var(--border-color); border-radius: 50%; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
         .dot.active { background-color: var(--primary-yellow); transform: scale(1.3); }
@@ -316,26 +292,13 @@
         .copyright { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 600; }
 
         /* --- Booking Modal Form --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content {
-            background: var(--card-bg); padding: 40px; border-radius: 20px; width: 90%; max-width: 450px;
-            text-align: center; position: relative; transform: translateY(-50px); transition: all 0.3s ease;
-            border: 1px solid var(--border-color); color: var(--text-dark);
-        }
+        .modal-content { background: var(--card-bg); padding: 40px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; position: relative; transform: translateY(-50px); transition: all 0.3s ease; border: 1px solid var(--border-color); color: var(--text-dark); }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; font-weight: bold; cursor: pointer; color: #888; transition: color 0.3s; }
         .close-modal:hover { color: var(--accent-brown); }
-        .modal-content input, .modal-content select {
-            width: 100%; padding: 12px 15px; margin-bottom: 15px;
-            border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Open Sans', sans-serif;
-            background: var(--input-bg); color: var(--text-dark);
-        }
+        .modal-content input, .modal-content select { width: 100%; padding: 12px 15px; margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Open Sans', sans-serif; background: var(--input-bg); color: var(--text-dark); }
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
@@ -355,12 +318,17 @@
             .hero-image-container { order: -1; margin-bottom: 40px; }
             section { padding: 60px 20px; }
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
+            #backToTop { left: 80px; bottom: 20px; width: 40px; height: 40px; font-size: 1.2rem; }
             .audio-float { bottom: 80px; left: 25px; width: 40px; height: 40px; font-size: 1rem; }
             .quote { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
+
+    <div id="progressBar"></div>
+
+    <div id="toastBox"></div>
 
     <audio id="cafeAudio" loop>
         <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
@@ -375,10 +343,8 @@
     <a href="https://wa.me/919173165357?text=Hi! I would like to know more about Caphe Tra." target="_blank" class="whatsapp-float interactive-element">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
     </a>
-    
-    <div class="audio-float interactive-element" id="audioBtn" onclick="toggleAudio()" title="Play Cafe Ambiance">
-        🎵
-    </div>
+    <div class="audio-float interactive-element" id="audioBtn" onclick="toggleAudio()" title="Play Cafe Ambiance">🎵</div>
+    <button id="backToTop" onclick="scrollToTop()" class="interactive-element">↑</button>
 
     <header id="home">
         <nav class="navbar" id="navbar">
@@ -390,7 +356,7 @@
             <div class="nav-links">
                 <a href="#menu" class="interactive-element lang-target" data-en="Menu" data-gu="મેનુ">Menu</a>
                 <a href="#about" class="interactive-element lang-target" data-en="About" data-gu="અમારા વિશે">About</a>
-                <a href="#social" class="interactive-element lang-target" data-en="Social" data-gu="સોશિયલ">Social</a>
+                <a href="#faq" class="interactive-element lang-target" data-en="FAQ" data-gu="પ્રશ્નો">FAQ</a>
                 <a href="#contact" class="interactive-element lang-target" data-en="Contact" data-gu="સંપર્ક">Contact</a>
             </div>
             
@@ -403,8 +369,8 @@
 
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="lang-target" data-en="THE BEST <span>VIETNAMESE COFFEE</span> IS HERE IN SURAT" data-gu="સુરતમાં શ્રેષ્ઠ <span>વિયેતનામીસ કોફી</span> અહીં છે">THE BEST <span>VIETNAMESE COFFEE</span> IS HERE IN SURAT</h1>
-                <p class="lang-target" data-en="Experience authentic Vietnamese brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits." data-gu="વેસુના હૃદયમાં અધિકૃત વિયેતનામીસ કોફી, હૂંફાળું વાતાવરણ અને અવિસ્મરણીય પીણાંનો અનુભવ કરો.">Experience authentic Vietnamese brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits.</p>
+                <h1 class="lang-target" data-en="THE BEST <br><span class='typing-text'></span><br> IS HERE IN SURAT" data-gu="સુરતમાં શ્રેષ્ઠ <br><span class='typing-text'></span><br> અહીં છે">THE BEST <br><span class="typing-text"></span><br> IS HERE IN SURAT</h1>
+                <p class="lang-target" data-en="Experience authentic brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits." data-gu="વેસુના હૃદયમાં અધિકૃત પીણાં, હૂંફાળું વાતાવરણ અને અવિસ્મરણીય અનુભવ મેળવો.">Experience authentic brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits.</p>
                 <a href="#menu" class="btn interactive-element lang-target" data-en="Explore Menu" data-gu="મેનુ જુઓ" style="padding: 15px 35px; font-size: 1rem;">Explore Menu</a>
             </div>
             <div class="hero-image-container">
@@ -426,14 +392,14 @@
     <section id="menu">
         <div class="section-header reveal fade-up">
             <h2 class="lang-target" data-en="Explore Our Menu" data-gu="અમારું મેનુ જુઓ">Explore Our Menu</h2>
-            <p>Fresh brews and handcrafted delights tailored for authentic tastes.</p>
+            <p class="lang-target" data-en="Fresh brews and handcrafted delights tailored for authentic tastes." data-gu="તમારા માટે ખાસ તૈયાર કરેલ તાજી કોફી અને નાસ્તો.">Fresh brews and handcrafted delights tailored for authentic tastes.</p>
         </div>
         
         <div class="menu-filter reveal fade-up delay-1">
             <button class="filter-btn active interactive-element lang-target" data-en="Show All" data-gu="બધું જુઓ" onclick="filterSelection('all')">Show All</button>
-            <button class="filter-btn interactive-element" onclick="filterSelection('hot')">Hot Coffee</button>
-            <button class="filter-btn interactive-element" onclick="filterSelection('cold')">Cold Brew</button>
-            <button class="filter-btn interactive-element" onclick="filterSelection('snacks')">Snacks</button>
+            <button class="filter-btn interactive-element lang-target" data-en="Hot Coffee" data-gu="ગરમ કોફી" onclick="filterSelection('hot')">Hot Coffee</button>
+            <button class="filter-btn interactive-element lang-target" data-en="Cold Brew" data-gu="કોલ્ડ બ્રૂ" onclick="filterSelection('cold')">Cold Brew</button>
+            <button class="filter-btn interactive-element lang-target" data-en="Snacks" data-gu="નાસ્તો" onclick="filterSelection('snacks')">Snacks</button>
         </div>
 
         <div class="products-grid">
@@ -442,24 +408,54 @@
                 <h3>Vietnamese Signature</h3>
                 <p>Classic Hot Drip with sweet condensed milk.</p>
                 <span class="price-tag">₹180</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Vietnamese Signature')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
             </div>
             <div class="product-card tilt-card reveal fade-up cold delay-1 interactive-element">
                 <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop" alt="Cold Brew">
                 <h3>Signature Cold Brew</h3>
                 <p>Refreshing, steeped for 16 hours.</p>
                 <span class="price-tag">₹220</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Signature Cold Brew')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
             </div>
             <div class="product-card tilt-card reveal fade-up cold delay-2 interactive-element">
                 <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800&auto=format&fit=crop" alt="Matcha Drink">
                 <h3>Matcha Frappe</h3>
                 <p>Premium grade matcha blended with ice.</p>
                 <span class="price-tag">₹250</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Matcha Frappe')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
             </div>
-            <div class="product-card tilt-card reveal fade-up snacks delay-3 interactive-element">
+            <div class="product-card tilt-card reveal fade-up snacks interactive-element">
                 <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800&auto=format&fit=crop" alt="Desserts">
                 <h3>Cheesecake Slice</h3>
                 <p>The perfect sweet companion to your brew.</p>
                 <span class="price-tag">₹190</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Cheesecake Slice')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
+            </div>
+            <div class="product-card tilt-card reveal fade-up hot delay-1 interactive-element">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop" alt="Egg Coffee">
+                <h3>Hanoi Egg Coffee</h3>
+                <p>Rich, creamy egg yolk whipped over espresso.</p>
+                <span class="price-tag">₹210</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Hanoi Egg Coffee')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
+            </div>
+            <div class="product-card tilt-card reveal fade-up snacks delay-2 interactive-element">
+                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=800&auto=format&fit=crop" alt="Banh Mi">
+                <h3>Banh Mi Sandwich</h3>
+                <p>Crispy baguette with savory authentic fillings.</p>
+                <span class="price-tag">₹240</span>
+                <button class="order-btn lang-target" data-en="Add to Order" data-gu="ઓર્ડર કરો" onclick="orderViaWhatsApp('Banh Mi Sandwich')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> Add to Order
+                </button>
             </div>
         </div>
     </section>
@@ -474,15 +470,73 @@
             <h2 class="lang-target" data-en="Premium Quality Beans And Ambiance" data-gu="પ્રીમિયમ ગુણવત્તાવાળી કોફી અને વાતાવરણ">Premium Quality Beans And Ambiance</h2>
             <p>Caphe Tra Coffee House is known for blending authentic Vietnamese coffee traditions with a warm, inviting atmosphere right here in Gujarat.</p>
             <p>Whether you are catching up with friends, looking for a quiet place to work, or simply craving a quick, delicious bite, our doors are open.</p>
-            <button onclick="openModal()" class="btn interactive-element" style="margin-top: 15px;">Reserve Your Spot</button>
+            <button onclick="openModal()" class="btn interactive-element lang-target" data-en="Reserve Your Spot" data-gu="તમારું ટેબલ બુક કરો" style="margin-top: 15px;">Reserve Your Spot</button>
         </div>
     </section>
 
     <div class="yellow-banner reveal fade-up">
-        <h2>Dive into Our Café</h2>
+        <h2 class="lang-target" data-en="Dive into Our Café" data-gu="અમારા કાફેમાં પધારો">Dive into Our Café</h2>
         <span class="bean-icon">☕</span>
-        <h2>Perk Up Your Café Experience</h2>
+        <h2 class="lang-target" data-en="Perk Up Your Experience" data-gu="તમારો અનુભવ બહેતર બનાવો">Perk Up Your Experience</h2>
     </div>
+
+    <section>
+        <div class="section-header reveal fade-up">
+            <h2 class="lang-target" data-en="Why We Are Different" data-gu="અમે શા માટે અલગ છીએ">Why We Are Different</h2>
+            <p class="lang-target" data-en="Defining the unique Caphe Tra experience." data-gu="કેફે ટ્રા નો અનોખો અનુભવ.">Defining the unique Caphe Tra experience.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal fade-up">
+                <span class="icon">🇻🇳</span>
+                <h3 class="lang-target" data-en="Authentic Brewing" data-gu="અધિકૃત બનાવટ">Authentic Brewing</h3>
+                <p>Traditional methods like the Phin filter for genuine flavor.</p>
+            </div>
+            <div class="feature-card reveal fade-up delay-1">
+                <span class="icon">🌿</span>
+                <h3 class="lang-target" data-en="Premium Beans" data-gu="પ્રીમિયમ બીન્સ">Premium Beans</h3>
+                <p>High-quality ingredients sourced for the perfect cup.</p>
+            </div>
+            <div class="feature-card reveal fade-up delay-2">
+                <span class="icon">🛋️</span>
+                <h3 class="lang-target" data-en="Cozy Ambiance" data-gu="હૂંફાળું વાતાવરણ">Cozy Ambiance</h3>
+                <p>A perfect spot in Vesu for casual hangouts and relaxation.</p>
+            </div>
+            <div class="feature-card reveal fade-up delay-3">
+                <span class="icon">🍹</span>
+                <h3 class="lang-target" data-en="Signature Drinks" data-gu="સિગ્નેચર પીણાં">Signature Drinks</h3>
+                <p>Unique menu highlights you won't find anywhere else.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="section-header reveal fade-up">
+            <h2 class="lang-target" data-en="Frequently Asked Questions" data-gu="વારંવાર પૂછાતા પ્રશ્નો">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item reveal fade-up">
+                <div class="faq-question interactive-element" onclick="toggleFaq(this)">
+                    <span class="lang-target" data-en="What is Vietnamese coffee?" data-gu="વિયેતનામીસ કોફી શું છે?">What is Vietnamese coffee?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer lang-target" data-en="It's a bold, drip coffee typically made with condensed milk using a traditional Phin filter." data-gu="તે પરંપરાગત ફિન ફિલ્ટરનો ઉપયોગ કરીને અને કન્ડેન્સ્ડ મિલ્ક સાથે બનાવવામાં આવતી કોફી છે.">It's a bold, drip coffee typically made with condensed milk using a traditional Phin filter.</div>
+            </div>
+            <div class="faq-item reveal fade-up">
+                <div class="faq-question interactive-element" onclick="toggleFaq(this)">
+                    <span class="lang-target" data-en="Do you offer vegetarian snacks?" data-gu="શું તમે શાકાહારી નાસ્તો આપો છો?">Do you offer vegetarian snacks?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer lang-target" data-en="Yes, we have a variety of 100% vegetarian snacks and desserts available." data-gu="હા, અમારી પાસે ૧૦૦% શાકાહારી નાસ્તો અને ડેઝર્ટ ઉપલબ્ધ છે.">Yes, we have a variety of 100% vegetarian snacks and desserts available.</div>
+            </div>
+            <div class="faq-item reveal fade-up">
+                <div class="faq-question interactive-element" onclick="toggleFaq(this)">
+                    <span class="lang-target" data-en="What are your operating hours?" data-gu="તમારો સમય શું છે?">What are your operating hours?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer lang-target" data-en="We are open every day from 8:00 AM to 11:00 PM." data-gu="અમે દરરોજ સવારે ૮:૦૦ થી રાત્રે ૧૧:૦૦ વાગ્યા સુધી ખુલ્લા છીએ.">We are open every day from 8:00 AM to 11:00 PM.</div>
+            </div>
+        </div>
+    </section>
 
     <section class="stats-map-container reveal fade-up">
         <div class="stats-content">
@@ -506,7 +560,7 @@
 
     <section id="social">
         <div class="section-header reveal fade-up">
-            <h2>Follow Our Journey</h2>
+            <h2 class="lang-target" data-en="Follow Our Journey" data-gu="અમારી સફર સાથે જોડાઓ">Follow Our Journey</h2>
             <p><a href="https://instagram.com/caphetra_coffeehouse" style="color:var(--primary-yellow); text-decoration:none; font-weight:bold;">@caphetra_coffeehouse</a></p>
         </div>
         <div class="insta-grid reveal fade-up delay-1">
@@ -532,37 +586,30 @@
     <section>
         <div class="testimonial-section reveal fade-up">
             <div class="zomato-logo">zomato</div>
-            
             <div class="testimonial-slider">
                 <div class="slides-wrapper" id="slidesWrapper">
-                    
                     <div class="slide">
                         <div class="rating">⭐⭐⭐⭐⭐</div>
-                        <p class="quote lang-target" data-en="&quot;Amazing authentic Vietnamese drinks and a wonderfully cozy ambiance! Highly recommend the signature cold brew.&quot;" data-gu="&quot;અદ્ભુત અધિકૃત વિયેતનામીસ પીણાં અને અદ્ભુત હૂંફાળું વાતાવરણ! સિગ્નેચર કોલ્ડ બ્રૂની ખૂબ ભલામણ કરું છું.&quot;">"Amazing authentic Vietnamese drinks and a wonderfully cozy ambiance! Highly recommend the signature cold brew."</p>
+                        <p class="quote lang-target" data-en='"Amazing authentic Vietnamese drinks and a wonderfully cozy ambiance! Highly recommend the signature cold brew."' data-gu='"અદ્ભુત અધિકૃત વિયેતનામીસ પીણાં અને અદ્ભુત હૂંફાળું વાતાવરણ! સિગ્નેચર કોલ્ડ બ્રૂની ખૂબ ભલામણ કરું છું."'>"Amazing authentic Vietnamese drinks and a wonderfully cozy ambiance! Highly recommend the signature cold brew."</p>
                         <p class="customer-name">- Rahul D.</p>
                     </div>
-
                     <div class="slide">
                         <div class="rating">⭐⭐⭐⭐⭐</div>
-                        <p class="quote lang-target" data-en="&quot;Best coffee spot in Vesu! The Banh Mi is a must-try. Great staff and aesthetic interior.&quot;" data-gu="&quot;વેસુમાં શ્રેષ્ઠ કોફી સ્પોટ! બાન મી અજમાવવા જ જોઈએ. ઉત્તમ સ્ટાફ અને ખૂબ સુંદર આંતરિક ડિઝાઇન.&quot;">"Best coffee spot in Vesu! The Banh Mi is a must-try. Great staff and aesthetic interior."</p>
+                        <p class="quote lang-target" data-en='"Best coffee spot in Vesu! The Banh Mi is a must-try. Great staff and aesthetic interior."' data-gu='"વેસુમાં શ્રેષ્ઠ કોફી સ્પોટ! બાન મી અજમાવવા જ જોઈએ. ઉત્તમ સ્ટાફ અને ખૂબ સુંદર આંતરિક ડિઝાઇન."'>"Best coffee spot in Vesu! The Banh Mi is a must-try. Great staff and aesthetic interior."</p>
                         <p class="customer-name">- Sneha P.</p>
                     </div>
-
                     <div class="slide">
                         <div class="rating">⭐⭐⭐⭐</div>
-                        <p class="quote lang-target" data-en="&quot;Finally, a place in Surat that serves authentic Egg Coffee. Absolutely loved the relaxed vibe here.&quot;" data-gu="&quot;છેવટે, સુરતમાં એક એવી જગ્યા જે અધિકૃત એગ કોફી આપે છે. અહીંનું શાંત વાતાવરણ ખૂબ ગમ્યું.&quot;">"Finally, a place in Surat that serves authentic Egg Coffee. Absolutely loved the relaxed vibe here."</p>
+                        <p class="quote lang-target" data-en='"Finally, a place in Surat that serves authentic Egg Coffee. Absolutely loved the relaxed vibe here."' data-gu='"છેવટે, સુરતમાં એક એવી જગ્યા જે અધિકૃત એગ કોફી આપે છે. અહીંનું શાંત વાતાવરણ ખૂબ ગમ્યું."'>"Finally, a place in Surat that serves authentic Egg Coffee. Absolutely loved the relaxed vibe here."</p>
                         <p class="customer-name">- Amit M.</p>
                     </div>
-
                 </div>
             </div>
-
             <div class="slider-dots">
                 <span class="dot active interactive-element" onclick="goToSlide(0)"></span>
                 <span class="dot interactive-element" onclick="goToSlide(1)"></span>
                 <span class="dot interactive-element" onclick="goToSlide(2)"></span>
             </div>
-
         </div>
     </section>
 
@@ -590,12 +637,10 @@
         </div>
     </footer>
 
-    <button id="backToTop" onclick="scrollToTop()" class="interactive-element">↑</button>
-
     <div id="bookingModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal interactive-element" onclick="closeModal()">×</span>
-            <h3>Book a Table</h3>
+            <h3 class="lang-target" data-en="Book a Table" data-gu="ટેબલ બુક કરો">Book a Table</h3>
             <p style="margin-bottom: 20px; opacity: 0.7;">Reserve your cozy spot at Caphe Tra.</p>
             <form onsubmit="event.preventDefault(); alert('Booking Request Sent Successfully! (Demo)'); closeModal();">
                 <input type="text" placeholder="Your Name" required>
@@ -647,7 +692,7 @@
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
         });
 
-        // 4. Multilingual Toggle (English/Gujarati)
+        // 4. Multilingual Toggle
         let currentLang = 'en';
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'gu' : 'en';
@@ -656,33 +701,27 @@
             });
         }
 
-        // 5. Cafe Audio Toggle
+        // 5. Audio Toggle
         const audio = document.getElementById('cafeAudio');
         const audioBtn = document.getElementById('audioBtn');
         let isPlaying = false;
 
         function toggleAudio() {
             if (isPlaying) {
-                audio.pause();
-                audioBtn.classList.remove('playing');
-                audioBtn.innerText = '🎵';
+                audio.pause(); audioBtn.classList.remove('playing'); audioBtn.innerText = '🎵';
             } else {
-                audio.play();
-                audioBtn.classList.add('playing');
-                audioBtn.innerText = '⏸';
+                audio.play(); audioBtn.classList.add('playing'); audioBtn.innerText = '⏸';
             }
             isPlaying = !isPlaying;
         }
 
-        // 6. 3D Tilt Effect on Cards
+        // 6. 3D Tilt Effect
         const tiltCards = document.querySelectorAll('.tilt-card');
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xPct = x / rect.width - 0.5;
-                const yPct = y / rect.height - 0.5;
+                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                const xPct = x / rect.width - 0.5; const yPct = y / rect.height - 0.5;
                 card.style.transform = `perspective(1000px) rotateY(${xPct * 15}deg) rotateX(${yPct * -15}deg) scale3d(1.02, 1.02, 1.02)`;
             });
             card.addEventListener('mouseleave', () => {
@@ -690,14 +729,21 @@
             });
         });
 
-        // 7. Scroll Animation & Nav
+        // 7. Scroll Animation, Nav & Progress Bar
         document.addEventListener("DOMContentLoaded", function() {
             const revealElements = document.querySelectorAll('.reveal');
             const navbar = document.getElementById('navbar');
             const backToTopBtn = document.getElementById('backToTop');
+            const progressBar = document.getElementById('progressBar');
 
             window.addEventListener("scroll", () => {
                 const scrollY = window.scrollY;
+                
+                // Progress Bar Math
+                const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollY / docHeight) * 100;
+                progressBar.style.width = scrollPercent + "%";
+
                 revealElements.forEach(el => {
                     if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
                 });
@@ -705,28 +751,24 @@
                 backToTopBtn.classList.toggle('show', scrollY > 500);
             });
             checkLiveStatus(); 
+            typeText(); // Start typing effect
         });
 
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        // 8. Menu Filtering
+        // 8. Menu Filter
         function filterSelection(c) {
             let x = document.getElementsByClassName("product-card");
             let btns = document.getElementsByClassName("filter-btn");
-            for (let btn of btns) {
-                btn.classList.toggle("active", btn.getAttribute('onclick').includes(c));
-            }
-            for (let item of x) {
-                item.classList.toggle("hide", c !== 'all' && !item.className.includes(c));
-            }
+            for (let btn of btns) { btn.classList.toggle("active", btn.getAttribute('onclick').includes(c)); }
+            for (let item of x) { item.classList.toggle("hide", c !== 'all' && !item.className.includes(c)); }
         }
 
-        // 9. Live Open/Closed Status
+        // 9. Live Status
         function checkLiveStatus() {
             const statusDiv = document.getElementById('liveStatus');
             const statusText = document.getElementById('statusText');
             const currentHour = new Date().getHours(); 
-
             if (currentHour >= 8 && currentHour < 23) {
                 statusDiv.className = 'live-status status-open interactive-element';
                 statusText.innerText = '🟢 Open Now (Closes at 11 PM)';
@@ -736,13 +778,19 @@
             }
         }
 
-        // 10. Booking Modal
+        // 10. FAQ Accordion
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // 11. Booking Modal
         const modal = document.getElementById("bookingModal");
         function openModal() { modal.classList.add("active"); }
         function closeModal() { modal.classList.remove("active"); }
         window.onclick = e => { if (e.target == modal) closeModal(); }
 
-        // 11. Auto-Sliding Testimonial Carousel
+        // 12. Auto-Sliding Testimonial Carousel
         let currentSlideIndex = 0;
         const slidesWrapper = document.getElementById("slidesWrapper");
         const dots = document.querySelectorAll(".dot");
@@ -754,29 +802,73 @@
             dots.forEach(dot => dot.classList.remove("active"));
             dots[currentSlideIndex].classList.add("active");
         }
-
-        function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-            updateSlider();
-        }
-
-        function goToSlide(index) {
-            currentSlideIndex = index;
-            updateSlider();
-            resetInterval(); // Restart timer when user clicks manually
-        }
-
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-
-        // Initialize slider
+        function nextSlide() { currentSlideIndex = (currentSlideIndex + 1) % totalSlides; updateSlider(); }
+        function goToSlide(index) { currentSlideIndex = index; updateSlider(); resetInterval(); }
+        function startInterval() { slideInterval = setInterval(nextSlide, 4000); }
+        function resetInterval() { clearInterval(slideInterval); startInterval(); }
         startInterval();
+
+        // 13. Toast Notification & WhatsApp Order Logic (NEWLY ADDED)
+        function showToast(msg) {
+            let toastBox = document.getElementById('toastBox');
+            let toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.innerHTML = '🛒 ' + msg;
+            toastBox.appendChild(toast);
+            setTimeout(() => { toast.remove(); }, 4000); 
+        }
+
+        function orderViaWhatsApp(itemName) {
+            // Number specified by you: +91 91731 65357
+            const phone = "919173165357"; 
+            const message = encodeURIComponent("Hi Caphe Tra! I would like to order: " + itemName);
+            const url = `https://wa.me/${phone}?text=${message}`;
+            
+            // Show toast first
+            showToast(itemName + ' Added!');
+            
+            // Open WhatsApp link in new tab
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 500); // slight delay so the user sees the toast first
+        }
+
+        // 14. Hero Typing Effect
+        const words = ["VIETNAMESE COFFEE", "COLD BREWS", "COZY VIBES"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.querySelector('.typing-text');
+
+        function typeText() {
+            if (currentLang === 'gu') {
+                typingElement.innerText = "વિયેતનામીસ કોફી";
+                setTimeout(typeText, 1000);
+                return;
+            }
+
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingElement.innerText = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.innerText = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; 
+            }
+
+            setTimeout(typeText, typeSpeed);
+        }
 
     </script>
 </body>
