@@ -102,7 +102,7 @@
             </div>
             <p id="pinResult" style="font-size: 13px; margin-top: 5px; font-weight: 600;"></p>
 
-            <div class="hero-buttons" style="margin-top: 20px;">
+            <div class="hero-buttons">
                 <a href="#menu" class="btn-primary large" style="text-decoration:none;" data-trans="heroBtn">View Full Menu</a>
             </div>
         </div>
@@ -334,7 +334,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // 1. PRELOADER & POPUP
+        // PRELOADER & POPUP
         window.addEventListener('load', function() {
             setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(() => document.getElementById('preloader').style.display = 'none', 500); }, 1000); 
             setTimeout(() => { if(!sessionStorage.getItem('popupShown')){ document.getElementById('welcomePopup').style.display = 'flex'; sessionStorage.setItem('popupShown', 'true'); } }, 3500); 
@@ -346,16 +346,16 @@
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
         }
 
-        // 2. PINCODE CHECKER 📍
+        // PINCODE CHECKER 📍
         function checkPincode() {
             let pin = document.getElementById('pinInput').value;
             let result = document.getElementById('pinResult');
-            if(pin.startsWith('395') && pin.length === 6) { result.innerHTML = "<span style='color:#25D366;'><i class='fa-solid fa-check'></i> Fast Delivery Available in Surat!</span>"; } 
+            if(pin.startsWith('395') && pin.length === 6) { result.innerHTML = "<span style='color:#25D366;'><i class='fa-solid fa-check'></i> Fast Delivery Available!</span>"; } 
             else if(pin.length < 6) { result.innerHTML = "<span style='color:red;'>Please enter 6 digit Pincode.</span>"; } 
             else { result.innerHTML = "<span style='color:red;'><i class='fa-solid fa-xmark'></i> Sorry, out of delivery zone.</span>"; }
         }
 
-        // 3. MENU CATEGORY FILTERS 🗂️
+        // MENU CATEGORY FILTERS 🗂️
         const filterBtns = document.querySelectorAll('.filter-btn');
         const menuCards = document.querySelectorAll('.menu-card');
         filterBtns.forEach(btn => {
@@ -369,7 +369,7 @@
             });
         });
 
-        // 4. SLIDE OUT CART SYSTEM 🛒
+        // SLIDE OUT CART SYSTEM 🛒
         let cart = [];
         function addToCart(name, price) {
             cart.push({name, price});
@@ -404,7 +404,7 @@
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         }
 
-        // 5. LIVE PRICE CALCULATOR 🧮
+        // LIVE PRICE CALCULATOR 🧮
         function calculateLivePrice() {
             let sizeEl = document.getElementById('cakeSize');
             let flavorEl = document.getElementById('cakeFlavor');
@@ -414,7 +414,7 @@
             document.getElementById('livePriceDisplay').innerText = total > 0 ? `₹${total}` : `₹0`;
         }
 
-        // 6. FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ
+        // FOMO POPUP, 3D PARALLAX, LANG, DARK MODE, CONFETTI, FAQ, TIMERS
         const fomoData = [ { name: "Rahul from Vesu", cake: "Red Velvet", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=100&auto=format&fit=crop" }, { name: "Priya from Althan", cake: "Custom Cake", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=100&auto=format&fit=crop" } ];
         setInterval(() => { const f = document.getElementById('fomoPopup'); const r = fomoData[Math.floor(Math.random() * fomoData.length)]; document.getElementById('fomoTitle').innerText = `${r.name} ordered a ${r.cake}`; f.classList.add('show'); setTimeout(() => f.classList.remove('show'), 4000); }, 15000);
         
@@ -436,7 +436,7 @@
         document.querySelectorAll('.faq-item').forEach(f => f.addEventListener('click', () => { let i = f.querySelector('.faq-icon'); i.style.transform = f.hasAttribute('open') ? 'rotate(0deg)' : 'rotate(180deg)'; }));
         AOS.init({ once: true, offset: 50 });
 
-        // 7. FIXED TIMER JS ⏱️
+        // FIXED TIMER JS ⏱️
         function startTimer() {
             let time = 4 * 3600 + 45 * 60 + 30; // 4h 45m 30s
             let hoursEl = document.getElementById('hours');
@@ -455,7 +455,7 @@
                 }, 1000);
             }
         }
-        startTimer(); // Ensure timer starts
+        startTimer();
 
         // Builder Whatsapp
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
