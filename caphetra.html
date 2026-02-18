@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caphe Tra Coffee House | Authentic Vietnamese Coffee in Surat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables (Light Theme) --- */
+        :root {
+            --primary-green: #0A4D3C;
+            --primary-yellow: #F2C94C;
+            --bg-cream: #F9F5E8;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+            --accent-brown: #5C4033;
+            --card-bg: #FFFFFF;
+            --input-bg: #FFFFFF;
+            --border-color: #dddddd;
+        }
+
+        /* --- Dark Mode Variables --- */
+        body.dark-mode {
+            --primary-green: #0d2b23;
+            --bg-cream: #121212;
+            --text-dark: #F5F5F5;
+            --text-light: #F5F5F5;
+            --accent-brown: #E6C280;
+            --card-bg: #1E1E1E;
+            --input-bg: #2A2A2A;
+            --border-color: #444444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6, .btn, .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Custom Interactive Cursor --- */
+        .custom-cursor {
+            position: fixed; top: 0; left: 0; width: 25px; height: 25px;
+            border: 2px solid var(--primary-yellow); border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        .custom-cursor.hovering {
+            width: 50px; height: 50px; background-color: rgba(242, 201, 76, 0.2);
+            border-color: rgba(242, 201, 76, 0.5);
+        }
+
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0A4D3C; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loader-text {
+            color: #F2C94C; font-family: 'Montserrat', sans-serif;
+            font-size: 2rem; font-weight: 800; letter-spacing: 2px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* --- Floating Buttons --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--primary-yellow); color: #222;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; font-weight: bold; cursor: pointer;
+            border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000;
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px); background-color: #e0b83a; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px;
+            background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease; z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* --- Audio Player Button --- */
+        .audio-float {
+            position: fixed; bottom: 110px; left: 35px;
+            background-color: var(--card-bg); color: var(--primary-green);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.2rem; cursor: pointer; border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 1000;
+        }
+        .audio-float.playing { background-color: var(--primary-yellow); color: #222; border-color: var(--primary-yellow); animation: spin 4s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block; padding: 12px 28px; background-color: var(--primary-yellow);
+            color: #222 !important; text-decoration: none; border-radius: 30px;
+            font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;
+            transition: all 0.3s ease; border: none; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(242, 201, 76, 0.3);
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(242, 201, 76, 0.5); background-color: #e0b83a; }
+
+        /* --- Theme & Language Toggles --- */
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        .theme-toggle {
+            background: transparent; border: none; font-size: 1.5rem; color: var(--text-light);
+            cursor: pointer; transition: transform 0.3s; display: flex; align-items: center;
+        }
+        .theme-toggle:hover { transform: rotate(20deg); color: var(--primary-yellow); }
+        .navbar.scrolled .theme-toggle { color: var(--primary-yellow); }
+        body.dark-mode .theme-toggle::after { content: '☀️'; }
+        body:not(.dark-mode) .theme-toggle::after { content: '🌙'; }
+
+        .lang-toggle {
+            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);
+            color: var(--text-light); padding: 5px 10px; border-radius: 15px; font-weight: bold;
+            cursor: pointer; transition: all 0.3s; font-size: 0.8rem;
+        }
+        .lang-toggle:hover { background: var(--primary-yellow); color: #222; border-color: var(--primary-yellow); }
+        .navbar.scrolled .lang-toggle { border-color: var(--primary-yellow); color: var(--primary-yellow); }
+        .navbar.scrolled .lang-toggle:hover { background: var(--primary-yellow); color: #222; }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.fade-up { transform: translateY(40px); }
+        .reveal.fade-left { transform: translateX(-50px); }
+        .reveal.fade-right { transform: translateX(50px); }
+        .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+        .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
+
+        /* --- Header & Navbar --- */
+        header {
+            background-color: var(--primary-green); color: var(--text-light);
+            padding-bottom: 120px; clip-path: ellipse(150% 100% at 50% 0%);
+            position: relative; transition: background-color 0.4s;
+        }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; max-width: 1200px; margin: 0 auto;
+            transition: all 0.3s ease; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        }
+        .navbar.scrolled {
+            background-color: rgba(10, 77, 60, 0.95);
+            backdrop-filter: blur(10px); padding: 15px 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        body.dark-mode .navbar.scrolled { background-color: rgba(13, 43, 35, 0.95); }
+
+        /* Modified Logo Section for caphetra.png */
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { max-height: 50px; transition: transform 0.3s; }
+        .logo-container:hover .logo-img { transform: scale(1.05); }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-yellow); }
+
+        /* --- Hero Section --- */
+        .hero-content {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 100px auto 0; padding: 0 50px;
+        }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px; font-weight: 900; }
+        .hero-text h1 span { color: var(--primary-yellow); border-bottom: 4px solid var(--primary-yellow); }
+        .hero-text p { margin-bottom: 30px; max-width: 480px; font-size: 1.1rem; opacity: 0.9; line-height: 1.8; color: #fff; }
+        
+        .hero-image-container { flex: 1; min-width: 300px; text-align: center; position: relative; z-index: 2; }
+        .hero-image { max-width: 90%; height: auto; border-radius: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); animation: floatImg 4s ease-in-out infinite; content: url('https://images.unsplash.com/photo-1634316427484-d21c41300600?q=80&w=1974&auto=format&fit=crop'); }
+
+        /* --- Trusted By Bar --- */
+        .trusted-by {
+            background-color: var(--primary-yellow); padding: 30px 20px; text-align: center;
+            margin-top: -80px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .trusted-by { background-color: #E6C280; }
+        .trusted-by p { font-weight: 800; margin-bottom: 15px; color: #3E2723; font-size: 0.9rem; }
+        .brand-logos { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; font-weight: 900; color: #3E2723; opacity: 0.8; font-size: 1.2rem; }
+
+        /* --- Generic Section Header --- */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.8rem; color: var(--accent-brown); margin-bottom: 15px; transition: color 0.4s; }
+        .section-header p { font-size: 1.1rem; color: var(--text-dark); opacity: 0.7; max-width: 600px; margin: 0 auto; }
+
+        /* --- Menu Filter Tabs --- */
+        .menu-filter { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn {
+            background: transparent; border: 2px solid var(--primary-green); color: var(--primary-green);
+            padding: 8px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 0.8rem;
+        }
+        body.dark-mode .filter-btn { border-color: var(--accent-brown); color: var(--accent-brown); }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-green); color: #fff; }
+        body.dark-mode .filter-btn.active, body.dark-mode .filter-btn:hover { background: var(--accent-brown); color: #121212; }
+
+        /* --- Products Section (3D TILT EFFECT ENABLED) --- */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: center; perspective: 1000px; }
+        .product-card { 
+            background: var(--card-bg); padding: 40px 20px; border-radius: 25px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.1s ease-out, box-shadow 0.3s ease; 
+            cursor: pointer; border: 1px solid var(--border-color);
+            transform-style: preserve-3d; /* For 3D Tilt */
+        }
+        .product-card.hide { display: none; }
+        .product-card:hover { box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .product-card img { 
+            width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 25px; 
+            border: 6px solid var(--bg-cream); transition: transform 0.5s, border-color 0.4s;
+            transform: translateZ(30px); /* 3D pop out effect */
+        }
+        .product-card:hover img { transform: translateZ(50px) scale(1.05) rotate(5deg); }
+        .product-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary-green); transition: color 0.4s; transform: translateZ(20px); }
+        body.dark-mode .product-card h3 { color: var(--accent-brown); }
+        .product-card p { font-size: 0.9rem; color: var(--text-dark); opacity: 0.7; margin-bottom: 15px; transform: translateZ(15px); }
+        .price-tag { font-weight: 800; color: var(--accent-brown); font-size: 1.1rem; display: block; transform: translateZ(20px); }
+
+        /* --- Ambiance Section --- */
+        .ambiance-section { display: flex; align-items: center; gap: 60px; margin-top: 40px; }
+        .ambiance-images { flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .ambiance-images img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .ambiance-images img:first-child { grid-row: span 2; height: 580px; }
+        .ambiance-text { flex: 1; }
+        .ambiance-text h2 { font-size: 3rem; color: var(--accent-brown); margin-bottom: 30px; line-height: 1.2; font-weight: 900; }
+        .ambiance-text p { margin-bottom: 25px; font-size: 1.1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.8; }
+
+        /* --- Yellow Banner (PARALLAX) --- */
+        .yellow-banner {
+            background-color: var(--primary-yellow); padding: 70px 20px; text-align: center;
+            display: flex; justify-content: center; align-items: center; gap: 40px;
+            background-image: url('https://www.transparenttextures.com/patterns/food.png');
+            background-attachment: fixed; margin: 80px 0; border-radius: 0 50px 0 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .yellow-banner { background-color: #A9803C; }
+        .yellow-banner h2 { color: #3E2723; margin: 0; font-size: 2.2rem; background: rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 10px; backdrop-filter: blur(5px); }
+        .bean-icon { font-size: 3.5rem; animation: floatImg 3s ease-in-out infinite; }
+
+        /* --- Instagram Feed Mockup --- */
+        .insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
+        .insta-item { position: relative; overflow: hidden; border-radius: 15px; height: 200px; cursor: pointer; }
+        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .insta-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; gap: 15px;
+            color: white; font-weight: bold; font-size: 1.2rem; opacity: 0; transition: opacity 0.3s;
+        }
+        .insta-item:hover img { transform: scale(1.1); }
+        .insta-item:hover .insta-overlay { opacity: 1; }
+
+        /* --- Stats & Map --- */
+        .stats-map-container { display: flex; gap: 60px; align-items: center; background-color: var(--card-bg); padding: 60px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-top: 80px; border: 1px solid var(--border-color); transition: background-color 0.4s; }
+        .stats-content { flex: 1; }
+        .map-container { flex: 1.2; height: 400px; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .big-stat { font-size: 7rem; color: var(--primary-green); font-weight: 900; line-height: 1; display: block; margin-bottom: 10px; transition: color 0.4s; }
+        body.dark-mode .big-stat { color: var(--accent-brown); }
+        .stat-box { background: var(--bg-cream); padding: 25px; border-radius: 20px; margin-top: 20px; border-left: 5px solid var(--primary-yellow); transition: background-color 0.4s; }
+        
+        /* Live Status Indicator */
+        .live-status { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+        .status-open { background: rgba(37, 211, 102, 0.2); color: #1ebe57; }
+        .status-closed { background: rgba(203, 32, 45, 0.2); color: #cb202d; }
+        .pulse-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; animation: opacityPulse 1.5s infinite; }
+        .status-open .pulse-dot { background-color: #1ebe57; }
+        .status-closed .pulse-dot { background-color: #cb202d; }
+
+        /* --- Testimonial --- */
+        .testimonial-section { text-align: center; background-color: var(--card-bg); padding: 80px 20px; margin: 100px auto; border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); position: relative; overflow: hidden; max-width: 900px; border: 1px solid var(--border-color); }
+        .testimonial-section::before { content: '"'; font-size: 25rem; position: absolute; top: -60px; left: 20px; color: var(--bg-cream); z-index: 0; font-family: Georgia, serif; }
+        .testimonial-content { position: relative; z-index: 1; }
+        .zomato-logo { color: #cb202d; font-weight: 900; font-size: 2.2rem; margin-bottom: 30px; display: inline-block; letter-spacing: -1px; }
+        .quote { font-size: 1.8rem; font-style: italic; max-width: 700px; margin: 0 auto 30px; color: var(--text-dark); font-weight: 600; line-height: 1.5; }
+        .rating { color: #FFD700; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 5px; }
+
+        /* --- Footer --- */
+        footer { background-color: var(--primary-green); color: var(--text-light); padding: 120px 20px 40px; clip-path: ellipse(150% 100% at 50% 100%); margin-top: 80px; transition: background-color 0.4s; }
+        body.dark-mode footer { background-color: #0d2b23; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; }
+        .footer-col h3 { color: var(--primary-yellow); margin-bottom: 30px; font-size: 1.4rem; }
+        .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; margin-bottom: 20px; display: block; transition: 0.3s; font-size: 1rem; }
+        .footer-col a:hover { color: var(--primary-yellow); transform: translateX(8px); }
+        .copyright { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 600; }
+
+        /* --- Booking Modal Form --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--card-bg); padding: 40px; border-radius: 20px; width: 90%; max-width: 450px;
+            text-align: center; position: relative; transform: translateY(-50px); transition: all 0.3s ease;
+            border: 1px solid var(--border-color); color: var(--text-dark);
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; font-weight: bold; cursor: pointer; color: #888; transition: color 0.3s; }
+        .close-modal:hover { color: var(--accent-brown); }
+        .modal-content input, .modal-content select {
+            width: 100%; padding: 12px 15px; margin-bottom: 15px;
+            border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Open Sans', sans-serif;
+            background: var(--input-bg); color: var(--text-dark);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .ambiance-section, .stats-map-container { flex-direction: column; text-align: center; }
+            .ambiance-images img:first-child { grid-row: auto; height: 300px; }
+            .map-container { width: 100%; }
+            .product-card { transform: none !important; } /* Disable tilt on touch devices */
+        }
+        @media (max-width: 768px) {
+            .custom-cursor { display: none; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .navbar { padding: 15px 20px; }
+            .nav-links { display: none; } 
+            .nav-controls { gap: 10px; }
+            .yellow-banner { flex-direction: column; gap: 15px; border-radius: 20px; }
+            .hero-content { margin-top: 120px; text-align: center; padding: 0 20px; }
+            .hero-image-container { order: -1; margin-bottom: 40px; }
+            section { padding: 60px 20px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
+            .audio-float { bottom: 80px; left: 25px; width: 40px; height: 40px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="cafeAudio" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <div id="preloader">
+        <div class="loader-text">BREWING...</div>
+    </div>
+
+    <a href="https://wa.me/919173165357?text=Hi! I would like to know more about Caphe Tra." target="_blank" class="whatsapp-float interactive-element">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+    </a>
+    
+    <div class="audio-float interactive-element" id="audioBtn" onclick="toggleAudio()" title="Play Cafe Ambiance">
+        🎵
+    </div>
+
+    <header id="home">
+        <nav class="navbar" id="navbar">
+            <a href="#home" class="logo-container interactive-element" style="text-decoration: none;">
+                <img src="caphetra.png" alt="Caphe Tra Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span class="logo" style="display: none; color: var(--text-light); margin-left: 10px;">CAPHE TRA</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#menu" class="interactive-element lang-target" data-en="Menu" data-gu="મેનુ">Menu</a>
+                <a href="#about" class="interactive-element lang-target" data-en="About" data-gu="અમારા વિશે">About</a>
+                <a href="#social" class="interactive-element lang-target" data-en="Social" data-gu="સોશિયલ">Social</a>
+                <a href="#contact" class="interactive-element lang-target" data-en="Contact" data-gu="સંપર્ક">Contact</a>
+            </div>
+            
+            <div class="nav-controls">
+                <button id="langToggle" class="lang-toggle interactive-element" onclick="toggleLanguage()">EN / GU</button>
+                <button id="themeToggle" class="theme-toggle interactive-element" title="Toggle Dark Mode"></button>
+                <button onclick="openModal()" class="btn interactive-element lang-target" data-en="Book a Table" data-gu="ટેબલ બુક કરો" style="margin-left: 10px;">Book a Table</button>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="lang-target" data-en="THE BEST <span>VIETNAMESE COFFEE</span> IS HERE IN SURAT" data-gu="સુરતમાં શ્રેષ્ઠ <span>વિયેતનામીસ કોફી</span> અહીં છે">THE BEST <span>VIETNAMESE COFFEE</span> IS HERE IN SURAT</h1>
+                <p class="lang-target" data-en="Experience authentic Vietnamese brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits." data-gu="વેસુના હૃદયમાં અધિકૃત વિયેતનામીસ કોફી, હૂંફાળું વાતાવરણ અને અવિસ્મરણીય પીણાંનો અનુભવ કરો.">Experience authentic Vietnamese brews, cozy vibes, and unforgettable specialty drinks right in the heart of Vesu. Your perfect coffee getaway awaits.</p>
+                <a href="#menu" class="btn interactive-element lang-target" data-en="Explore Menu" data-gu="મેનુ જુઓ" style="padding: 15px 35px; font-size: 1rem;">Explore Menu</a>
+            </div>
+            <div class="hero-image-container">
+                <img class="hero-image" alt="Vietnamese Phin Coffee"> 
+            </div>
+        </div>
+    </header>
+
+    <div class="trusted-by reveal fade-up">
+        <p class="lang-target" data-en="Trusted by many coffee lovers in Vesu, Surat" data-gu="વેસુ, સુરતના કોફી પ્રેમીઓનો વિશ્વાસ">Trusted by many coffee lovers in Vesu, Surat</p>
+        <div class="brand-logos">
+            <span>CAPHE TRA</span>
+            <span>ZOMATO RATED</span>
+            <span>AUTHENTIC BREWS</span>
+            <span>COZY VIBES</span>
+        </div>
+    </div>
+
+    <section id="menu">
+        <div class="section-header reveal fade-up">
+            <h2 class="lang-target" data-en="Explore Our Menu" data-gu="અમારું મેનુ જુઓ">Explore Our Menu</h2>
+            <p>Fresh brews and handcrafted delights tailored for authentic tastes.</p>
+        </div>
+        
+        <div class="menu-filter reveal fade-up delay-1">
+            <button class="filter-btn active interactive-element lang-target" data-en="Show All" data-gu="બધું જુઓ" onclick="filterSelection('all')">Show All</button>
+            <button class="filter-btn interactive-element" onclick="filterSelection('hot')">Hot Coffee</button>
+            <button class="filter-btn interactive-element" onclick="filterSelection('cold')">Cold Brew</button>
+            <button class="filter-btn interactive-element" onclick="filterSelection('snacks')">Snacks</button>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card tilt-card reveal fade-up hot interactive-element">
+                <img src="https://images.unsplash.com/photo-1565660892335-28970964c62c?q=80&w=1936&auto=format&fit=crop" alt="Vietnamese Coffee">
+                <h3>Vietnamese Signature</h3>
+                <p>Classic Hot Drip with sweet condensed milk.</p>
+                <span class="price-tag">₹180</span>
+            </div>
+            <div class="product-card tilt-card reveal fade-up cold delay-1 interactive-element">
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=1974&auto=format&fit=crop" alt="Cold Brew">
+                <h3>Signature Cold Brew</h3>
+                <p>Refreshing, steeped for 16 hours.</p>
+                <span class="price-tag">₹220</span>
+            </div>
+            <div class="product-card tilt-card reveal fade-up cold delay-2 interactive-element">
+                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=2071&auto=format&fit=crop" alt="Matcha Drink">
+                <h3>Matcha Frappe</h3>
+                <p>Premium grade matcha blended with ice.</p>
+                <span class="price-tag">₹250</span>
+            </div>
+            <div class="product-card tilt-card reveal fade-up snacks delay-3 interactive-element">
+                <img src="https://images.unsplash.com/photo-1563729768477-019680d34617?q=80&w=1974&auto=format&fit=crop" alt="Desserts">
+                <h3>Cheesecake Slice</h3>
+                <p>The perfect sweet companion to your brew.</p>
+                <span class="price-tag">₹190</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="ambiance-section">
+        <div class="ambiance-images reveal fade-left">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Cafe Interior">
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" alt="Cafe Vibes">
+            <img src="https://images.unsplash.com/photo-1559925393-8be033611534?q=80&w=2070&auto=format&fit=crop" alt="Coffee making">
+        </div>
+        <div class="ambiance-text reveal fade-right">
+            <h2 class="lang-target" data-en="Premium Quality Beans And Ambiance" data-gu="પ્રીમિયમ ગુણવત્તાવાળી કોફી અને વાતાવરણ">Premium Quality Beans And Ambiance</h2>
+            <p>Caphe Tra Coffee House is known for blending authentic Vietnamese coffee traditions with a warm, inviting atmosphere right here in Gujarat.</p>
+            <p>Whether you are catching up with friends, looking for a quiet place to work, or simply craving a quick, delicious bite, our doors are open.</p>
+            <button onclick="openModal()" class="btn interactive-element" style="margin-top: 15px;">Reserve Your Spot</button>
+        </div>
+    </section>
+
+    <div class="yellow-banner reveal fade-up">
+        <h2>Dive into Our Café</h2>
+        <span class="bean-icon">☕</span>
+        <h2>Perk Up Your Café Experience</h2>
+    </div>
+
+    <section class="stats-map-container reveal fade-up">
+        <div class="stats-content">
+            <span class="big-stat">1</span>
+            <h2 class="lang-target" data-en="Location in Surat" data-gu="સુરતમાં લોકેશન">Location in Surat</h2>
+            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 20px;">104-A, Homeland City, Udhana Magdalla Road, Vesu, Piplod.</p>
+            
+            <div id="liveStatus" class="live-status status-closed">
+                <span class="pulse-dot"></span> <span id="statusText">Checking status...</span>
+            </div>
+
+            <div class="stat-box">
+                <h4 style="color: var(--primary-green); font-size: 1.2rem;">⭐ Zomato Rated ~4.0/5</h4>
+                <p>Loved by the local community.</p>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.407667304547!2d72.766683375961!3d21.136165984064655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0527c9c4a3c29%3A0x5f6b3d6f7e3a8b0!2sHomeland%20City!5e0!3m2!1sen!2sin!4v1715512345678!5m2!1sen!2sin" width="100%" height="100%" style="border:0; filter: contrast(1.2) opacity(0.8);" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="social">
+        <div class="section-header reveal fade-up">
+            <h2>Follow Our Journey</h2>
+            <p><a href="https://instagram.com/caphetra_coffeehouse" style="color:var(--primary-yellow); text-decoration:none; font-weight:bold;">@caphetra_coffeehouse</a></p>
+        </div>
+        <div class="insta-grid reveal fade-up delay-1">
+            <div class="insta-item interactive-element">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" alt="Insta 1">
+                <div class="insta-overlay">❤️ 124 💬 12</div>
+            </div>
+            <div class="insta-item interactive-element">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="Insta 2">
+                <div class="insta-overlay">❤️ 89 💬 5</div>
+            </div>
+            <div class="insta-item interactive-element">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="Insta 3">
+                <div class="insta-overlay">❤️ 210 💬 34</div>
+            </div>
+            <div class="insta-item interactive-element">
+                <img src="https://images.unsplash.com/photo-1444418185997-1145401101e0?q=80&w=2069&auto=format&fit=crop" alt="Insta 4">
+                <div class="insta-overlay">❤️ 156 💬 18</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="reveal fade-up">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h2 style="color: var(--primary-yellow); font-family: 'Montserrat', sans-serif; font-weight: 900; margin-bottom: 20px;">CAPHE TRA</h2>
+                <p>Bringing authentic Vietnamese coffee culture to the heart of Surat. Brewed with passion, served with love.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>📍 104-A, Homeland City, Vesu, Piplod, Surat</p>
+                <p>📞 <a href="tel:+919173165357" class="interactive-element" style="display:inline;">+91 91731 65357</a></p>
+                <p>🕐 Mon-Sun: 8:00 AM – 11:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="https://instagram.com/caphetra_coffeehouse" target="_blank" class="interactive-element">📸 Instagram</a>
+                <a href="#" class="interactive-element">⭐ Zomato</a>
+                <a href="#" class="interactive-element">🗺️ Tripadvisor</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Caphe Tra Coffee House. Website Demo by NETBUILD.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="scrollToTop()" class="interactive-element">↑</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal interactive-element" onclick="closeModal()">×</span>
+            <h3>Book a Table</h3>
+            <p style="margin-bottom: 20px; opacity: 0.7;">Reserve your cozy spot at Caphe Tra.</p>
+            <form onsubmit="event.preventDefault(); alert('Booking Request Sent Successfully! (Demo)'); closeModal();">
+                <input type="text" placeholder="Your Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="date" required>
+                <select required>
+                    <option value="" disabled selected>Number of Guests</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 People</option>
+                    <option value="4+">4+ People</option>
+                </select>
+                <button type="submit" class="btn interactive-element" style="width: 100%; margin-top: 10px;">Confirm Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. Preloader Logic
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 800); 
+        });
+
+        // 2. Custom Cursor
+        const cursor = document.getElementById('customCursor');
+        const interactiveElements = document.querySelectorAll('.interactive-element, a, button, .product-card, .insta-item');
+
+        document.addEventListener('mousemove', e => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        });
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+
+        // 3. Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        // 4. Multilingual Toggle (English/Gujarati)
+        let currentLang = 'en';
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'gu' : 'en';
+            document.querySelectorAll('.lang-target').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+
+        // 5. Cafe Audio Toggle
+        const audio = document.getElementById('cafeAudio');
+        const audioBtn = document.getElementById('audioBtn');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.classList.remove('playing');
+                audioBtn.innerText = '🎵';
+            } else {
+                audio.play();
+                audioBtn.classList.add('playing');
+                audioBtn.innerText = '⏸';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // 6. 3D Tilt Effect on Cards
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xPct = x / rect.width - 0.5;
+                const yPct = y / rect.height - 0.5;
+                card.style.transform = `perspective(1000px) rotateY(${xPct * 15}deg) rotateX(${yPct * -15}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // 7. Scroll Animation & Nav
+        document.addEventListener("DOMContentLoaded", function() {
+            const revealElements = document.querySelectorAll('.reveal');
+            const navbar = document.getElementById('navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener("scroll", () => {
+                const scrollY = window.scrollY;
+                revealElements.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
+                });
+                navbar.classList.toggle('scrolled', scrollY > 50);
+                backToTopBtn.classList.toggle('show', scrollY > 500);
+            });
+            checkLiveStatus(); 
+        });
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // 8. Menu Filtering
+        function filterSelection(c) {
+            let x = document.getElementsByClassName("product-card");
+            let btns = document.getElementsByClassName("filter-btn");
+            for (let btn of btns) {
+                btn.classList.toggle("active", btn.getAttribute('onclick').includes(c));
+            }
+            for (let item of x) {
+                item.classList.toggle("hide", c !== 'all' && !item.className.includes(c));
+            }
+        }
+
+        // 9. Live Open/Closed Status
+        function checkLiveStatus() {
+            const statusDiv = document.getElementById('liveStatus');
+            const statusText = document.getElementById('statusText');
+            const currentHour = new Date().getHours(); 
+
+            if (currentHour >= 8 && currentHour < 23) {
+                statusDiv.className = 'live-status status-open interactive-element';
+                statusText.innerText = '🟢 Open Now (Closes at 11 PM)';
+            } else {
+                statusDiv.className = 'live-status status-closed interactive-element';
+                statusText.innerText = '🔴 Closed (Opens at 8 AM)';
+            }
+        }
+
+        // 10. Booking Modal
+        const modal = document.getElementById("bookingModal");
+        function openModal() { modal.classList.add("active"); }
+        function closeModal() { modal.classList.remove("active"); }
+        window.onclick = e => { if (e.target == modal) closeModal(); }
+    </script>
+</body>
+</html>
