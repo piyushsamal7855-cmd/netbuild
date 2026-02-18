@@ -18,18 +18,7 @@
         </div>
     </div>
 
-    <div class="popup-overlay" id="welcomePopup">
-        <div class="popup-box">
-            <span class="close-popup" id="closePopup"><i class="fa-solid fa-xmark"></i></span>
-            <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=400&auto=format&fit=crop" alt="Free Cupcake">
-            <h2>Wait! A Sweet Treat For You 🧁</h2>
-            <p>Get a <strong>FREE Special Cupcake</strong> on your first order above ₹1000!</p>
-            <form class="popup-form" onsubmit="event.preventDefault(); alert('Coupon Sent to your Email! 🎉'); document.getElementById('welcomePopup').style.display='none';">
-                <input type="email" placeholder="Enter your Email" required>
-                <button type="submit" class="btn-primary w-100">Claim My Free Cupcake</button>
-            </form>
-        </div>
-    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <div class="promo-bar">
         🎉 Special Offer: Get <strong>10% OFF</strong> on your first order! Use code: <span class="promo-code">SUGAR10</span>
@@ -47,12 +36,12 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#reviews">Reviews</a></li>
         </ul>
         <div class="nav-actions">
+            <button id="darkModeToggle" class="btn-login" style="font-size: 20px;"><i class="fa-solid fa-moon"></i></button>
             <a href="#builder" class="btn-primary" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> Design Cake</a>
         </div>
     </nav>
@@ -66,12 +55,10 @@
                 <a href="#menu" class="btn-primary large" style="text-decoration:none;">View Full Menu</a>
             </div>
         </div>
-
         <div class="hero-image" data-aos="fade-left" data-aos-duration="1200">
             <div class="blob"></div>
             <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=800&auto=format&fit=crop" alt="Signature Cake" class="main-cake floating-anim">
         </div>
-
         <div class="wave-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C79.86,118.84,159.27,118.3,232.44,103.11c24.63-5.11,48.16-11.23,72.4-18.06,10.63-2.94,21.3-6.14,32.32-9.69Z" class="shape-fill"></path>
@@ -190,41 +177,20 @@
         </div>
         <div class="team-grid">
             <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef">
+                <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?w=400&auto=format&fit=crop" alt="Chef Rahul">
                 <h3>Chef Rahul</h3>
                 <p>Head Pastry Chef - 10 Yrs Exp.</p>
             </div>
             <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop" alt="Chef Anjali">
                 <h3>Chef Anjali</h3>
                 <p>Fondant Art Specialist</p>
             </div>
             <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1606822557451-b85194cc36b9?w=400&auto=format&fit=crop" alt="Chef">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop" alt="Chef Vikram">
                 <h3>Chef Vikram</h3>
                 <p>Bread & Artisanal Expert</p>
             </div>
-        </div>
-    </section>
-
-    <section class="faq-section" id="faq">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Frequently Asked <span class="highlight">Questions</span></h2>
-            <p>Everything you need to know before ordering.</p>
-        </div>
-        <div class="faq-container" data-aos="fade-up">
-            <details class="faq-item">
-                <summary>Do you offer Midnight Delivery?</summary>
-                <p>Yes! We offer special midnight delivery across Surat. Please place your order at least 24 hours in advance.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Are all your cakes 100% Eggless?</summary>
-                <p>Absolutely! Our entire facility is 100% pure vegetarian and eggless. You don't have to worry about a thing.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How much time do you need for a Custom Theme Cake?</summary>
-                <p>For custom fondant or multi-tier theme cakes, we request a minimum notice of 2 to 3 days to perfect the details.</p>
-            </details>
         </div>
     </section>
 
@@ -243,20 +209,11 @@
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Highly recommend their pastries."</p><h4>- Amit J.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered right on time."</p><h4>- Vikram K.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"The cheesecake is heaven."</p><h4>- Priya R.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Highly recommend their pastries."</p><h4>- Amit J.</h4></div>
             </div>
-        </div>
-    </section>
-
-    <section class="instagram-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Follow Us on <span class="highlight">Instagram</span></h2>
-            <p>@SugarLandBakery</p>
-        </div>
-        <div class="insta-grid">
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Ig 1"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop" alt="Ig 2"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Ig 3"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Ig 4"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
         </div>
     </section>
 
@@ -279,7 +236,7 @@
         <div class="club-container" data-aos="zoom-in">
             <h2>🎂 Join Our Birthday Club</h2>
             <p>Enter your details and get a flat <strong>20% OFF</strong> coupon code during your birthday month!</p>
-            <form class="club-form" onsubmit="event.preventDefault(); alert('Yay! You are successfully registered for the Birthday Club! 🎉');">
+            <form class="club-form" id="birthdayForm">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Email or WhatsApp No." required>
                 <input type="month" required title="Select your birthday month">
@@ -326,33 +283,48 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        // 1. PRELOADER LOGIC
+        // 1. PRELOADER
         window.addEventListener('load', function() {
             setTimeout(function() {
                 let preloader = document.getElementById('preloader');
                 preloader.style.opacity = '0';
                 setTimeout(() => preloader.style.display = 'none', 500);
             }, 1000); 
-            
-            // 2. WELCOME POPUP LOGIC
-            setTimeout(function() {
-                let popup = document.getElementById('welcomePopup');
-                // Check if user already saw it this session
-                if(!sessionStorage.getItem('popupShown')){
-                    popup.style.display = 'flex';
-                    sessionStorage.setItem('popupShown', 'true');
-                }
-            }, 4000); // 4 seconds baad dikhega
         });
 
-        // Close Popup
-        document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('welcomePopup').style.display = 'none';
+        // 2. DARK MODE TOGGLE 🌙
+        const darkModeBtn = document.getElementById('darkModeToggle');
+        darkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            let icon = darkModeBtn.querySelector('i');
+            if(document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
         });
 
-        // 3. FLASH SALE TIMER
-        let time = 4 * 3600 + 45 * 60 + 30; // 4h 45m 30s
+        // 3. SCROLL PROGRESS BAR 🚀
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        };
+
+        // 4. CONFETTI ANIMATION ON FORM SUBMIT 🎉
+        document.getElementById('birthdayForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            setTimeout(() => alert('Yay! You are successfully registered for the Birthday Club! 🎉'), 800);
+        });
+
+        // 5. FLASH SALE TIMER
+        let time = 4 * 3600 + 45 * 60 + 30;
         setInterval(function() {
             let h = Math.floor(time / 3600);
             let m = Math.floor((time % 3600) / 60);
@@ -363,26 +335,22 @@
             if(time > 0) time--;
         }, 1000);
 
-        // 4. Initialize Animations
+        // 6. Init Animations
         AOS.init({ once: true, offset: 50 });
 
-        // 5. Cake Builder Form
+        // 7. Builder Form & Chatbot Logic remains same
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
-            let size = document.getElementById('cakeSize').value;
-            let flavor = document.getElementById('cakeFlavor').value;
-            let details = document.getElementById('extraDetails').value;
-            let message = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${size}\n*Flavor:* ${flavor}\n*Details:* ${details}\n\n(Promo Code: SUGAR10)`;
+            let message = `Hello Sugar Land! 🍰\n\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n(Promo Code: SUGAR10)`;
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(message), '_blank');
         });
 
-        // 6. Chatbot Logic
         const chatbotToggler = document.querySelector(".chatbot-toggler");
         const closeBtn = document.querySelector(".close-btn");
         const chatbox = document.querySelector(".chatbox");
         const chatInput = document.querySelector(".chat-input textarea");
         const sendChatBtn = document.querySelector("#send-btn");
-
+        
         const createChatLi = (message, className) => {
             const chatLi = document.createElement("li");
             chatLi.classList.add("chat", className);
@@ -403,9 +371,7 @@
                 chatbox.scrollTo(0, chatbox.scrollHeight);
                 setTimeout(() => {
                     incomingChatLi.querySelector("p").innerHTML = `Redirecting to our WhatsApp Expert...`;
-                    setTimeout(() => {
-                        window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI Assistant sent me. I need: " + userMessage), '_blank');
-                    }, 1500);
+                    setTimeout(() => window.open("https://wa.me/917567568060?text=" + encodeURIComponent("Hi, AI Assistant sent me. I need: " + userMessage), '_blank'), 1500);
                 }, 1000);
             }, 600);
         }
