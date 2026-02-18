@@ -37,7 +37,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 @keyframes flyLeft { 0% { transform: translateX(0) translateY(0) rotate(-70deg); } 100% { transform: translateX(-130vw) translateY(20vh) rotate(-70deg); } }
 @keyframes flyDiagonal { 0% { transform: translateX(0) translateY(0) rotate(110deg); } 100% { transform: translateX(130vw) translateY(50vh) rotate(110deg); } }
 
-/* --- NAVBAR & CART BADGE --- */
+/* --- NAVBAR, CART BADGE, COIN BADGE --- */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(var(--bg-color), 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 40px; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.02); transition: 0.4s; }
 .logo h2 { font-size: 26px; font-weight: 800; color: var(--text-dark); }
 .nav-links { list-style: none; display: flex; gap: 30px; }
@@ -46,6 +46,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .nav-actions { display: flex; align-items: center; gap: 15px;}
 .lang-select { padding: 5px 10px; border-radius: 20px; border: 1px solid var(--primary-color); background: var(--bg-color); color: var(--text-dark); outline: none; cursor: pointer; font-weight: 600;}
 .cart-badge { position: absolute; top: -8px; right: -8px; background: var(--primary-color); color: #fff; font-size: 10px; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-weight: bold; }
+.coin-badge { background: #fff3cd; color: #f5b041; padding: 5px 12px; border-radius: 50px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 5px; border: 1px solid #f5b041; }
 
 /* --- BUTTONS --- */
 .btn-primary, .btn-login, .btn-card { padding: 12px 28px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; }
@@ -54,15 +55,37 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .btn-login { background: transparent; color: var(--text-dark); border:none; cursor: pointer;}
 .w-100 { width: 100%; padding: 15px; font-size: 16px; margin-top: 10px;}
 
-/* --- CART SIDEBAR 🛒 --- */
+/* --- CART SIDEBAR & ADDONS 🛒 --- */
 .cart-sidebar { position: fixed; top: 0; right: -400px; width: 350px; height: 100vh; background: var(--white); box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 2000; transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; }
 .cart-sidebar.open { right: 0; }
 .cart-header { padding: 25px; background: var(--secondary-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-dark); font-size: 20px; font-weight: 700; border-bottom: 2px solid var(--primary-color); }
 .close-cart { cursor: pointer; font-size: 24px; color: var(--primary-color); transition: 0.3s;}
 .close-cart:hover { transform: rotate(90deg); }
 .cart-items { flex: 1; padding: 20px; overflow-y: auto; background: var(--bg-color); }
-.cart-footer { padding: 25px; background: var(--white); border-top: 2px solid #eee; }
+.cart-addons-section { padding: 15px 20px; background: var(--white); border-top: 1px solid #eee;}
+.cart-addons-section h4 { font-size: 14px; margin-bottom: 10px; color: var(--text-dark);}
+.addon-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
+.addon-grid::-webkit-scrollbar { height: 4px; }
+.addon-grid::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: 10px;}
+.addon-item { min-width: 100px; background: var(--bg-color); border: 1px solid var(--secondary-color); padding: 8px; border-radius: 10px; font-size: 12px; text-align: center; cursor: pointer; font-weight: 600; color: var(--text-dark); transition: 0.3s;}
+.addon-item:hover { background: var(--primary-color); color: #fff;}
+.cart-footer { padding: 20px; background: var(--white); border-top: 2px solid #eee; }
+.delivery-picker { display: flex; gap: 10px; margin-bottom: 15px; }
+.delivery-picker input, .delivery-picker select { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #ddd; outline: none; font-family: 'Poppins'; font-size: 13px; background: var(--bg-color); color: var(--text-dark);}
 .cart-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; }
+
+/* --- REAL-TIME ORDER TRACKER POPUP 🛵 --- */
+.tracker-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 3000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+.tracker-box { background: var(--white); padding: 40px; border-radius: 25px; width: 90%; max-width: 450px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.tracker-box h2 { color: var(--text-dark); margin-bottom: 10px; }
+.tracker-box p { color: var(--text-light); margin-bottom: 20px; font-size: 14px; }
+.progress-bar-container { width: 100%; height: 10px; background: var(--secondary-color); border-radius: 10px; margin-bottom: 20px; overflow: hidden;}
+.progress-bar-fill { height: 100%; width: 10%; background: #25D366; transition: width 1.5s ease-in-out; }
+.tracker-steps { list-style: none; text-align: left; }
+.tracker-steps li { margin-bottom: 15px; font-weight: 600; color: var(--text-light); display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+.tracker-steps li i { font-size: 20px; color: #ccc; }
+.tracker-steps li.active { color: var(--text-dark); }
+.tracker-steps li.active i { color: #25D366; }
 
 /* --- GAMIFIED WELCOME POP-UP 🎁 --- */
 .popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 99998; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
@@ -80,20 +103,17 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .fomo-text h4 { font-size: 14px; color: var(--text-dark); margin-bottom: 2px;}
 .fomo-text p { font-size: 12px; color: var(--text-light); }
 
-/* --- 🌟 FIXED HERO SECTION & PINCODE 🌟 --- */
+/* --- HERO SECTION & PINCODE --- */
 .hero { display: flex; align-items: center; justify-content: space-between; padding: 160px 8% 120px; min-height: 90vh; position: relative; }
 .hero-content { flex: 1; max-width: 45%; position: relative; z-index: 2; }
 .badge { background-color: var(--secondary-color); color: var(--text-dark); padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 25px; }
 .hero h1 { font-size: 58px; line-height: 1.1; margin-bottom: 25px; color: var(--text-dark);}
 .hero p { color: var(--text-light); font-size: 17px; line-height: 1.7; margin-bottom: 25px; padding-right: 50px; }
-
-/* Enforcing margin auto for centering */
 .pincode-checker { display: flex; gap: 10px; max-width: 350px; background: var(--bg-color); padding: 5px; border-radius: 50px; border: 1px solid var(--secondary-color); margin: 0 auto; }
 .pincode-checker input { flex: 1; border: none; background: transparent; outline: none; padding: 10px 15px; color: var(--text-dark); font-family: 'Poppins';}
 .pincode-checker button { background: var(--primary-color); color: #fff; border: none; border-radius: 50px; padding: 10px 20px; font-weight: 600; cursor: pointer; transition: 0.3s;}
 .pincode-checker button:hover { background: #ff7a9e; }
 .hero-buttons { display: flex; margin-top: 20px; }
-
 .hero-image { flex: 1; position: relative; display: flex; justify-content: flex-end; align-items: center; z-index: 2; }
 .blob { position: absolute; width: 500px; height: 500px; background-color: var(--secondary-color); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; z-index: -1; opacity: 0.3; right: -50px; filter: blur(60px); transition: 0.4s; }
 .main-cake { width: 90%; max-width: 550px; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
@@ -131,13 +151,11 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .time-box span { font-size: 28px; font-weight: 700; color: var(--primary-color); display: block; }
 .time-box p { font-size: 12px; font-weight: 600; margin-top: 5px; color: #4A2C2C; }
 
-/* --- 🌟 ABOUT SECTION (FIXED SQUISHING) 🍰 --- */
+/* --- ABOUT SECTION 🍰 --- */
 .about-section { padding: 80px 8%; background-color: var(--white); transition: 0.4s; }
 .about-container { display: flex; align-items: flex-start; gap: 50px; flex-wrap: wrap; }
 .about-image-wrapper { flex: 1 1 350px; border-radius: 30px; overflow: hidden; box-shadow: var(--card-shadow); height: 400px;}
 .about-image-fix { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* Fixed alignment for Desktop to be lower relative to image */
 .about-content { flex: 1 1 350px; margin-top: 60px; }
 .about-content h2 { font-size: 42px; margin-bottom: 20px; color: var(--text-dark);}
 .about-content p { color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
@@ -156,8 +174,8 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .card-image img { width: 100%; height: 100%; object-fit: cover; }
 .price-tag { position: absolute; top: 20px; right: 20px; background: var(--bg-color); padding: 8px 15px; border-radius: 20px; font-weight: 700; color: var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .card-content { padding: 30px; text-align: center; transform: translateZ(20px); }
-.card-content h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-dark);}
-.card-content p { color: var(--text-light); font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
+.card-content h3 { font-size: 22px; margin-bottom: 5px; color: var(--text-dark);}
+.earn-coins { color: #f5b041; font-weight: 600; font-size: 13px; margin-bottom: 15px; } /* Coins text styling */
 .btn-card { width: 100%; justify-content: center; background-color: var(--secondary-color); color: var(--text-dark); }
 .btn-card:hover { background-color: var(--primary-color); color: #fff; }
 
@@ -259,7 +277,7 @@ body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: h
 .bot-avatar { background: var(--primary-color); color: #fff; padding: 8px; border-radius: 50%; font-size: 12px; }
 .chat-input { display: flex; gap: 10px; padding: 15px; background: var(--white); align-items: center; border-top: 1px solid var(--bg-color); }
 .chat-input textarea { border: none; outline: none; width: 100%; height: 24px; resize: none; font-size: 14px; background: transparent; color: var(--text-dark);}
-.chat-input span { cursor: pointer; color: var(--primary-color); font-size: 22px; }
+.chat-input span { cursor: pointer; color: var(--primary-color); font-size: 22px; transition: 0.3s;}
 
 /* --- FOOTER --- */
 footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 14px; background: var(--bg-color); margin-bottom: 0; transition: 0.4s;}
@@ -268,20 +286,20 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
 .mobile-sticky-footer { display: none; }
 
 /* =========================================
-   🌟 MOBILE RESPONSIVENESS (100% FIXED) 🌟
+   📱 MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
     .promo-bar { font-size: 12px; padding: 8px 10px; }
     .scroll-progress { top: 34px; }
     .navbar { flex-direction: column; padding: 15px; gap: 15px; top: 34px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .nav-actions { width: 100%; justify-content: center; gap: 20px;}
+    .nav-actions { width: 100%; display: flex; justify-content: center; gap: 20px; align-items: center; }
     .nav-actions .btn-primary { display: none; } 
     
     .cart-sidebar { width: 100%; right: -100%; }
+
     .fomo-popup { bottom: 85px; left: 15px; right: 15px; padding: 10px; } 
 
-    /* 🌟 FIXED: Absolute Centering on Mobile */
     .hero { flex-direction: column; padding: 180px 5% 100px; text-align: center; }
     .hero-content { max-width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center !important; margin-bottom: 40px; }
     .hero h1 { font-size: 36px; text-align: center !important; }
@@ -300,9 +318,8 @@ footer { text-align: center; padding: 30px; color: var(--text-light); font-size:
     .trust-badges { flex-direction: column; gap: 30px; }
     .badge-item { width: 100%; }
     
-    /* 🌟 FIXED: About Section Image & Text wrap on Mobile */
     .about-container { flex-direction: column; text-align: center; }
-    .about-content { margin-top: 20px; } /* Reset padding/margin for mobile */
+    .about-content { margin-top: 20px; } 
     .features-list li { justify-content: center; text-align: center;}
     .about-image-wrapper { width: 100%; height: 250px; } 
     
