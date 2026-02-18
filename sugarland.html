@@ -257,10 +257,39 @@
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered perfectly on time!"</p><h4>- Vikram K.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best custom cake in Surat!"</p><h4>- Neha P.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Amazing Red Velvet!"</p><h4>- Rahul S.</h4></div>
                 <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Super fresh and eggless."</p><h4>- Anjali M.</h4></div>
+                <div class="review-slide"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Delivered perfectly on time!"</p><h4>- Vikram K.</h4></div>
             </div>
+        </div>
+    </section>
+
+    <section class="instagram-section" id="gallery">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Follow Us on <span class="highlight">Instagram</span></h2>
+            <p>@SugarLandBakery</p>
+        </div>
+        <div class="insta-grid">
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=400&auto=format&fit=crop" alt="Ig 1"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop" alt="Ig 2"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop" alt="Ig 3"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+            <div class="insta-item"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&auto=format&fit=crop" alt="Ig 4"><div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div></div>
+        </div>
+    </section>
+
+    <section class="location-section" id="location">
+        <div class="location-content" data-aos="fade-right">
+            <h2>Visit <span class="highlight">Sugar Land</span></h2>
+            <ul class="contact-info">
+                <li><i class="fa-solid fa-location-dot highlight"></i> <span>Vanita Heights, 1203, Vesu Canal Rd, Surat</span></li>
+                <li><i class="fa-solid fa-clock highlight"></i> <span>Open Daily: 10:00 AM - 8:00 PM</span></li>
+                <li><i class="fa-solid fa-phone highlight"></i> <span>+91 75675 68060</span></li>
+            </ul>
+        </div>
+        <div class="map-container" data-aos="fade-left">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0543666299496!2d72.8105!3d21.1498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f005c879831%3A0xe54d2cd5017df716!2sSugar%20Land!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
@@ -279,6 +308,7 @@
     <footer><p>© 2024 Sugar Land Bakery. Built by Netbuild.in</p></footer>
 
     <a href="https://wa.me/917567568060?text=Hi%20Sugar%20Land!%20I%20want%20to%20order." class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    
     <button class="chatbot-toggler"><i class="fa-solid fa-robot"></i></button>
     <div class="chatbot-window">
         <div class="chat-header"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Sugar Land AI</h3><span class="close-btn"><i class="fa-solid fa-xmark"></i></span></div>
@@ -335,7 +365,7 @@
         function addToCart(name, price) {
             cart.push({name, price});
             updateCartUI();
-            document.getElementById('cartSidebar').classList.add('open'); // Open drawer
+            document.getElementById('cartSidebar').classList.add('open');
         }
         function updateCartUI() {
             let cartList = document.getElementById('cartItemsList');
@@ -365,7 +395,7 @@
             window.open("https://wa.me/917567568060?text=" + encodeURIComponent(msg), '_blank');
         }
 
-        // 5. LIVE PRICE CALCULATOR (Builder) 🧮
+        // 5. LIVE PRICE CALCULATOR 🧮
         function calculateLivePrice() {
             let sizeEl = document.getElementById('cakeSize');
             let flavorEl = document.getElementById('cakeFlavor');
@@ -384,13 +414,19 @@
             card.addEventListener('mouseleave', () => { card.style.transition = 'transform 0.5s ease'; card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`; });
         });
 
+        const translations = {
+            en: { navBtn: "Design Cake", heroTitle: "Welcome to <span class='highlight'>Sugar Land</span> Bakery", heroDesc: "We craft the finest cakes, pastries, and baked goods in town. Made with love, premium ingredients, and a sprinkle of magic.", heroBtn: "View Full Menu", howTitle: "How It <span class='highlight'>Works</span>", menuTitle: "Our Popular <span class='highlight'>Treats</span>", builderTitle: "Design Your Dream Cake" },
+            hi: { navBtn: "केक डिजाइन करें", heroTitle: "<span class='highlight'>शुगर लैंड</span> बेकरी में आपका स्वागत है", heroDesc: "हम शहर में बेहतरीन केक और पेस्ट्री बनाते हैं। प्यार, ताज़ा सामग्री और जादू के साथ तैयार किया गया।", heroBtn: "पूरा मेनू देखें", howTitle: "यह कैसे काम <span class='highlight'>करता है</span>", menuTitle: "हमारी लोकप्रिय <span class='highlight'>मिठाइयाँ</span>", builderTitle: "सपनों का केक डिजाइन करें" },
+            gu: { navBtn: "કેક ડિઝાઇન કરો", heroTitle: "<span class='highlight'>સુગર લેન્ડ</span> બેકરીમાં સ્વાગત છે", heroDesc: "અમે શહેરમાં શ્રેષ્ઠ કેક અને પેસ્ટ્રી બનાવીએ છીએ. પ્રેમ, શુદ્ધ સામગ્રી અને જાદુ સાથે તૈયાર.", heroBtn: "આખું મેનૂ જુઓ", howTitle: "આ કેવી રીતે <span class='highlight'>કામ કરે છે</span>", menuTitle: "લોકપ્રિય <span class='highlight'>મીઠાઈઓ</span>", builderTitle: "તમારો ડ્રીમ કેક ડિઝાઇન કરો" }
+        };
+        document.getElementById('langToggle').addEventListener('change', function() { let lang = this.value; document.querySelectorAll('[data-trans]').forEach(el => { let key = el.getAttribute('data-trans'); if(translations[lang][key]) el.innerHTML = translations[lang][key]; }); });
+
         document.getElementById('darkModeToggle').addEventListener('click', () => { document.body.classList.toggle('dark-theme'); let i = document.getElementById('darkModeToggle').querySelector('i'); i.classList.toggle('fa-moon'); i.classList.toggle('fa-sun'); });
         window.onscroll = function() { document.getElementById("scrollProgress").style.width = (document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight) * 100 + "%"; };
         document.getElementById('birthdayForm').addEventListener('submit', function(e) { e.preventDefault(); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); setTimeout(() => alert('Successfully registered! 🎉'), 800); });
         document.querySelectorAll('.faq-item').forEach(f => f.addEventListener('click', () => { let i = f.querySelector('.faq-icon'); i.style.transform = f.hasAttribute('open') ? 'rotate(0deg)' : 'rotate(180deg)'; }));
         AOS.init({ once: true, offset: 50 });
 
-        // Builder Whatsapp
         document.getElementById('cakeBuilderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             let msg = `Hello Sugar Land! 🍰\nMy Custom Cake Design:\n*Size:* ${document.getElementById('cakeSize').value}\n*Flavor:* ${document.getElementById('cakeFlavor').value}\n*Details:* ${document.getElementById('extraDetails').value}\n\n*Total Estimate: ${document.getElementById('livePriceDisplay').innerText}*`;
