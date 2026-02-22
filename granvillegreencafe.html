@@ -29,358 +29,430 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.3s; }
+        .delay-2 { transition-delay: 0.2s; }
 
         /* BUTTONS */
-        .btn {
-            display: inline-block; padding: 12px 30px; border: 1px solid var(--text-light);
-            background: transparent; color: var(--text-light); text-transform: uppercase;
-            letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s ease; cursor: pointer;
-        }
+        .btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--text-light); background: transparent; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s ease; cursor: pointer; }
         .btn:hover { background: var(--text-light); color: var(--primary-bg); }
         .btn-filled { background: var(--text-light); color: var(--primary-bg); font-weight: bold; }
         .btn-filled:hover { background: transparent; color: var(--text-light); }
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 20px;
-            background: linear-gradient(rgba(43, 58, 50, 0.8), rgba(43, 58, 50, 0.9)), 
-                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover;
-        }
-        .hero-top-label { font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 20px; color: var(--accent-color); }
+        /* SECTIONS GENERAL */
+        .section-pad { padding: 100px 0; }
+        .bg-dark { background-color: var(--secondary-bg); }
+        .sec-title { font-size: 3rem; text-align: center; margin-bottom: 20px; text-transform: uppercase; }
+        .sec-sub { text-align: center; margin-bottom: 50px; opacity: 0.8; letter-spacing: 1px; }
+
+        /* HERO */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(43, 58, 50, 0.8), rgba(43, 58, 50, 0.9)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover; }
         .hero h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
-        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 40px; letter-spacing: 1px; }
+        
+        /* WHY CHOOSE US */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
+        .feature-box { padding: 30px; border: 1px solid rgba(232, 230, 223, 0.1); border-radius: 10px; background: rgba(0,0,0,0.2); transition: 0.3s; }
+        .feature-box:hover { border-color: var(--accent-color); transform: translateY(-10px); }
+        .feature-box h3 { font-size: 1.5rem; margin: 15px 0; color: var(--accent-color); }
 
-        /* ABOUT SECTION */
-        .about { padding: 100px 0; display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about h2 { font-size: 2.5rem; margin-bottom: 30px; line-height: 1.3; text-transform: uppercase; }
-        .about-img { flex: 1; min-width: 300px; height: 500px; object-fit: cover; border-radius: 5px; }
+        /* GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .gallery-img { width: 100%; height: 300px; object-fit: cover; border-radius: 5px; transition: 0.5s; filter: grayscale(30%); }
+        .gallery-img:hover { filter: grayscale(0); transform: scale(1.03); }
 
-        /* MENU HIGHLIGHT SECTION */
-        .menu-section { padding: 100px 0; background-color: var(--secondary-bg); text-align: center; }
-        .menu-header h2 { font-size: 4rem; letter-spacing: 2px; margin-bottom: 10px; }
-        .menu-header p { margin-bottom: 40px; opacity: 0.8; letter-spacing: 1px; }
+        /* TABLE BOOKING FORM */
+        .booking-form { max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.2); padding: 40px; border-radius: 10px; border: 1px solid var(--accent-color); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-family: var(--font-heading); }
+        .form-control { width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(232, 230, 223, 0.3); color: var(--text-light); border-radius: 5px; outline: none; }
+        .form-control:focus { border-color: var(--accent-color); }
 
-        /* --- NEW: AUTO-SLIDING REVIEWS SECTION --- */
-        .reviews-section { padding: 100px 0; background: var(--primary-bg); text-align: center; overflow: hidden; }
-        .reviews-section h2 { font-size: 3rem; margin-bottom: 50px; text-transform: uppercase; }
-        .slider-container { position: relative; max-width: 800px; margin: 0 auto; min-height: 200px; }
-        .slide {
-            position: absolute; top: 0; left: 0; width: 100%; opacity: 0;
-            transform: translateX(50px); transition: all 0.8s ease-in-out;
-        }
+        /* FAQ SECTION */
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: rgba(0,0,0,0.2); margin-bottom: 15px; padding: 20px; border-radius: 5px; border-left: 4px solid var(--accent-color); }
+        .faq-q { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px; }
+        .faq-a { opacity: 0.8; font-size: 0.95rem; }
+
+        /* REVIEWS SLIDER */
+        .slider-container { position: relative; max-width: 800px; margin: 0 auto; min-height: 200px; text-align: center; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateX(50px); transition: all 0.8s ease-in-out; }
         .slide.active { opacity: 1; transform: translateX(0); z-index: 2; }
         .review-text { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; font-family: var(--font-heading); }
-        .review-author { font-size: 1rem; color: var(--accent-color); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
         .stars { color: #FFD700; margin-bottom: 15px; font-size: 1.2rem; }
 
-        /* FOOTER */
-        footer { padding: 60px 0 30px; border-top: 1px solid var(--accent-color); text-align: center; }
-        .footer-grid { display: flex; justify-content: space-around; flex-wrap: wrap; margin-bottom: 40px; text-align: left; gap: 20px; }
-        .footer-col h4 { font-size: 1.2rem; margin-bottom: 15px; }
-        .footer-col p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px; }
-
-        /* --- NEW: FULL SCREEN MENU MODAL --- */
-        .menu-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(30, 41, 35, 0.98); z-index: 9999;
-            overflow-y: auto; display: none; padding: 40px 20px 100px;
-        }
-        .close-modal {
-            position: fixed; top: 20px; right: 30px; font-size: 2.5rem;
-            color: var(--text-light); cursor: pointer; z-index: 10000; transition: 0.3s;
-        }
-        .close-modal:hover { color: #FF4C4C; transform: scale(1.1); }
-        
-        .modal-content { max-width: 900px; margin: 0 auto; }
-        .modal-content h2 { font-size: 3rem; text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--accent-color); padding-bottom: 20px; }
-        
-        .menu-category { margin-bottom: 50px; }
-        .category-title { font-size: 2rem; color: var(--accent-color); margin-bottom: 20px; text-transform: uppercase; }
-        
-        .full-menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .full-menu-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px; border: 1px solid rgba(232, 230, 223, 0.1); border-radius: 8px;
-            background: rgba(0,0,0,0.2); transition: 0.3s;
-        }
+        /* FULL SCREEN MENU MODAL */
+        .menu-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(30, 41, 35, 0.98); z-index: 9999; overflow-y: auto; display: none; padding: 40px 20px 120px; }
+        .close-modal { position: fixed; top: 20px; right: 30px; font-size: 3rem; color: var(--text-light); cursor: pointer; z-index: 10000; }
+        .modal-content { max-width: 1000px; margin: 0 auto; }
+        .category-title { font-size: 2.2rem; color: var(--accent-color); margin: 40px 0 20px; text-transform: uppercase; border-bottom: 1px solid rgba(232,230,223,0.2); padding-bottom: 10px; }
+        .full-menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .full-menu-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 15px; border: 1px solid rgba(232, 230, 223, 0.1); border-radius: 8px; background: rgba(0,0,0,0.3); transition: 0.3s; }
         .full-menu-item:hover { border-color: var(--accent-color); transform: translateY(-2px); }
         .item-info h4 { font-family: var(--font-body); font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
-        .item-info p { color: var(--accent-color); font-size: 1rem; font-weight: bold; }
-        
-        .add-btn {
-            background: transparent; border: 1px solid var(--text-light); color: var(--text-light);
-            padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold;
-        }
+        .item-info p.desc { font-size: 0.85rem; opacity: 0.7; margin-bottom: 8px; max-width: 200px; line-height: 1.3; }
+        .item-info p.price { color: var(--accent-color); font-weight: bold; }
+        .add-btn { background: transparent; border: 1px solid var(--text-light); color: var(--text-light); padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 5px; }
         .add-btn:hover { background: var(--text-light); color: var(--primary-bg); }
 
         /* CART FLOATING BAR */
-        .cart-bar {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: #25D366;
-            color: #1e2923; padding: 15px 20px; display: flex; justify-content: space-between;
-            align-items: center; box-shadow: 0 -5px 20px rgba(0,0,0,0.5); z-index: 10000;
-            transform: translateY(100%); transition: transform 0.4s ease;
-        }
+        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #25D366; color: #1e2923; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 20px rgba(0,0,0,0.5); z-index: 10000; transform: translateY(100%); transition: transform 0.4s ease; }
         .cart-bar.active { transform: translateY(0); }
-        .cart-info { font-weight: bold; font-size: 1.1rem; }
-        .checkout-btn {
-            background: #1e2923; color: #fff; border: none; padding: 10px 25px;
-            font-weight: bold; border-radius: 50px; cursor: pointer; text-transform: uppercase;
-        }
+        .checkout-btn { background: #1e2923; color: #fff; border: none; padding: 10px 25px; font-weight: bold; border-radius: 50px; cursor: pointer; text-transform: uppercase; }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .full-menu-grid { grid-template-columns: 1fr; }
-            .review-text { font-size: 1.2rem; }
-            .menu-modal { padding: 40px 10px 100px; }
-        }
+        /* AI CHATBOT */
+        .chat-widget { position: fixed; bottom: 80px; right: 20px; z-index: 9000; }
+        .chat-btn { width: 60px; height: 60px; border-radius: 50%; background-color: var(--text-light); color: var(--primary-bg); font-size: 24px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .chat-box { position: absolute; bottom: 70px; right: 0; width: 320px; background: var(--secondary-bg); border: 1px solid var(--accent-color); border-radius: 10px; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .chat-header { background: var(--text-light); color: var(--primary-bg); padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
+        .chat-body { padding: 15px; height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px; border-radius: 10px; font-size: 0.9rem; max-width: 85%; }
+        .msg.bot { background: rgba(255,255,255,0.1); align-self: flex-start; }
+        .msg.user { background: var(--accent-color); color: var(--primary-bg); align-self: flex-end; }
+        .chat-input { display: flex; }
+        .chat-input input { flex: 1; padding: 12px; border: none; background: transparent; color: #fff; border-top: 1px solid var(--accent-color); outline: none;}
+        .chat-input button { padding: 0 15px; background: var(--text-light); color: var(--primary-bg); border: none; cursor: pointer; font-weight: bold; }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 3rem; } .full-menu-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="reveal hero-top-label">SINDHUBHAVAN ROAD, AHMEDABAD</div>
-        <h1 class="reveal delay-1">The Premium<br>Veg Experience.</h1>
-        <p class="reveal delay-2">A vibrant blend of global culinary traditions inspired by modern aesthetics.</p>
-        <div class="reveal delay-3">
-            <button onclick="openMenuModal()" class="btn btn-filled">View Full Menu & Order</button>
+        <h1 class="reveal delay-1">Granville Greens</h1>
+        <p class="reveal delay-2">The Premium Veg Experience on Sindhubhavan Road.</p>
+        <div class="reveal delay-2" style="margin-top: 20px;">
+            <button onclick="openMenuModal()" class="btn btn-filled">Order Online</button>
+            <a href="#table-booking" class="btn">Book a Table</a>
         </div>
     </header>
 
-    <section class="about container">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop" alt="Restaurant Interior" class="about-img reveal">
-        <div class="about-text reveal delay-1">
-            <h4>ABOUT US</h4><br>
-            <h2>Where culinary excellence meets a warm and vibrant atmosphere.</h2>
-            <p>Granville Greens Café & Restaurant is Ahmedabad's popular premium vegetarian dining destination. Known for its elegant ambiance and wide variety of global cuisines.</p>
-            <p><strong>⭐ 100% Pure Veg | Jain Options Available</strong></p>
-        </div>
-    </section>
-
-    <section class="menu-section">
-        <div class="container reveal">
-            <div class="menu-header">
-                <h2>OUR MENU</h2>
-                <p>Oriental • Mexican • Burgers • Beverages</p>
-                <button onclick="openMenuModal()" class="btn btn-filled" style="font-size: 1.2rem; padding: 15px 40px;">Open Digital Menu</button>
+    <section class="section-pad bg-dark reveal">
+        <div class="container">
+            <h2 class="sec-title">Why Choose Us</h2>
+            <p class="sec-sub">The finest vegetarian dining experience in Ahmedabad.</p>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>🍃 100% Pure Veg</h3>
+                    <p>Strictly vegetarian kitchen with extensive authentic Jain options available.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🌍 Global Cuisine</h3>
+                    <p>From Mexican Hot Pots to authentic Burmese Khow Suey and Oriental Noodles.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>☕ Premium Cafe</h3>
+                    <p>Handcrafted Frappes, Macchiatos, and signature Mocktails crafted by expert mixologists.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>✨ Luxury Ambience</h3>
+                    <p>Perfect vibe for family dinners, dates, and casual hangouts right on SBR.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="reviews-section">
-        <div class="container reveal">
-            <h2>Guest Experiences</h2>
-            <div class="slider-container" id="reviewSlider">
+    <section class="section-pad reveal" style="text-align: center;">
+        <div class="container">
+            <h2 class="sec-title">Hungry? Order Now</h2>
+            <p class="sec-sub">Skip the queue. Browse our digital menu and order directly via WhatsApp.</p>
+            <button onclick="openMenuModal()" class="btn btn-filled" style="font-size: 1.2rem; padding: 15px 40px;">Open Digital Menu 🛒</button>
+        </div>
+    </section>
+
+    <section class="section-pad bg-dark reveal" id="gallery">
+        <div class="container">
+            <h2 class="sec-title">Our Gallery</h2>
+            <p class="sec-sub">A glimpse into the Granville Greens experience.</p>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&auto=format&fit=crop" class="gallery-img" alt="Ambience">
+                <img src="https://images.unsplash.com/photo-1548943487-a2e4b43b37ea?w=600&auto=format&fit=crop" class="gallery-img" alt="Oriental Food">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop" class="gallery-img" alt="Mocktails">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop" class="gallery-img" alt="Burgers">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad reveal" id="table-booking">
+        <div class="container">
+            <h2 class="sec-title">Reserve a Table</h2>
+            <p class="sec-sub">Book your premium dining experience with us.</p>
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="bookName" class="form-control" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <select id="bookGuests" class="form-control">
+                        <option>2 People</option><option>3-4 People</option><option>5-8 People</option><option>Large Group (8+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date & Time</label>
+                    <input type="datetime-local" id="bookTime" class="form-control">
+                </div>
+                <button onclick="bookTable()" class="btn btn-filled" style="width: 100%;">Confirm Reservation via WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad bg-dark reveal" id="faq">
+        <div class="container">
+            <h2 class="sec-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-q">Is the restaurant 100% Vegetarian?</div>
+                    <div class="faq-a">Yes, Granville Greens is a 100% pure vegetarian restaurant.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do you serve Jain food?</div>
+                    <div class="faq-a">Absolutely! We have an extensive range of Jain options including Jain Banana Fries, Jain Curries, and customized mocktails.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do you take reservations for large parties or birthdays?</div>
+                    <div class="faq-a">Yes, we provide special arrangements for group dining and celebrations. Please use the Table Booking form to reserve.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do you deliver to home?</div>
+                    <div class="faq-a">Yes, you can order online using our Digital Menu. The order is sent directly to our WhatsApp for fast processing and takeaway/delivery.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad reveal">
+        <div class="container">
+            <h2 class="sec-title">Guest Reviews</h2>
+            <div class="slider-container">
                 <div class="slide active">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"Absolutely amazing! The Thai Green Curry was fresh, flavourful, and beautifully presented. Best cafe on SBR!"</p>
-                    <p class="review-author">- Rahul Desai</p>
+                    <p class="review-text">"Amazing Burmese Khow Suey and Space 9 mocktail. Best cafe on SBR!"</p>
+                    <p style="color:var(--accent-color)">- Rahul Desai</p>
                 </div>
                 <div class="slide">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"The vibe is fantastic and the Hazelnut Frappe is a must-try. Our go-to spot for weekend family dinners."</p>
-                    <p class="review-author">- Neha Patel</p>
-                </div>
-                <div class="slide">
-                    <div class="stars">★★★★☆</div>
-                    <p class="review-text">"Loved the Mexican Enchiladas! Very premium ambiance and the staff is extremely polite."</p>
-                    <p class="review-author">- Amit Shah</p>
+                    <p class="review-text">"The Hazelnut Frappe and Mexican Enchiladas are a must-try. Premium vibe."</p>
+                    <p style="color:var(--accent-color)">- Neha Patel</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="reveal">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>FIND US</h4>
-                    <p>762/B, B H Ornet Park 2,</p>
-                    <p>Sindhubhavan Road, Thaltej, Ahmedabad</p>
-                </div>
-                <div class="footer-col">
-                    <h4>CONTACT</h4>
-                    <p>Phone: +91 99250 31470</p>
-                    <p>Dine-in | Takeaway</p>
-                </div>
-            </div>
-            <p class="copyright">© 2026 Granville Greens Café. Built by Netbuild.in</p>
-        </div>
+    <footer class="bg-dark" style="padding: 40px 0; text-align: center; border-top: 1px solid var(--accent-color);">
+        <p>762/B, B H Ornet Park 2, Sindhubhavan Road, Thaltej, Ahmedabad | Phone: +91 99250 31470</p>
+        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">© 2026 Granville Greens Café. Built by Netbuild.in</p>
     </footer>
-
 
     <div class="menu-modal" id="menuModal">
         <span class="close-modal" onclick="closeMenuModal()">×</span>
         <div class="modal-content">
-            <h2>Digital Menu</h2>
-
-            <div class="menu-category">
-                <h3 class="category-title">Soups & Salads</h3>
-                <div class="full-menu-grid">
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Veg Manchow Soup</h4><p>₹290</p></div>
-                        <button class="add-btn" onclick="addToCart('Veg Manchow Soup', 290)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Burmese Khow Suey</h4><p>₹330</p></div>
-                        <button class="add-btn" onclick="addToCart('Burmese Khow Suey', 330)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Mexican Salad</h4><p>₹250</p></div>
-                        <button class="add-btn" onclick="addToCart('Mexican Salad', 250)">Add +</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3 class="category-title">Oriental Delights</h3>
-                <div class="full-menu-grid">
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Veg Schezwan Fried Rice</h4><p>₹410</p></div>
-                        <button class="add-btn" onclick="addToCart('Veg Schezwan Fried Rice', 410)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Triple Schezwan Noodles</h4><p>₹460</p></div>
-                        <button class="add-btn" onclick="addToCart('Triple Schezwan Noodles', 460)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Exotic Veggies in Black Bean</h4><p>₹490</p></div>
-                        <button class="add-btn" onclick="addToCart('Exotic Veggies Black Bean', 490)">Add +</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3 class="category-title">Mexican & Burgers</h3>
-                <div class="full-menu-grid">
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Mexican Enchiladas</h4><p>₹490</p></div>
-                        <button class="add-btn" onclick="addToCart('Mexican Enchiladas', 490)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Mexican Hot Pot</h4><p>₹550</p></div>
-                        <button class="add-btn" onclick="addToCart('Mexican Hot Pot', 550)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Corn Cheese Burger</h4><p>₹170</p></div>
-                        <button class="add-btn" onclick="addToCart('Corn Cheese Burger', 170)">Add +</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3 class="category-title">Premium Beverages</h3>
-                <div class="full-menu-grid">
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Hazelnut Frappe</h4><p>₹270</p></div>
-                        <button class="add-btn" onclick="addToCart('Hazelnut Frappe', 270)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Cafe Macchiato</h4><p>₹240</p></div>
-                        <button class="add-btn" onclick="addToCart('Cafe Macchiato', 240)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Passion Fruit Rosemary</h4><p>₹300</p></div>
-                        <button class="add-btn" onclick="addToCart('Passion Fruit Rosemary', 300)">Add +</button>
-                    </div>
-                    <div class="full-menu-item">
-                        <div class="item-info"><h4>Cranberry Mojito</h4><p>₹220</p></div>
-                        <button class="add-btn" onclick="addToCart('Cranberry Mojito', 220)">Add +</button>
-                    </div>
-                </div>
-            </div>
-
+            <h2 style="font-size: 3rem; text-align: center; margin-bottom: 20px;">Digital Menu</h2>
+            <div id="dynamicMenuContainer"></div>
         </div>
     </div>
 
     <div class="cart-bar" id="cartBar">
-        <div class="cart-info">
+        <div style="font-weight: bold; font-size: 1.1rem;">
             <span id="cartCount">0</span> Items | Total: ₹<span id="cartTotal">0</span>
         </div>
-        <button class="checkout-btn" onclick="checkoutWhatsApp()">Send Order</button>
+        <button class="checkout-btn" onclick="checkoutWhatsApp()">Send Order via WhatsApp</button>
+    </div>
+
+    <div class="chat-widget">
+        <button class="chat-btn" onclick="toggleChat()">✨</button>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">Granville AI <span onclick="toggleChat()" style="cursor:pointer">✖</span></div>
+            <div class="chat-body" id="chatBody">
+                <div class="msg bot">Hi! I know the entire Granville menu. Ask me for recommendations! (e.g. "Suggest a soup" or "Jain options")</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendChat()">
+                <button onclick="sendChat()">Send</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // 1. SCROLL REVEAL ANIMATION
-        function revealElements() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 50) { reveals[i].classList.add("active"); }
-            }
-        }
-        window.addEventListener("scroll", revealElements);
-        window.addEventListener("load", revealElements);
+        // --- 1. THE COMPLETE MENU DATABASE ---
+        const menuData = {
+            "🥣 Soups": [
+                { name: "Cream Of Tomato Soup", price: 270, desc: "Thick rich tomato creamy soup served with bread croutons." },
+                { name: "Veg Manchow Soup", price: 290, desc: "Assorted vegetables in soya sauce, served with fried noodles." },
+                { name: "Veg Konthong Soup", price: 270, desc: "Paneer cubes & exotic vegetables prepared with spinach paste." },
+                { name: "Hot & Sour Dumpling Soup", price: 270, desc: "Traditional spicy Chinese soup in soya base." },
+                { name: "Lemon Coriander Soup", price: 270, desc: "Cabbage & coriander tossed in lemon juice." },
+                { name: "Minestrone Soup", price: 290, desc: "Italian tomato soup with pasta & vegetables." },
+                { name: "Mexican Tortilla Soup", price: 290, desc: "Spicy tomato soup with jalapenos, beans & tortilla." },
+                { name: "Broccoli Almond Soup", price: 305, desc: "Creamy broccoli with roasted almond flakes." },
+                { name: "Burmese Khow Suey", price: 330, desc: "Coconut based noodle soup with condiments." }
+            ],
+            "🥗 Salads": [
+                { name: "Green Salad", price: 220, desc: "Cucumber, tomato, carrot & radish." },
+                { name: "Mexican Salad", price: 250, desc: "Bell peppers, kidney beans, olives & tortilla garnish." },
+                { name: "Caesar Salad", price: 250, desc: "Iceberg, Dijon mustard, mayo, parmesan & cherry tomatoes." },
+                { name: "Tabouleh", price: 300, desc: "Parsley, cous cous, lemon juice, olive oil & mint." }
+            ],
+            "🍟 Fries": [
+                { name: "French Fries", price: 190, desc: "" },
+                { name: "Jain Banana Fries", price: 200, desc: "100% Pure Jain." },
+                { name: "Peri Peri French Fries", price: 210, desc: "Spicy & Tangy." },
+                { name: "Jain Peri Peri Banana Fries", price: 220, desc: "Spicy Jain option." }
+            ],
+            "🍚 Oriental Rice & Noodles": [
+                { name: "Veg Fried Rice", price: 390, desc: "" },
+                { name: "Veg Schezwan Fried Rice", price: 410, desc: "" },
+                { name: "Veg Hakka Noodles", price: 380, desc: "" },
+                { name: "Veg Schezwan Noodles", price: 410, desc: "" },
+                { name: "Special Burnt Garlic Fried Rice", price: 440, desc: "" },
+                { name: "Triple Schezwan Fried Rice", price: 460, desc: "" },
+                { name: "Triple Schezwan Noodles", price: 460, desc: "" },
+                { name: "Spicy Cantonese Rice & Noodles", price: 550, desc: "" },
+                { name: "Chinese Biryani / Pot Rice", price: 575, desc: "" }
+            ],
+            "🍛 Oriental Curry": [
+                { name: "Veg Manchurian Gravy", price: 430, desc: "" },
+                { name: "Paneer Chilli Gravy", price: 470, desc: "" },
+                { name: "Exotic Veggies in Black Bean Sauce", price: 490, desc: "" },
+                { name: "Exotic Veggies & Cottage Cheese in Schezwan Sauce", price: 490, desc: "" },
+                { name: "Thai Green Curry with Basil Rice", price: 520, desc: "" },
+                { name: "Thai Red Curry with Basil Rice", price: 520, desc: "" }
+            ],
+            "🌮 Mexican & 🍔 Burgers & Wraps": [
+                { name: "Enchiladas", price: 490, desc: "" },
+                { name: "Quesadillas", price: 490, desc: "" },
+                { name: "Mexican Rice with Curry", price: 550, desc: "" },
+                { name: "Mexican Titbit with Rice", price: 550, desc: "" },
+                { name: "Mexican Hot Pot", price: 0, desc: "(Price on Request)" },
+                { name: "Corn Cheese Burger", price: 170, desc: "" },
+                { name: "Veg Pattie Burger", price: 190, desc: "" },
+                { name: "Paneer Tikka Wrap", price: 250, desc: "" },
+                { name: "Falafel Wrap", price: 250, desc: "" }
+            ],
+            "☕ Coffee & 🥤 Frappes": [
+                { name: "Cafe Cappuccino", price: 220, desc: "" },
+                { name: "Cafe Mocha", price: 240, desc: "" },
+                { name: "Cafe Macchiato", price: 240, desc: "" },
+                { name: "Hot Chocolate", price: 240, desc: "" },
+                { name: "Java Chip Frappe", price: 250, desc: "" },
+                { name: "Hazelnut Frappe", price: 270, desc: "" },
+                { name: "Tiramisu Frappe", price: 270, desc: "" }
+            ],
+            "🍹 Mojitos & 🍸 Mocktails": [
+                { name: "Virgin Mojito", price: 200, desc: "" },
+                { name: "Watermelon Mojito", price: 240, desc: "" },
+                { name: "Blue Mountain Mocktail", price: 250, desc: "" },
+                { name: "Space 9", price: 275, desc: "Signature Mocktail" },
+                { name: "Passion Fruit Rosemary", price: 300, desc: "" },
+                { name: "Bulldozer", price: 350, desc: "" }
+            ]
+        };
 
-        // 2. AUTO-SLIDING REVIEWS LOGIC
-        let slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+        // --- 2. RENDER MENU DYNAMICALLY ---
+        const menuContainer = document.getElementById('dynamicMenuContainer');
+        for (const [category, items] of Object.entries(menuData)) {
+            let categoryHTML = `<h3 class="category-title">${category}</h3><div class="full-menu-grid">`;
+            
+            items.forEach(item => {
+                let priceDisplay = item.price > 0 ? `₹${item.price}` : `TBA`;
+                categoryHTML += `
+                    <div class="full-menu-item">
+                        <div class="item-info">
+                            <h4>${item.name}</h4>
+                            ${item.desc ? `<p class="desc">${item.desc}</p>` : ''}
+                            <p class="price">${priceDisplay}</p>
+                        </div>
+                        <button class="add-btn" onclick="addToCart('${item.name}', ${item.price}, this)">Add +</button>
+                    </div>`;
+            });
+            categoryHTML += `</div>`;
+            menuContainer.innerHTML += categoryHTML;
         }
-        setInterval(nextSlide, 4000); // Changes every 4 seconds
 
-        // 3. MENU MODAL & CART SYSTEM LOGIC
-        const modal = document.getElementById('menuModal');
-        const cartBar = document.getElementById('cartBar');
+        // --- 3. CART SYSTEM ---
         let cart = [];
         let totalAmount = 0;
+        const cartBar = document.getElementById('cartBar');
 
-        function openMenuModal() {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            if(cart.length > 0) cartBar.classList.add('active');
-        }
+        function openMenuModal() { document.getElementById('menuModal').style.display = 'block'; document.body.style.overflow = 'hidden'; if(cart.length > 0) cartBar.classList.add('active'); }
+        function closeMenuModal() { document.getElementById('menuModal').style.display = 'none'; document.body.style.overflow = 'auto'; cartBar.classList.remove('active'); }
 
-        function closeMenuModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            cartBar.classList.remove('active');
-        }
-
-        function addToCart(itemName, itemPrice) {
-            cart.push({ name: itemName, price: itemPrice });
-            totalAmount += itemPrice;
-            
-            // Update UI
+        function addToCart(name, price, btnElement) {
+            cart.push({ name, price });
+            totalAmount += price;
             document.getElementById('cartCount').innerText = cart.length;
             document.getElementById('cartTotal').innerText = totalAmount;
-            
-            // Show Cart Bar with simple animation
             cartBar.classList.add('active');
             
-            // Change button text temporarily
-            let btn = event.target;
-            btn.innerText = "Added ✓";
-            btn.style.background = "#25D366";
-            btn.style.color = "#1e2923";
-            setTimeout(() => {
-                btn.innerText = "Add +";
-                btn.style.background = "transparent";
-                btn.style.color = "var(--text-light)";
-            }, 1000);
+            btnElement.innerText = "Added ✓";
+            btnElement.style.background = "#25D366";
+            btnElement.style.color = "#1e2923";
+            setTimeout(() => { btnElement.innerText = "Add +"; btnElement.style.background = "transparent"; btnElement.style.color = "var(--text-light)"; }, 1000);
         }
 
         function checkoutWhatsApp() {
             if (cart.length === 0) return;
-            
             let message = "Hello Granville Greens! 👋%0A%0AI would like to place an order:%0A%0A";
-            
-            // Generate list of items
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - ₹${item.price}%0A`;
-            });
-            
+            cart.forEach((item, index) => { message += `${index + 1}. ${item.name} - ₹${item.price}%0A`; });
             message += `%0A🧾 *Total Amount: ₹${totalAmount}*%0A%0APlease confirm my order.`;
-            
-            const phone = "919925031470";
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            window.open(`https://wa.me/919925031470?text=${message}`, '_blank');
         }
+
+        // --- 4. TABLE BOOKING ---
+        function bookTable() {
+            const name = document.getElementById('bookName').value;
+            const guests = document.getElementById('bookGuests').value;
+            const time = document.getElementById('bookTime').value;
+            if(!name || !time) return alert("Please fill Name and Time!");
+            let message = `Hello Granville Greens! 👋%0A%0AI would like to request a Table Reservation:%0A👤 Name: ${name}%0A👥 Guests: ${guests}%0A📅 Date & Time: ${time}%0A%0APlease confirm availability.`;
+            window.open(`https://wa.me/919925031470?text=${message}`, '_blank');
+        }
+
+        // --- 5. AI CHATBOT LOGIC ---
+        function toggleChat() {
+            const box = document.getElementById('chatBox');
+            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+        }
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim().toLowerCase();
+            if(!text) return;
+            appendMsg(input.value, 'user');
+            input.value = '';
+            
+            setTimeout(() => {
+                let reply = "We have a great Multi-Cuisine menu! Type 'Open Menu' to see everything.";
+                if(text.includes('soup')) reply = "Try our Burmese Khow Suey (₹330) or the classic Broccoli Almond Soup (₹305)!";
+                else if(text.includes('salad')) reply = "The Tabouleh Salad (₹300) and Caesar Salad (₹250) are very fresh.";
+                else if(text.includes('jain')) reply = "We have pure Jain options! Try our Jain Banana Fries (₹200) or Jain Peri Peri Fries.";
+                else if(text.includes('noodle') || text.includes('rice')) reply = "Our Triple Schezwan Noodles (₹460) and Chinese Biryani (₹575) are highly recommended.";
+                else if(text.includes('curry')) reply = "You must try our Thai Green Curry with Basil Rice (₹520)!";
+                else if(text.includes('mexican')) reply = "Our Mexican Enchiladas (₹490) and Quesadillas are best sellers.";
+                else if(text.includes('burger') || text.includes('wrap')) reply = "Grab a Paneer Tikka Wrap (₹250) or a Corn Cheese Burger (₹170).";
+                else if(text.includes('coffee') || text.includes('frappe')) reply = "We brew excellent Cafe Macchiato (₹240) and Hazelnut Frappe (₹270).";
+                else if(text.includes('mojito') || text.includes('mocktail')) reply = "Refresh yourself with our signature Space 9 (₹275) or Passion Fruit Rosemary Mocktail (₹300)!";
+                
+                appendMsg(reply, 'bot');
+            }, 600);
+        }
+        function appendMsg(txt, sender) {
+            const body = document.getElementById('chatBody');
+            body.innerHTML += `<div class="msg ${sender}">${txt}</div>`;
+            body.scrollTop = body.scrollHeight;
+        }
+
+        // --- 6. ANIMATIONS & SLIDER ---
+        function revealElements() {
+            document.querySelectorAll(".reveal").forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add("active");
+            });
+        }
+        window.addEventListener("scroll", revealElements); window.addEventListener("load", revealElements);
+        
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000);
     </script>
 </body>
 </html>
