@@ -49,11 +49,20 @@
         .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: -2; object-fit: cover; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(30, 41, 35, 0.7); z-index: -1; }
         
-        /* LOGO POSITION - TOP CENTER */
-        .top-logo-wrapper { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 10; }
-        .brand-logo { max-width: 180px; height: auto; }
+        /* UPDATED: LOGO POSITION - TOP LEFT & BIGGER */
+        .top-logo-wrapper { 
+            position: absolute; 
+            top: 30px; 
+            left: 40px; /* Moved to Left */
+            z-index: 10; 
+        }
+        .brand-logo { 
+            max-width: 250px; /* Increased Size */
+            height: auto; 
+            transition: 0.3s;
+        }
         
-        .hero-content { z-index: 1; display: flex; flex-direction: column; align-items: center; margin-top: 60px; }
+        .hero-content { z-index: 1; display: flex; flex-direction: column; align-items: center; /* margin-top removed as logo is moved */ }
         .hero h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;}
         
         /* ZOMATO SWIGGY BADGES */
@@ -148,8 +157,9 @@
         @media (max-width: 768px) { 
             .hero h1 { font-size: 3rem; } 
             .full-menu-grid { grid-template-columns: 1fr; } 
-            .top-logo-wrapper { top: 20px; }
-            .brand-logo { max-width: 140px; }
+            /* UPDATED MOBILE LOGO POSITION & SIZE */
+            .top-logo-wrapper { top: 20px; left: 20px; }
+            .brand-logo { max-width: 160px; }
             .wa-float { left: 15px; bottom: 20px; padding: 10px 15px; font-size: 0.8rem; }
             .chat-widget { right: 15px; bottom: 20px; }
             .chat-btn { width: 50px; height: 50px; font-size: 20px; }
