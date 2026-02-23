@@ -27,160 +27,173 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* --- Impressive Animations --- */
-        .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); will-change: opacity, transform; }
-        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+        /* --- PRELOADER --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
+        .spinner { width: 50px; height: 50px; border: 3px solid rgba(212, 175, 55, 0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;}
+        #preloader h2 { color: var(--gold); letter-spacing: 2px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
+        /* --- PROMO POPUP --- */
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.5s; backdrop-filter: blur(5px); }
+        .popup-overlay.active { opacity: 1; pointer-events: auto; }
+        .popup-content { background: var(--bg-dark); border: 2px solid var(--gold); padding: 40px; border-radius: 15px; text-align: center; position: relative; transform: scale(0.8); transition: 0.5s; color: white; max-width: 90%; width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+        .popup-overlay.active .popup-content { transform: scale(1); }
+        .close-popup { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 1.5rem; color: var(--gold); }
+        .popup-content h3 { font-size: 2rem; margin-bottom: 10px; color: var(--gold); }
 
-        @keyframes float-img {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
+        /* --- ANNOUNCEMENT BAR --- */
+        .top-bar { background: var(--gold); color: #000; padding: 8px 0; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001;}
+        .top-bar-content { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); will-change: opacity, transform; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); } 70% { box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
 
         /* --- Buttons --- */
         .btn { background: var(--gold); color: #000; padding: 12px 28px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; display: inline-block; font-family: var(--font-body); border-radius: 30px; text-align: center; }
         .btn:hover { background: #b5952f; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .btn-glow { animation: pulse-glow 2s infinite; }
-
+        
         .partner-btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; color: white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.95rem; }
         .partner-btn.zomato { background: var(--zomato); }
         .partner-btn.swiggy { background: var(--swiggy); }
         .partner-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
-        /* --- Header --- */
-        header { position: fixed; top: 0; width: 100%; padding: 15px 5%; background: rgba(10, 31, 24, 0.85); z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); backdrop-filter: blur(10px); }
+        /* --- Header & Live Status --- */
+        header { position: sticky; top: 0; width: 100%; padding: 15px 5%; background: rgba(10, 31, 24, 0.95); z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); backdrop-filter: blur(10px); }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo { font-size: 1.8rem; font-weight: 700; color: var(--gold); font-family: var(--font-heading); letter-spacing: 1px;}
+        .status-badge { background: #222; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; border: 1px solid #444; }
+        .status-badge.open { color: #25d366; border-color: #25d366; }
         nav ul { display: flex; gap: 25px; }
         nav a { font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--gold); }
 
         /* --- Hero Section --- */
-        #hero { height: 100vh; background: linear-gradient(rgba(10, 31, 24, 0.75), rgba(10, 31, 24, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        #hero { height: calc(100vh - 40px); background: linear-gradient(rgba(10, 31, 24, 0.75), rgba(10, 31, 24, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
         #hero h1 { font-size: 4.5rem; color: var(--gold); margin-bottom: 15px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); line-height: 1.1;}
-        #hero p { font-size: 1.2rem; max-width: 650px; margin-bottom: 30px; color: #f0f0f0; letter-spacing: 0.5px;}
+        #hero p { font-size: 1.2rem; max-width: 650px; margin-bottom: 30px; color: #f0f0f0; }
         .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
 
         /* --- Section Defaults --- */
-        section { padding: 90px 5%; }
-        .sec-title { text-align: center; margin-bottom: 50px; }
+        section { padding: 80px 5%; }
+        .sec-title { text-align: center; margin-bottom: 40px; }
         .sec-title h3 { color: var(--gold); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; }
         .sec-title h2 { font-size: 2.8rem; margin-top: 10px; }
         .light-bg { background: var(--bg-light); color: var(--text-dark); }
         .light-bg .sec-title h2 { color: var(--text-dark); }
 
-        /* --- About Section --- */
-        .about-content { display: flex; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .about-img-wrap { flex: 1; position: relative; }
-        .about-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); animation: float-img 6s ease-in-out infinite; }
-        .about-img-wrap::before { content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px; border: 2px solid var(--gold); border-radius: 20px; z-index: -1; }
-        .about-text { flex: 1; }
-        .about-text h3 { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
-        .light-bg .about-text h3 { color: #8c7322; }
-        .about-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: #444; }
-
-        /* --- Menu System --- */
+        /* --- Menu System & Filters --- */
         .menu-container { max-width: 1000px; margin: 0 auto; }
-        .menu-category { margin-bottom: 50px; }
-        .cat-title { font-size: 2.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 25px; color: var(--gold); display: inline-block;}
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .menu-item { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-        .menu-item:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.08); transform: translateY(-5px); }
-        .item-info h4 { font-size: 1.15rem; margin-bottom: 5px; color: #fff; }
+        .menu-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; }
+        .filter-btn { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(212, 175, 55, 0.5); padding: 8px 20px; border-radius: 30px; cursor: pointer; font-family: var(--font-body); transition: 0.3s; font-weight: 500;}
+        .filter-btn.active, .filter-btn:hover { background: var(--gold); color: #000; }
+        
+        .menu-category { margin-bottom: 50px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+        .cat-title { font-size: 2rem; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; color: var(--gold); display: inline-block;}
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+        .menu-item:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.08); transform: translateY(-3px); }
+        .item-info h4 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; line-height: 1.3;}
         .item-info p { color: var(--gold); font-weight: 700; font-size: 1.1rem;}
         
-        .add-btn { background: var(--gold); color: #000; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: 700; transition: 0.2s;}
-        .add-btn:active { transform: scale(0.95); }
+        .add-btn { background: var(--gold); color: #000; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: 700;}
         .qty-controls { display: none; align-items: center; gap: 10px; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 6px; border: 1px solid var(--gold);}
         .qty-btn { background: var(--gold); color: #000; border: none; width: 30px; height: 30px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
-        .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center; font-size: 1.1rem;}
+        .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center;}
 
         /* --- Gallery Section --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .gallery-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; transition: 0.5s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); z-index: 2; position: relative;}
+        .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2;}
 
         /* --- Auto Slider Reviews --- */
-        .slider-container { max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); color: white; box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(5px);}
+        .slider-container { max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); color: white; backdrop-filter: blur(5px);}
         .slider-track { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; text-align: center; padding: 0 30px; }
-        .stars { color: #ffc107; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 2px;}
-        .slide p { font-style: italic; font-size: 1.25rem; margin-bottom: 25px; line-height: 1.7; font-weight: 300;}
-        .slide h5 { color: var(--gold); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        .stars { color: #ffc107; font-size: 1.8rem; margin-bottom: 15px; }
+        .slide p { font-style: italic; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.7;}
 
-        /* --- Booking Form --- */
-        .booking-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: var(--bg-dark); font-weight: 600; font-size: 0.95rem;}
-        .input-group input, .input-group select { width: 100%; padding: 14px; border: 2px solid #eee; border-radius: 8px; background: #fafafa; color: #333; outline: none; font-family: var(--font-body); transition: 0.3s;}
-        .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff;}
-
-        /* --- Location Map --- */
-        .map-container { max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 2px solid rgba(212, 175, 55, 0.4); }
-        .map-container iframe { width: 100%; height: 450px; border: 0; display: block; }
-
-        /* --- Floating Elements (Cart, WA, Chatbot) --- */
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-light); color: var(--text-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transform: translateY(100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); border-top: 4px solid var(--gold);}
+        /* --- Floating Elements --- */
+        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-light); color: var(--text-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transform: translateY(100%); transition: 0.4s; z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); border-top: 4px solid var(--gold);}
         .cart-bar.active { transform: translateY(0); }
-        .checkout-btn { background: #25D366; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 30px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);}
-        .checkout-btn:hover { background: #1ebd5a; transform: translateY(-2px); }
+        .checkout-btn { background: #25D366; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 30px; cursor: pointer; font-size: 1.1rem; }
 
         .wa-float { position: fixed; bottom: 90px; left: 20px; background: var(--whatsapp); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 999; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5); transition: 0.3s; animation: pulse-glow 2s infinite; }
-        .wa-float:hover { transform: scale(1.1); }
         .wa-float svg { width: 35px; height: 35px; fill: white; }
 
-        .chat-btn { position: fixed; bottom: 90px; right: 20px; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; cursor: pointer; z-index: 999; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); border: none; transition: 0.3s; }
+        .chat-btn { position: fixed; bottom: 90px; right: 20px; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; cursor: pointer; z-index: 999; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); border: none; transition: 0.3s;}
         .chat-btn:hover { transform: scale(1.1); }
-        .chat-window { position: fixed; bottom: 160px; right: 20px; width: 340px; height: 480px; background: #fff; color: var(--text-dark); border-radius: 15px; overflow: hidden; display: none; flex-direction: column; z-index: 1001; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 2px solid var(--gold); }
+        .chat-window { position: fixed; bottom: 160px; right: 20px; width: 340px; height: 450px; background: #fff; color: var(--text-dark); border-radius: 15px; overflow: hidden; display: none; flex-direction: column; z-index: 1001; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
         .chat-window.active { display: flex; }
-        .chat-header { background: var(--bg-dark); color: var(--gold); padding: 18px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-family: var(--font-heading); font-size: 1.2rem;}
-        .close-chat { cursor: pointer; color: white; font-size: 1.4rem; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f8f6f0;}
-        .msg { padding: 12px 16px; border-radius: 12px; max-width: 85%; font-size: 0.95rem; line-height: 1.5; }
-        .msg.bot { background: #fff; border: 1px solid #e0d9c8; align-self: flex-start; border-bottom-left-radius: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
-        .msg.user { background: var(--bg-dark); color: white; align-self: flex-end; border-bottom-right-radius: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-        .chat-input { display: flex; padding: 15px; background: #fff; border-top: 1px solid #eee; }
-        .chat-input input { flex: 1; border: 1px solid #ddd; outline: none; padding: 10px 15px; border-radius: 30px; font-family: var(--font-body); transition: 0.3s;}
-        .chat-input input:focus { border-color: var(--gold); }
-        .chat-input button { background: var(--gold); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 30px; margin-left: 10px; transition: 0.3s;}
-        .chat-input button:hover { background: #b5952f; }
+        .chat-header { background: var(--bg-dark); color: var(--gold); padding: 15px; display: flex; justify-content: space-between; font-weight: bold;}
+        .close-chat { cursor: pointer; color: white; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f8f6f0;}
+        .msg { padding: 10px 15px; border-radius: 10px; max-width: 85%; margin-bottom: 10px; font-size: 0.95rem; line-height:1.4;}
+        .msg.bot { background: #fff; border: 1px solid #ddd; align-self: flex-start;}
+        .msg.user { background: var(--bg-dark); color: white; align-self: flex-end; float: right; clear: both;}
+        .chat-input { display: flex; padding: 10px; background: #fff; border-top: 1px solid #eee; clear: both;}
+        .chat-input input { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 30px; outline: none;}
+        .chat-input button { background: var(--gold); border: none; padding: 10px 20px; border-radius: 30px; margin-left: 10px; font-weight: bold; cursor: pointer;}
 
-        /* --- Footer --- */
-        footer { background: #000; text-align: center; padding: 60px 5% 30px; border-top: 1px solid #222; }
-        footer h2 { color: var(--gold); margin-bottom: 15px; font-size: 2.2rem;}
-        .footer-details { color: #aaa; font-size: 1rem; line-height: 1.8; margin-bottom: 40px; }
-        .copyright { border-top: 1px solid #222; padding-top: 25px; color: #666; font-size: 0.9rem; }
+        /* --- Scroll to Top Button --- */
+        #scrollTopBtn { display: none; position: fixed; bottom: 160px; right: 25px; z-index: 998; border: none; outline: none; background-color: #333; color: white; cursor: pointer; padding: 12px; border-radius: 50%; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;}
+        #scrollTopBtn:hover { background-color: var(--gold); color: #000; }
 
-        /* --- Mobile Responsive --- */
+        /* --- Footer & Booking --- */
+        .booking-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; color: var(--bg-dark); font-weight: bold;}
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; outline: none;}
+        .input-group input:focus { border-color: var(--gold); }
+        .map-container iframe { width: 100%; height: 400px; border: 0; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid var(--gold);}
+        footer { background: #000; text-align: center; padding: 50px 5% 20px; border-top: 1px solid #222;}
+
         @media (max-width: 768px) {
             header { padding: 15px; }
             nav ul { display: none; }
             #hero h1 { font-size: 3rem; }
-            .about-content { flex-direction: column; text-align: center; }
-            .about-img-wrap::before { display: none; }
-            .sec-title h2 { font-size: 2.2rem; }
-            section { padding: 60px 5%; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .chat-window { width: calc(100% - 40px); right: 20px; bottom: 100px; height: 420px; }
+            .chat-window { width: calc(100% - 40px); right: 20px; bottom: 100px; height: 400px; }
             .wa-float { width: 50px; height: 50px; bottom: 80px; left: 15px;}
-            .wa-float svg { width: 28px; height: 28px; }
             .chat-btn { width: 50px; height: 50px; bottom: 80px; right: 15px; font-size: 24px;}
+            #scrollTopBtn { bottom: 140px; right: 20px; padding: 10px; font-size: 16px;}
         }
     </style>
 </head>
 <body>
 
+    <div id="preloader">
+        <div class="spinner"></div>
+        <h2>CASANOVA</h2>
+    </div>
+
+    <div id="promo-popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePromo()">✖</span>
+            <h3>🎉 Special Offer!</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">Get <strong>10% OFF</strong> on your first WhatsApp Order.</p>
+            <p style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 1.2rem; letter-spacing: 2px;">CASANOVA10</p>
+            <button class="btn" style="margin-top: 20px; width: 100%;" onclick="closePromo()">Claim Now</button>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="top-bar-content">
+            ✨ Welcome to Lounge Casanova • Premium Hookah & Dining • Open Everyday: 12 PM to 12 AM • Book your table now via WhatsApp! ✨
+        </div>
+    </div>
+
     <header>
-        <div class="logo">Lounge Casanova</div>
+        <div class="logo-area">
+            <div class="logo">Lounge Casanova</div>
+            <span id="live-status" class="status-badge">Checking...</span>
+        </div>
         <nav>
             <ul>
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#booking">Book Table</a></li>
@@ -193,36 +206,18 @@
         <p class="reveal">Experience the perfect blend of multi-cuisine delights and an unforgettable lounge ambiance at Sindhu Bhavan Marg.</p>
         
         <div class="hero-buttons reveal">
-            <a href="#menu" class="btn btn-glow">Order from Menu</a>
-            <a href="#booking" class="btn" style="background: rgba(255,255,255,0.1); border: 2px solid var(--gold); color: var(--gold); backdrop-filter: blur(5px);">Book a Table</a>
+            <a href="#menu" class="btn btn-glow">Digital Menu</a>
+            <a href="#booking" class="btn" style="background: transparent; border: 2px solid var(--gold); color: var(--gold);">Book Table</a>
         </div>
 
-        <p class="reveal" style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;">Or Order via Partners</p>
+        <p class="reveal" style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase;">Or Order via Partners</p>
         <div class="hero-buttons reveal" style="margin-bottom: 0;">
             <a href="https://www.zomato.com/ahmedabad/lounge-casanova-bopal/order" target="_blank" class="partner-btn zomato">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0zm5.66 16.923l-7.397-6.937V4.312h2.261v4.717l6.557 6.145-1.421 1.749z"/></svg> Zomato
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0zm5.66 16.923l-7.397-6.937V4.312h2.261v4.717l6.557 6.145-1.421 1.749z"/></svg> Zomato
             </a>
             <a href="https://www.swiggy.com/city/ahmedabad/lounge-casanova-sindhu-bhavan-marg-bopal-rest876005?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" class="partner-btn swiggy">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0z"/></svg> Swiggy
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0z"/></svg> Swiggy
             </a>
-        </div>
-    </section>
-
-    <section id="about" class="light-bg">
-        <div class="sec-title reveal">
-            <h3>Our Story</h3>
-            <h2>About Lounge Casanova</h2>
-        </div>
-        <div class="about-content reveal">
-            <div class="about-img-wrap">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3" alt="Lounge Interior Vibe">
-            </div>
-            <div class="about-text">
-                <h3>A Premium Experience in Ahmedabad</h3>
-                <p>Located at the vibrant Sindhu Bhavan Marg, Lounge Casanova is your ultimate destination for luxury dining, signature mocktails, and the finest Hookah blends.</p>
-                <p>Whether you're planning a late-night hangout with friends, a special celebration, or a relaxing weekend retreat, our indoor AC seating and aesthetically pleasing Instagram-friendly interiors provide the perfect backdrop.</p>
-                <p style="font-weight: 600; color: #000;">Experience authentic flavors, expertly crafted with care, tradition, and exceptional ingredients.</p>
-            </div>
         </div>
     </section>
 
@@ -230,9 +225,19 @@
         <div class="sec-title reveal">
             <h3>Our Selection</h3>
             <h2>Digital Menu</h2>
-            <p style="color: #aaa; margin-top: 10px;">Select items below and place your order directly via WhatsApp.</p>
+            <p style="color: #aaa; margin-top: 10px;">Select items below and order via WhatsApp.</p>
         </div>
         
+        <div class="menu-filters reveal">
+            <button class="filter-btn active" onclick="filterMenu('All')">All</button>
+            <button class="filter-btn" onclick="filterMenu('Hot Serve')">Hot Serve</button>
+            <button class="filter-btn" onclick="filterMenu('Soup')">Soup</button>
+            <button class="filter-btn" onclick="filterMenu('Starter')">Starters</button>
+            <button class="filter-btn" onclick="filterMenu('Tandoori Starters')">Tandoori</button>
+            <button class="filter-btn" onclick="filterMenu('Nachos')">Nachos</button>
+            <button class="filter-btn" onclick="filterMenu('Fries')">Fries</button>
+        </div>
+
         <div class="menu-container" id="dynamic-menu">
             </div>
     </section>
@@ -246,7 +251,7 @@
             <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3" alt="Lounge Interior">
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3" alt="Premium Food">
             <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3" alt="Tandoori Platters">
-            <img src="https://images.unsplash.com/photo-1615881785074-2f8568102784?ixlib=rb-4.0.3" alt="Crispy Sides">
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080e153303?ixlib=rb-4.0.3" alt="Crispy Fries"> 
         </div>
     </section>
 
@@ -259,18 +264,18 @@
             <div class="slider-track" id="slider-track">
                 <div class="slide">
                     <div class="stars">★★★★★</div>
-                    <p>"The ambience is absolutely stunning! Perfect Instagram-friendly spot and easily the best hookah lounge in Ahmedabad."</p>
-                    <h5>- Rahul D.</h5>
+                    <p>"The ambience is stunning! Perfect Instagram-friendly spot and easily the best hookah lounge in Ahmedabad."</p>
+                    <h5 style="color: var(--gold);">- Rahul D.</h5>
                 </div>
                 <div class="slide">
                     <div class="stars">★★★★☆</div>
-                    <p>"Great starters and mocktails. The AC indoor seating makes it very comfortable to hang out for hours with friends."</p>
-                    <h5>- Sneha P.</h5>
+                    <p>"Great starters and mocktails. The AC indoor seating makes it very comfortable to hang out for hours."</p>
+                    <h5 style="color: var(--gold);">- Sneha P.</h5>
                 </div>
                 <div class="slide">
                     <div class="stars">★★★★★</div>
                     <p>"Premium vibe and excellent Tandoori. A perfect place for late-night hangouts. The service is top-notch!"</p>
-                    <h5>- Karan M.</h5>
+                    <h5 style="color: var(--gold);">- Karan M.</h5>
                 </div>
             </div>
         </div>
@@ -307,39 +312,36 @@
         <div class="sec-title reveal">
             <h3>Find Us</h3>
             <h2>Location & Contact</h2>
-            <p style="color: #aaa; margin-top: 10px; font-size: 1.1rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad, Gujarat 380054</p>
+            <p style="color: #aaa; margin-top: 10px; font-size: 1.1rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
             <p style="color: var(--gold); margin-top: 5px; font-size: 1.2rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal">
-            <iframe src="https://maps.google.com/maps?q=Sindhu%20Bhavan%20Marg,%20PRL%20Colony,%20Thaltej,%20Ahmedabad&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="http://googleusercontent.com/maps.google.com/4" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <footer>
-        <h2>Lounge Casanova</h2>
-        <div class="footer-details">
-            <p>Premium Dining & Signature Hookah Experience</p>
-            <p>Open Everyday: 12:00 PM - 12:00 AM</p>
-            <p style="margin-top: 15px;">📞 +91 97272 63501</p>
-        </div>
-        <div class="copyright">
-            <p>© 2026 Lounge Casanova. All Rights Reserved.</p>
-            <p style="color: var(--gold); margin-top: 8px; letter-spacing: 2px; font-size: 0.75rem; font-weight: 600;">DEVELOPED BY NETBUILD.IN</p>
+        <h2 style="color: var(--gold);">Lounge Casanova</h2>
+        <p style="color: #aaa; margin: 15px 0;">Premium Dining & Signature Hookah Experience</p>
+        <p style="color: #aaa; margin-bottom: 30px;">📞 +91 97272 63501 | Open Everyday: 12 PM - 12 AM</p>
+        <div style="border-top: 1px solid #222; padding-top: 20px; color: #666; font-size: 0.9rem;">
+            © 2026 Lounge Casanova. All Rights Reserved. <br><span style="color: var(--gold); font-size: 0.75rem; letter-spacing: 2px;">DEVELOPED BY NETBUILD.IN</span>
         </div>
     </footer>
 
-    <a href="https://wa.me/919727263501?text=Hello%20Lounge%20Casanova!%20I%20have%20an%20inquiry." target="_blank" class="wa-float">
+    <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+    <a href="https://wa.me/919727263501?text=Hello%20Lounge%20Casanova!" target="_blank" class="wa-float">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.002 0c-8.837 0-16.002 7.165-16.002 16.002 0 2.81.728 5.535 2.11 7.95L.52 29.56l5.77-1.515c2.327 1.253 4.957 1.914 7.64 1.914h.005c8.835 0 16.001-7.166 16.001-16.002C29.937 7.165 22.84 0 16.002 0z" fill="#25d366"/><path d="M22.83 17.065c-.374-.188-2.214-1.093-2.556-1.218-.342-.125-.592-.188-.84.188-.25.375-.966 1.218-1.185 1.468-.218.25-.436.282-.81.094-2.185-1.094-3.763-2.316-5.228-4.85-.188-.328-.02-.505.167-.692.167-.168.375-.438.562-.656.188-.22.25-.376.375-.626.125-.25.063-.47-.03-.657-.095-.188-.842-2.033-1.154-2.784-.302-.733-.612-.633-.842-.644-.218-.01-.468-.013-.718-.013-.25 0-.655.094-.997.47-.343.375-1.308 1.28-1.308 3.123 0 1.843 1.34 3.623 1.526 3.873.188.25 2.642 4.032 6.4 5.656 2.375 1.026 3.23.957 4.316.804 1.23-.174 2.214-.903 2.526-1.776.312-.874.312-1.624.218-1.777-.094-.155-.343-.248-.718-.436z" fill="#fff"/></svg>
     </a>
 
     <button class="chat-btn" onclick="toggleChat()">🤖</button>
     <div class="chat-window" id="chat-window">
         <div class="chat-header">
-            <span>AI Assistant</span>
-            <span class="close-chat" onclick="toggleChat()">✖</span>
+            <span>AI Assistant</span><span class="close-chat" onclick="toggleChat()">✖</span>
         </div>
         <div class="chat-body" id="chat-body">
-            <div class="msg bot">Hello! Welcome to Lounge Casanova. How can I assist you today with the menu or table booking?</div>
+            <div class="msg bot">Hello! Welcome to Lounge Casanova. How can I assist you today?</div>
         </div>
         <div class="chat-input">
             <input type="text" id="chat-input-field" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendChat()">
@@ -349,72 +351,123 @@
 
     <div class="cart-bar" id="cart-bar">
         <div>
-            <p style="margin-bottom: 2px; font-weight: 500; font-size: 0.9rem;">Items in Cart: <span id="cart-count">0</span></p>
+            <p style="margin-bottom: 2px; font-weight: 500;">Items: <span id="cart-count">0</span></p>
             <h3 style="color: var(--accent); font-size: 1.4rem;">Rs. <span id="cart-total">0</span></h3>
         </div>
-        <button class="checkout-btn" onclick="sendOrder()">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.571-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-            Order on WA
-        </button>
+        <button class="checkout-btn" onclick="sendOrder()">Order on WA</button>
     </div>
 
     <script>
         const WA_NUMBER = "919727263501"; 
 
-        // 1. Smooth Scale & Reveal Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // 1. Preloader & Promo Popup Setup
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500);
+                
+                // Show Promo Popup after 3 seconds of preloader hiding
+                setTimeout(() => {
+                    document.getElementById('promo-popup').classList.add('active');
+                }, 3000);
 
-        // 2. Auto Slider
-        const track = document.getElementById('slider-track');
-        let slideIndex = 0;
-        setInterval(() => {
-            slideIndex = (slideIndex + 1) % 3; 
-            track.style.transform = `translateX(-${slideIndex * 100}%)`;
-        }, 3500);
-
-        // 3. Dynamic Menu Logic
-        const menuData = [
-            { cat: "Hot Serve", items: [ {id: "h1", name: "Masala Tea", price: 89}, {id: "h2", name: "Coffee", price: 99}, {id: "h5", name: "Hot Chocolate", price: 269} ] },
-            { cat: "Soup", items: [ {id: "s1", name: "Cream Of Tomato Soup", price: 230}, {id: "s4", name: "Broccoli Almond Soup", price: 250} ] },
-            { cat: "Starters", items: [ {id: "st1", name: "Veg. Manchurian Dry", price: 299}, {id: "st2", name: "Paneer Chili Dry", price: 350}, {id: "st6", name: "Lounge Casanova Platter", price: 650} ] },
-            { cat: "Tandoori", items: [ {id: "t1", name: "Haryali Kabab", price: 299}, {id: "t4", name: "Paneer Tikka Platter", price: 550} ] },
-            { cat: "Fries & Sides", items: [ {id: "n1", name: "Terrific Nachos", price: 349}, {id: "f2", name: "Peri Peri French Fries", price: 239} ] }
-        ];
-
-        const menuContainer = document.getElementById('dynamic-menu');
-        let cart = {};
-
-        menuData.forEach(category => {
-            let html = `<div class="menu-category"><h3 class="cat-title">${category.cat}</h3><div class="menu-grid">`;
-            category.items.forEach(item => {
-                html += `
-                    <div class="menu-item reveal">
-                        <div class="item-info">
-                            <h4>${item.name}</h4>
-                            <p>Rs. ${item.price}</p>
-                        </div>
-                        <div>
-                            <button class="add-btn" id="add-${item.id}" onclick="addToCart('${item.id}', '${item.name}', ${item.price})">ADD</button>
-                            <div class="qty-controls" id="qty-${item.id}">
-                                <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
-                                <span class="qty-val" id="val-${item.id}">1</span>
-                                <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-            html += `</div></div>`;
-            menuContainer.innerHTML += html;
+            }, 800);
+            
+            checkLiveStatus();
         });
 
-        // 4. Cart & WA Logic
+        function closePromo() {
+            document.getElementById('promo-popup').classList.remove('active');
+        }
+
+        // 2. Live Status Logic
+        function checkLiveStatus() {
+            const statusBadge = document.getElementById('live-status');
+            const currentHour = new Date().getHours();
+            // Open between 12 PM (12) and 12 AM (0 or 24)
+            if (currentHour >= 12 && currentHour <= 23) {
+                statusBadge.innerText = '🟢 Open Now';
+                statusBadge.classList.add('open');
+            } else {
+                statusBadge.innerText = '🔴 Closed';
+                statusBadge.classList.remove('open');
+            }
+        }
+
+        // 3. Scroll Functionality (Animations & Scroll to Top)
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. FULL MENU DATA (A to Z)
+        const fullMenuData = [
+            { cat: "Hot Serve", items: [ {id: "h1", name: "Masala Tea", price: 89}, {id: "h2", name: "Coffee", price: 99}, {id: "h3", name: "Black Coffee", price: 99}, {id: "h4", name: "Green Tea", price: 99}, {id: "h5", name: "Hot Chocolate", price: 269}, {id: "h6", name: "Hot Bourvita", price: 269} ] },
+            { cat: "Soup", items: [ {id: "s1", name: "Cream Of Tomato Soup", price: 230}, {id: "s2", name: "Vegetable Manchow Soup", price: 230}, {id: "s3", name: "Mexican Tortilla Soup", price: 240}, {id: "s4", name: "Broccoli Almond Soup", price: 250}, {id: "s5", name: "Broccoli Coconut Soup", price: 260}, {id: "s6", name: "Miso Soup", price: 260} ] },
+            { cat: "Starter", items: [ {id: "st1", name: "Veg. Manchurian Dry", price: 299}, {id: "st2", name: "Cottage Cheese & Water Chestnut", price: 350}, {id: "st3", name: "Paneer Chili Dry", price: 350}, {id: "st4", name: "Paneer Schezwan Chili", price: 359}, {id: "st5", name: "Korean Cheese Balls", price: 369}, {id: "st6", name: "Hungarian Cooket", price: 379}, {id: "st7", name: "Pesto Cottage Cheese", price: 379}, {id: "st8", name: "Mushroom Chili Dry", price: 389}, {id: "st9", name: "Classic Hummus", price: 400}, {id: "st10", name: "Cheese Fondue", price: 550}, {id: "st11", name: "Lounge Casanova Plater", price: 650} ] },
+            { cat: "Tandoori Starters", items: [ {id: "t1", name: "Haryali Kabab", price: 299}, {id: "t2", name: "Raza kabab", price: 389}, {id: "t3", name: "Paneer Tikka", price: 399}, {id: "t4", name: "Mushroom Tikka Dry", price: 399}, {id: "t5", name: "Tandoori Broccoli", price: 440}, {id: "t6", name: "Paneer Tikka Platter", price: 550} ] },
+            { cat: "Nachos", items: [ {id: "n1", name: "Terrific Nachos", price: 349}, {id: "n2", name: "Nirmala Supreme Nachos", price: 370}, {id: "n3", name: "Nachos Avocado", price: 460} ] },
+            { cat: "Fries", items: [ {id: "f1", name: "Salted French Fries", price: 219}, {id: "f2", name: "Peri Peri French Fries", price: 239}, {id: "f3", name: "Butter garlic Fries", price: 249}, {id: "f4", name: "Peri Peri French Fries With Cheese", price: 259} ] }
+        ];
+
+        let cart = {};
+
+        function renderMenu(filterCategory = 'All') {
+            const container = document.getElementById('dynamic-menu');
+            container.innerHTML = ''; 
+            
+            fullMenuData.forEach(category => {
+                if(filterCategory === 'All' || category.cat === filterCategory) {
+                    let html = `<div class="menu-category"><h3 class="cat-title">${category.cat}</h3><div class="menu-grid">`;
+                    category.items.forEach(item => {
+                        let qtyDisplay = cart[item.id] ? 'flex' : 'none';
+                        let addDisplay = cart[item.id] ? 'none' : 'block';
+                        let currentQty = cart[item.id] ? cart[item.id].qty : 1;
+
+                        html += `
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>${item.name}</h4>
+                                    <p>Rs. ${item.price}</p>
+                                </div>
+                                <div>
+                                    <button class="add-btn" id="add-${item.id}" style="display:${addDisplay};" onclick="addToCart('${item.id}', '${item.name}', ${item.price})">ADD</button>
+                                    <div class="qty-controls" id="qty-${item.id}" style="display:${qtyDisplay};">
+                                        <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
+                                        <span class="qty-val" id="val-${item.id}">${currentQty}</span>
+                                        <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                    });
+                    html += `</div></div>`;
+                    container.innerHTML += html;
+                }
+            });
+        }
+
+        renderMenu();
+
+        function filterMenu(catName) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderMenu(catName);
+        }
+
+        // 5. Cart Logic
         function addToCart(id, name, price) {
             cart[id] = { name, price, qty: 1 };
             document.getElementById(`add-${id}`).style.display = 'none';
@@ -436,13 +489,9 @@
 
         function updateCartUI() {
             let totalQty = 0, totalPrice = 0;
-            for (let id in cart) {
-                totalQty += cart[id].qty;
-                totalPrice += cart[id].qty * cart[id].price;
-            }
+            for (let id in cart) { totalQty += cart[id].qty; totalPrice += cart[id].qty * cart[id].price; }
             document.getElementById('cart-count').innerText = totalQty;
             document.getElementById('cart-total').innerText = totalPrice;
-            
             const bar = document.getElementById('cart-bar');
             totalQty > 0 ? bar.classList.add('active') : bar.classList.remove('active');
         }
@@ -459,13 +508,12 @@
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // 5. Booking & Chatbot
+        // 6. Booking & Chatbot
         function sendBooking() {
             const name = document.getElementById('book-name').value;
             const time = document.getElementById('book-time').value;
             const guests = document.getElementById('book-guests').value;
             if(!name || !time) return alert("Please fill in your name and select a date/time.");
-            
             let msg = `📅 *Table Booking Request* 📅\n\n*Name:* ${name}\n*Date & Time:* ${time}\n*Guests:* ${guests}\n\nPlease confirm my reservation.`;
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
@@ -476,20 +524,18 @@
             const input = document.getElementById('chat-input-field');
             const text = input.value.trim();
             if (!text) return;
-            appendMsg('user', text);
+            
+            const body = document.getElementById('chat-body');
+            body.innerHTML += `<div class="msg user">${text}</div>`;
             input.value = '';
+            body.scrollTop = body.scrollHeight; 
 
             setTimeout(() => {
                 let reply = "You can order directly from our Digital Menu, or use the form below to book a table!";
-                if(text.toLowerCase().includes("hookah")) reply = "Yes, we serve premium Hookah blends!";
-                appendMsg('bot', reply);
+                if(text.toLowerCase().includes("hookah") || text.toLowerCase().includes("shisha")) reply = "Yes, we serve premium Hookah blends!";
+                body.innerHTML += `<div class="msg bot">${reply}</div>`;
+                body.scrollTop = body.scrollHeight; 
             }, 800);
-        }
-
-        function appendMsg(sender, text) {
-            const body = document.getElementById('chat-body');
-            body.innerHTML += `<div class="msg ${sender}">${text}</div>`;
-            body.scrollTop = body.scrollHeight; 
         }
     </script>
 </body>
