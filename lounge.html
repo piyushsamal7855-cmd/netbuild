@@ -8,7 +8,7 @@
     <style>
         /* --- Core Variables --- */
         :root {
-            --bg-dark: #071611; /* Darker rich green for more premium feel */
+            --bg-dark: #071611; 
             --bg-light: #f5f1e8; 
             --gold: #d4af37; 
             --gold-light: #ebd68a;
@@ -113,9 +113,11 @@
         @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
         .cat-title { font-size: 2.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 25px; color: var(--gold); display: inline-block;}
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .menu-item { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); transition: 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.3);}
-        .menu-item:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
-        .item-info h4 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; line-height: 1.3; font-weight: 500;}
+        
+        /* MENU ITEMS FIX: Removed any CSS that causes them to hide */
+        .menu-item { display: flex; justify-content: space-between; align-items: center; background: #0f241d; padding: 25px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); transition: 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.3); opacity: 1 !important; visibility: visible !important;}
+        .menu-item:hover { border-color: var(--gold); background: #132b23; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
+        .item-info h4 { font-size: 1.2rem; margin-bottom: 8px; color: #ffffff; line-height: 1.3; font-weight: 500;}
         .item-info p { color: var(--gold); font-weight: 600; font-size: 1.15rem;}
         
         .add-btn { background: var(--gold); color: #000; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;}
@@ -123,12 +125,12 @@
         .qty-btn { background: var(--gold); color: #000; border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
         .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center; font-size: 1.1rem;}
 
-        /* --- PREMIUM PARALLAX BANNER (NEW) --- */
+        /* --- PREMIUM PARALLAX BANNER --- */
         .parallax-section { background: linear-gradient(rgba(7, 22, 17, 0.8), rgba(7, 22, 17, 0.8)), url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=1920&q=80') center/cover fixed; padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2);}
         .parallax-content h2 { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px;}
         .parallax-content p { font-size: 1.3rem; color: #ddd; max-width: 700px; margin: 0 auto; font-style: italic;}
 
-        /* --- LUXURY GALLERY (NEW HOVER EFFECTS) --- */
+        /* --- LUXURY GALLERY (FIXED IMAGE LINKS) --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .gallery-item { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); cursor: pointer;}
         .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: 0.7s cubic-bezier(0.25, 1, 0.5, 1); display: block;}
@@ -146,15 +148,15 @@
         .slide p { font-style: italic; font-size: 1.3rem; margin-bottom: 30px; line-height: 1.7; font-weight: 300;}
         .slide h5 { color: var(--gold); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;}
 
-        /* --- FAQ SECTION (NEW) --- */
+        /* --- FAQ SECTION (FIXED FOR VISIBILITY) --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
-        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; font-size: 1.1rem; transition: 0.3s; color: #fff;}
-        .faq-question:hover { color: var(--gold); background: rgba(255,255,255,0.05);}
+        .faq-item { background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.4); margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 1.1rem; transition: 0.3s; color: var(--text-dark);}
+        .faq-question:hover { color: var(--gold); background: #fafafa;}
         .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--gold); transition: 0.3s;}
         .faq-item.active .faq-question::after { content: '−'; transform: rotate(180deg);}
-        .faq-answer { max-height: 0; padding: 0 20px; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: rgba(0,0,0,0.2); color: #ccc; line-height: 1.6;}
-        .faq-item.active .faq-answer { max-height: 200px; padding: 20px; border-top: 1px solid rgba(212, 175, 55, 0.1);}
+        .faq-answer { max-height: 0; padding: 0 20px; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #fdfdfd; color: #444; line-height: 1.6;}
+        .faq-item.active .faq-answer { max-height: 200px; padding: 20px; border-top: 1px solid rgba(0, 0, 0, 0.05);}
 
         /* --- Table Booking Form --- */
         .booking-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
@@ -163,8 +165,8 @@
         .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; font-family: var(--font-body); font-size: 1rem; background: #fdfdfd;}
         .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);}
         
-        /* --- Location Map --- */
-        .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 2px solid rgba(212, 175, 55, 0.3); max-width: 1050px; margin: 0 auto;}
+        /* --- Location Map (FIXED EMBED) --- */
+        .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid var(--gold); max-width: 1050px; margin: 0 auto;}
         .map-container iframe { width: 100%; height: 450px; border: 0; display: block;}
         
         /* --- Footer --- */
@@ -343,8 +345,8 @@
                 <div class="gallery-overlay"><span>Tandoori Specials</span></div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1572448862527-d3c904757065?auto=format&fit=crop&w=600&q=80" alt="Mocktails & Sides"> 
-                <div class="gallery-overlay"><span>Refreshing Drinks</span></div>
+                <img src="https://images.unsplash.com/photo-1576867757603-05b134ebc379?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries & Drink"> 
+                <div class="gallery-overlay"><span>Crispy Delights</span></div>
             </div>
         </div>
     </section>
@@ -435,7 +437,7 @@
             <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal">
-            <iframe src="http://googleusercontent.com/maps.google.com/7" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.554371458981!2d72.5015091153457!3d23.04013442145884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922315b63%3A0x6b2e11d041306915!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -487,7 +489,7 @@
                 
                 setTimeout(() => {
                     document.getElementById('promo-popup').classList.add('active');
-                }, 4000); // Popup appears after 4 seconds
+                }, 4000); 
             }, 1000);
             
             checkLiveStatus();
@@ -533,7 +535,7 @@
             track.style.transform = `translateX(-${slideIndex * 100}%)`;
         }, 4000);
 
-        // 5. FAQ Accordion Logic (NEW)
+        // 5. FAQ Accordion Logic
         function toggleFAQ(element) {
             const parent = element.parentElement;
             if (parent.classList.contains('active')) {
