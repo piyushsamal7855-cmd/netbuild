@@ -8,9 +8,10 @@
     <style>
         /* --- Core Variables --- */
         :root {
-            --bg-dark: #0a1f18; 
+            --bg-dark: #071611; /* Darker rich green for more premium feel */
             --bg-light: #f5f1e8; 
             --gold: #d4af37; 
+            --gold-light: #ebd68a;
             --accent: #e67e22; 
             --text-light: #ffffff;
             --text-dark: #1a1a1a;
@@ -28,153 +29,191 @@
         ul { list-style: none; }
 
         /* --- PRELOADER --- */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
-        .spinner { width: 50px; height: 50px; border: 3px solid rgba(212, 175, 55, 0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;}
-        #preloader h2 { color: var(--gold); letter-spacing: 2px; }
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease; }
+        .spinner { width: 60px; height: 60px; border: 3px solid rgba(212, 175, 55, 0.1); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite; margin-bottom: 25px;}
+        #preloader h2 { color: var(--gold); letter-spacing: 4px; font-weight: 400; font-size: 1.5rem; text-transform: uppercase;}
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
         /* --- PROMO POPUP --- */
-        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.5s; backdrop-filter: blur(5px); }
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(8px); }
         .popup-overlay.active { opacity: 1; pointer-events: auto; }
-        .popup-content { background: var(--bg-dark); border: 2px solid var(--gold); padding: 40px; border-radius: 15px; text-align: center; position: relative; transform: scale(0.8); transition: 0.5s; color: white; max-width: 90%; width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
-        .popup-overlay.active .popup-content { transform: scale(1); }
-        .close-popup { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 1.5rem; color: var(--gold); }
-        .popup-content h3 { font-size: 2rem; margin-bottom: 10px; color: var(--gold); }
+        .popup-content { background: linear-gradient(145deg, #0a1f18, #05100c); border: 2px solid var(--gold); padding: 50px 40px; border-radius: 20px; text-align: center; position: relative; transform: scale(0.9) translateY(20px); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); color: white; max-width: 90%; width: 450px; box-shadow: 0 30px 60px rgba(0,0,0,0.8);}
+        .popup-overlay.active .popup-content { transform: scale(1) translateY(0); }
+        .close-popup { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.8rem; color: var(--gold); transition: 0.3s;}
+        .close-popup:hover { transform: rotate(90deg); }
+        .popup-content h3 { font-size: 2.2rem; margin-bottom: 15px; color: var(--gold); }
 
         /* --- ANNOUNCEMENT BAR --- */
-        .top-bar { background: var(--gold); color: #000; padding: 8px 0; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001;}
-        .top-bar-content { display: inline-block; animation: marquee 20s linear infinite; }
+        .top-bar { background: linear-gradient(90deg, #b5952f, #d4af37, #b5952f); color: #000; padding: 10px 0; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001; box-shadow: 0 2px 10px rgba(0,0,0,0.5);}
+        .top-bar-content { display: inline-block; animation: marquee 25s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); will-change: opacity, transform; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); } 70% { box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
-        @keyframes float-img { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        /* --- Premium Scroll Animations --- */
+        .reveal { opacity: 0; transform: translateY(50px) scale(0.98); transition: 1s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); } 70% { box-shadow: 0 0 25px 15px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
+        @keyframes float-img { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
 
         /* --- Buttons --- */
-        .btn { background: var(--gold); color: #000; padding: 12px 28px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; display: inline-block; font-family: var(--font-body); border-radius: 30px; text-align: center; }
-        .btn:hover { background: #b5952f; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .btn-glow { animation: pulse-glow 2s infinite; }
+        .btn { background: var(--gold); color: #000; padding: 14px 32px; border: none; font-weight: 600; cursor: pointer; transition: 0.4s; display: inline-block; font-family: var(--font-body); border-radius: 30px; text-align: center; font-size: 1.05rem; letter-spacing: 1px;}
+        .btn:hover { background: var(--gold-light); transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.4); }
+        .btn-glow { animation: pulse-glow 2.5s infinite; }
         
-        .partner-btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; color: white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.95rem; }
+        .partner-btn { padding: 10px 22px; border-radius: 30px; font-weight: 600; color: white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 0.95rem; border: 1px solid transparent;}
         .partner-btn.zomato { background: var(--zomato); }
         .partner-btn.swiggy { background: var(--swiggy); }
-        .partner-btn:hover { transform: translateY(-3px) scale(1.05); }
+        .partner-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.5); border-color: white;}
 
-        /* --- Header --- */
-        header { position: sticky; top: 0; width: 100%; padding: 15px 5%; background: rgba(10, 31, 24, 0.95); z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); backdrop-filter: blur(10px); }
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--gold); font-family: var(--font-heading); letter-spacing: 1px;}
-        .status-badge { background: #222; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; border: 1px solid #444; }
-        .status-badge.open { color: #25d366; border-color: #25d366; }
-        nav ul { display: flex; gap: 25px; }
-        nav a { font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        /* --- Header & Live Status --- */
+        header { position: sticky; top: 0; width: 100%; padding: 18px 5%; background: rgba(7, 22, 17, 0.92); z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.15); backdrop-filter: blur(12px); }
+        .logo-area { display: flex; align-items: center; gap: 20px; }
+        .logo { font-size: 1.9rem; font-weight: 700; color: var(--gold); font-family: var(--font-heading); letter-spacing: 1px;}
+        .status-badge { background: rgba(0,0,0,0.5); color: #ccc; font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; font-weight: bold; border: 1px solid #444; letter-spacing: 1px; text-transform: uppercase;}
+        .status-badge.open { color: #25d366; border-color: rgba(37, 211, 102, 0.4); background: rgba(37, 211, 102, 0.1); }
+        nav ul { display: flex; gap: 30px; }
+        nav a { font-size: 0.95rem; font-weight: 400; transition: 0.3s; color: #ddd; letter-spacing: 1px; text-transform: uppercase;}
         nav a:hover { color: var(--gold); }
 
         /* --- Hero Section --- */
-        #hero { height: calc(100vh - 40px); background: linear-gradient(rgba(10, 31, 24, 0.75), rgba(10, 31, 24, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
-        #hero h1 { font-size: 4.5rem; color: var(--gold); margin-bottom: 15px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); line-height: 1.1;}
-        #hero p { font-size: 1.2rem; max-width: 650px; margin-bottom: 30px; color: #f0f0f0; }
-        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+        #hero { height: calc(100vh - 42px); background: linear-gradient(rgba(7, 22, 17, 0.6), rgba(7, 22, 17, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        #hero h1 { font-size: 5rem; color: var(--gold); margin-bottom: 15px; text-shadow: 0 15px 40px rgba(0,0,0,0.9); line-height: 1.1; letter-spacing: 2px;}
+        #hero p { font-size: 1.25rem; max-width: 700px; margin-bottom: 35px; color: #f0f0f0; font-weight: 300; line-height: 1.6;}
+        .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 35px; }
 
         /* --- Section Defaults --- */
-        section { padding: 80px 5%; }
-        .sec-title { text-align: center; margin-bottom: 40px; }
-        .sec-title h3 { color: var(--gold); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; }
-        .sec-title h2 { font-size: 2.8rem; margin-top: 10px; }
+        section { padding: 100px 5%; }
+        .sec-title { text-align: center; margin-bottom: 60px; }
+        .sec-title h3 { color: var(--gold); font-size: 1rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; font-weight: 600;}
+        .sec-title h2 { font-size: 3.2rem; }
         .light-bg { background: var(--bg-light); color: var(--text-dark); }
         .light-bg .sec-title h2 { color: var(--text-dark); }
 
         /* --- About Section --- */
-        .about-content { display: flex; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .about-content { display: flex; gap: 60px; align-items: center; max-width: 1150px; margin: 0 auto; }
         .about-img-wrap { flex: 1; position: relative; }
-        .about-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); animation: float-img 6s ease-in-out infinite; }
-        .about-img-wrap::before { content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px; border: 2px solid var(--gold); border-radius: 20px; z-index: -1; }
+        .about-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); animation: float-img 7s ease-in-out infinite; }
+        .about-img-wrap::before { content: ''; position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px; border: 2px solid var(--gold); border-radius: 20px; z-index: -1; }
         .about-text { flex: 1; }
-        .about-text h3 { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
+        .about-text h3 { font-size: 2.4rem; color: var(--gold); margin-bottom: 25px; }
         .light-bg .about-text h3 { color: #8c7322; }
-        .about-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: #444; }
+        .about-text p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 25px; color: #444; font-weight: 300;}
 
         /* --- Menu System & Filters --- */
-        .menu-container { max-width: 1000px; margin: 0 auto; }
-        .menu-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; }
-        .filter-btn { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(212, 175, 55, 0.5); padding: 8px 20px; border-radius: 30px; cursor: pointer; font-family: var(--font-body); transition: 0.3s; font-weight: 500;}
-        .filter-btn.active, .filter-btn:hover { background: var(--gold); color: #000; }
+        .menu-container { max-width: 1050px; margin: 0 auto; }
+        .menu-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 50px; }
+        .filter-btn { background: transparent; color: white; border: 1px solid rgba(212, 175, 55, 0.4); padding: 10px 24px; border-radius: 30px; cursor: pointer; font-family: var(--font-body); transition: 0.4s; font-weight: 400; letter-spacing: 1px;}
+        .filter-btn.active, .filter-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);}
         
-        .menu-category { margin-bottom: 50px; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
-        .cat-title { font-size: 2rem; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; color: var(--gold); display: inline-block;}
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .menu-item { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-        .menu-item:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.08); transform: translateY(-3px); }
-        .item-info h4 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; line-height: 1.3;}
-        .item-info p { color: var(--gold); font-weight: 700; font-size: 1.1rem;}
+        .menu-category { margin-bottom: 60px; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+        .cat-title { font-size: 2.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 25px; color: var(--gold); display: inline-block;}
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); transition: 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.3);}
+        .menu-item:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
+        .item-info h4 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; line-height: 1.3; font-weight: 500;}
+        .item-info p { color: var(--gold); font-weight: 600; font-size: 1.15rem;}
         
-        .add-btn { background: var(--gold); color: #000; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: 700;}
-        .qty-controls { display: none; align-items: center; gap: 10px; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 6px; border: 1px solid var(--gold);}
-        .qty-btn { background: var(--gold); color: #000; border: none; width: 30px; height: 30px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
-        .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center;}
+        .add-btn { background: var(--gold); color: #000; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;}
+        .qty-controls { display: none; align-items: center; gap: 12px; background: rgba(0,0,0,0.6); padding: 6px; border-radius: 8px; border: 1px solid var(--gold);}
+        .qty-btn { background: var(--gold); color: #000; border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
+        .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center; font-size: 1.1rem;}
 
-        /* --- Gallery Section --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; transition: 0.5s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2;}
+        /* --- PREMIUM PARALLAX BANNER (NEW) --- */
+        .parallax-section { background: linear-gradient(rgba(7, 22, 17, 0.8), rgba(7, 22, 17, 0.8)), url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=1920&q=80') center/cover fixed; padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2);}
+        .parallax-content h2 { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px;}
+        .parallax-content p { font-size: 1.3rem; color: #ddd; max-width: 700px; margin: 0 auto; font-style: italic;}
 
-        /* --- Auto Slider Reviews (FIXED FOR MOBILE) --- */
-        .slider-container { max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.03); padding: 50px 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); color: white; backdrop-filter: blur(5px);}
-        .slider-track { display: flex; width: 100%; transition: transform 0.6s ease-in-out; }
-        .slide { flex: 0 0 100%; width: 100%; text-align: center; padding: 0 15px; box-sizing: border-box;}
-        .stars { color: #ffc107; font-size: 1.8rem; margin-bottom: 15px; }
-        .slide p { font-style: italic; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.6;}
+        /* --- LUXURY GALLERY (NEW HOVER EFFECTS) --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .gallery-item { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); cursor: pointer;}
+        .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: 0.7s cubic-bezier(0.25, 1, 0.5, 1); display: block;}
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 31, 24, 0.8); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.5s ease; border: 2px solid transparent; box-sizing: border-box; border-radius: 15px;}
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; border-color: var(--gold); }
+        .gallery-overlay span { color: var(--gold); font-family: var(--font-heading); font-size: 1.8rem; transform: translateY(20px); transition: 0.5s ease; opacity: 0; text-align: center;}
+        .gallery-item:hover .gallery-overlay span { transform: translateY(0); opacity: 1; }
+
+        /* --- Auto Slider Reviews --- */
+        .slider-container { max-width: 850px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.02); padding: 60px 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); color: white; backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+        .slider-track { display: flex; width: 100%; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide { flex: 0 0 100%; width: 100%; text-align: center; padding: 0 20px; box-sizing: border-box;}
+        .stars { color: #ffc107; font-size: 2rem; margin-bottom: 20px; letter-spacing: 2px;}
+        .slide p { font-style: italic; font-size: 1.3rem; margin-bottom: 30px; line-height: 1.7; font-weight: 300;}
+        .slide h5 { color: var(--gold); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;}
+
+        /* --- FAQ SECTION (NEW) --- */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; font-size: 1.1rem; transition: 0.3s; color: #fff;}
+        .faq-question:hover { color: var(--gold); background: rgba(255,255,255,0.05);}
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--gold); transition: 0.3s;}
+        .faq-item.active .faq-question::after { content: '−'; transform: rotate(180deg);}
+        .faq-answer { max-height: 0; padding: 0 20px; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: rgba(0,0,0,0.2); color: #ccc; line-height: 1.6;}
+        .faq-item.active .faq-answer { max-height: 200px; padding: 20px; border-top: 1px solid rgba(212, 175, 55, 0.1);}
+
+        /* --- Table Booking Form --- */
+        .booking-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: var(--bg-dark); font-weight: 600; font-size: 0.95rem;}
+        .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; font-family: var(--font-body); font-size: 1rem; background: #fdfdfd;}
+        .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);}
+        
+        /* --- Location Map --- */
+        .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 2px solid rgba(212, 175, 55, 0.3); max-width: 1050px; margin: 0 auto;}
+        .map-container iframe { width: 100%; height: 450px; border: 0; display: block;}
+        
+        /* --- Footer --- */
+        footer { background: #030a08; text-align: center; padding: 60px 5% 30px; border-top: 1px solid #1a1a1a;}
+        footer h2 { color: var(--gold); font-size: 2.5rem; margin-bottom: 15px;}
+        .copyright { border-top: 1px solid #1a1a1a; padding-top: 25px; color: #555; font-size: 0.9rem;}
 
         /* --- Floating Elements --- */
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-light); color: var(--text-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transform: translateY(100%); transition: 0.4s; z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); border-top: 4px solid var(--gold);}
+        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-light); color: var(--text-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transform: translateY(100%); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 0 -15px 40px rgba(0,0,0,0.2); border-top: 5px solid var(--gold);}
         .cart-bar.active { transform: translateY(0); }
-        .checkout-btn { background: #25D366; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 30px; cursor: pointer; font-size: 1.1rem; }
+        .checkout-btn { background: #25D366; color: white; border: none; padding: 14px 35px; font-weight: bold; border-radius: 30px; cursor: pointer; font-size: 1.15rem; transition: 0.3s;}
+        .checkout-btn:hover { background: #1ebd5a; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);}
 
-        .wa-float { position: fixed; bottom: 90px; left: 20px; background: var(--whatsapp); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 999; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5); transition: 0.3s; animation: pulse-glow 2s infinite; }
-        .wa-float svg { width: 35px; height: 35px; fill: white; }
+        .wa-float { position: fixed; bottom: 95px; left: 25px; background: var(--whatsapp); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5); transition: 0.3s; animation: pulse-glow 2s infinite; }
+        .wa-float svg { width: 38px; height: 38px; fill: white; }
+        .wa-float:hover { transform: scale(1.1); }
 
-        .chat-btn { position: fixed; bottom: 90px; right: 20px; background: var(--gold); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; cursor: pointer; z-index: 999; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); border: none; transition: 0.3s;}
-        .chat-window { position: fixed; bottom: 160px; right: 20px; width: 340px; height: 450px; background: #fff; color: var(--text-dark); border-radius: 15px; overflow: hidden; display: none; flex-direction: column; z-index: 1001; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+        .chat-btn { position: fixed; bottom: 95px; right: 25px; background: var(--gold); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; cursor: pointer; z-index: 999; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); border: none; transition: 0.3s;}
+        .chat-btn:hover { transform: scale(1.1); }
+        .chat-window { position: fixed; bottom: 170px; right: 25px; width: 360px; height: 500px; background: #fff; color: var(--text-dark); border-radius: 18px; overflow: hidden; display: none; flex-direction: column; z-index: 1001; border: 2px solid var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6);}
         .chat-window.active { display: flex; }
-        .chat-header { background: var(--bg-dark); color: var(--gold); padding: 15px; display: flex; justify-content: space-between; font-weight: bold;}
-        .close-chat { cursor: pointer; color: white; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f8f6f0;}
-        .msg { padding: 10px 15px; border-radius: 10px; max-width: 85%; margin-bottom: 10px; font-size: 0.95rem; line-height:1.4;}
-        .msg.bot { background: #fff; border: 1px solid #ddd; align-self: flex-start;}
-        .msg.user { background: var(--bg-dark); color: white; align-self: flex-end; float: right; clear: both;}
-        .chat-input { display: flex; padding: 10px; background: #fff; border-top: 1px solid #eee; clear: both;}
-        .chat-input input { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 30px; outline: none;}
-        .chat-input button { background: var(--gold); border: none; padding: 10px 20px; border-radius: 30px; margin-left: 10px; font-weight: bold; cursor: pointer;}
+        .chat-header { background: var(--bg-dark); color: var(--gold); padding: 18px; display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; font-family: var(--font-heading);}
+        .close-chat { cursor: pointer; color: white; font-size: 1.2rem;}
+        .chat-body { flex: 1; padding: 18px; overflow-y: auto; background: #f4f0e6;}
+        .msg { padding: 12px 18px; border-radius: 12px; max-width: 85%; margin-bottom: 12px; font-size: 0.95rem; line-height:1.5;}
+        .msg.bot { background: #fff; border: 1px solid #ddd; align-self: flex-start; border-bottom-left-radius: 4px;}
+        .msg.user { background: var(--bg-dark); color: white; align-self: flex-end; float: right; clear: both; border-bottom-right-radius: 4px;}
+        .chat-input { display: flex; padding: 15px; background: #fff; border-top: 1px solid #eee; clear: both;}
+        .chat-input input { flex: 1; border: 2px solid #ddd; padding: 12px 15px; border-radius: 30px; outline: none; transition: 0.3s;}
+        .chat-input input:focus { border-color: var(--gold); }
+        .chat-input button { background: var(--gold); border: none; padding: 12px 25px; border-radius: 30px; margin-left: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;}
+        .chat-input button:hover { background: #b5952f; }
 
-        #scrollTopBtn { display: none; position: fixed; bottom: 160px; right: 25px; z-index: 998; border: none; outline: none; background-color: #333; color: white; cursor: pointer; padding: 12px; border-radius: 50%; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;}
-        #scrollTopBtn:hover { background-color: var(--gold); color: #000; }
+        #scrollTopBtn { display: none; position: fixed; bottom: 175px; right: 30px; z-index: 998; border: none; outline: none; background-color: rgba(255,255,255,0.1); backdrop-filter: blur(5px); color: var(--gold); border: 1px solid var(--gold); cursor: pointer; padding: 15px; border-radius: 50%; font-size: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s;}
+        #scrollTopBtn:hover { background-color: var(--gold); color: #000; transform: translateY(-5px);}
 
-        /* --- Footer & Booking & Map --- */
-        .booking-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; color: var(--bg-dark); font-weight: bold;}
-        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; outline: none;}
-        .input-group input:focus { border-color: var(--gold); }
-        
-        .map-container { border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid var(--gold); max-width: 1000px; margin: 0 auto;}
-        .map-container iframe { width: 100%; height: 400px; border: 0; display: block;}
-        
-        footer { background: #000; text-align: center; padding: 50px 5% 20px; border-top: 1px solid #222;}
-
+        /* --- Responsive --- */
         @media (max-width: 768px) {
             header { padding: 15px; }
             nav ul { display: none; }
-            #hero h1 { font-size: 3rem; }
+            #hero h1 { font-size: 3.2rem; }
             .about-content { flex-direction: column; text-align: center; }
             .about-img-wrap::before { display: none; }
-            .chat-window { width: calc(100% - 40px); right: 20px; bottom: 100px; height: 400px; }
-            .wa-float { width: 50px; height: 50px; bottom: 80px; left: 15px;}
-            .chat-btn { width: 50px; height: 50px; bottom: 80px; right: 15px; font-size: 24px;}
-            #scrollTopBtn { bottom: 140px; right: 20px; padding: 10px; font-size: 16px;}
-            .slide { padding: 0 5px; }
+            .parallax-section { padding: 80px 5%; }
+            .parallax-content h2 { font-size: 2.5rem; }
+            .chat-window { width: calc(100% - 40px); right: 20px; bottom: 100px; height: 420px; }
+            .wa-float { width: 55px; height: 55px; bottom: 85px; left: 15px;}
+            .chat-btn { width: 55px; height: 55px; bottom: 85px; right: 15px; font-size: 26px;}
+            #scrollTopBtn { bottom: 150px; right: 20px; padding: 12px; font-size: 16px;}
         }
     </style>
 </head>
@@ -189,15 +228,15 @@
         <div class="popup-content">
             <span class="close-popup" onclick="closePromo()">✖</span>
             <h3>🎉 Special Offer!</h3>
-            <p style="font-size: 1.1rem; margin-bottom: 15px;">Get <strong>10% OFF</strong> on your first WhatsApp Order.</p>
-            <p style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 1.2rem; letter-spacing: 2px;">CASANOVA10</p>
-            <button class="btn" style="margin-top: 20px; width: 100%;" onclick="closePromo()">Claim Now</button>
+            <p style="font-size: 1.15rem; margin-bottom: 20px;">Get <strong>10% OFF</strong> on your first WhatsApp Order.</p>
+            <p style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 1.3rem; letter-spacing: 3px; border: 1px dashed var(--gold);">CASANOVA10</p>
+            <button class="btn btn-glow" style="margin-top: 25px; width: 100%;" onclick="closePromo()">Claim Now</button>
         </div>
     </div>
 
     <div class="top-bar">
         <div class="top-bar-content">
-            ✨ Welcome to Lounge Casanova • Premium Hookah & Dining • Open Everyday: 12 PM to 12 AM • Book your table now via WhatsApp! ✨
+            ✨ Welcome to Lounge Casanova • Premium Hookah & Dining Experience • Open Everyday: 12 PM to 12 AM • Book your table now via WhatsApp! ✨
         </div>
     </div>
 
@@ -219,14 +258,14 @@
 
     <section id="hero">
         <h1 class="reveal">Premium Dining & Hookah</h1>
-        <p class="reveal">Experience the perfect blend of multi-cuisine delights and an unforgettable lounge ambiance at Sindhu Bhavan Marg.</p>
+        <p class="reveal">Experience the perfect blend of multi-cuisine delights and an unforgettable luxury lounge ambiance at Sindhu Bhavan Marg.</p>
         
         <div class="hero-buttons reveal">
             <a href="#menu" class="btn btn-glow">Digital Menu</a>
-            <a href="#booking" class="btn" style="background: transparent; border: 2px solid var(--gold); color: var(--gold);">Book Table</a>
+            <a href="#booking" class="btn" style="background: rgba(255,255,255,0.05); border: 2px solid var(--gold); color: var(--gold); backdrop-filter: blur(5px);">Reserve Table</a>
         </div>
 
-        <p class="reveal" style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase;">Or Order via Partners</p>
+        <p class="reveal" style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Order Delivery Via</p>
         <div class="hero-buttons reveal" style="margin-bottom: 0;">
             <a href="https://www.zomato.com/ahmedabad/lounge-casanova-bopal/order" target="_blank" class="partner-btn zomato">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0zm5.66 16.923l-7.397-6.937V4.312h2.261v4.717l6.557 6.145-1.421 1.749z"/></svg> Zomato
@@ -240,17 +279,17 @@
     <section id="about" class="light-bg">
         <div class="sec-title reveal">
             <h3>Our Story</h3>
-            <h2>About Lounge Casanova</h2>
+            <h2>The Casanova Experience</h2>
         </div>
-        <div class="about-content reveal">
-            <div class="about-img-wrap">
+        <div class="about-content">
+            <div class="about-img-wrap reveal-left">
                 <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Lounge Interior Vibe">
             </div>
-            <div class="about-text">
-                <h3>A Premium Experience</h3>
+            <div class="about-text reveal-right">
+                <h3>A Premium Vibe in Ahmedabad</h3>
                 <p>Located at the vibrant Sindhu Bhavan Marg, Lounge Casanova is your ultimate destination for luxury dining, signature mocktails, and the finest Hookah blends.</p>
                 <p>Whether you're planning a late-night hangout with friends, a special celebration, or a relaxing weekend retreat, our indoor AC seating and aesthetically pleasing interiors provide the perfect backdrop.</p>
-                <p style="font-weight: 600; color: #000;">Authentic flavors, expertly crafted with care.</p>
+                <p style="font-weight: 500; color: #000; font-size: 1.2rem; border-left: 4px solid var(--gold); padding-left: 15px;">Authentic flavors, expertly crafted with care and tradition.</p>
             </div>
         </div>
     </section>
@@ -259,13 +298,13 @@
         <div class="sec-title reveal">
             <h3>Our Selection</h3>
             <h2>Digital Menu</h2>
-            <p style="color: #aaa; margin-top: 10px;">Select items below and order via WhatsApp.</p>
+            <p style="color: #aaa; margin-top: 10px;">Select items below to build your order and send via WhatsApp.</p>
         </div>
         
         <div class="menu-filters reveal">
-            <button class="filter-btn active" onclick="filterMenu('All')">All</button>
+            <button class="filter-btn active" onclick="filterMenu('All')">All Items</button>
             <button class="filter-btn" onclick="filterMenu('Hot Serve')">Hot Serve</button>
-            <button class="filter-btn" onclick="filterMenu('Soup')">Soup</button>
+            <button class="filter-btn" onclick="filterMenu('Soup')">Soups</button>
             <button class="filter-btn" onclick="filterMenu('Starter')">Starters</button>
             <button class="filter-btn" onclick="filterMenu('Tandoori Starters')">Tandoori</button>
             <button class="filter-btn" onclick="filterMenu('Nachos')">Nachos</button>
@@ -276,16 +315,37 @@
             </div>
     </section>
 
+    <section class="parallax-section">
+        <div class="parallax-content reveal">
+            <h2>Signature Hookah Blends</h2>
+            <p>"Elevate your evenings with our exclusive and smooth shisha flavors, crafted for the ultimate relaxation in our premium AC lounge."</p>
+            <br>
+            <a href="#booking" class="btn btn-glow" style="margin-top: 20px;">Reserve a Table</a>
+        </div>
+    </section>
+
     <section id="gallery" class="light-bg">
         <div class="sec-title reveal">
             <h3>Visuals</h3>
             <h2>Our Gallery</h2>
         </div>
         <div class="gallery-grid reveal">
-            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Lounge Interior">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Premium Food">
-            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Tandoori Platter">
-            <img src="https://images.unsplash.com/photo-1604152001226-64ce49a4bc2f?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries & Drink"> 
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Lounge Interior">
+                <div class="gallery-overlay"><span>Lounge Vibe</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Premium Food">
+                <div class="gallery-overlay"><span>Premium Dining</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Tandoori Platter">
+                <div class="gallery-overlay"><span>Tandoori Specials</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1572448862527-d3c904757065?auto=format&fit=crop&w=600&q=80" alt="Mocktails & Sides"> 
+                <div class="gallery-overlay"><span>Refreshing Drinks</span></div>
+            </div>
         </div>
     </section>
 
@@ -298,7 +358,7 @@
             <div class="slider-track" id="slider-track">
                 <div class="slide">
                     <div class="stars">★★★★★</div>
-                    <p>"The ambience is stunning! Perfect Instagram-friendly spot and easily the best hookah lounge in Ahmedabad."</p>
+                    <p>"The ambience is absolutely stunning! Perfect Instagram-friendly spot and easily the best hookah lounge in Ahmedabad."</p>
                     <h5 style="color: var(--gold);">- Rahul D.</h5>
                 </div>
                 <div class="slide">
@@ -315,7 +375,32 @@
         </div>
     </section>
 
-    <section id="booking" class="light-bg">
+    <section id="faq" class="light-bg">
+        <div class="sec-title reveal">
+            <h3>Queries</h3>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container reveal">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What are your opening hours?</div>
+                <div class="faq-answer">We are open every day from 12:00 PM in the afternoon until 12:00 AM midnight. We highly recommend booking a table for weekend nights!</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Do you serve Hookah/Shisha?</div>
+                <div class="faq-answer">Yes, we are known for our premium Hookah blends. We offer a wide variety of flavors to enhance your lounge experience.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Is the seating indoor or outdoor?</div>
+                <div class="faq-answer">We offer premium indoor AC seating with an aesthetically pleasing, Instagram-friendly interior.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How can I place an order for delivery?</div>
+                <div class="faq-answer">You can easily place an order for delivery using the Zomato or Swiggy buttons at the top of our website, or order directly for takeaway via our WhatsApp menu.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking">
         <div class="sec-title reveal">
             <h3>Reservation</h3>
             <h2>Book Your Table</h2>
@@ -338,28 +423,28 @@
                     <option value="8+">Large Party (8+ People)</option>
                 </select>
             </div>
-            <button class="btn btn-glow" style="width: 100%; font-size: 1.1rem; margin-top: 10px;" onclick="sendBooking()">Confirm Booking via WhatsApp</button>
+            <button class="btn btn-glow" style="width: 100%; font-size: 1.15rem; margin-top: 15px;" onclick="sendBooking()">Confirm Booking via WhatsApp</button>
         </div>
     </section>
 
-    <section id="location">
+    <section id="location" class="light-bg">
         <div class="sec-title reveal">
             <h3>Find Us</h3>
             <h2>Location & Contact</h2>
-            <p style="color: #aaa; margin-top: 10px; font-size: 1.1rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
-            <p style="color: var(--gold); margin-top: 5px; font-size: 1.2rem; font-weight: 600;">📞 +91 97272 63501</p>
+            <p style="color: #555; margin-top: 10px; font-size: 1.15rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
+            <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5303866179374!2d72.5015697!3d23.0409867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5f585141e5%3A0xcb1db241a7d65b11!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="http://googleusercontent.com/maps.google.com/7" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
     <footer>
-        <h2 style="color: var(--gold);">Lounge Casanova</h2>
-        <p style="color: #aaa; margin: 15px 0;">Premium Dining & Signature Hookah Experience</p>
-        <p style="color: #aaa; margin-bottom: 30px;">📞 +91 97272 63501 | Open Everyday: 12 PM - 12 AM</p>
-        <div style="border-top: 1px solid #222; padding-top: 20px; color: #666; font-size: 0.9rem;">
-            © 2026 Lounge Casanova. All Rights Reserved. <br><span style="color: var(--gold); font-size: 0.75rem; letter-spacing: 2px;">DEVELOPED BY NETBUILD.IN</span>
+        <h2 style="font-family: var(--font-heading);">Lounge Casanova</h2>
+        <p style="color: #aaa; margin: 15px 0; font-size: 1.1rem;">Premium Dining & Signature Hookah Experience</p>
+        <p style="color: #aaa; margin-bottom: 35px;">📞 +91 97272 63501 | Open Everyday: 12 PM - 12 AM</p>
+        <div class="copyright">
+            © 2026 Lounge Casanova. All Rights Reserved. <br><span style="color: var(--gold); font-size: 0.8rem; letter-spacing: 3px; display: inline-block; margin-top: 10px;">DEVELOPED BY NETBUILD.IN</span>
         </div>
     </footer>
 
@@ -385,8 +470,8 @@
 
     <div class="cart-bar" id="cart-bar">
         <div>
-            <p style="margin-bottom: 2px; font-weight: 500;">Items: <span id="cart-count">0</span></p>
-            <h3 style="color: var(--accent); font-size: 1.4rem;">Rs. <span id="cart-total">0</span></h3>
+            <p style="margin-bottom: 2px; font-weight: 500; font-size: 0.95rem;">Items: <span id="cart-count">0</span></p>
+            <h3 style="color: var(--accent); font-size: 1.6rem;">Rs. <span id="cart-total">0</span></h3>
         </div>
         <button class="checkout-btn" onclick="sendOrder()">Order on WA</button>
     </div>
@@ -394,24 +479,21 @@
     <script>
         const WA_NUMBER = "919727263501"; 
 
-        // 1. Preloader & Promo Popup Setup
+        // 1. Preloader & Promo Popup
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('preloader').style.opacity = '0';
-                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500);
+                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 800);
                 
                 setTimeout(() => {
                     document.getElementById('promo-popup').classList.add('active');
-                }, 3000);
-
-            }, 800);
+                }, 4000); // Popup appears after 4 seconds
+            }, 1000);
             
             checkLiveStatus();
         });
 
-        function closePromo() {
-            document.getElementById('promo-popup').classList.remove('active');
-        }
+        function closePromo() { document.getElementById('promo-popup').classList.remove('active'); }
 
         // 2. Live Status Logic
         function checkLiveStatus() {
@@ -429,31 +511,40 @@
         // 3. Scroll Functionality & Animations
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
                 scrollTopBtn.style.display = "block";
             } else {
                 scrollTopBtn.style.display = "none";
             }
         };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }, observerOptions);
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-        // 4. AUTO SLIDER LOGIC (FIXED)
+        // 4. AUTO SLIDER LOGIC
         const track = document.getElementById('slider-track');
         let slideIndex = 0;
         setInterval(() => {
             slideIndex = (slideIndex + 1) % 3; 
             track.style.transform = `translateX(-${slideIndex * 100}%)`;
-        }, 3500);
+        }, 4000);
 
-        // 5. FULL MENU DATA (A to Z)
+        // 5. FAQ Accordion Logic (NEW)
+        function toggleFAQ(element) {
+            const parent = element.parentElement;
+            if (parent.classList.contains('active')) {
+                parent.classList.remove('active');
+            } else {
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                parent.classList.add('active');
+            }
+        }
+
+        // 6. FULL MENU DATA (A to Z)
         const fullMenuData = [
             { cat: "Hot Serve", items: [ {id: "h1", name: "Masala Tea", price: 89}, {id: "h2", name: "Coffee", price: 99}, {id: "h3", name: "Black Coffee", price: 99}, {id: "h4", name: "Green Tea", price: 99}, {id: "h5", name: "Hot Chocolate", price: 269}, {id: "h6", name: "Hot Bourvita", price: 269} ] },
             { cat: "Soup", items: [ {id: "s1", name: "Cream Of Tomato Soup", price: 230}, {id: "s2", name: "Vegetable Manchow Soup", price: 230}, {id: "s3", name: "Mexican Tortilla Soup", price: 240}, {id: "s4", name: "Broccoli Almond Soup", price: 250}, {id: "s5", name: "Broccoli Coconut Soup", price: 260}, {id: "s6", name: "Miso Soup", price: 260} ] },
@@ -507,7 +598,7 @@
             renderMenu(catName);
         }
 
-        // 6. Cart Logic
+        // 7. Cart Logic
         function addToCart(id, name, price) {
             cart[id] = { name, price, qty: 1 };
             document.getElementById(`add-${id}`).style.display = 'none';
@@ -548,7 +639,7 @@
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // 7. Booking & Chatbot
+        // 8. Booking & Chatbot
         function sendBooking() {
             const name = document.getElementById('book-name').value;
             const time = document.getElementById('book-time').value;
