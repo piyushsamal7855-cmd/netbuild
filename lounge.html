@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gourmet Lounge Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --color-primary-dark: #0a1f18; /* Deep Green BG */
+            --color-primary-light: #f5f1e8; /* Beige BG */
+            --color-accent: #e67e22; /* Orange Accent */
+            --color-text-light: #ffffff;
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #888888;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- Utility Classes for Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            font-weight: 500;
+            border-radius: 0px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #cf6d17;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- Header/Nav --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--color-text-light); }
+        nav ul { display: flex; gap: 30px; }
+        nav a { color: var(--color-text-light); font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--color-accent); }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 31, 24, 0.7), rgba(10, 31, 24, 0.7)), url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Placeholder Sushi Image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+        #hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* --- Section Styling General --- */
+        section {
+            padding: 100px 10%;
+        }
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-heading h3 {
+            color: var(--color-accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .section-heading h2 {
+            font-size: 3rem;
+            color: var(--color-text-light);
+        }
+
+        /* --- Popular Categories Section --- */
+        #popular {
+            background-color: var(--color-primary-light);
+            color: var(--color-text-dark);
+        }
+        #popular .section-heading h2 { color: var(--color-text-dark); }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .cat-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .cat-card:hover img { transform: scale(1.05) rotate(2deg); }
+        .cat-card h4 { font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* --- Menu Sections Styles --- */
+        .menu-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .menu-section.alt-bg {
+            background-color: var(--color-primary-light);
+            color: var(--color-text-dark);
+        }
+        .menu-section.alt-bg h2 { color: var(--color-text-dark); }
+        .menu-section.alt-bg .menu-item .item-dots { border-bottom: 2px dotted rgba(0,0,0,0.2); }
+        .menu-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .menu-image-box {
+            flex: 1;
+            height: 600px;
+            overflow: hidden;
+             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .menu-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .menu-section:hover .menu-image-box img { transform: scale(1.05); }
+        .menu-content-box {
+            flex: 1;
+        }
+        .menu-content-box h3 {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .menu-content-box h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        /* Menu List Styling */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+        }
+        .menu-item .item-name {
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .menu-item .item-dots {
+            flex-grow: 1;
+            margin: 0 15px;
+            border-bottom: 2px dotted rgba(255,255,255,0.3);
+            align-self: center;
+            height: 5px;
+        }
+        .menu-item .item-price {
+            font-weight: 700;
+            color: var(--color-accent);
+             flex-shrink: 0;
+        }
+        .menu-item small {
+             display: block;
+             font-family: var(--font-body);
+             font-size: 0.9rem;
+             color: var(--color-text-muted);
+             margin-top: 5px;
+        }
+
+        /* --- Banner Section --- */
+        #banner-quote {
+            background: linear-gradient(rgba(10, 31, 24, 0.8), rgba(10, 31, 24, 0.8)), url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Chef/Food Image */
+            background-size: cover;
+            background-attachment: fixed; /* Parallax Effect */
+            text-align: center;
+            padding: 150px 10%;
+        }
+        #banner-quote h2 {
+            font-size: 3.5rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #05100c;
+            padding: 80px 10% 30px;
+            text-align: center;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+        .footer-col h4 { color: var(--color-accent); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p, .footer-col a { color: var(--color-text-muted); display: block; margin-bottom: 10px; transition: 0.3s;}
+        .footer-col a:hover { color: var(--color-accent); }
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            color: var(--color-text-muted);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            #hero h1 { font-size: 3rem; }
+            .menu-section, .menu-section.reverse { flex-direction: column; gap: 30px;}
+            .menu-image-box { height: 300px; width: 100%; }
+            .section-heading h2, .menu-content-box h2 { font-size: 2.2rem; }
+            header { padding: 20px; }
+            nav ul { display: none; } /* Simple mobile hide for now */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo reveal">Lounge Casanova</div>
+        <nav>
+            <ul class="reveal">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#popular">Popular</a></li>
+                <li><a href="#menu-hot">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn reveal">Reservation</a>
+    </header>
+
+    <section id="hero">
+        <h1 class="reveal">Delicious food &<br>wonderful eating experience</h1>
+        <p class="reveal">Serving authentic flavors and premium vibes.</p>
+        <button class="btn reveal">View Menu</button>
+    </section>
+
+    <section id="popular">
+        <div class="section-heading reveal">
+            <h3>Highlights</h3>
+            <h2>Our Popular Categories</h2>
+        </div>
+        <div class="category-grid">
+            <div class="cat-card reveal">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Soup">
+                <h4>Soups</h4>
+                <p>Warm and comforting starters.</p>
+            </div>
+            <div class="cat-card reveal" style="transition-delay: 0.2s;">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Tandoori">
+                <h4>Tandoori Starters</h4>
+                <p>Smoky, grilled perfection.</p>
+            </div>
+            <div class="cat-card reveal" style="transition-delay: 0.4s;">
+                <img src="https://images.unsplash.com/photo-1582169296194-e4d644c48063?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Fries">
+                <h4>Fries & Sides</h4>
+                <p>Crispy crunchy delights.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu-hot">
+        <div class="menu-image-box reveal">
+            <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hot Beverages">
+        </div>
+        <div class="menu-content-box reveal">
+            <h3>WARM UP</h3>
+            <h2>Hot Serve & Soups</h2>
+            
+            <h4 style="color: var(--color-accent); margin-top: 20px;">Hot Serve</h4>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="item-name">Masala Tea</span><span class="item-dots"></span><span class="item-price">Rs.89</span></li>
+                <li class="menu-item"><span class="item-name">Coffee</span><span class="item-dots"></span><span class="item-price">Rs.99</span></li>
+                <li class="menu-item"><span class="item-name">Black Coffee</span><span class="item-dots"></span><span class="item-price">Rs.99</span></li>
+                <li class="menu-item"><span class="item-name">Green Tea</span><span class="item-dots"></span><span class="item-price">Rs.99</span></li>
+                <li class="menu-item"><span class="item-name">Hot Chocolate</span><span class="item-dots"></span><span class="item-price">Rs.269</span></li>
+                <li class="menu-item"><span class="item-name">Hot Bourvita</span><span class="item-dots"></span><span class="item-price">Rs.269</span></li>
+            </ul>
+
+            <h4 style="color: var(--color-accent); margin-top: 40px;">Soup</h4>
+             <ul class="menu-list">
+                <li class="menu-item"><span class="item-name">Cream Of Tomato Soup</span><span class="item-dots"></span><span class="item-price">Rs.230</span></li>
+                <li class="menu-item"><span class="item-name">Vegetable Manchow Soup</span><span class="item-dots"></span><span class="item-price">Rs.230</span></li>
+                <li class="menu-item"><span class="item-name">Mexican Tortilla Soup</span><span class="item-dots"></span><span class="item-price">Rs.240</span></li>
+                <li class="menu-item"><span class="item-name">Broccoli Almond Soup</span><span class="item-dots"></span><span class="item-price">Rs.250</span></li>
+                <li class="menu-item"><span class="item-name">Broccoli Coconut Soup</span><span class="item-dots"></span><span class="item-price">Rs.260</span></li>
+                <li class="menu-item"><span class="item-name">Miso Soup</span><span class="item-dots"></span><span class="item-price">Rs.260</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="menu-section alt-bg reverse" id="menu-starters">
+        <div class="menu-image-box reveal">
+             <img src="https://images.unsplash.com/photo-1606491956689-2ea0329e2a75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Starters">
+        </div>
+        <div class="menu-content-box reveal">
+            <h3>BEGINNINGS</h3>
+            <h2>Starters & Tandoori</h2>
+            
+            <h4 style="color: var(--color-accent); margin-top: 20px;">Starter</h4>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <span class="item-name">Veg. Manchurian Dry</span><span class="item-dots"></span><span class="item-price">Rs.299</span>
+                </li>
+                <li class="menu-item"><span class="item-name">Cottage Cheese & Water Chestnut</span><span class="item-dots"></span><span class="item-price">Rs.350</span></li>
+                <li class="menu-item"><span class="item-name">Paneer Chili Dry</span><span class="item-dots"></span><span class="item-price">Rs.350</span></li>
+                <li class="menu-item"><span class="item-name">Paneer Schezwan Chili</span><span class="item-dots"></span><span class="item-price">Rs.359</span></li>
+                <li class="menu-item"><span class="item-name">Korean Cheese Balls</span><span class="item-dots"></span><span class="item-price">Rs.369</span></li>
+                <li class="menu-item"><span class="item-name">Hungarian Cooket</span><span class="item-dots"></span><span class="item-price">Rs.379</span></li>
+                <li class="menu-item"><span class="item-name">Pesto Cottage Cheese</span><span class="item-dots"></span><span class="item-price">Rs.379</span></li>
+                <li class="menu-item"><span class="item-name">Mushroom Chili Dry</span><span class="item-dots"></span><span class="item-price">Rs.389</span></li>
+                <li class="menu-item"><span class="item-name">Classic Hummus</span><span class="item-dots"></span><span class="item-price">Rs.400</span></li>
+                <li class="menu-item"><span class="item-name">Cheese Fondue</span><span class="item-dots"></span><span class="item-price">Rs.550</span></li>
+                <li class="menu-item"><span class="item-name">Lounge Casanova Plater</span><span class="item-dots"></span><span class="item-price">Rs.650</span></li>
+            </ul>
+
+             <h4 style="color: var(--color-accent); margin-top: 40px;">Tandoori Starters Highlights</h4>
+             <ul class="menu-list">
+                <li class="menu-item"><span class="item-name">Haryali Kabab</span><span class="item-dots"></span><span class="item-price">Rs.299</span></li>
+                <li class="menu-item"><span class="item-name">Paneer Tikka Platter</span><span class="item-dots"></span><span class="item-price">Rs.550</span></li>
+            </ul>
+        </div>
+    </section>
+
+     <section id="banner-quote">
+        <h2 class="reveal">"Authentic flavors, expertly crafted with care, tradition, and exceptional ingredients."</h2>
+        <p class="reveal" style="color: var(--color-accent); font-weight: 600;">- The Chef</p>
+    </section>
+
+    <section class="menu-section alt-bg" id="menu-sides">
+        <div class="menu-image-box reveal">
+             <img src="https://images.unsplash.com/photo-1615881785074-2f8568102784?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sides">
+        </div>
+        <div class="menu-content-box reveal">
+            <h3>CRUNCH & MUNCH</h3>
+            <h2>Nachos & Fries</h2>
+            
+            <h4 style="color: var(--color-accent); margin-top: 20px;">Nachos</h4>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="item-name">Terrific Nachos</span><span class="item-dots"></span><span class="item-price">Rs.349</span></li>
+                <li class="menu-item"><span class="item-name">Nirmala Supreme Nachos</span><span class="item-dots"></span><span class="item-price">Rs.370</span></li>
+                <li class="menu-item"><span class="item-name">Nachos Avocado</span><span class="item-dots"></span><span class="item-price">Rs.460</span></li>
+            </ul>
+
+            <h4 style="color: var(--color-accent); margin-top: 40px;">Fries</h4>
+             <ul class="menu-list">
+                <li class="menu-item"><span class="item-name">Salted French Fries</span><span class="item-dots"></span><span class="item-price">Rs.219</span></li>
+                <li class="menu-item"><span class="item-name">Peri Peri French Fries</span><span class="item-dots"></span><span class="item-price">Rs.239</span></li>
+                <li class="menu-item"><span class="item-name">Butter garlic Fries</span><span class="item-dots"></span><span class="item-price">Rs.249</span></li>
+                <li class="menu-item"><span class="item-name">Peri Peri French Fries With Cheese</span><span class="item-dots"></span><span class="item-price">Rs.259</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col reveal">
+                <div class="logo" style="margin-bottom: 20px;">Lounge Casanova</div>
+                <p>Timeless recipes to savor & enjoy.</p>
+            </div>
+            <div class="footer-col reveal">
+                <h4>Contact Us</h4>
+                <p>123 Lounge Street, City Center</p>
+                <p>+91 98765 43210</p>
+                <p>info@loungecasanova.com</p>
+            </div>
+            <div class="footer-col reveal">
+                <h4>Opening Hours</h4>
+                <p>Mon-Sun: 11:00 AM - 11:00 PM</p>
+            </div>
+        </div>
+        <div class="copyright reveal">
+            <p>© 2023 Lounge Casanova. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Function to handle scroll animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150; // Trigger point distance from bottom
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+              
