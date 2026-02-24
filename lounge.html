@@ -28,8 +28,16 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
+        /* --- CUSTOM LUXURY CURSOR (NEW) --- */
+        @media (min-width: 769px) {
+            body, a, button, input, select { cursor: none; }
+        }
+        .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background-color: var(--gold); border-radius: 50%; z-index: 99999; pointer-events: none; transform: translate(-50%, -50%); box-shadow: 0 0 10px var(--gold); transition: width 0.2s, height 0.2s; }
+        .cursor-outline { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 2px solid rgba(212, 175, 55, 0.6); border-radius: 50%; z-index: 99998; pointer-events: none; transform: translate(-50%, -50%); transition: 0.1s ease-out; }
+        .cursor-dot.hover { width: 15px; height: 15px; background-color: #fff; box-shadow: 0 0 15px #fff;}
+
         /* --- PRELOADER --- */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease; }
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 99990; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease; }
         .spinner { width: 60px; height: 60px; border: 3px solid rgba(212, 175, 55, 0.1); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite; margin-bottom: 25px;}
         #preloader h2 { color: var(--gold); letter-spacing: 4px; font-weight: 400; font-size: 1.5rem; text-transform: uppercase;}
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -39,7 +47,7 @@
         .popup-overlay.active { opacity: 1; pointer-events: auto; }
         .popup-content { background: linear-gradient(145deg, #0a1f18, #05100c); border: 2px solid var(--gold); padding: 50px 40px; border-radius: 20px; text-align: center; position: relative; transform: scale(0.9) translateY(20px); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); color: white; max-width: 90%; width: 450px; box-shadow: 0 30px 60px rgba(0,0,0,0.8);}
         .popup-overlay.active .popup-content { transform: scale(1) translateY(0); }
-        .close-popup { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.8rem; color: var(--gold); transition: 0.3s;}
+        .close-popup { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--gold); transition: 0.3s;}
         .close-popup:hover { transform: rotate(90deg); }
         .popup-content h3 { font-size: 2.2rem; margin-bottom: 15px; color: var(--gold); }
 
@@ -60,7 +68,7 @@
         @keyframes float-img { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
 
         /* --- Buttons --- */
-        .btn { background: var(--gold); color: #000; padding: 14px 32px; border: none; font-weight: 600; cursor: pointer; transition: 0.4s; display: inline-block; font-family: var(--font-body); border-radius: 30px; text-align: center; font-size: 1.05rem; letter-spacing: 1px;}
+        .btn { background: var(--gold); color: #000; padding: 14px 32px; border: none; font-weight: 600; transition: 0.4s; display: inline-block; font-family: var(--font-body); border-radius: 30px; text-align: center; font-size: 1.05rem; letter-spacing: 1px;}
         .btn:hover { background: var(--gold-light); transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,0.4); }
         .btn-glow { animation: pulse-glow 2.5s infinite; }
         
@@ -103,10 +111,16 @@
         .light-bg .about-text h3 { color: #8c7322; }
         .about-text p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 25px; color: #444; font-weight: 300;}
 
+        /* --- EVENTS SECTION (NEW) --- */
+        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .event-card { background: linear-gradient(135deg, #132b23, #0a1f18); border: 1px solid rgba(212, 175, 55, 0.3); padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.4); transform-style: preserve-3d; }
+        .event-card h4 { font-size: 1.8rem; color: var(--gold); margin-bottom: 15px; transform: translateZ(30px); }
+        .event-card p { font-size: 1.1rem; color: #ddd; transform: translateZ(20px); }
+
         /* --- Menu System & Filters --- */
         .menu-container { max-width: 1050px; margin: 0 auto; }
         .menu-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 50px; }
-        .filter-btn { background: transparent; color: white; border: 1px solid rgba(212, 175, 55, 0.4); padding: 10px 24px; border-radius: 30px; cursor: pointer; font-family: var(--font-body); transition: 0.4s; font-weight: 400; letter-spacing: 1px;}
+        .filter-btn { background: transparent; color: white; border: 1px solid rgba(212, 175, 55, 0.4); padding: 10px 24px; border-radius: 30px; font-family: var(--font-body); transition: 0.4s; font-weight: 400; letter-spacing: 1px;}
         .filter-btn.active, .filter-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);}
         
         .menu-category { margin-bottom: 60px; animation: fadeIn 0.6s ease; }
@@ -114,15 +128,15 @@
         .cat-title { font-size: 2.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 25px; color: var(--gold); display: inline-block;}
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         
-        /* MENU ITEMS FIX: Removed any CSS that causes them to hide */
-        .menu-item { display: flex; justify-content: space-between; align-items: center; background: #0f241d; padding: 25px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); transition: 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.3); opacity: 1 !important; visibility: visible !important;}
-        .menu-item:hover { border-color: var(--gold); background: #132b23; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
+        /* 3D TILT Applied dynamically via JS to .menu-item */
+        .menu-item { display: flex; justify-content: space-between; align-items: center; background: #0f241d; padding: 25px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 5px 20px rgba(0,0,0,0.3); opacity: 1 !important; visibility: visible !important; transform-style: preserve-3d;}
+        .item-info { transform: translateZ(20px); }
         .item-info h4 { font-size: 1.2rem; margin-bottom: 8px; color: #ffffff; line-height: 1.3; font-weight: 500;}
         .item-info p { color: var(--gold); font-weight: 600; font-size: 1.15rem;}
         
-        .add-btn { background: var(--gold); color: #000; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;}
-        .qty-controls { display: none; align-items: center; gap: 12px; background: rgba(0,0,0,0.6); padding: 6px; border-radius: 8px; border: 1px solid var(--gold);}
-        .qty-btn { background: var(--gold); color: #000; border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
+        .add-btn { background: var(--gold); color: #000; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-family: var(--font-body); letter-spacing: 1px; transform: translateZ(30px);}
+        .qty-controls { display: none; align-items: center; gap: 12px; background: rgba(0,0,0,0.6); padding: 6px; border-radius: 8px; border: 1px solid var(--gold); transform: translateZ(30px);}
+        .qty-btn { background: var(--gold); color: #000; border: none; width: 32px; height: 32px; border-radius: 4px; font-weight: bold; font-size: 1.2rem;}
         .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center; font-size: 1.1rem;}
 
         /* --- PREMIUM PARALLAX BANNER --- */
@@ -130,15 +144,22 @@
         .parallax-content h2 { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px;}
         .parallax-content p { font-size: 1.3rem; color: #ddd; max-width: 700px; margin: 0 auto; font-style: italic;}
 
-        /* --- LUXURY GALLERY (FIXED IMAGE LINKS) --- */
+        /* --- LUXURY GALLERY (3D Tilt) --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .gallery-item { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); cursor: pointer;}
-        .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: 0.7s cubic-bezier(0.25, 1, 0.5, 1); display: block;}
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 31, 24, 0.8); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.5s ease; border: 2px solid transparent; box-sizing: border-box; border-radius: 15px;}
-        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); transform-style: preserve-3d; }
+        .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: 0.7s cubic-bezier(0.25, 1, 0.5, 1); display: block; transform: translateZ(0);}
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 31, 24, 0.8); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.5s ease; border: 2px solid transparent; box-sizing: border-box; border-radius: 15px; transform: translateZ(40px);}
         .gallery-item:hover .gallery-overlay { opacity: 1; border-color: var(--gold); }
         .gallery-overlay span { color: var(--gold); font-family: var(--font-heading); font-size: 1.8rem; transform: translateY(20px); transition: 0.5s ease; opacity: 0; text-align: center;}
         .gallery-item:hover .gallery-overlay span { transform: translateY(0); opacity: 1; }
+
+        /* --- INSTAGRAM WALL (NEW) --- */
+        .insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto 40px auto;}
+        .insta-item { position: relative; border-radius: 10px; overflow: hidden; transform-style: preserve-3d;}
+        .insta-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: 0.5s;}
+        .insta-item:hover img { transform: scale(1.1); filter: brightness(0.6);}
+        .insta-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(30px); color: white; font-size: 2rem; opacity: 0; transition: 0.5s;}
+        .insta-item:hover .insta-icon { opacity: 1;}
 
         /* --- Auto Slider Reviews --- */
         .slider-container { max-width: 850px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.02); padding: 60px 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); color: white; backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
@@ -148,7 +169,7 @@
         .slide p { font-style: italic; font-size: 1.3rem; margin-bottom: 30px; line-height: 1.7; font-weight: 300;}
         .slide h5 { color: var(--gold); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;}
 
-        /* --- FAQ SECTION (FIXED FOR VISIBILITY) --- */
+        /* --- FAQ SECTION --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { background: #ffffff; border: 1px solid rgba(212, 175, 55, 0.4); margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 1.1rem; transition: 0.3s; color: var(--text-dark);}
@@ -165,7 +186,7 @@
         .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; font-family: var(--font-body); font-size: 1rem; background: #fdfdfd;}
         .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);}
         
-        /* --- Location Map (FIXED EMBED) --- */
+        /* --- Location Map --- */
         .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid var(--gold); max-width: 1050px; margin: 0 auto;}
         .map-container iframe { width: 100%; height: 450px; border: 0; display: block;}
         
@@ -177,19 +198,19 @@
         /* --- Floating Elements --- */
         .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-light); color: var(--text-dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transform: translateY(100%); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 0 -15px 40px rgba(0,0,0,0.2); border-top: 5px solid var(--gold);}
         .cart-bar.active { transform: translateY(0); }
-        .checkout-btn { background: #25D366; color: white; border: none; padding: 14px 35px; font-weight: bold; border-radius: 30px; cursor: pointer; font-size: 1.15rem; transition: 0.3s;}
+        .checkout-btn { background: #25D366; color: white; border: none; padding: 14px 35px; font-weight: bold; border-radius: 30px; font-size: 1.15rem; transition: 0.3s;}
         .checkout-btn:hover { background: #1ebd5a; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);}
 
         .wa-float { position: fixed; bottom: 95px; left: 25px; background: var(--whatsapp); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 999; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5); transition: 0.3s; animation: pulse-glow 2s infinite; }
         .wa-float svg { width: 38px; height: 38px; fill: white; }
         .wa-float:hover { transform: scale(1.1); }
 
-        .chat-btn { position: fixed; bottom: 95px; right: 25px; background: var(--gold); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; cursor: pointer; z-index: 999; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); border: none; transition: 0.3s;}
+        .chat-btn { position: fixed; bottom: 95px; right: 25px; background: var(--gold); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; z-index: 999; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); border: none; transition: 0.3s;}
         .chat-btn:hover { transform: scale(1.1); }
         .chat-window { position: fixed; bottom: 170px; right: 25px; width: 360px; height: 500px; background: #fff; color: var(--text-dark); border-radius: 18px; overflow: hidden; display: none; flex-direction: column; z-index: 1001; border: 2px solid var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6);}
         .chat-window.active { display: flex; }
         .chat-header { background: var(--bg-dark); color: var(--gold); padding: 18px; display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; font-family: var(--font-heading);}
-        .close-chat { cursor: pointer; color: white; font-size: 1.2rem;}
+        .close-chat { color: white; font-size: 1.2rem;}
         .chat-body { flex: 1; padding: 18px; overflow-y: auto; background: #f4f0e6;}
         .msg { padding: 12px 18px; border-radius: 12px; max-width: 85%; margin-bottom: 12px; font-size: 0.95rem; line-height:1.5;}
         .msg.bot { background: #fff; border: 1px solid #ddd; align-self: flex-start; border-bottom-left-radius: 4px;}
@@ -197,14 +218,16 @@
         .chat-input { display: flex; padding: 15px; background: #fff; border-top: 1px solid #eee; clear: both;}
         .chat-input input { flex: 1; border: 2px solid #ddd; padding: 12px 15px; border-radius: 30px; outline: none; transition: 0.3s;}
         .chat-input input:focus { border-color: var(--gold); }
-        .chat-input button { background: var(--gold); border: none; padding: 12px 25px; border-radius: 30px; margin-left: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;}
+        .chat-input button { background: var(--gold); border: none; padding: 12px 25px; border-radius: 30px; margin-left: 10px; font-weight: bold; transition: 0.3s;}
         .chat-input button:hover { background: #b5952f; }
 
-        #scrollTopBtn { display: none; position: fixed; bottom: 175px; right: 30px; z-index: 998; border: none; outline: none; background-color: rgba(255,255,255,0.1); backdrop-filter: blur(5px); color: var(--gold); border: 1px solid var(--gold); cursor: pointer; padding: 15px; border-radius: 50%; font-size: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s;}
+        #scrollTopBtn { display: none; position: fixed; bottom: 175px; right: 30px; z-index: 998; border: none; outline: none; background-color: rgba(255,255,255,0.1); backdrop-filter: blur(5px); color: var(--gold); border: 1px solid var(--gold); padding: 15px; border-radius: 50%; font-size: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s;}
         #scrollTopBtn:hover { background-color: var(--gold); color: #000; transform: translateY(-5px);}
 
-        /* --- Responsive --- */
+        /* Disable Cursor stuff on Mobile for performance */
         @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+            body, a, button, input, select { cursor: auto !important; }
             header { padding: 15px; }
             nav ul { display: none; }
             #hero h1 { font-size: 3.2rem; }
@@ -216,10 +239,15 @@
             .wa-float { width: 55px; height: 55px; bottom: 85px; left: 15px;}
             .chat-btn { width: 55px; height: 55px; bottom: 85px; right: 15px; font-size: 26px;}
             #scrollTopBtn { bottom: 150px; right: 20px; padding: 12px; font-size: 16px;}
+            .slide { padding: 0 5px; }
+            .menu-item, .event-card, .gallery-item, .insta-item { transform: none !important; } /* Disable 3D tilt on mobile */
         }
     </style>
 </head>
 <body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <div id="preloader">
         <div class="spinner"></div>
@@ -263,16 +291,16 @@
         <p class="reveal">Experience the perfect blend of multi-cuisine delights and an unforgettable luxury lounge ambiance at Sindhu Bhavan Marg.</p>
         
         <div class="hero-buttons reveal">
-            <a href="#menu" class="btn btn-glow">Digital Menu</a>
-            <a href="#booking" class="btn" style="background: rgba(255,255,255,0.05); border: 2px solid var(--gold); color: var(--gold); backdrop-filter: blur(5px);">Reserve Table</a>
+            <a href="#menu" class="btn btn-glow hover-target">Digital Menu</a>
+            <a href="#booking" class="btn hover-target" style="background: rgba(255,255,255,0.05); border: 2px solid var(--gold); color: var(--gold); backdrop-filter: blur(5px);">Reserve Table</a>
         </div>
 
         <p class="reveal" style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Order Delivery Via</p>
         <div class="hero-buttons reveal" style="margin-bottom: 0;">
-            <a href="https://www.zomato.com/ahmedabad/lounge-casanova-bopal/order" target="_blank" class="partner-btn zomato">
+            <a href="https://www.zomato.com/ahmedabad/lounge-casanova-bopal/order" target="_blank" class="partner-btn zomato hover-target">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0zm5.66 16.923l-7.397-6.937V4.312h2.261v4.717l6.557 6.145-1.421 1.749z"/></svg> Zomato
             </a>
-            <a href="https://www.swiggy.com/city/ahmedabad/lounge-casanova-sindhu-bhavan-marg-bopal-rest876005?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" class="partner-btn swiggy">
+            <a href="https://www.swiggy.com/city/ahmedabad/lounge-casanova-sindhu-bhavan-marg-bopal-rest876005?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" class="partner-btn swiggy hover-target">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.004 0C5.376 0 .004 5.372.004 12c0 6.627 5.372 12 11.999 12 6.628 0 12.001-5.373 12.001-12C24.004 5.372 18.632 0 12.004 0z"/></svg> Swiggy
             </a>
         </div>
@@ -296,21 +324,42 @@
         </div>
     </section>
 
-    <section id="menu">
+    <section id="events">
+        <div class="sec-title reveal">
+            <h3>The Vibe</h3>
+            <h2>Upcoming Events</h2>
+        </div>
+        <div class="events-grid reveal">
+            <div class="event-card tilt-element">
+                <h4>🎶 Acoustic Fridays</h4>
+                <p>Enjoy live soothing music from local artists to kick off your relaxing weekend.</p>
+            </div>
+            <div class="event-card tilt-element">
+                <h4>🎧 Saturday DJ Night</h4>
+                <p>Groove to the best commercial and Bollywood beats all night long.</p>
+            </div>
+            <div class="event-card tilt-element">
+                <h4>👑 Ladies Night</h4>
+                <p>Special complimentary mocktails for ladies every Wednesday evening.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="light-bg">
         <div class="sec-title reveal">
             <h3>Our Selection</h3>
             <h2>Digital Menu</h2>
-            <p style="color: #aaa; margin-top: 10px;">Select items below to build your order and send via WhatsApp.</p>
+            <p style="color: #666; margin-top: 10px;">Select items below to build your order and send via WhatsApp.</p>
         </div>
         
         <div class="menu-filters reveal">
-            <button class="filter-btn active" onclick="filterMenu('All')">All Items</button>
-            <button class="filter-btn" onclick="filterMenu('Hot Serve')">Hot Serve</button>
-            <button class="filter-btn" onclick="filterMenu('Soup')">Soups</button>
-            <button class="filter-btn" onclick="filterMenu('Starter')">Starters</button>
-            <button class="filter-btn" onclick="filterMenu('Tandoori Starters')">Tandoori</button>
-            <button class="filter-btn" onclick="filterMenu('Nachos')">Nachos</button>
-            <button class="filter-btn" onclick="filterMenu('Fries')">Fries</button>
+            <button class="filter-btn hover-target active" onclick="filterMenu('All')">All Items</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Hot Serve')">Hot Serve</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Soup')">Soups</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Starter')">Starters</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Tandoori Starters')">Tandoori</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Nachos')">Nachos</button>
+            <button class="filter-btn hover-target" onclick="filterMenu('Fries')">Fries</button>
         </div>
 
         <div class="menu-container" id="dynamic-menu">
@@ -322,7 +371,7 @@
             <h2>Signature Hookah Blends</h2>
             <p>"Elevate your evenings with our exclusive and smooth shisha flavors, crafted for the ultimate relaxation in our premium AC lounge."</p>
             <br>
-            <a href="#booking" class="btn btn-glow" style="margin-top: 20px;">Reserve a Table</a>
+            <a href="#booking" class="btn btn-glow hover-target" style="margin-top: 20px;">Reserve a Table</a>
         </div>
     </section>
 
@@ -332,19 +381,19 @@
             <h2>Our Gallery</h2>
         </div>
         <div class="gallery-grid reveal">
-            <div class="gallery-item">
+            <div class="gallery-item tilt-element hover-target">
                 <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Lounge Interior">
                 <div class="gallery-overlay"><span>Lounge Vibe</span></div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item tilt-element hover-target">
                 <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Premium Food">
                 <div class="gallery-overlay"><span>Premium Dining</span></div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item tilt-element hover-target">
                 <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Tandoori Platter">
                 <div class="gallery-overlay"><span>Tandoori Specials</span></div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item tilt-element hover-target">
                 <img src="https://images.unsplash.com/photo-1576867757603-05b134ebc379?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries & Drink"> 
                 <div class="gallery-overlay"><span>Crispy Delights</span></div>
             </div>
@@ -377,32 +426,61 @@
         </div>
     </section>
 
-    <section id="faq" class="light-bg">
+    <section id="insta-wall" class="light-bg">
+        <div class="sec-title reveal">
+            <h3>Social</h3>
+            <h2>@LoungeCasanova</h2>
+            <p style="color: #666; margin-top: 10px;">Tag us in your photos to be featured!</p>
+        </div>
+        <div class="insta-grid reveal">
+            <div class="insta-item tilt-element hover-target">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" alt="Insta 1">
+                <div class="insta-icon">❤️</div>
+            </div>
+            <div class="insta-item tilt-element hover-target">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=80" alt="Insta 2">
+                <div class="insta-icon">❤️</div>
+            </div>
+            <div class="insta-item tilt-element hover-target">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Insta 3">
+                <div class="insta-icon">❤️</div>
+            </div>
+            <div class="insta-item tilt-element hover-target">
+                <img src="https://images.unsplash.com/photo-1541595913904-8b89813f6770?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
+                <div class="insta-icon">❤️</div>
+            </div>
+        </div>
+        <div style="text-align: center;" class="reveal">
+            <a href="#" class="btn btn-glow hover-target">Follow Us on Instagram</a>
+        </div>
+    </section>
+
+    <section id="faq">
         <div class="sec-title reveal">
             <h3>Queries</h3>
             <h2>Frequently Asked Questions</h2>
         </div>
         <div class="faq-container reveal">
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">What are your opening hours?</div>
+                <div class="faq-question hover-target" onclick="toggleFAQ(this)">What are your opening hours?</div>
                 <div class="faq-answer">We are open every day from 12:00 PM in the afternoon until 12:00 AM midnight. We highly recommend booking a table for weekend nights!</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">Do you serve Hookah/Shisha?</div>
+                <div class="faq-question hover-target" onclick="toggleFAQ(this)">Do you serve Hookah/Shisha?</div>
                 <div class="faq-answer">Yes, we are known for our premium Hookah blends. We offer a wide variety of flavors to enhance your lounge experience.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">Is the seating indoor or outdoor?</div>
+                <div class="faq-question hover-target" onclick="toggleFAQ(this)">Is the seating indoor or outdoor?</div>
                 <div class="faq-answer">We offer premium indoor AC seating with an aesthetically pleasing, Instagram-friendly interior.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">How can I place an order for delivery?</div>
+                <div class="faq-question hover-target" onclick="toggleFAQ(this)">How can I place an order for delivery?</div>
                 <div class="faq-answer">You can easily place an order for delivery using the Zomato or Swiggy buttons at the top of our website, or order directly for takeaway via our WhatsApp menu.</div>
             </div>
         </div>
     </section>
 
-    <section id="booking">
+    <section id="booking" class="light-bg">
         <div class="sec-title reveal">
             <h3>Reservation</h3>
             <h2>Book Your Table</h2>
@@ -410,34 +488,34 @@
         <div class="booking-container reveal">
             <div class="input-group">
                 <label>Full Name</label>
-                <input type="text" id="book-name" placeholder="Enter your full name">
+                <input type="text" id="book-name" class="hover-target" placeholder="Enter your full name">
             </div>
             <div class="input-group">
                 <label>Date & Time</label>
-                <input type="datetime-local" id="book-time">
+                <input type="datetime-local" id="book-time" class="hover-target">
             </div>
             <div class="input-group">
                 <label>Number of Guests</label>
-                <select id="book-guests">
+                <select id="book-guests" class="hover-target">
                     <option value="2">Table for 2</option>
                     <option value="3-4">Table for 3-4</option>
                     <option value="5-8">Group (5-8 People)</option>
                     <option value="8+">Large Party (8+ People)</option>
                 </select>
             </div>
-            <button class="btn btn-glow" style="width: 100%; font-size: 1.15rem; margin-top: 15px;" onclick="sendBooking()">Confirm Booking via WhatsApp</button>
+            <button class="btn btn-glow hover-target" style="width: 100%; font-size: 1.15rem; margin-top: 15px;" onclick="sendBooking()">Confirm Booking via WhatsApp</button>
         </div>
     </section>
 
-    <section id="location" class="light-bg">
+    <section id="location">
         <div class="sec-title reveal">
             <h3>Find Us</h3>
             <h2>Location & Contact</h2>
-            <p style="color: #555; margin-top: 10px; font-size: 1.15rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
+            <p style="color: #ccc; margin-top: 10px; font-size: 1.15rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
             <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
-        <div class="map-container reveal">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.554371458981!2d72.5015091153457!3d23.04013442145884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922315b63%3A0x6b2e11d041306915!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-container reveal hover-target">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.3653140582855!2d72.49652231502758!3d23.04705308494119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b7a421b8c61%3A0xf648e899b8edc0c6!2sSindhu%20Bhavan%20Marg%2C%20Bodakdev%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1689253456789!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -450,23 +528,23 @@
         </div>
     </footer>
 
-    <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+    <button id="scrollTopBtn" class="hover-target" onclick="scrollToTop()">↑</button>
 
-    <a href="https://wa.me/919727263501?text=Hello%20Lounge%20Casanova!" target="_blank" class="wa-float">
+    <a href="https://wa.me/919727263501?text=Hello%20Lounge%20Casanova!" target="_blank" class="wa-float hover-target">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.002 0c-8.837 0-16.002 7.165-16.002 16.002 0 2.81.728 5.535 2.11 7.95L.52 29.56l5.77-1.515c2.327 1.253 4.957 1.914 7.64 1.914h.005c8.835 0 16.001-7.166 16.001-16.002C29.937 7.165 22.84 0 16.002 0z" fill="#25d366"/><path d="M22.83 17.065c-.374-.188-2.214-1.093-2.556-1.218-.342-.125-.592-.188-.84.188-.25.375-.966 1.218-1.185 1.468-.218.25-.436.282-.81.094-2.185-1.094-3.763-2.316-5.228-4.85-.188-.328-.02-.505.167-.692.167-.168.375-.438.562-.656.188-.22.25-.376.375-.626.125-.25.063-.47-.03-.657-.095-.188-.842-2.033-1.154-2.784-.302-.733-.612-.633-.842-.644-.218-.01-.468-.013-.718-.013-.25 0-.655.094-.997.47-.343.375-1.308 1.28-1.308 3.123 0 1.843 1.34 3.623 1.526 3.873.188.25 2.642 4.032 6.4 5.656 2.375 1.026 3.23.957 4.316.804 1.23-.174 2.214-.903 2.526-1.776.312-.874.312-1.624.218-1.777-.094-.155-.343-.248-.718-.436z" fill="#fff"/></svg>
     </a>
 
-    <button class="chat-btn" onclick="toggleChat()">🤖</button>
+    <button class="chat-btn hover-target" onclick="toggleChat()">🤖</button>
     <div class="chat-window" id="chat-window">
         <div class="chat-header">
-            <span>AI Assistant</span><span class="close-chat" onclick="toggleChat()">✖</span>
+            <span>AI Assistant</span><span class="close-chat hover-target" onclick="toggleChat()">✖</span>
         </div>
         <div class="chat-body" id="chat-body">
             <div class="msg bot">Hello! Welcome to Lounge Casanova. How can I assist you today?</div>
         </div>
         <div class="chat-input">
-            <input type="text" id="chat-input-field" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendChat()">
-            <button onclick="sendChat()">Send</button>
+            <input type="text" id="chat-input-field" class="hover-target" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendChat()">
+            <button class="hover-target" onclick="sendChat()">Send</button>
         </div>
     </div>
 
@@ -475,29 +553,46 @@
             <p style="margin-bottom: 2px; font-weight: 500; font-size: 0.95rem;">Items: <span id="cart-count">0</span></p>
             <h3 style="color: var(--accent); font-size: 1.6rem;">Rs. <span id="cart-total">0</span></h3>
         </div>
-        <button class="checkout-btn" onclick="sendOrder()">Order on WA</button>
+        <button class="checkout-btn hover-target" onclick="sendOrder()">Order on WA</button>
     </div>
 
     <script>
         const WA_NUMBER = "919727263501"; 
 
-        // 1. Preloader & Promo Popup
+        // 1. Custom Mouse Cursor Logic (Desktop Only)
+        if(window.innerWidth > 768) {
+            const dot = document.querySelector('.cursor-dot');
+            const outline = document.querySelector('.cursor-outline');
+            
+            window.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    outline.style.left = e.clientX + 'px';
+                    outline.style.top = e.clientY + 'px';
+                }, 50);
+            });
+
+            document.querySelectorAll('.hover-target, a, button, input').forEach(el => {
+                el.addEventListener('mouseover', () => { dot.classList.add('hover'); });
+                el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); });
+            });
+        }
+
+        // 2. Preloader & Promo Popup
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('preloader').style.opacity = '0';
                 setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 800);
-                
-                setTimeout(() => {
-                    document.getElementById('promo-popup').classList.add('active');
-                }, 4000); 
+                setTimeout(() => { document.getElementById('promo-popup').classList.add('active'); }, 4000); 
             }, 1000);
-            
             checkLiveStatus();
         });
 
         function closePromo() { document.getElementById('promo-popup').classList.remove('active'); }
 
-        // 2. Live Status Logic
+        // 3. Live Status Logic
         function checkLiveStatus() {
             const statusBadge = document.getElementById('live-status');
             const currentHour = new Date().getHours();
@@ -510,7 +605,7 @@
             }
         }
 
-        // 3. Scroll Functionality & Animations
+        // 4. Scroll Functionality & Animations
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
@@ -527,7 +622,28 @@
         }, observerOptions);
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-        // 4. AUTO SLIDER LOGIC
+        // 5. 3D Tilt Effect Initialization (Desktop Only)
+        function initTilt() {
+            if(window.innerWidth <= 768) return;
+            const tiltEls = document.querySelectorAll('.tilt-element');
+            tiltEls.forEach(el => {
+                el.addEventListener('mousemove', e => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -8;
+                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 8;
+                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+        // Call it initially for static elements
+        initTilt();
+
+        // 6. AUTO SLIDER LOGIC
         const track = document.getElementById('slider-track');
         let slideIndex = 0;
         setInterval(() => {
@@ -535,7 +651,7 @@
             track.style.transform = `translateX(-${slideIndex * 100}%)`;
         }, 4000);
 
-        // 5. FAQ Accordion Logic
+        // 7. FAQ Accordion Logic
         function toggleFAQ(element) {
             const parent = element.parentElement;
             if (parent.classList.contains('active')) {
@@ -546,7 +662,7 @@
             }
         }
 
-        // 6. FULL MENU DATA (A to Z)
+        // 8. FULL MENU DATA (A to Z)
         const fullMenuData = [
             { cat: "Hot Serve", items: [ {id: "h1", name: "Masala Tea", price: 89}, {id: "h2", name: "Coffee", price: 99}, {id: "h3", name: "Black Coffee", price: 99}, {id: "h4", name: "Green Tea", price: 99}, {id: "h5", name: "Hot Chocolate", price: 269}, {id: "h6", name: "Hot Bourvita", price: 269} ] },
             { cat: "Soup", items: [ {id: "s1", name: "Cream Of Tomato Soup", price: 230}, {id: "s2", name: "Vegetable Manchow Soup", price: 230}, {id: "s3", name: "Mexican Tortilla Soup", price: 240}, {id: "s4", name: "Broccoli Almond Soup", price: 250}, {id: "s5", name: "Broccoli Coconut Soup", price: 260}, {id: "s6", name: "Miso Soup", price: 260} ] },
@@ -571,17 +687,17 @@
                         let currentQty = cart[item.id] ? cart[item.id].qty : 1;
 
                         html += `
-                            <div class="menu-item">
+                            <div class="menu-item tilt-element">
                                 <div class="item-info">
                                     <h4>${item.name}</h4>
                                     <p>Rs. ${item.price}</p>
                                 </div>
                                 <div>
-                                    <button class="add-btn" id="add-${item.id}" style="display:${addDisplay};" onclick="addToCart('${item.id}', '${item.name}', ${item.price})">ADD</button>
+                                    <button class="add-btn hover-target" id="add-${item.id}" style="display:${addDisplay};" onclick="addToCart('${item.id}', '${item.name}', ${item.price})">ADD</button>
                                     <div class="qty-controls" id="qty-${item.id}" style="display:${qtyDisplay};">
-                                        <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
+                                        <button class="qty-btn hover-target" onclick="updateQty('${item.id}', -1)">-</button>
                                         <span class="qty-val" id="val-${item.id}">${currentQty}</span>
-                                        <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+                                        <button class="qty-btn hover-target" onclick="updateQty('${item.id}', 1)">+</button>
                                     </div>
                                 </div>
                             </div>`;
@@ -590,6 +706,8 @@
                     container.innerHTML += html;
                 }
             });
+            // Re-initialize tilt for new dynamically added menu items
+            initTilt();
         }
 
         renderMenu();
@@ -600,7 +718,7 @@
             renderMenu(catName);
         }
 
-        // 7. Cart Logic
+        // 9. Cart Logic
         function addToCart(id, name, price) {
             cart[id] = { name, price, qty: 1 };
             document.getElementById(`add-${id}`).style.display = 'none';
@@ -641,7 +759,7 @@
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // 8. Booking & Chatbot
+        // 10. Booking & Chatbot
         function sendBooking() {
             const name = document.getElementById('book-name').value;
             const time = document.getElementById('book-time').value;
