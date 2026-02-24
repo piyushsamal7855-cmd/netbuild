@@ -187,7 +187,7 @@
         .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; font-family: var(--font-body); font-size: 1rem; background: #fdfdfd;}
         .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);}
         
-        /* --- Location Map (Fixed Real Embed) --- */
+        /* --- Location Map --- */
         .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid var(--gold); max-width: 1050px; margin: 0 auto;}
         .map-container iframe { width: 100%; height: 450px; border: 0; display: block;}
         
@@ -226,15 +226,13 @@
         #scrollTopBtn:hover { background-color: var(--gold); color: #000; transform: translateY(-5px);}
 
         /* =========================================
-           MOBILE RESPONSIVENESS FIXES (CRITICAL)
+           MOBILE RESPONSIVENESS FIXES
            ========================================= */
         @media (max-width: 768px) {
-            /* Disable Desktop Effects */
             .cursor-dot, .cursor-outline { display: none !important; }
             body, a, button, input, select { cursor: auto !important; }
             .menu-item, .event-card, .gallery-item, .insta-item { transform: none !important; } 
             
-            /* Header & Hero */
             header { padding: 15px; }
             nav ul { display: none; }
             .logo { font-size: 1.4rem; }
@@ -243,7 +241,6 @@
             .hero-buttons { flex-direction: column; width: 100%; }
             .hero-buttons .btn, .hero-buttons .partner-btn { width: 100%; justify-content: center; margin-bottom: 10px;}
             
-            /* Section Adjustments */
             section { padding: 60px 5%; }
             .sec-title h2 { font-size: 2.2rem; }
             .parallax-section { padding: 80px 5%; }
@@ -252,17 +249,15 @@
             .about-img-wrap::before { display: none; }
             .about-text h3 { font-size: 1.8rem; }
             
-            /* MENU GRID FIX - Forcing 1 column so items don't disappear */
             .menu-grid { grid-template-columns: 1fr; gap: 15px;}
             .menu-item { flex-direction: row; padding: 15px; }
             
-            /* GALLERY & INSTA GRID FIX - Strictly 2x2 grid on mobile */
+            /* STRICT 2x2 GRID FOR GALLERY & INSTA ON MOBILE */
             .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .gallery-item img { height: 150px; }
             .insta-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .insta-item img { height: 150px; }
             
-            /* Popup & Floating elements */
             .popup-content { padding: 30px 20px; }
             .popup-content h3 { font-size: 1.6rem; }
             .map-container iframe { height: 300px; }
@@ -424,7 +419,7 @@
                 <div class="gallery-overlay"><span>Tandoori Specials</span></div>
             </div>
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1585692135069-58db8204b77f?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries"> 
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries"> 
                 <div class="gallery-overlay"><span>Crispy Delights</span></div>
             </div>
         </div>
@@ -476,7 +471,7 @@
                 <div class="insta-icon">❤️</div>
             </div>
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
+                <img src="https://images.unsplash.com/photo-1572448862527-d3c904757065?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
                 <div class="insta-icon">❤️</div>
             </div>
         </div>
@@ -545,7 +540,7 @@
             <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal hover-target">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.688200676453!2d72.5002446!3d23.0352136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922f3922d%3A0xc3f8da039ea8ba8b!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.616335191546!2d72.5000!3d23.0381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922484c27%3A0x8673f8487b322a36!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
