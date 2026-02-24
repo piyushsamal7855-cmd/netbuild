@@ -88,7 +88,7 @@
         nav a:hover { color: var(--gold); }
 
         /* --- Hero Section --- */
-        #hero { height: calc(100vh - 42px); background: linear-gradient(rgba(7, 22, 17, 0.6), rgba(7, 22, 17, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        #hero { height: calc(100vh - 42px); background: linear-gradient(rgba(7, 22, 17, 0.6), rgba(7, 22, 17, 0.95)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop') center/cover fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
         #hero h1 { font-size: 5rem; color: var(--gold); margin-bottom: 15px; text-shadow: 0 15px 40px rgba(0,0,0,0.9); line-height: 1.1; letter-spacing: 2px;}
         #hero p { font-size: 1.25rem; max-width: 700px; margin-bottom: 35px; color: #f0f0f0; font-weight: 300; line-height: 1.6;}
         .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 35px; }
@@ -141,7 +141,7 @@
         .qty-val { font-weight: bold; color: #fff; min-width: 20px; text-align: center; font-size: 1.1rem;}
 
         /* --- PREMIUM PARALLAX BANNER --- */
-        .parallax-section { background: linear-gradient(rgba(7, 22, 17, 0.8), rgba(7, 22, 17, 0.8)), url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=1920&q=80') center/cover fixed; padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2);}
+        .parallax-section { background: linear-gradient(rgba(7, 22, 17, 0.8), rgba(7, 22, 17, 0.8)), url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?q=80&w=1920&auto=format&fit=crop') center/cover fixed; padding: 120px 5%; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2);}
         .parallax-content h2 { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px;}
         .parallax-content p { font-size: 1.3rem; color: #ddd; max-width: 700px; margin: 0 auto; font-style: italic;}
 
@@ -226,13 +226,15 @@
         #scrollTopBtn:hover { background-color: var(--gold); color: #000; transform: translateY(-5px);}
 
         /* =========================================
-           MOBILE RESPONSIVENESS FIXES
+           MOBILE RESPONSIVENESS FIXES (CRITICAL)
            ========================================= */
         @media (max-width: 768px) {
+            /* Disable Desktop Effects */
             .cursor-dot, .cursor-outline { display: none !important; }
             body, a, button, input, select { cursor: auto !important; }
             .menu-item, .event-card, .gallery-item, .insta-item { transform: none !important; } 
             
+            /* Header & Hero */
             header { padding: 15px; }
             nav ul { display: none; }
             .logo { font-size: 1.4rem; }
@@ -241,6 +243,7 @@
             .hero-buttons { flex-direction: column; width: 100%; }
             .hero-buttons .btn, .hero-buttons .partner-btn { width: 100%; justify-content: center; margin-bottom: 10px;}
             
+            /* Section Adjustments */
             section { padding: 60px 5%; }
             .sec-title h2 { font-size: 2.2rem; }
             .parallax-section { padding: 80px 5%; }
@@ -249,15 +252,17 @@
             .about-img-wrap::before { display: none; }
             .about-text h3 { font-size: 1.8rem; }
             
+            /* MENU GRID FIX - Forcing 1 column so items don't disappear */
             .menu-grid { grid-template-columns: 1fr; gap: 15px;}
             .menu-item { flex-direction: row; padding: 15px; }
             
-            /* STRICT 2x2 GRID FOR GALLERY & INSTA ON MOBILE */
+            /* GALLERY & INSTA GRID FIX - Strictly 2x2 grid on mobile */
             .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .gallery-item img { height: 150px; }
             .insta-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .insta-item img { height: 150px; }
             
+            /* Popup & Floating elements */
             .popup-content { padding: 30px 20px; }
             .popup-content h3 { font-size: 1.6rem; }
             .map-container iframe { height: 300px; }
@@ -338,7 +343,7 @@
         </div>
         <div class="about-content">
             <div class="about-img-wrap reveal-left">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Lounge Interior Vibe">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop" alt="Lounge Interior Vibe">
             </div>
             <div class="about-text reveal-right">
                 <h3>A Premium Vibe in Ahmedabad</h3>
@@ -407,19 +412,19 @@
         </div>
         <div class="gallery-grid reveal">
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Lounge Interior">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=600&auto=format&fit=crop" alt="Lounge Interior">
                 <div class="gallery-overlay"><span>Lounge Vibe</span></div>
             </div>
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Premium Food">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Premium Food">
                 <div class="gallery-overlay"><span>Premium Dining</span></div>
             </div>
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Tandoori Platter">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop" alt="Tandoori Platter">
                 <div class="gallery-overlay"><span>Tandoori Specials</span></div>
             </div>
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries"> 
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080e153303?q=80&w=600&auto=format&fit=crop" alt="Crispy Fries"> 
                 <div class="gallery-overlay"><span>Crispy Delights</span></div>
             </div>
         </div>
@@ -459,19 +464,19 @@
         </div>
         <div class="insta-grid reveal">
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" alt="Insta 1">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop" alt="Insta 1">
                 <div class="insta-icon">❤️</div>
             </div>
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=80" alt="Insta 2">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400&auto=format&fit=crop" alt="Insta 2">
                 <div class="insta-icon">❤️</div>
             </div>
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Insta 3">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=400&auto=format&fit=crop" alt="Insta 3">
                 <div class="insta-icon">❤️</div>
             </div>
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1572448862527-d3c904757065?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
+                <img src="https://images.unsplash.com/photo-1572448862527-d3c904757065?q=80&w=400&auto=format&fit=crop" alt="Insta 4">
                 <div class="insta-icon">❤️</div>
             </div>
         </div>
@@ -540,7 +545,7 @@
             <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal hover-target">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.616335191546!2d72.5000!3d23.0381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922484c27%3A0x8673f8487b322a36!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.605335439777!2d72.5029313149678!3d23.03798998494519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b278e046fa5%3A0xd837def63555f791!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1645523456789!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
