@@ -49,7 +49,7 @@
         .popup-overlay.active .popup-content { transform: scale(1) translateY(0); }
         .close-popup { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--gold); transition: 0.3s; cursor: pointer;}
         .close-popup:hover { transform: rotate(90deg); }
-        .popup-content h3 { font-size: 2rem; margin-bottom: 15px; color: var(--gold); }
+        .popup-content h3 { font-size: 2.2rem; margin-bottom: 15px; color: var(--gold); }
 
         /* --- ANNOUNCEMENT BAR --- */
         .top-bar { background: linear-gradient(90deg, #b5952f, #d4af37, #b5952f); color: #000; padding: 10px 0; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; overflow: hidden; white-space: nowrap; position: relative; z-index: 1001; box-shadow: 0 2px 10px rgba(0,0,0,0.5);}
@@ -127,10 +127,9 @@
         @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
         .cat-title { font-size: 2.2rem; border-bottom: 2px solid var(--gold); padding-bottom: 12px; margin-bottom: 25px; color: var(--gold); display: inline-block;}
         
-        /* FIXED GRID FOR MOBILE */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
         
-        .menu-item { display: flex; justify-content: space-between; align-items: center; background: #0f241d; padding: 20px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 5px 20px rgba(0,0,0,0.3); transform-style: preserve-3d; transition: 0.3s;}
+        .menu-item { display: flex; justify-content: space-between; align-items: center; background: #0f241d; padding: 20px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 5px 20px rgba(0,0,0,0.3); transform-style: preserve-3d; transition: 0.3s; opacity: 1 !important; visibility: visible !important;}
         .menu-item:hover { border-color: var(--gold); background: #132b23; box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
         .item-info { transform: translateZ(20px); }
         .item-info h4 { font-size: 1.15rem; margin-bottom: 8px; color: #ffffff; line-height: 1.3; font-weight: 500;}
@@ -164,7 +163,7 @@
         .insta-item:hover .insta-icon { opacity: 1;}
 
         /* --- Auto Slider Reviews --- */
-        .slider-container { max-width: 850px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.02); padding: 50px 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); color: white; backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+        .slider-container { max-width: 850px; margin: 0 auto; overflow: hidden; position: relative; background: rgba(255,255,255,0.02); padding: 60px 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2); color: white; backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
         .slider-track { display: flex; width: 100%; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { flex: 0 0 100%; width: 100%; text-align: center; padding: 0 15px; box-sizing: border-box;}
         .stars { color: #ffc107; font-size: 1.8rem; margin-bottom: 20px; letter-spacing: 2px;}
@@ -188,7 +187,7 @@
         .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; font-family: var(--font-body); font-size: 1rem; background: #fdfdfd;}
         .input-group input:focus, .input-group select:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);}
         
-        /* --- Location Map (FIXED iframe sizing) --- */
+        /* --- Location Map (Fixed Real Embed) --- */
         .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid var(--gold); max-width: 1050px; margin: 0 auto;}
         .map-container iframe { width: 100%; height: 450px; border: 0; display: block;}
         
@@ -257,10 +256,10 @@
             .menu-grid { grid-template-columns: 1fr; gap: 15px;}
             .menu-item { flex-direction: row; padding: 15px; }
             
-            /* Gallery & Insta Grid Fixes */
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px;}
+            /* GALLERY & INSTA GRID FIX - Strictly 2x2 grid on mobile */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .gallery-item img { height: 150px; }
-            .insta-grid { grid-template-columns: repeat(2, 1fr); gap: 10px;}
+            .insta-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px;}
             .insta-item img { height: 150px; }
             
             /* Popup & Floating elements */
@@ -425,7 +424,7 @@
                 <div class="gallery-overlay"><span>Tandoori Specials</span></div>
             </div>
             <div class="gallery-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1630431341973-02e1b662ce3b?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries"> 
+                <img src="https://images.unsplash.com/photo-1585692135069-58db8204b77f?auto=format&fit=crop&w=600&q=80" alt="Crispy Fries"> 
                 <div class="gallery-overlay"><span>Crispy Delights</span></div>
             </div>
         </div>
@@ -477,7 +476,7 @@
                 <div class="insta-icon">❤️</div>
             </div>
             <div class="insta-item tilt-element hover-target">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
+                <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?auto=format&fit=crop&w=400&q=80" alt="Insta 4">
                 <div class="insta-icon">❤️</div>
             </div>
         </div>
@@ -542,17 +541,17 @@
         <div class="sec-title reveal">
             <h3>Find Us</h3>
             <h2>Location & Contact</h2>
-            <p style="color: #ccc; margin-top: 10px; font-size: 1.1rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
+            <p style="color: #ccc; margin-top: 10px; font-size: 1.15rem;">📍 Sindhu Bhavan Marg, PRL Colony, Thaltej, Ahmedabad</p>
             <p style="color: var(--gold); margin-top: 8px; font-size: 1.3rem; font-weight: 600;">📞 +91 97272 63501</p>
         </div>
         <div class="map-container reveal hover-target">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5584852936785!2d72.50293121542385!3d23.03998398494443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8349271e5ad9%3A0x6fb7058866e4a282!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1689000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.688200676453!2d72.5002446!3d23.0352136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4922f3922d%3A0xc3f8da039ea8ba8b!2sSindhu%20Bhavan%20Marg%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
     <footer>
         <h2 style="font-family: var(--font-heading);">Lounge Casanova</h2>
-        <p style="color: #aaa; margin: 15px 0; font-size: 1rem;">Premium Dining & Signature Hookah Experience</p>
+        <p style="color: #aaa; margin: 15px 0; font-size: 1.1rem;">Premium Dining & Signature Hookah Experience</p>
         <p style="color: #aaa; margin-bottom: 35px;">📞 +91 97272 63501 | Open Everyday: 12 PM - 12 AM</p>
         <div class="copyright">
             © 2026 Lounge Casanova. All Rights Reserved. <br><span style="color: var(--gold); font-size: 0.8rem; letter-spacing: 3px; display: inline-block; margin-top: 10px;">DEVELOPED BY NETBUILD.IN</span>
@@ -581,8 +580,8 @@
 
     <div class="cart-bar" id="cart-bar">
         <div>
-            <p style="margin-bottom: 2px; font-weight: 500; font-size: 0.9rem;">Items: <span id="cart-count">0</span></p>
-            <h3 style="color: var(--accent); font-size: 1.4rem;">Rs. <span id="cart-total">0</span></h3>
+            <p style="margin-bottom: 2px; font-weight: 500; font-size: 0.95rem;">Items: <span id="cart-count">0</span></p>
+            <h3 style="color: var(--accent); font-size: 1.6rem;">Rs. <span id="cart-total">0</span></h3>
         </div>
         <button class="checkout-btn hover-target" onclick="sendOrder()">Order on WA</button>
     </div>
